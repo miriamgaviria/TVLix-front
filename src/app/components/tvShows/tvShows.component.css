@@ -1,0 +1,19 @@
+.container{
+    width: 100%;
+    border: 1px solid white;
+}
+
+.card{
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    margin: 1rem;
+    -webkit-box-shadow: 10px 10px 12px -9px rgba(0,0,0,0.39);
+    -moz-box-shadow: 10px 10px 12px -9px rgba(0,0,0,0.39);
+    box-shadow: 10px 10px 12px -9px rgba(0,0,0,0.39);    
+}
+
+.card-body{
+    border:1px solid black;
+}
+

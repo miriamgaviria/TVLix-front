@@ -1,0 +1,39 @@
+<div class="container-fluid">
+
+    <div class="row-fluid">
+        <h2>{{title}}</h2>
+    </div>
+
+    
+    <div class="card-group container-fluid">
+
+        <div class="card text-white bg-secondary" *ngFor="let tvshow of tvShowsForHome">
+            <img class="card-img-top" src="../../../assets/img/ondas.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{tvshow.showTitle}}</h5>
+            </div>
+            <div class="card-body">
+                <a href="#" class="card-link ">Vista</a>
+                <a href="#" class="card-link linkContainer">Para ver</a>
+                <a href="#" class="card-link linkContainer">Viendo</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-group container-fluid">
+
+        <div class="card text-white bg-secondary" *ngFor="let tvshow of tvShowsForHome">
+            <img class="card-img-top" src="../../../assets/img/ondas.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{tvshow.showTitle}}</h5>
+            </div>
+            <div class="card-body">
+                <a href="#" class="card-link ">Vista</a>
+                <a href="#" class="card-link linkContainer">Para ver</a>
+                <a href="#" class="card-link linkContainer">Viendo</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+

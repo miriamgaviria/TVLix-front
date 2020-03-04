@@ -1,39 +1,24 @@
 <div class="container-fluid">
 
-    <div class="row-fluid">
-        <h2>{{title}}</h2>
+    <div class="row-fluid pageTitle">
+        <h2>{{texts.pageTitle}}</h2>
     </div>
 
     
-    <div class="card-group container-fluid">
+    <div class="row d-flex justify-content-center groupCards">
+        <div class="col-xs-4 col-sm-3 col-md-3 col-lg-2 cards text-white bg-secondary offset-1" *ngFor="let tvshow of tvShowsForHome.tv_shows">
+            <img class="card-img-top" src="{{tvshow.image_thumbnail_path}}" alt="Card image cap">
+            
+            <h5 class="card-title">{{tvshow.name}}</h5>
 
-        <div class="card text-white bg-secondary" *ngFor="let tvshow of tvShowsForHome">
-            <img class="card-img-top" src="../../../assets/img/ondas.png" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">{{tvshow.showTitle}}</h5>
-            </div>
-            <div class="card-body">
-                <a href="#" class="card-link ">Vista</a>
-                <a href="#" class="card-link linkContainer">Para ver</a>
-                <a href="#" class="card-link linkContainer">Viendo</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="card-group container-fluid">
-
-        <div class="card text-white bg-secondary" *ngFor="let tvshow of tvShowsForHome">
-            <img class="card-img-top" src="../../../assets/img/ondas.png" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">{{tvshow.showTitle}}</h5>
-            </div>
-            <div class="card-body">
-                <a href="#" class="card-link ">Vista</a>
-                <a href="#" class="card-link linkContainer">Para ver</a>
-                <a href="#" class="card-link linkContainer">Viendo</a>
+            <div class="bodyCard">
+                <div class="linksContainer">
+                    <a href="#" class="card-link" ><img class="linkContainer tvShowIcon" [src]="images.finieshedTvShowIcon" alt="Añadir a serie vista"/></a>
+                    <a href="#" class="card-link"><img class="linkContainer tvShowIcon" [src]="images.wishedTvShowIcon" alt="Añadir a serie para ver"/></a>
+                    <a href="#" class="card-link"><img class="linkContainer tvShowIcon" [src]="images.watchingTvShowIcon" alt="Añadir a series viendo"/></a>
+                </div>                
             </div>
         </div>
     </div>
-
 </div>
 

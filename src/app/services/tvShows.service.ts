@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { of, Observable } from 'rxjs';
 
-import { TvShows } from '../models/tvShows.model';
+import { TvShow } from '../models/tvShow.model';
+import { TvShowsList } from '../models/tvShowsList.model';
 import { TVSHOWS } from '../models/tvShows.json';
 
 @Injectable({
@@ -9,9 +11,22 @@ import { TVSHOWS } from '../models/tvShows.json';
 })
 export class TvShowsService {
 
-  constructor() { }
+  private urlEndPointATvShow: string = 'https://www.episodate.com/api/show-details?q=arrow';
+  private urlEndPointTvShowList: string = 'https://www.episodate.com/api/most-popular?page=1';
 
-  getTvShows(): Observable<TvShows[]> {
-    return of(TVSHOWS);
+  constructor(private http: HttpClient) { }
+
+  // getTvShows(): Observable<TvShows[]> {
+  //   return of(TVSHOWS);
+  // }
+
+  getTvShowList(): Observable<TvShowsList> {
+    return this.http.get<TvShowsList>(this.urlEndPointTvShowList);
   }
+
+  getTvShow(): Observable<TvShow> {
+    return this.http.get<TvShow>(this.urlEndPointATvShow);
+  }
+
+  
 }

@@ -4,7 +4,7 @@
 }
 
 body{
-    background-image: url('./assets/img/ondas.png');
+    background-image: url('./assets/images/waves.png');
     color: white !important;
     background-size: 100%;
     font-family: myFirstFont;
@@ -30,9 +30,17 @@ h2{
 .linkContainer:hover{
     background-color: skyblue;
     color: rgb(48, 48, 48);
+    border: none!important;
+}
+
+.linkContainer:active{
+    background-color: lightsteelblue!important;
+    color: rgb(48, 48, 48)!important;
+    border: red 1px solid;
 }
 
 .linkContainer:visited{
-    color: skyblue;
-    border: 1px skyblue solid;
+    background-color: lightsteelblue!important;
+    color: rgb(48, 48, 48)!important;
+    border: none!important;
 }

@@ -1,11 +1,12 @@
+import { Router } from '@angular/router';
 import { TvShowsList } from './../../models/tvShowsList.model';
 import { TvShowsService } from './../../services/tvShows.service';
 import { TvShow } from '../../models/tvShow.model';
 
 import { Component, OnInit } from '@angular/core';
 
-import Texts from '../../../assets/texts.json';
-import Images from '../../../assets/images.json';
+// import Texts from '../../../assets/text.json';
+// import Images from '../../../assets/images/';
 
 @Component({
   selector: 'app-tvshows',
@@ -15,13 +16,14 @@ import Images from '../../../assets/images.json';
 
 export class TvShowsComponent implements OnInit {
 
-  texts: any = Texts.tvShows;
-  images: any = Images.tvShows;
+  // texts: any = Texts.tvShows;
+  // images: any = Images.tvShows;
 
   tvShowsForHome: TvShowsList;
   tvShowDetail: TvShow;
 
-  constructor(private tvShowsService: TvShowsService) { }
+  constructor(private tvShowsService: TvShowsService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.tvShowsService.getTvShowList().subscribe(
@@ -41,4 +43,11 @@ export class TvShowsComponent implements OnInit {
     )
   }
 
+  goToDetail() {
+    // localStorage.setItem('issueForDetail', JSON.stringify(tvShow));
+    // this.notificationsUrl = '/notifications';
+    // localStorage.setItem('previousUrl', this.notificationsUrl);
+
+    this.router.navigate(['/tvShowDetail']);
+  }
 }

@@ -1,0 +1,10 @@
+{
+    "body":{
+        "backgroundBody": "./assets/images/waves.png"
+    },
+    "tvShows":{
+        "watchingTvShowIcon": "./assets/images/watchingTvShowIcon.png",
+        "wishedTvShowIcon": "./assets/images/wishedTvShowIcon.png",
+        "finieshedTvShowIcon": "./assets/images/finishedTvShowIcon.png"
+    }
+}

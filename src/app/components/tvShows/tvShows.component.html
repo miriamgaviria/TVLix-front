@@ -1,21 +1,28 @@
 <div class="container-fluid">
 
     <div class="row-fluid pageTitle">
-        <h2>{{texts.pageTitle}}</h2>
+        <!-- <h2>{{texts.pageTitle}}</h2> -->
+        <h2>Series para la home </h2>
     </div>
 
     
     <div class="row d-flex justify-content-center groupCards">
         <div class="col-xs-4 col-sm-3 col-md-3 col-lg-2 cards text-white bg-secondary offset-1" *ngFor="let tvshow of tvShowsForHome.tv_shows">
-            <img class="card-img-top" src="{{tvshow.image_thumbnail_path}}" alt="Card image cap">
+            <div (click)=goToDetail()>
+                <img class="card-img-top" src="{{tvshow.image_thumbnail_path}}" alt="Card image cap">
             
-            <h5 class="card-title">{{tvshow.name}}</h5>
+                <h5 class="card-title">{{tvshow.name}}</h5>
+            </div>
+
 
             <div class="bodyCard">
                 <div class="linksContainer">
-                    <a href="#" class="card-link" ><img class="linkContainer tvShowIcon" [src]="images.finieshedTvShowIcon" alt="Añadir a serie vista"/></a>
+                    <!-- <a href="#" class="card-link" ><img class="linkContainer tvShowIcon" [src]="images.finieshedTvShowIcon" alt="Añadir a serie vista"/></a>
                     <a href="#" class="card-link"><img class="linkContainer tvShowIcon" [src]="images.wishedTvShowIcon" alt="Añadir a serie para ver"/></a>
-                    <a href="#" class="card-link"><img class="linkContainer tvShowIcon" [src]="images.watchingTvShowIcon" alt="Añadir a series viendo"/></a>
+                    <a href="#" class="card-link"><img class="linkContainer tvShowIcon" [src]="images.watchingTvShowIcon" alt="Añadir a series viendo"/></a> -->
+                    <a href="finishedTvShowsForm" class="card-link" ><img class="linkContainer tvShowIcon" src="../../../assets/images/finishedTvShowIcon.png" alt="Añadir a serie vista"/></a>
+                    <a href="wishedTvShowsForm" class="card-link"><img class="linkContainer tvShowIcon" src="../../../assets/images/wishedTvShowIcon.png" alt="Añadir a serie para ver"/></a>
+                    <a href="watchingTvShowsForm" class="card-link"><img class="linkContainer tvShowIcon" src="../../../assets/images/watchingTvShowIcon.png" alt="Añadir a series viendo"/></a>
                 </div>                
             </div>
         </div>

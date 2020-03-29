@@ -1,18 +1,33 @@
-<h1>login works!</h1>
 
-<form>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="user-img">
+        <img class='avatarLoging' src="../../../assets/images/loginAvatar2.png"/>
+      </div>
+
+      <form class="col-11 formaContainer">
+        <div class="form-group" id="user-group">
+          <input type="text" class="form-control" id="exampleInputUserName" placeholder="Username">
+        </div>
+
+        <div class="form-group" id="password-group">
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+
+        <div class="centerContainer">
+          <button type="submit" class="btn btn-primary col-6 buttonStyle buttonContainer buttonMargin"><i class="fas fa-sign-in-alt"></i> Ingresar</button>
+        </div>
+
+        
+      </form>
+
+      <div class="col-11 centerContainer">
+        <a href="#" class="forgottenPwd">Recordar contraseña</a>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1">
-    </div>
-    <div class="form-group form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+  </div>
+
+
+
+
+      

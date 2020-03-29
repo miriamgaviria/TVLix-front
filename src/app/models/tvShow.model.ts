@@ -17,7 +17,7 @@ export class TvShow {
     youtube_link: string;
     image_path: string;
     image_thumbnail_path: string;
-    raing: string;
+    rating: string;
     rating_count: string;
     countdown: string;
     genres : string [];

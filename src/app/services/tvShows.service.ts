@@ -4,14 +4,14 @@ import { of, Observable } from 'rxjs';
 
 import { TvShow } from '../models/tvShow.model';
 import { TvShowsList } from '../models/tvShowsList.model';
-import { TVSHOWS } from '../models/tvShows.json';
+import { TVSHOWS } from '../model.js/tvShows.json';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TvShowsService {
 
-  private urlEndPointATvShow: string = 'https://www.episodate.com/api/show-details?q=arrow';
+  private urlEndPointTvShow: string = 'https://www.episodate.com/api/show-details?q=arrow';
   private urlEndPointTvShowList: string = 'https://www.episodate.com/api/most-popular?page=1';
 
   constructor(private http: HttpClient) { }
@@ -25,7 +25,7 @@ export class TvShowsService {
   }
 
   getTvShow(): Observable<TvShow> {
-    return this.http.get<TvShow>(this.urlEndPointATvShow);
+    return this.http.get<TvShow>(this.urlEndPointTvShow);
   }
 
   

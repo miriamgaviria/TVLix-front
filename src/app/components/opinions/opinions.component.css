@@ -1,0 +1,70 @@
+.container-fluid{
+    width: 95%;
+}
+
+.tableContainer{
+    margin-top: 2rem;
+}
+
+th{
+    padding-left: 2rem !important;
+}
+
+td{
+    padding-left: 2rem !important;
+}
+
+.valignCenter{
+    vertical-align: middle;
+}
+
+.dateContainer{
+    width: 5%; 
+}
+
+.userContainer{
+    width: 30%; 
+}
+
+.commenContainer{
+   width: 57%; 
+}
+
+.rateContainer{
+    width: 4% !important; 
+}
+
+.rate {
+    width: 9rem !important;   
+}
+
+.rate:not(:checked)>input {
+    position: absolute;
+    top: -9999px;
+}
+
+.rate>label {
+    float: right;
+    width: 24px;
+    white-space: nowrap;
+    cursor: auto;
+    font-size: 30px;    
+    margin-right: 3%;
+}
+
+.NotColored{
+    color: #cccccc;
+}
+
+.rate>label:before {
+    content: '★ ';
+}
+
+.colored{
+    color: skyblue;
+}
+
+.buttonContainer{
+    margin-top: 2rem;
+    margin-left: 45%;    
+}

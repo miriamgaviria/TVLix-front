@@ -1,0 +1,41 @@
+<div class="container-fluid">
+
+  <div class="row-fluid pageTitle">
+    <!-- <h2>{{texts.pageTitle}}</h2> -->
+    <h2>Valora esta aplicación</h2>
+  </div>
+
+  <div class="justify-content-center formContainer">
+    <form (ngSubmit)='createOpinion()'>
+      <div class="form-group row">
+        <label class="rowForm">Pon nota</label>
+        <div class="rating">
+          <!--elements are in reversed order, to allow "previous sibling selectors" in CSS-->
+          <input type="radio" name="rating" value="5" id="5" [(ngModel)]='opinion.rate'><label for="5">☆</label>
+          <input type="radio" name="rating" value="4" id="4" [(ngModel)]='opinion.rate'><label for="4">☆</label>
+          <input type="radio" name="rating" value="3" id="3" [(ngModel)]='opinion.rate'><label for="3">☆</label>
+          <input type="radio" name="rating" value="2" id="2" [(ngModel)]='opinion.rate'><label for="2">☆</label>
+          <input type="radio" name="rating" value="1" id="1" [(ngModel)]='opinion.rate'><label for="1">☆</label>
+        </div>
+      </div>
+  
+      <div class="form-group row labelForm">
+        <label for="FormControlInputComment" >Deja tu comentario</label>
+        <textarea type="text" class="form-control rowForm" [(ngModel)]='opinion.comment' id="formControlComment" name="formControlComment" rows="8"></textarea>
+      </div>
+
+
+      <div class="form-group row labelForm">
+        <label for="FormControlInputEmail" class="rowForm">Correo electrónico</label>
+        <input type="email" class="form-control rowForm" [(ngModel)]='opinion.mail' id="formControlMail" name="formControlMail" placeholder="nombre@ejemplo.com">
+      </div>
+
+      <div class="form-group row rowForm buttonPosition">
+        <a href="tvShows"><button class="btn btn-primary buttonStyle buttonContainer" type="submit">Guardar opinión</button></a>
+      </div>
+    </form>
+  </div> 
+
+</div>
+
+

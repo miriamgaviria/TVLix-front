@@ -4,42 +4,50 @@
 }
 
 body{
-    background-image: url('./assets/images/waves.png');
+    background: url('./assets/images/waves.png') no-repeat center center fixed;
+    background-size: cover;
     color: white !important;
     background-size: 100%;
     font-family: myFirstFont;
-    background-attachment: fixed;
-    /* font-family: Arial, Helvetica, sans-serif; */
-}
+    /* background-attachment: fixed; */
+    /* font-family: Arial, Helvetica, sans-serif; */}
 
 h2{
     text-align: center;
     margin-top: 2%;
 }
 
-.linkContainer{
-    color: skyblue;
-    border: 1px skyblue solid;
-    padding: 0.5rem;
+.centerContainer{    
+    text-align: center;
+}
+
+.buttonContainer{
+    padding: 0.8rem 1.6rem !important;
+}
+
+.buttonStyle{
+    background: none !important;
+    color: skyblue!important;
+    border: 1px solid skyblue !important;    
     text-align: center;
     border-radius: 10px 10px 10px 10px;
     -moz-border-radius: 10px 10px 10px 10px;
     -webkit-border-radius: 10px 10px 10px 10px;
 }
 
-.linkContainer:hover{
-    background-color: skyblue;
-    color: rgb(48, 48, 48);
+.buttonStyle:hover{
+    background-color: skyblue!important;
+    color: rgb(48, 48, 48)!important;
     border: none!important;
 }
 
-.linkContainer:active{
+.buttonStyle:active{
     background-color: lightsteelblue!important;
     color: rgb(48, 48, 48)!important;
     border: red 1px solid;
 }
 
-.linkContainer:visited{
+.buttonStyle:visited{
     background-color: lightsteelblue!important;
     color: rgb(48, 48, 48)!important;
     border: none!important;

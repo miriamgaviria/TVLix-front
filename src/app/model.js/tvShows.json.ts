@@ -1,4 +1,4 @@
-import { TvShow } from "./tvShow.model";
+import { TvShow } from "../models/tvShow.model";
 
 export const TVSHOWS: TvShow [] = [
     // {showTitle: 'Outlander'}, 

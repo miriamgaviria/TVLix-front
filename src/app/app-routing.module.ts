@@ -3,8 +3,8 @@ import { FinishedTvShowsFormComponent } from './components/finished-tv-shows/fin
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
-import { OpinatorComponent } from './components/opinator/opinator.component';
-import { OpinatorFormComponent } from './components/opinator/opinator-form/opinator-form.component';
+import { OpinionsComponent } from './components/opinions/opinions.component';
+import { OpinionFormComponent } from './components/opinions/opinion-form/opinion-form.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProfileFormComponent } from './components/profile/profile-form/profile-form.component';
 import { TvShowDetailComponent } from './components/tv-show-detail/tv-show-detail.component';
@@ -24,8 +24,8 @@ const routes: Routes = [
   {path: 'footer', component: FooterComponent},
   {path: 'header', component: HeaderComponent}, 
   {path: 'login', component: LoginComponent},
-  {path: 'opinator', component: OpinatorComponent},
-  {path: 'opinatorForm', component: OpinatorFormComponent},
+  {path: 'opinions', component: OpinionsComponent},
+  {path: 'opinionForm', component: OpinionFormComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'profileForm', component: ProfileFormComponent},  
   {path: 'tvShowDetail', component: TvShowDetailComponent},  

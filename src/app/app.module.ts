@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OpinionFormComponent } from './components/opinions/opinion-form/opinion-form.component';
 import { OpinionsComponent } from './components/opinions/opinions.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -47,6 +47,7 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [

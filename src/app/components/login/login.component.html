@@ -5,24 +5,28 @@
         <img class='avatarLoging' src="../../../assets/images/loginAvatar2.png"/>
       </div>
 
-      <form class="col-11 formaContainer">
+      <form class="col-11 formaContainer"(ngSubmit)="onLogin()" novalidate>
         <div class="form-group" id="user-group">
-          <input type="text" class="form-control" id="exampleInputUserName" placeholder="Username">
+          <input type="text" class="form-control" id="exampleInputUserName" name="userName" [(ngModel)]="user.userName" placeholder="Username" required #userName="ngModel">
+          <div *ngIf="userName.invalid && (userName.dirty || userName.touched)">
+            userName is required.
+          </div>
         </div>
 
         <div class="form-group" id="password-group">
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          <input type="password" [(ngModel)]="user.password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required #password="ngModel">
+          <div *ngIf="password.invalid && (password.dirty || password.touched)">
+            Password is required.
+          </div>
         </div>
 
         <div class="centerContainer">
           <button type="submit" class="btn btn-primary col-6 buttonStyle buttonContainer buttonMargin"><i class="fas fa-sign-in-alt"></i> Ingresar</button>
-        </div>
-
-        
+        </div>        
       </form>
 
       <div class="col-11 centerContainer">
-        <a href="#" class="forgottenPwd">Recordar contraseña</a>
+        <button (click)="onCreateAccount()" class="btn btn-primary col-6 buttonStyle buttonContainer buttonMargin createButton"><i class="fas fa-user-plus"></i> Crear cuenta</button>
       </div>
     </div>
   </div>

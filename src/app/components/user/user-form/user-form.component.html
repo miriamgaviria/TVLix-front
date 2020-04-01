@@ -1,0 +1,91 @@
+<app-header></app-header>
+
+<div class="container-fluid">
+
+    <div class="row-fluid pageTitle">
+      <!-- <h2>{{texts.pageTitle}}</h2> -->
+      <h2>Formulario del perfil de usuario</h2>
+    </div>
+  
+    <div class="justify-content-center formContainer">
+        <form (ngSubmit)='createAccount()'>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputName">Nombre</label>
+                    <input type="text" class="form-control" id="inputName" placeholder="Nombre" [(ngModel)]='user.name' name="name" >
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputSurName">Apellido</label>
+                    <input type="text" class="form-control" id="inputSurName" placeholder="Apellido" [(ngModel)]='user.surname' name="surname" >
+                  </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputEmail4">Email</label>
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Email" [(ngModel)]='user.mail' name="mail" >
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputPassword4">Password</label>
+                <input type="password" class="form-control" id="inputPassword4" placeholder="Password" [(ngModel)]='user.password' name="password" >
+              </div>
+            </div>
+            
+
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="inputUserName">UserName</label>
+                <input type="text" class="form-control" id="inputUserName" [(ngModel)]='user.userName' name="userName" >
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputLocation">Localidad</label>
+                <input id="inputLocation" class="form-control" [(ngModel)]='user.location' name="location" >
+                  
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputAvatar">Elige una imagen</label>
+                <input type="text" class="form-control" id="inputAvatar" [(ngModel)]='user.avatar' name="avatar" >
+              </div>
+            </div>
+
+            <div class="form-row mediaContainer">
+                <div class="form-group col-md-6 typeMedia">
+                    <label for="inputType" class="labelTypeMedia">Qué prefieres</label>
+                
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                        <label class="custom-control-label" for="customRadioInline1" [(ngModel)]='user.typeMedia' name="typeMedia">Películas</label>
+                      </div>
+                      <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                        <label class="custom-control-label" for="customRadioInline2" [(ngModel)]='user.typeMedia' name="typeMedia" >Series</label>
+                      </div>
+                </div>
+ 
+                <div class="form-group col-md-6">
+                    <select class="custom-select" [(ngModel)]='user.genre' name="genre">
+                        <option selected>Elige el género que más te gusta</option>
+                        <option value="1">Acción</option>
+                        <option value="2">Aventuras</option>
+                        <option value="3">Comedia</option>
+                        <option value="4">Románticas</option>                        
+                        <option value="5">Dramática</option>
+                        <option value="6">De terror</option>
+                        <option value="7">Musicales</option>
+                        <option value="8">Ciencia ficción</option>
+                        <option value="9">Bélicas</option>                        
+                        <option value="10">Western</option>                                                
+                        <option value="11">Thriller</option>
+                      </select>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary buttonStyle buttonContainer buttonMargin">Guardar cambios</button>
+          </form>
+
+    </div>
+</div>
+
+
+
+

@@ -10,6 +10,8 @@ import { OpinionService } from './../../services/opinion.service';
   styleUrls: ['./opinions.component.css']
 })
 export class OpinionsComponent implements OnInit {
+  
+  isLoading = true;
 
   opinions: Opinion[];
 
@@ -21,6 +23,7 @@ export class OpinionsComponent implements OnInit {
       (data) => {
         this.opinions = data;
         console.log('lista de opiniones', data);
+        this.isLoading = false;
       }
     )
   }

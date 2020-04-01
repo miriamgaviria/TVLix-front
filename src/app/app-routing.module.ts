@@ -5,8 +5,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { OpinionsComponent } from './components/opinions/opinions.component';
 import { OpinionFormComponent } from './components/opinions/opinion-form/opinion-form.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { ProfileFormComponent } from './components/profile/profile-form/profile-form.component';
+import { UserComponent } from './components/user/user.component';
+import { UserFormComponent } from './components/user/user-form/user-form.component';
 import { TvShowDetailComponent } from './components/tv-show-detail/tv-show-detail.component';
 import { WatchingTvShowsComponent } from './components/watching-tv-shows/watching-tv-shows.component';
 import { WatchingTvShowsFormComponent } from './components/watching-tv-shows/watching-tv-shows-form/watching-tv-shows-form.component';
@@ -26,9 +26,9 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'opinions', component: OpinionsComponent},
   {path: 'opinionForm', component: OpinionFormComponent},
-  {path: 'profile', component: ProfileComponent},
-  {path: 'profileForm', component: ProfileFormComponent},  
   {path: 'tvShowDetail', component: TvShowDetailComponent},  
+  {path: 'user', component: UserComponent},
+  {path: 'userForm', component: UserFormComponent},  
   {path: 'watchingTvShows', component: WatchingTvShowsComponent},
   {path: 'watchingTvShowsForm', component: WatchingTvShowsFormComponent},
   {path: 'wishedTvShows', component: WishedTvShowsComponent},

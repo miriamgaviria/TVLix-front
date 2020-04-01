@@ -1,0 +1,24 @@
+.formContainer{
+    width: 80%;
+    margin: 2rem auto;        
+}
+
+.mediaContainer{
+    width: 80%;
+    margin-top: 1.5rem!important;    
+    margin: 0 auto;
+    text-align: center;
+}
+
+.typeMedia{
+    vertical-align: middle;
+}
+
+.labelTypeMedia {
+    margin-right: 1.5rem;
+}
+
+.buttonMargin {   
+    margin-top: 2rem;
+    margin-left: 42%;    
+}  

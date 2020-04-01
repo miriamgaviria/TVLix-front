@@ -40,7 +40,8 @@
 
 .tvShowIcon{
     width: 25%;
-    border: none;
+    border: none!important;
+    padding: 0.3rem;
 }
 
 

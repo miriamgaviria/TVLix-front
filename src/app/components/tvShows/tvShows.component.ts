@@ -19,6 +19,9 @@ export class TvShowsComponent implements OnInit {
   // texts: any = Texts.tvShows;
   // images: any = Images.tvShows;
 
+  isLoading = true;
+  
+
   tvShowsForHome: TvShowsList;
   tvShowDetail: TvShow;
 
@@ -26,12 +29,14 @@ export class TvShowsComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    
     this.tvShowsService.getTvShowList().subscribe(
       // tvShowsForHome => this.tvShowsForHome = tvShowsForHome
       (data) => {
         this.tvShowsForHome = data;
         console.log('lista de series', data);
         console.log('src imagen', this.tvShowsForHome.tv_shows[0].image_thumbnail_path);
+        this.isLoading = false;
       }
     )
 

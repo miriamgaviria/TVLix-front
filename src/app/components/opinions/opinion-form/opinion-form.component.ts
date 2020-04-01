@@ -11,12 +11,16 @@ import { OpinionService } from 'src/app/services/opinion.service';
 })
 export class OpinionFormComponent implements OnInit {
 
+  isLoading = true;
+  
   opinion: Opinion = new Opinion();
 
   constructor(private opinionService: OpinionService,
     private router: Router) { }
 
   ngOnInit(): void {
+
+    this.isLoading = false;
   }
 
   public createOpinion(): void {
@@ -25,5 +29,7 @@ export class OpinionFormComponent implements OnInit {
     this.opinionService.postOpinion(this.opinion).subscribe(
       response => {console.log('creado cliente')}
     )
+    this.router.navigate(['/tvShows']);
+
   }
 }

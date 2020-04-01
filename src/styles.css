@@ -21,6 +21,20 @@ h2{
     text-align: center;
 }
 
+/* Styles por spinner */
+.d-flexSpinner{
+    position:absolute;
+    left:50%;
+    top:50%;
+}
+
+.spinner-grow{
+    vertical-align: middle;
+    width: 25rem;
+    height: 25rem;
+}
+
+/* Styles for buttons */
 .buttonContainer{
     padding: 0.8rem 1.6rem !important;
 }

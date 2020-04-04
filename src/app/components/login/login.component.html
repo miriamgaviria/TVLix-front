@@ -5,25 +5,27 @@
         <img class='avatarLoging' src="../../../assets/images/loginAvatar2.png"/>
       </div>
 
-      <form class="col-11 formaContainer"(ngSubmit)="onLogin()" novalidate>
+      <form class="col-11 formaContainer"(ngSubmit)="onLogin()">
         <div class="form-group" id="user-group">
-          <input type="text" class="form-control" id="exampleInputUserName" name="userName" [(ngModel)]="user.userName" placeholder="Username" required #userName="ngModel">
-          <div *ngIf="userName.invalid && (userName.dirty || userName.touched)">
-            userName is required.
-          </div>
+          <input type="text" class="form-control" id="exampleInputUserName" name="userName" [(ngModel)]="user.userName" placeholder="Username" required>
         </div>
 
+        <!-- <div class="form-group errorMessage" *ngIf="!validateUserName">Debe rellenar el nombre de usuario</div> -->
+
         <div class="form-group" id="password-group">
-          <input type="password" [(ngModel)]="user.password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required #password="ngModel">
-          <div *ngIf="password.invalid && (password.dirty || password.touched)">
-            Password is required.
-          </div>
+          <input type="password" [(ngModel)]="user.password" name="password" class="form-control" placeholder="Password" required >
         </div>
+
+        <!-- <div class="form-group errorMessage" *ngIf="!validatePassword">Debe rellenar la contraseña</div> -->
+
+        <div class="form-group errorMessage" *ngIf="!validateForm">Debe rellenar todos los campos</div>
 
         <div class="centerContainer">
           <button type="submit" class="btn btn-primary col-6 buttonStyle buttonContainer buttonMargin"><i class="fas fa-sign-in-alt"></i> Ingresar</button>
         </div>        
       </form>
+
+
 
       <div class="col-11 centerContainer">
         <button (click)="onCreateAccount()" class="btn btn-primary col-6 buttonStyle buttonContainer buttonMargin createButton"><i class="fas fa-user-plus"></i> Crear cuenta</button>

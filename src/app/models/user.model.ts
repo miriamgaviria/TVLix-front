@@ -4,7 +4,7 @@ export class User {
     genre: string;
     location: string;
     name: string;
-    mail: string;
+    email: string;
     password: string;
     surname: string;
     typeMedia: string;

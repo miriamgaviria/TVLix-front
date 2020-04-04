@@ -1,4 +1,4 @@
-<app-header></app-header>
+<!-- <app-header></app-header> -->
 
 <div class="container-fluid">
 
@@ -29,7 +29,7 @@
         <tbody>
           <tr *ngFor="let opinion of opinions">
             <td class="valignCenter">{{opinion.date}}</td>
-            <td class="valignCenter">{{opinion.mail}}</td>
+            <td class="valignCenter">{{opinion.email}}</td>
             <td class="valignCenter">{{opinion.comment}}</td>
             <td class="rateContainer">
               <div *ngIf="opinion.rate == 1" class="rate">

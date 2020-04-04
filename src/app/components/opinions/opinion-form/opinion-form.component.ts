@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Opinion } from '../../../models/opinion.model'
 import { OpinionService } from 'src/app/services/opinion.service';
@@ -11,20 +12,23 @@ import { OpinionService } from 'src/app/services/opinion.service';
 })
 export class OpinionFormComponent implements OnInit {
 
+  inValidForm = true;
   isLoading = true;
-  
   opinion: Opinion = new Opinion();
+  opinionForm: FormGroup;
+  submitted = false;
 
-  constructor(private opinionService: OpinionService,
-    private router: Router) { }
+  constructor(
+    private opinionService: OpinionService,
+    private router: Router,
+    ) { }
 
   ngOnInit(): void {
-
     this.isLoading = false;
   }
 
+
   public createOpinion(): void {
-    console.log('clicked')
     console.log(this.opinion)
     this.opinionService.postOpinion(this.opinion).subscribe(
       response => {console.log('creado cliente')}

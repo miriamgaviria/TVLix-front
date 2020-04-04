@@ -1,4 +1,4 @@
-<app-header></app-header>
+<!-- <app-header></app-header> -->
 
 <div class="container-fluid">
 
@@ -10,6 +10,11 @@
     </div>
     
     <div *ngIf="!isLoading">
+
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0 buttonStyle" type="submit">Search</button>
+          </form>
 
         <div class="row-fluid pageTitle">
             <!-- <h2>{{texts.pageTitle}}</h2> -->

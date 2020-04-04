@@ -1,18 +1,13 @@
-.formContainer{
-    width: 80%;
-    margin: 2rem auto;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-    
+.container-fluid{
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;  
 }
 
-.labelForm{
-  margin-top: 1rem !important; 
-}
-
-.rowForm{     
-  margin-top: 0.5rem;
+.opinionFormContainer{
+  width: 35rem;
 }
 
 /* star rating */
@@ -71,5 +66,6 @@
     display: flex;
     justify-content: center;    
   }
+
 
   

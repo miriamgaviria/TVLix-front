@@ -7,23 +7,28 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
+import { FinishedTvShowsFormComponent } from './components/finished-tv-shows/finished-tv-shows-form/finished-tv-shows-form.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
 import { OpinionFormComponent } from './components/opinions/opinion-form/opinion-form.component';
 import { OpinionsComponent } from './components/opinions/opinions.component';
+import { ToastComponent } from './components/toast/toast.component';
+import { TvShowsComponent } from './components/tvShows/TvShows.component';
+import { TvShowDetailComponent } from './components/tv-show-detail/tv-show-detail.component';
 import { UserComponent } from './components/user/user.component';
 import { UserFormComponent } from './components/user/user-form/user-form.component';
-import { TvShowsComponent } from './components/tvShows/TvShows.component';
-import { TvShowsService } from './services/tvShows.service';
-import { FinishedTvShowsFormComponent } from './components/finished-tv-shows/finished-tv-shows-form/finished-tv-shows-form.component';
 import { WishedTvShowsFormComponent } from './components/wished-tv-shows/wished-tv-shows-form/wished-tv-shows-form.component';
 import { WatchingTvShowsFormComponent } from './components/watching-tv-shows/watching-tv-shows-form/watching-tv-shows-form.component';
-import { LoginComponent } from './components/login/login.component';
 import { from } from 'rxjs';
-import { ToastComponent } from './components/toast/toast.component';
+
+import { OpinionService } from './services/opinion.service';
+import { LoginService } from './services/login.service';
+import { TvShowsService } from './services/tvShows.service';
+import { UserService } from './services/user.service';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'tvShows', pathMatch: 'full'},
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'tvShows', component: TvShowsComponent}
 ]
 
@@ -37,12 +42,13 @@ const routes: Routes = [
     LoginComponent,
     OpinionFormComponent,
     OpinionsComponent,
+    ToastComponent,
+    TvShowsComponent,
+    TvShowDetailComponent,
     UserComponent,
     UserFormComponent,
-    TvShowsComponent,
     WatchingTvShowsFormComponent,
     WishedTvShowsFormComponent,
-    ToastComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -53,7 +59,10 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
-    TvShowsService
+    LoginService,
+    OpinionService,
+    TvShowsService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

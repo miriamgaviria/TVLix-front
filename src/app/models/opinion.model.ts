@@ -1,9 +1,10 @@
-import { User } from './user.model';
+// import { User } from './user.model';
 
 export class Opinion {
-    id: number;
+    // id: number;
     comment: string;
     email: string;
-    rate: string;
-    user: User;
+    rate: any;
+    // user: User;
+
 }

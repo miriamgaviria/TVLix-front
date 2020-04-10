@@ -20,23 +20,15 @@ td{
 }
 
 .dateContainer{
-    width: 5%; 
-}
-
-.userContainer{
-    width: 30%; 
-}
-
-.commenContainer{
-   width: 57%; 
+    width: 10%!important; 
 }
 
 .rateContainer{
-    width: 4% !important; 
+    width: 18% !important; 
 }
 
 .rate {
-    width: 9rem !important;   
+    width: 9.5rem !important;   
 }
 
 .rate:not(:checked)>input {

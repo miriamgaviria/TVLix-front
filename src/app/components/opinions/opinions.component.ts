@@ -12,8 +12,8 @@ import { OpinionService } from './../../services/opinion.service';
 export class OpinionsComponent implements OnInit {
   
   isLoading = true;
-
   opinions: Opinion[];
+  opinionsEmpty: boolean = true;
 
   constructor(private opinionService: OpinionService,
     private router: Router) { }
@@ -24,6 +24,10 @@ export class OpinionsComponent implements OnInit {
         this.opinions = data;
         console.log('lista de opiniones', data);
         this.isLoading = false;
+        if(this.opinions.length>0){
+          this.opinionsEmpty = false;
+        }
+        
       }
     )
   }

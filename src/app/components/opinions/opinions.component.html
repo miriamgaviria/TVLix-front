@@ -15,13 +15,19 @@
       <!-- <h2>{{texts.pageTitle}}</h2> -->
       <h2>Valoraciones de la app</h2>
     </div>
+
+
   
     <div class="justify-content-center tableContainer">
+
+      <div *ngIf="opinionsEmpty">No hay valoraciones sobre la aplicación</div>
+
+      <div *ngIf="!opinionsEmpty">
+
       <table class="table table-striped table-dark">
         <thead>
           <tr>
             <th scope="col" class="dateContainer">Fecha</th>
-            <th scope="col" class="userContainer">Usuario</th>
             <th scope="col" class="commentContainer">Comentario</th>
             <th scope="col" class="rateContainer">Valoración</th>
           </tr>
@@ -29,7 +35,6 @@
         <tbody>
           <tr *ngFor="let opinion of opinions">
             <td class="valignCenter">{{opinion.date}}</td>
-            <td class="valignCenter">{{opinion.email}}</td>
             <td class="valignCenter">{{opinion.comment}}</td>
             <td class="rateContainer">
               <div *ngIf="opinion.rate == 1" class="rate">
@@ -96,9 +101,10 @@
           </tr>
         </tbody>
       </table>
+
+      </div>
   
-      <a href="/opinionForm"><button class="btn btn-primary buttonStyle buttonContainer">Deja tu opinión</button></a>
-  
+      <a href="/opinionForm"><button class="btn btn-primary buttonStyle buttonContainer">Deja tu opinión</button></a>  
     </div>
     
   </div>

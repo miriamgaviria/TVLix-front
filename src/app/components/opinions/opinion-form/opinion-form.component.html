@@ -32,17 +32,19 @@
     
         <div class="form-group row labelForm">
           <label for="FormControlInputComment" >Escriba un comentario</label>
-          <textarea type="text" class="form-control rowForm" id="formControlComment" [(ngModel)]='opinion.comment' name="comment" 
-          rows="8"></textarea>
+          <textarea type="text" class="form-control rowForm" [(ngModel)]='opinion.comment' name="comment" 
+          rows="8" (focus)='onFocus()'></textarea>
           
         </div>
 
 
         <div class="form-group row labelForm">
           <label for="FormControlInputEmail" class="rowForm">Correo electrónico</label>
-          <input type="email" class="form-control rowForm" [(ngModel)]='opinion.email'  name="email" id="email" required
-          placeholder="nombre@ejemplo.com" >
+          <input type="email" class="form-control rowForm" [(ngModel)]='opinion.email'  name="email" 
+          placeholder="nombre@ejemplo.com" (focus)='onFocus()' autocomplete="off" required>
         </div>
+
+        <div class="form-group errorMessage" *ngIf="!validateForm">Debe rellenar todos los campos</div>
 
         <div class="form-group row rowForm buttonPosition">
           <button class="btn btn-primary buttonStyle buttonContainer" type="submit">Guardar opinión</button>

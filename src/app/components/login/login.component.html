@@ -7,13 +7,13 @@
 
       <form class="col-11 formaContainer"(ngSubmit)="onLogin()">
         <div class="form-group" id="user-group">
-          <input type="text" class="form-control" id="exampleInputUserName" name="userName" [(ngModel)]="user.userName" placeholder="Username" required>
+          <input type="text" class="form-control" autocomplete="off" name="userName" [(ngModel)]="user.userName" placeholder="Username" (focus)='onFocus()' required>
         </div>
 
         <!-- <div class="form-group errorMessage" *ngIf="!validateUserName">Debe rellenar el nombre de usuario</div> -->
 
         <div class="form-group" id="password-group">
-          <input type="password" [(ngModel)]="user.password" name="password" class="form-control" placeholder="Password" required >
+          <input type="password" [(ngModel)]="user.password" name="password" class="form-control" placeholder="Password" required (focus)='onFocus()'>
         </div>
 
         <!-- <div class="form-group errorMessage" *ngIf="!validatePassword">Debe rellenar la contraseña</div> -->

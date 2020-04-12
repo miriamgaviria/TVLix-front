@@ -20,8 +20,8 @@ export class OpinionFormComponent implements OnInit {
   opinion: Opinion = new Opinion();
   opinionForm: FormGroup;
   submitted = false;
-  validateForm: boolean = true;
   validateEmail: boolean = true;
+  validateForm: boolean = true;
 
   constructor(
     private opinionService: OpinionService,

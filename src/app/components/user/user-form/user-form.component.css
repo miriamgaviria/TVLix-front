@@ -26,12 +26,13 @@
 }
 
 .typeMedia{
+    display: flex;
     vertical-align: middle;
 }
 
-.labelTypeMedia {
-    margin-right: 1.5rem;
-}
+.select{
+    display:inline-block!important;
+}  
 
 .buttonMargin {   
     margin-top: 2rem;

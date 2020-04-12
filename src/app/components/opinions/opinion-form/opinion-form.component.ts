@@ -21,6 +21,7 @@ export class OpinionFormComponent implements OnInit {
   opinionForm: FormGroup;
   submitted = false;
   validateForm: boolean = true;
+  validateEmail: boolean = true;
 
   constructor(
     private opinionService: OpinionService,
@@ -36,23 +37,18 @@ export class OpinionFormComponent implements OnInit {
       || this.opinion.comment === null || this.opinion.comment === undefined || this.opinion.comment === '' 
       || this.opinion.email === null || this.opinion.email === undefined || this.opinion.email === ''){
       this.validateForm= false
+    } else if (!this.checkEmail(this.opinion.email)){
+      this.validateEmail=false;
     } else  { 
       this.validateForm= true;  
       console.log(this.opinion)
       this.saveOpinion(this.opinion);
     }
-
-    // if (isNil(this.opinion.rate) || isNil(this.opinion.comment) || this.opinion.comment === '' || isNil(this.opinion.email) || this.opinion.email === ''){
-    //   this.validateForm= false
-    // } else  { 
-    //   this.validateForm= true;  
-    //   console.log(this.opinion)
-    //   this.saveOpinion(this.opinion);
-    // }
   }
 
   public onFocus() {
     this.validateForm= true;
+    this.validateEmail=true;
   }
 
   public saveOpinion(opinion) {    
@@ -60,7 +56,6 @@ export class OpinionFormComponent implements OnInit {
     console.log('typeof', typeof(this.opinion.rate))
     this.opinionService.postOpinion(this.opinion).subscribe(
       response => {
-        console.log('opinión creada');
         swal.fire({
           background: 'rgb(211,211,211)',
           icon: 'success',
@@ -76,6 +71,11 @@ export class OpinionFormComponent implements OnInit {
           text: 'No se ha podido enviar la valoración'
         })
       }
-    );
+    )
+  }
+
+  private checkEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
   }
 }

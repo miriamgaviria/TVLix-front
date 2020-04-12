@@ -11,15 +11,19 @@ export class OpinionService {
 
   private urlEndPointOpinion: string = 'http://localhost:81/opinions';
   
-  private httpHeaders = new HttpHeaders ({'Content-type': 'applicaion/json', 'charset':'utf8'})
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+  
+  // private httpHeaders = new HttpHeaders ({'Content-type': 'applicaion/json', 'charset':'utf8'})
   constructor(private http: HttpClient) { }
 
   getOpinionList(): Observable<any> {
-    return this.http.get<any>(this.urlEndPointOpinion, {headers: this.httpHeaders});
+    return this.http.get<any>(this.urlEndPointOpinion, this.httpOptions);
   }
 
-  postOpinion(opinion: Opinion): Observable <Opinion>{
-    return this.http.post<Opinion>(this.urlEndPointOpinion, opinion, {headers: this.httpHeaders})
+  postOpinion(opinion: any): Observable<string> {
+    return this.http.post<string>(this.urlEndPointOpinion, opinion, this.httpOptions)
   }
 
   // deleteOpinion(id: number): Observable<Opinion> {

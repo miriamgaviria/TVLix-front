@@ -26,8 +26,7 @@ export class OpinionsComponent implements OnInit {
         this.isLoading = false;
         if(this.opinions.length>0){
           this.opinionsEmpty = false;
-        }
-        
+        }        
       }
     )
   }

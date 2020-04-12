@@ -28,6 +28,14 @@ h2{
     color: skyblue;
 }
 
+.errorMessageEmail{
+    font-style: italic;
+    font-size: 0.9rem;
+    color: skyblue;
+    text-align: right;
+    margin-left: 0.4rem;
+}
+
 /* Styles for spinner */
 .d-flexSpinner{
     position:absolute;

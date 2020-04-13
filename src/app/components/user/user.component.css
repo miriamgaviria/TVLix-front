@@ -1,0 +1,25 @@
+.container-fluid{
+    width: 70%;
+}
+
+.tableContainer{
+    margin-top: 2rem;
+}
+
+td{
+    padding-left: 2rem !important;
+}
+
+.field{
+    text-align: right;
+}
+
+.data{
+    font-weight: bold;
+}
+
+
+.buttonContainer{
+    margin-top: 2rem;
+    margin-left: 40%;    
+}

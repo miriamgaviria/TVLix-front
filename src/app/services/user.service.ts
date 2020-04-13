@@ -14,11 +14,15 @@ export class UserService {
   private httpHeaders = new HttpHeaders ({'Content-type': 'application/json'})
   constructor(private http: HttpClient) { }
 
-  // getUserByUserName(user: User): Observable<User> {
-  //   return this.http.get<User>(this.urlEndPointUser, user, {headers: this.httpHeaders});
-  // }
+  getUserByUserName (userName: string): Observable<any>{
+    return this.http.get<any>(this.urlEndPointUser + "/" + userName, {headers: this.httpHeaders})
+  }
 
-  postUser(user: User): Observable<User> {
-    return this.http.post<User>(this.urlEndPointUser, user, {headers: this.httpHeaders});
+  postUser(user: User): Observable<any> {
+    return this.http.post<any>(this.urlEndPointUser, user, {headers: this.httpHeaders});
+  }
+
+  updateUser(user: User): Observable<any> {
+    return this.http.put<any>(this.urlEndPointUser, user, {headers: this.httpHeaders});
   }
 }

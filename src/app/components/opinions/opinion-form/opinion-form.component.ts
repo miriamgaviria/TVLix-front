@@ -61,7 +61,8 @@ export class OpinionFormComponent implements OnInit {
           icon: 'success',
           title: 'Valoración enviada',
           text: 'Gracias por valorarnos'
-        })
+        }),
+        this.router.navigate(['/opinions']);
       },
       error => {
         swal.fire({

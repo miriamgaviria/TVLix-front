@@ -13,7 +13,7 @@
 
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0 buttonStyle" type="submit">Search</button>
+            <button class="btn btn-outline-success my-2 my-sm-0 buttonStyle" type="submit" (click)="onSearch()">Search</button>
           </form>
 
         <div class="row-fluid pageTitle">
@@ -23,7 +23,7 @@
         
         <div class="row d-flex justify-content-center groupCards">
             <div class="col-xs-4 col-sm-3 col-md-3 col-lg-2 cards text-white bg-secondary offset-1" *ngFor="let tvshow of tvShowsForHome.tv_shows">
-                <div (click)=goToDetail()>
+                <div (click)=goToDetail(tvshow.id)>
                     <img class="card-img-top" src="{{tvshow.image_thumbnail_path}}" alt="Card image cap">
                 
                     <h5 class="card-title">{{tvshow.name}}</h5>
@@ -32,12 +32,9 @@
     
                 <div class="bodyCard">
                     <div class="linksContainer">
-                        <!-- <a href="#" class="card-link" ><img class="buttonStyle tvShowIcon" [src]="images.finieshedTvShowIcon" alt="Añadir a serie vista"/></a>
-                        <a href="#" class="card-link"><img class="buttonStyle tvShowIcon" [src]="images.wishedTvShowIcon" alt="Añadir a serie para ver"/></a>
-                        <a href="#" class="card-link"><img class="buttonStyle tvShowIcon" [src]="images.watchingTvShowIcon" alt="Añadir a series viendo"/></a> -->
-                        <a href="finishedTvShowsForm" class="card-link" ><img class="buttonStyle tvShowIcon" src="../../../assets/images/finishedTvShowIcon.png" alt="Añadir a serie vista"/></a>
-                        <a href="wishedTvShowsForm" class="card-link"><img class="buttonStyle tvShowIcon" src="../../../assets/images/wishedTvShowIcon.png" alt="Añadir a serie para ver"/></a>
-                        <a href="watchingTvShowsForm" class="card-link"><img class="buttonStyle tvShowIcon" src="../../../assets/images/watchingTvShowIcon.png" alt="Añadir a series viendo"/></a>
+                        <a href="finishedTvShowsForm" class="card-link" ><img class="buttonStyle tvShowIcon" src="../../../assets/images/finishedTvShowIcon.png" alt="Añadir a serie vista" data-placement="top" title="Enviar a la lista de series vistas"/></a>
+                        <a href="wishedTvShowsForm" class="card-link"><img class="buttonStyle tvShowIcon" src="../../../assets/images/wishedTvShowIcon.png" alt="Añadir a serie para ver" data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Enviar a la lista de series que quieres ver"/></a>
+                        <a href="watchingTvShowsForm" class="card-link"><img class="buttonStyle tvShowIcon" src="../../../assets/images/watchingTvShowIcon.png" alt="Añadir a series viendo" data-toggle="tooltip" data-placement="top" title="Enviar a la lista de series viendo"/></a>
                     </div>                
                 </div>
             </div>

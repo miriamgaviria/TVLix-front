@@ -19,9 +19,9 @@ export class TvShowsComponent implements OnInit {
   // texts: any = Texts.tvShows;
   // images: any = Images.tvShows;
 
-  isLoading = true;
-  
-
+  isLoading: boolean = true;
+  pageNumber: number;
+  searchName: string;
   tvShowsForHome: TvShowsList;
   tvShowDetail: TvShow;
 
@@ -29,30 +29,31 @@ export class TvShowsComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    this.pageNumber = this.numeroAleatorio(1, 10)
     
-    this.tvShowsService.getTvShowList().subscribe(
+    this.tvShowsService.getTvShowList(this.pageNumber).subscribe(
       // tvShowsForHome => this.tvShowsForHome = tvShowsForHome
       (data) => {
+        console.log('data', data)
         this.tvShowsForHome = data;
         console.log('lista de series', data);
         console.log('src imagen', this.tvShowsForHome.tv_shows[0].image_thumbnail_path);
         this.isLoading = false;
       }
     )
-
-    this.tvShowsService.getTvShow().subscribe(
-      (newData) => {
-        this.tvShowDetail = newData;
-        console.log('detalle de serie', newData);
-      }
-    )
   }
 
-  goToDetail() {
-    // localStorage.setItem('issueForDetail', JSON.stringify(tvShow));
-    // this.notificationsUrl = '/notifications';
-    // localStorage.setItem('previousUrl', this.notificationsUrl);
-
+  goToDetail(tvShowId) {
+    localStorage.setItem('tvShowId', tvShowId);
     this.router.navigate(['/tvShowDetail']);
+  }
+
+  onSearch(){
+    console.log('searchName')
+  }
+
+  private numeroAleatorio(min, max) {
+    console.log('Math.round(Math.random() * (max - min) + min)', Math.round(Math.random() * (max - min) + min))
+    return Math.round(Math.random() * (max - min) + min);
   }
 }

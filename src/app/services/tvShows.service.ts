@@ -1,3 +1,4 @@
+import { TvShowApi } from '../models/tvShowApi.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { of, Observable } from 'rxjs';
@@ -11,8 +12,9 @@ import { TVSHOWS } from '../model.js/tvShows.json';
 })
 export class TvShowsService {
 
-  private urlEndPointTvShow: string = 'https://www.episodate.com/api/show-details?q=arrow';
-  private urlEndPointTvShowList: string = 'https://www.episodate.com/api/most-popular?page=1';
+  private urlEndPointTvShow: string = 'https://www.episodate.com/api/show-details?q=';
+  private urlEndPointTvShowList: string = 'https://www.episodate.com/api/most-popular?page=';
+  private urlEndPointTvShowSearch: string = 'https://www.episodate.com/api/search?q=';
 
   constructor(private http: HttpClient) { }
 
@@ -20,12 +22,20 @@ export class TvShowsService {
   //   return of(TVSHOWS);
   // }
 
-  getTvShowList(): Observable<TvShowsList> {
-    return this.http.get<TvShowsList>(this.urlEndPointTvShowList);
+  // getTvShowList(): Observable<TvShowsList> {
+  //   return this.http.get<TvShowsList>(this.urlEndPointTvShowList);
+  // }
+
+  getTvShowList(pageNumber): Observable<TvShowsList> {
+    return this.http.get<TvShowsList>(this.urlEndPointTvShowList + pageNumber);
   }
 
-  getTvShow(): Observable<TvShow> {
-    return this.http.get<TvShow>(this.urlEndPointTvShow);
+  getTvShow(tvShowId): Observable<TvShowApi> {
+    return this.http.get<TvShowApi>(this.urlEndPointTvShow + tvShowId);
+  }
+
+  getTvShowSearch(searchName): Observable<TvShow> {
+    return this.http.get<TvShow>(this.urlEndPointTvShow + searchName +'&page=1');
   }
 
   

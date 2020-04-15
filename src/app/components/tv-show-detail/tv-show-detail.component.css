@@ -1,0 +1,64 @@
+.container-fluid{
+    margin-bottom: 4rem;
+}
+
+.cardContainer {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2rem auto 0 auto;
+    padding: 1.5rem;
+}
+
+.rowContainerRow{
+    display: flex;
+    flex-direction: row;    
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.rowLeftContainerRow{
+    width: 50%;
+    text-align: center;
+}
+
+.rowRightContainerRow{
+    text-align: center;  
+    width: 50%;
+}
+
+.imagesSamllTvShowDetail{
+    width: 100%;
+}
+
+.rowLeftContainerCenter{
+    width: 50%;
+    padding: 1rem;
+}
+
+.rowRightContainerColumn{
+    display: flex;
+    flex-direction: column;  
+    width: 50%;
+    padding: 1rem;
+}
+
+.rowContainerCenter{
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
+    align-items: center;
+}
+
+.links{    
+    text-align: center!important;
+    padding-top: 1rem;
+}
+
+.tvShowIcon{
+    width: 10%!important;
+    border: none!important;
+    padding: 0.8rem;
+}

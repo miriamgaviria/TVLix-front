@@ -1,2 +1,93 @@
+<div class="container-fluid">
 
-<h1>Detalle de la serie</h1>
+    <div *ngIf="isLoading" class="d-flex d-flexSpinner justify-content-center">
+        <div class="spinner-border text-info" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    
+    </div>
+    
+    <div *ngIf="!isLoading">
+        <div class="row-fluid pageTitle">
+            <!-- <h2>{{texts.pageTitle}}</h2> -->
+            <h2>{{tvShowDetail.name}}</h2>
+        </div>  
+        
+        <div class="card text-white bg-dark mb-3 cardContainer">
+            <div class="rowContainerRow">
+                <div class="rowLeftContainerCenter">
+                    <table class="table table-striped table-dark">
+                        <tbody>
+                            <tr >
+                                <td class="field">Comienzo de emisión</td>
+                                <td class="data">{{tvShowDetail.start_date}}</td>
+    
+                            </tr>
+                            <tr>
+                                <td class="field">Fin de emisión</td>
+                                <td class="data">{{tvShowDetail.end_date}}</td>
+                            </tr>
+    
+                            <tr >
+                                <td class="field">Temporadas</td>
+                                <td class="data">{{tvShowDetail.episodes[1].season}}</td>
+                                
+                            </tr>
+                            <tr>
+                                <td class="field">Duración de cada capítulo</td>
+                                <td class="data">{{tvShowDetail.runtime}} minutos</td>
+                            </tr>
+                            <tr >
+                                <td class="field">Géneros</td>
+                                <td class="data">{{tvShowDetail.genres}}</td>
+                                
+                            </tr>
+                            <tr>
+                                <td class="field">Puntuación</td>
+                                <td class="data">{{tvShowDetail.rating}}</td>
+                            </tr>
+    
+                            <tr>
+                                <td class="field">Puesto en el ranking</td>
+                                <td class="data">{{tvShowDetail.rating_count}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="rowRightContainerColumn">
+                    <div><strong>Sinopsis</strong></div>
+                    <div>{{tvShowDetail.description}}</div>
+                </div>
+            </div>
+
+            <div class="rowContainerRow">
+                <div class="rowRightContainerRow">
+                    <table >
+                        <tbody>
+                            <tr >
+                                <td *ngFor="let pictures of tvShowDetail.pictures">
+                                    <img class="imagesSamllTvShowDetail" (click)="onSmallImages(pictures)" src="{{pictures}}" alt="Imagen de la serie">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="rowLeftContainerRow">
+                    <img class="imageTvShowDetail" [src]="originalPicture ? tvShowDetail.image_thumbnail_path : smallPicturesSrc" alt="Imagen de la serie">
+                </div>
+            </div>
+
+
+            <div class="rowContainerCenter">
+                <div><strong>Enlaces</strong></div>
+                <div class="links">
+                    <a href="finishedTvShowsForm" class="card-link" ><img class="buttonStyle tvShowIcon" src="../../../assets/images/finishedTvShowIcon.png" alt="Añadir a serie vista" data-toggle="tooltip" data-placement="top" title="Enviar a la lista de series vistas"/></a>
+                    <a href="wishedTvShowsForm" class="card-link"><img class="buttonStyle tvShowIcon" src="../../../assets/images/wishedTvShowIcon.png" alt="Añadir a serie para ver" data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Enviar a la lista de series que quieres ver"/></a>
+                    <a href="watchingTvShowsForm" class="card-link"><img class="buttonStyle tvShowIcon" src="../../../assets/images/watchingTvShowIcon.png" alt="Añadir a series viendo" data-toggle="tooltip" data-placement="top" title="Enviar a la lista de series viendo"/></a>
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>
+
+

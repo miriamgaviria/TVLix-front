@@ -10,6 +10,7 @@ import { User } from '../models/user.model';
 export class UserService {
 
   private urlEndPointUser: string = 'http://localhost:81/users';
+  private urlEndPointNewUser: string = 'http://localhost:81/users/newUser';
   
   private httpHeaders = new HttpHeaders ({'Content-type': 'application/json'})
   constructor(private http: HttpClient) { }
@@ -19,7 +20,7 @@ export class UserService {
   }
 
   postUser(user: User): Observable<any> {
-    return this.http.post<any>(this.urlEndPointUser, user, {headers: this.httpHeaders});
+    return this.http.post<any>(this.urlEndPointNewUser, user, {headers: this.httpHeaders});
   }
 
   updateUser(user: User): Observable<any> {

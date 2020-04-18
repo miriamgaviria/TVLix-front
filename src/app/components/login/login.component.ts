@@ -62,7 +62,6 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(){
-
     if (this.user.userName === null || this.user.userName === undefined || this.user.userName === '' 
       || this.user.password === null || this.user.password === undefined || this.user.password === '' ){
       this.validateForm= false

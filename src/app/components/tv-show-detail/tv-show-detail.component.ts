@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { TvShowsService } from './../../services/tvShows.service';
 import { TvShow } from '../../models/tvShow.model';
+import { isEmptyExpression } from '@angular/compiler';
 
 @Component({
   selector: 'app-tv-show-detail',
@@ -12,6 +13,7 @@ import { TvShow } from '../../models/tvShow.model';
 export class TvShowDetailComponent implements OnInit {
     
   isLoading: boolean = true;
+  imageTvShow: boolean;
   originalPicture: boolean = true;
   smallPicturesSrc: string;
   tvShowApi: TvShowApi;
@@ -22,6 +24,7 @@ export class TvShowDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.tvShowId = localStorage.getItem('tvShowId'); 
+    localStorage.removeItem('tvShowId');
     
     this.tvShowsService.getTvShow(this.tvShowId).subscribe(
       (newData) => {
@@ -29,8 +32,19 @@ export class TvShowDetailComponent implements OnInit {
         this.tvShowDetail = this.tvShowApi.tvShow
         console.log('tvShowApi', this.tvShowDetail)
         this.isLoading = false;
+        if (this.tvShowDetail.image_thumbnail_path === null || this.tvShowDetail.image_thumbnail_path === undefined || this.tvShowDetail.image_thumbnail_path === ''){
+          this.imageTvShow = false;
+        } else {
+          this.imageTvShow = true;
+        }
+        
       }
     )
+  }
+
+  moreInformation(source){
+    console.log('source', source);
+    window.open(source, '_blank');
   }
 
   onSmallImages(pictures){

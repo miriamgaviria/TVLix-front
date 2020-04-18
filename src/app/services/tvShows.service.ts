@@ -34,8 +34,8 @@ export class TvShowsService {
     return this.http.get<TvShowApi>(this.urlEndPointTvShow + tvShowId);
   }
 
-  getTvShowSearch(searchName): Observable<TvShow> {
-    return this.http.get<TvShow>(this.urlEndPointTvShow + searchName +'&page=1');
+  getTvShowSearch(pageNumber, searchName): Observable<any> {
+    return this.http.get<any>(this.urlEndPointTvShowSearch + searchName + '&page=' + pageNumber);
   }
 
   

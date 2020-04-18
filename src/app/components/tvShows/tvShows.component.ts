@@ -1,9 +1,12 @@
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
+import swal from'sweetalert2';
+
 import { TvShowsList } from './../../models/tvShowsList.model';
 import { TvShowsService } from './../../services/tvShows.service';
 import { TvShow } from '../../models/tvShow.model';
 
-import { Component, OnInit } from '@angular/core';
 
 // import Texts from '../../../assets/text.json';
 // import Images from '../../../assets/images/';
@@ -19,8 +22,10 @@ export class TvShowsComponent implements OnInit {
   // texts: any = Texts.tvShows;
   // images: any = Images.tvShows;
 
+  imageTvShow: boolean;
   isLoading: boolean = true;
   pageNumber: number;
+  previousPage: boolean;
   searchName: string;
   tvShowsForHome: TvShowsList;
   tvShowDetail: TvShow;
@@ -29,31 +34,64 @@ export class TvShowsComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.pageNumber = this.numeroAleatorio(1, 10)
+    // this.pageNumber = this.numeroAleatorio(1, 10)
     
-    this.tvShowsService.getTvShowList(this.pageNumber).subscribe(
-      // tvShowsForHome => this.tvShowsForHome = tvShowsForHome
+    // this.tvShowsService.getTvShowList(this.pageNumber).subscribe(
+    //   // tvShowsForHome => this.tvShowsForHome = tvShowsForHome
+    //   (data) => {
+    //     this.tvShowsForHome = data;
+    //     console.log('lista de series', data);
+    //     this.isLoading = false;
+    //   }
+    // )
+
+    this.loadTvShows(1);
+  }
+
+  loadTvShows(page){
+    this.tvShowsService.getTvShowList(page).subscribe(
       (data) => {
-        console.log('data', data)
         this.tvShowsForHome = data;
         console.log('lista de series', data);
-        console.log('src imagen', this.tvShowsForHome.tv_shows[0].image_thumbnail_path);
         this.isLoading = false;
       }
     )
-  }
+  }  
 
   goToDetail(tvShowId) {
     localStorage.setItem('tvShowId', tvShowId);
     this.router.navigate(['/tvShowDetail']);
   }
 
-  onSearch(){
-    console.log('searchName')
+  goToNextTvShows(page){  
+    console.log('page clickada', page)  
+    this.loadTvShows(page + 1);
+    this.previousPage = true;
   }
 
-  private numeroAleatorio(min, max) {
-    console.log('Math.round(Math.random() * (max - min) + min)', Math.round(Math.random() * (max - min) + min))
-    return Math.round(Math.random() * (max - min) + min);
+  goToPreviousTvShows(page){
+    this.loadTvShows(page - 1);
+    this.previousPage = true;
   }
+
+  onSearch(event: any){
+    this.searchName = event.target.searchName.value;
+    let searchNameArray = this.searchName.split(" ");
+    if (searchNameArray.length>1){
+      swal.fire({
+        background: 'rgb(211,211,211)',
+        icon: 'error',
+        title: 'Oops...',
+        text: 'La búsqueda contiene más de una palabra'
+      })
+    } else {      
+      localStorage.setItem('searchName', this.searchName);
+      this.router.navigate(['/foundTvShows']);
+    }
+  }
+
+  // private numeroAleatorio(min, max) {
+  //   console.log('Math.round(Math.random() * (max - min) + min)', Math.round(Math.random() * (max - min) + min))
+  //   return Math.round(Math.random() * (max - min) + min);
+  // }
 }

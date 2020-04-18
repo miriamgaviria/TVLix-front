@@ -1,0 +1,53 @@
+<!-- <app-header></app-header> -->
+
+<div class="container-fluid">
+
+    <div *ngIf="isLoading" class="d-flex d-flexSpinner justify-content-center">
+        <div class="spinner-border text-info" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    
+    </div>
+    
+    <div *ngIf="!isLoading">
+
+        <!-- <div class="searchContainer">
+            <form class="form-inline my-2 my-lg-0" (ngSubmit)="onSearch($event)">
+                <input type="text" class="form-control mr-sm-2" placeholder="Search" name="searchName" value="" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0 buttonStyle" type="submit" >Search</button>
+            </form>
+        </div> -->
+
+        <div class="row-fluid pageTitle">
+            <!-- <h2>{{texts.pageTitle}}</h2> -->
+            <h2>Series que contienen <strong class="italic">{{searchName}}</strong> </h2>
+        </div>   
+
+        <div *ngIf="noFoundTvShows" class="noFoundText">No se han encontrado series que contienen la palabra <strong class="italic">{{searchName}}</strong></div> 
+            <div class="buttonsContainer">
+                <button type="text" *ngIf="previousPage" class="btn btn-primary buttonStyle buttonContainer buttonMargin" (click)=goToPreviousTvShows(foundTvShows.page) >Anterior</button>
+                <button type="text" *ngIf="!noFoundTvShows" class="btn btn-primary buttonStyle buttonContainer" (click)=goToNextTvShows(foundTvShows.page)>Siguiente</button>
+            </div>
+            
+            <div class="row d-flex justify-content-center groupCards">
+                <div class="col-xs-4 col-sm-3 col-md-3 col-lg-2 cards text-white bg-secondary offset-1" *ngFor="let tvshow of foundTvShows.tv_shows">
+                    <div (click)=goToDetail(tvshow.id)>
+                        <img class="card-img-top cursorPointer" src="{{tvshow.image_thumbnail_path}}" alt="Card image cap">
+                        <!-- [src]="imageTvShow ? tvShowDetail.image_thumbnail_path : '../../../assets/images/noImage.svg'" -->
+                        <h5 class="card-title cursorPointer">{{tvshow.name}}</h5>
+                    </div>
+        
+        
+                    <div class="bodyCard">
+                        <div class="linksContainer">
+                            <a href="finishedTvShowsForm" class="card-link" ><img class="buttonStyle tvShowIcon" src="../../../assets/images/finishedTvShowIcon.png" alt="Añadir a serie vista" data-placement="top" title="Enviar a la lista de series vistas"/></a>
+                            <a href="wishedTvShowsForm" class="card-link"><img class="buttonStyle tvShowIcon" src="../../../assets/images/wishedTvShowIcon.png" alt="Añadir a serie para ver" data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Enviar a la lista de series que quieres ver"/></a>
+                            <a href="watchingTvShowsForm" class="card-link"><img class="buttonStyle tvShowIcon" src="../../../assets/images/watchingTvShowIcon.png" alt="Añadir a series viendo" data-toggle="tooltip" data-placement="top" title="Enviar a la lista de series viendo"/></a>
+                        </div>                
+                    </div>
+                </div>
+            </div>       
+    </div>    
+</div>
+
+

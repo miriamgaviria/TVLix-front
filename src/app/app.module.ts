@@ -26,6 +26,7 @@ import { OpinionService } from './services/opinion.service';
 import { LoginService } from './services/login.service';
 import { TvShowsService } from './services/tvShows.service';
 import { UserService } from './services/user.service';
+import { FoundTvShowsComponent } from './components/found-tv-shows/found-tv-shows.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -49,6 +50,7 @@ const routes: Routes = [
     UserFormComponent,
     WatchingTvShowsFormComponent,
     WishedTvShowsFormComponent,
+    FoundTvShowsComponent,
   ],
   imports: [
     AppRoutingModule,

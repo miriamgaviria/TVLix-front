@@ -30,7 +30,7 @@
     
                             <tr >
                                 <td class="field">Temporadas</td>
-                                <td class="data">{{tvShowDetail.episodes[1].season}}</td>
+                                <td class="data">{{tvShowDetail.episodes[tvShowDetail.episodes.length - 1].season}}</td>
                                 
                             </tr>
                             <tr>
@@ -57,6 +57,7 @@
                 <div class="rowRightContainerColumn">
                     <div><strong>Sinopsis</strong></div>
                     <div>{{tvShowDetail.description}}</div>
+                    <div class="moreInformation"><strong (click)="moreInformation(tvShowDetail.description_source)">Más información de la serie</strong></div>
                 </div>
             </div>
 
@@ -73,13 +74,14 @@
                     </table>
                 </div>
                 <div class="rowLeftContainerRow">
-                    <img class="imageTvShowDetail" [src]="originalPicture ? tvShowDetail.image_thumbnail_path : smallPicturesSrc" alt="Imagen de la serie">
+                    <img class="imageTvShowDetail" [src]="originalPicture ? tvShowDetail.image_thumbnail_path : smallPicturesSrc" 
+                    alt="Imagen de la serie" >
                 </div>
             </div>
 
 
             <div class="rowContainerCenter">
-                <div><strong>Enlaces</strong></div>
+                <div class="textLinks"><strong>Enlaces</strong></div>
                 <div class="links">
                     <a href="finishedTvShowsForm" class="card-link" ><img class="buttonStyle tvShowIcon" src="../../../assets/images/finishedTvShowIcon.png" alt="Añadir a serie vista" data-toggle="tooltip" data-placement="top" title="Enviar a la lista de series vistas"/></a>
                     <a href="wishedTvShowsForm" class="card-link"><img class="buttonStyle tvShowIcon" src="../../../assets/images/wishedTvShowIcon.png" alt="Añadir a serie para ver" data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Enviar a la lista de series que quieres ver"/></a>

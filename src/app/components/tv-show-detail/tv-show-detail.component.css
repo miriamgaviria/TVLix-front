@@ -29,8 +29,36 @@
     width: 50%;
 }
 
+.moreInformation{
+    cursor: pointer;
+    text-align: center;
+    padding-top: 1rem;
+}
+
+.moreInformation:hover{
+    font-size: 1.04rem;
+}
+
+.imageTvShowDetail{
+    -webkit-box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.75);
+}
+
 .imagesSamllTvShowDetail{
     width: 100%;
+} 
+
+.imagesSamllTvShowDetail:hover{
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+    width: 105%;
+    border: 1px solid black;
+}
+
+.imageTvShowDetail{
+    width: 80%
 }
 
 .rowLeftContainerCenter{
@@ -50,6 +78,10 @@
     flex-direction: column; 
     justify-content: space-between;
     align-items: center;
+}
+
+.textLinks{
+    padding-top: 1rem;
 }
 
 .links{    

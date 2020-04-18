@@ -11,22 +11,30 @@
     
     <div *ngIf="!isLoading">
 
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0 buttonStyle" type="submit" (click)="onSearch()">Search</button>
-          </form>
+        <div class="searchContainer">
+            <form class="form-inline my-2 my-lg-0" (ngSubmit)="onSearch($event)">
+                <input type="text" class="form-control mr-sm-2" placeholder="Añade una palabra" name="searchName" value="" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0 buttonStyle" type="submit" >Search</button>
+            </form>
+        </div>
+
 
         <div class="row-fluid pageTitle">
             <!-- <h2>{{texts.pageTitle}}</h2> -->
-            <h2>Series para la home </h2>
-        </div>    
+            <h2>Series más populares </h2>
+        </div>   
+        
+        <div class="buttonsContainer">
+            <button type="text" *ngIf="previousPage" class="btn btn-primary buttonStyle buttonContainer buttonMargin" (click)=goToPreviousTvShows(tvShowsForHome.page) >Anterior</button>
+            <button type="text" class="btn btn-primary buttonStyle buttonContainer" (click)=goToNextTvShows(tvShowsForHome.page)>Siguiente</button>
+        </div>
         
         <div class="row d-flex justify-content-center groupCards">
             <div class="col-xs-4 col-sm-3 col-md-3 col-lg-2 cards text-white bg-secondary offset-1" *ngFor="let tvshow of tvShowsForHome.tv_shows">
                 <div (click)=goToDetail(tvshow.id)>
-                    <img class="card-img-top" src="{{tvshow.image_thumbnail_path}}" alt="Card image cap">
-                
-                    <h5 class="card-title">{{tvshow.name}}</h5>
+                    <img class="card-img-top cursorPointer" src="{{tvshow.image_thumbnail_path}}" alt="Card image cap">
+                    <!-- [src]="imageTvShow ? tvShowDetail.image_thumbnail_path : '../../../assets/images/noImage.svg'" -->
+                    <h5 class="card-title cursorPointer">{{tvshow.name}}</h5>
                 </div>
     
     
@@ -39,6 +47,9 @@
                 </div>
             </div>
         </div>
+
+
+        
     </div>
 
 

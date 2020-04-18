@@ -1,6 +1,7 @@
 import { FinishedTvShowsComponent } from './components/finished-tv-shows/finished-tv-shows.component';
 import { FinishedTvShowsFormComponent } from './components/finished-tv-shows/finished-tv-shows-form/finished-tv-shows-form.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { FoundTvShowsComponent } from './components/found-tv-shows/found-tv-shows.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { OpinionsComponent } from './components/opinions/opinions.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'finishedTvShows', component: FinishedTvShowsComponent},
   {path: 'finishedTvShowsForm', component: FinishedTvShowsFormComponent},
   {path: 'footer', component: FooterComponent},
+  {path: 'foundTvShows', component: FoundTvShowsComponent},
   {path: 'header', component: HeaderComponent}, 
   {path: 'login', component: LoginComponent},
   {path: 'opinions', component: OpinionsComponent},

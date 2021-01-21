@@ -29,7 +29,7 @@ import { UserService } from './services/user.service';
 import { FoundTvShowsComponent } from './components/found-tv-shows/found-tv-shows.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: '', redirectTo: 'tvShows', pathMatch: 'full'},
   {path: 'tvShows', component: TvShowsComponent}
 ]
 

@@ -1,39 +1,44 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" routerLink="/tvShows" >TvLix</a>
+    <a class="navbar-brand" routerLink="/tvShows" >{{texts.tvLix}}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
 
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/wishedTvShows" >Series para ver</a>
+        <li class="nav-item" >
+          <a class="nav-link" routerLink="/wishedTvShows" >{{texts.seriesVer}}</a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/watchingTvShows" >Series viendo</a>
+        <li class="nav-item" >
+          <a class="nav-link" routerLink="/watchingTvShows" >{{texts.seriesViendo}}</a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/finishedTvShows" >Series vistas</a>
+        <li class="nav-item" >
+          <a class="nav-link" routerLink="/finishedTvShows" >{{texts.seriesVistas}}</a>
         </li>
 
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" href="/opinions">Valoraciones</a>
+          <a class="nav-link" href="/opinions">{{texts.valoraciones}}</a>
         </li>
 
 
-      </ul>  
+      </ul>
 
       <ul class="navbar-nav mr">
-        <li class="nav-item " routerLinkActive="active">
-          <a class="nav-link textHeaderLink" href="/user">Perfil</a>
+        <li class="nav-item " routerLinkActive="active" >
+          <a class="nav-link textHeaderLink" href="/user">{{texts.hola}} {{loggedUserUserName}}</a>
         </li>
 
         <li class="nav-item " routerLinkActive="active">
-          <a class="nav-link textHeaderLink" href="/login"><i class="fas fa-power-off iconLogOutPosition"></i>Logout</a>
+          <a class="nav-link textHeaderLink" href="/user">{{texts.perfil}}</a>
         </li>
-      </ul>     
+
+        <li class="nav-item " routerLinkActive="active">
+          <a class="nav-link textHeaderLink" href="/login" ><i class="fas fa-power-off iconLogOutPosition"></i>{{texts.login}}</a>
+          <!-- <a class="nav-link textHeaderLink" href="/login" *ngIf="!loggedUserUserName"><i class="fas fa-power-off iconLogOutPosition"></i>{{texts.logout}}</a> -->
+        </li>
+      </ul>
     </div>
   </nav>

@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { TvShowsService } from './../../services/tvShows.service';
 import { TvShow } from '../../models/tvShow.model';
-import { isEmptyExpression } from '@angular/compiler';
+
+import Texts from '../../../assets/texts.json';
 
 @Component({
   selector: 'app-tv-show-detail',
@@ -11,7 +12,8 @@ import { isEmptyExpression } from '@angular/compiler';
   styleUrls: ['./tv-show-detail.component.css']
 })
 export class TvShowDetailComponent implements OnInit {
-    
+  texts: any = Texts;
+
   isLoading: boolean = true;
   imageTvShow: boolean;
   originalPicture: boolean = true;
@@ -23,9 +25,9 @@ export class TvShowDetailComponent implements OnInit {
   constructor(private tvShowsService: TvShowsService) { }
 
   ngOnInit(): void {
-    this.tvShowId = localStorage.getItem('tvShowId'); 
+    this.tvShowId = localStorage.getItem('tvShowId');
     localStorage.removeItem('tvShowId');
-    
+
     this.tvShowsService.getTvShow(this.tvShowId).subscribe(
       (newData) => {
         this.tvShowApi = newData;
@@ -37,13 +39,12 @@ export class TvShowDetailComponent implements OnInit {
         } else {
           this.imageTvShow = true;
         }
-        
+
       }
     )
   }
 
   moreInformation(source){
-    console.log('source', source);
     window.open(source, '_blank');
   }
 

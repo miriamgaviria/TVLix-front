@@ -4,13 +4,16 @@ import { Router } from '@angular/router';
 import { Opinion } from '../../models/opinion.model';
 import { OpinionService } from './../../services/opinion.service';
 
+import Texts from '../../../assets/texts.json';
+
 @Component({
   selector: 'app-opinions',
   templateUrl: './opinions.component.html',
   styleUrls: ['./opinions.component.css']
 })
 export class OpinionsComponent implements OnInit {
-  
+  texts: any = Texts;
+
   isLoading = true;
   opinions: Opinion[];
   opinionsEmpty: boolean = true;
@@ -26,7 +29,7 @@ export class OpinionsComponent implements OnInit {
         this.isLoading = false;
         if(this.opinions.length>0){
           this.opinionsEmpty = false;
-        }        
+        }
       }
     )
   }

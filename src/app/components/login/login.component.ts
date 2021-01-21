@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { isNil} from 'lodash/isNil';
+import Texts from '../../../assets/texts.json';
+
+// import { isNil } from 'lodash/_isNil';
 
 import swal from'sweetalert2';
 
 import { User } from '../../models/user.model';
 
 import { LoginService } from '../../services/login.service';
+import { UserService } from './../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -15,22 +18,25 @@ import { LoginService } from '../../services/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  texts: any = Texts;
 
   isUser: number;
   user: User = new User();
   validateForm: boolean = true;
 
-  constructor( 
+  constructor(
     private loginService: LoginService,
-    public router: Router
+    public router: Router,
+    private userService: UserService
   ) {
-    
+
   }
 
   ngOnInit(): void {
+
   }
 
-  checkIsAdmin(user){
+  checkIsAdmin(user: User){
     let isValidateUser: number;
     this.loginService.checkIsUser(this.user).subscribe(
       data => {
@@ -50,8 +56,16 @@ export class LoginComponent implements OnInit {
             text: 'El usuario y la contraseña no coinciden'
           })
 
-        } else if (isValidateUser === 2){          
+        } else if (isValidateUser === 2){
+          this.userService.getUserByUserName(this.user.userName).subscribe(
+            response => {
+              localStorage.setItem('loggedUserId', response.id);
+              localStorage.setItem('loggedUserUserName', response.userName);
+            }
+          )
+
           this.router.navigate(['/tvShows']);
+
         }
       }
     )
@@ -62,11 +76,11 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(){
-    if (this.user.userName === null || this.user.userName === undefined || this.user.userName === '' 
+    if (this.user.userName === null || this.user.userName === undefined || this.user.userName === ''
       || this.user.password === null || this.user.password === undefined || this.user.password === '' ){
       this.validateForm= false
-    } else  { 
-      this.validateForm= true;  
+    } else  {
+      this.validateForm= true;
       console.log(this.user)
       this.checkIsAdmin(this.user);
     }
@@ -74,15 +88,14 @@ export class LoginComponent implements OnInit {
     // if (isNil(this.user.userName) || this.user.userName === '' || isNil(this.user.password) || this.user.password === ''){
     //   this.validateForm= false;
     //   console.log('mal', this.user.userName)
-    // } else  { 
-    //   this.validateForm= true;  
+    // } else  {
+    //   this.validateForm= true;
     //   console.log(this.user)
     //   this.checkIsAdmin(this.user);
     // }
   }
 
   onCreateAccount () {
-    console.log('crear cuenta')
     this.router.navigate(['/userForm']);
   }
 }

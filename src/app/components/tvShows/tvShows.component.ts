@@ -7,8 +7,7 @@ import { TvShowsList } from './../../models/tvShowsList.model';
 import { TvShowsService } from './../../services/tvShows.service';
 import { TvShow } from '../../models/tvShow.model';
 
-
-// import Texts from '../../../assets/text.json';
+import Texts from '../../../assets/texts.json';
 // import Images from '../../../assets/images/';
 
 @Component({
@@ -19,7 +18,7 @@ import { TvShow } from '../../models/tvShow.model';
 
 export class TvShowsComponent implements OnInit {
 
-  // texts: any = Texts.tvShows;
+  texts: any = Texts;
   // images: any = Images.tvShows;
 
   imageTvShow: boolean;
@@ -35,7 +34,7 @@ export class TvShowsComponent implements OnInit {
 
   ngOnInit(): void {
     // this.pageNumber = this.numeroAleatorio(1, 10)
-    
+
     // this.tvShowsService.getTvShowList(this.pageNumber).subscribe(
     //   // tvShowsForHome => this.tvShowsForHome = tvShowsForHome
     //   (data) => {
@@ -52,19 +51,18 @@ export class TvShowsComponent implements OnInit {
     this.tvShowsService.getTvShowList(page).subscribe(
       (data) => {
         this.tvShowsForHome = data;
-        console.log('lista de series', data);
         this.isLoading = false;
       }
     )
-  }  
+  }
 
   goToDetail(tvShowId) {
     localStorage.setItem('tvShowId', tvShowId);
     this.router.navigate(['/tvShowDetail']);
   }
 
-  goToNextTvShows(page){  
-    console.log('page clickada', page)  
+  goToNextTvShows(page){
+    console.log('page clickada', page)
     this.loadTvShows(page + 1);
     this.previousPage = true;
   }
@@ -84,7 +82,7 @@ export class TvShowsComponent implements OnInit {
         title: 'Oops...',
         text: 'La búsqueda contiene más de una palabra'
       })
-    } else {      
+    } else {
       localStorage.setItem('searchName', this.searchName);
       this.router.navigate(['/foundTvShows']);
     }

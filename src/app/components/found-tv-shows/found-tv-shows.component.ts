@@ -5,12 +5,15 @@ import { TvShowsList } from './../../models/tvShowsList.model';
 import { TvShowsService } from './../../services/tvShows.service';
 import { TvShow } from '../../models/tvShow.model';
 
+import Texts from '../../../assets/texts.json';
+
 @Component({
   selector: 'app-found-tv-shows',
   templateUrl: './found-tv-shows.component.html',
   styleUrls: ['./found-tv-shows.component.css']
 })
 export class FoundTvShowsComponent implements OnInit {
+  texts: any = Texts;
 
   imageTvShow: boolean;
   isLoading: boolean = true;
@@ -39,10 +42,9 @@ export class FoundTvShowsComponent implements OnInit {
         this.isLoading = false;
         if(this.foundTvShows.tv_shows.length === 0){
           this.noFoundTvShows = true;
-          console.log('vacío', this.noFoundTvShows);
         } else {
-          this.noFoundTvShows = false;          
-        }        
+          this.noFoundTvShows = false;
+        }
       }
     )
   }
@@ -52,8 +54,8 @@ export class FoundTvShowsComponent implements OnInit {
     this.router.navigate(['/tvShowDetail']);
   }
 
-  goToNextTvShows(page){  
-    console.log('page clickada', page)  
+  goToNextTvShows(page){
+    console.log('page clickada', page)
     this.loadTvShows(page + 1);
     this.previousPage = true;
   }

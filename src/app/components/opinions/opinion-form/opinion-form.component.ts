@@ -8,12 +8,15 @@ import swal from'sweetalert2';
 import { Opinion } from '../../../models/opinion.model'
 import { OpinionService } from 'src/app/services/opinion.service';
 
+import Texts from '../../../../assets/texts.json';
+
 @Component({
   selector: 'app-opinion-form',
   templateUrl: './opinion-form.component.html',
   styleUrls: ['./opinion-form.component.css']
 })
 export class OpinionFormComponent implements OnInit {
+  texts: any = Texts;
 
   inValidForm = true;
   isLoading = true;
@@ -33,14 +36,14 @@ export class OpinionFormComponent implements OnInit {
   }
 
   public createOpinion(): void {
-    if (this.opinion.rate === null || this.opinion.rate === undefined  
-      || this.opinion.comment === null || this.opinion.comment === undefined || this.opinion.comment === '' 
+    if (this.opinion.rate === null || this.opinion.rate === undefined
+      || this.opinion.comment === null || this.opinion.comment === undefined || this.opinion.comment === ''
       || this.opinion.email === null || this.opinion.email === undefined || this.opinion.email === ''){
       this.validateForm= false
     } else if (!this.checkEmail(this.opinion.email)){
       this.validateEmail=false;
-    } else  { 
-      this.validateForm= true;  
+    } else  {
+      this.validateForm= true;
       console.log(this.opinion)
       this.saveOpinion(this.opinion);
     }
@@ -51,7 +54,7 @@ export class OpinionFormComponent implements OnInit {
     this.validateEmail=true;
   }
 
-  public saveOpinion(opinion) {    
+  public saveOpinion(opinion) {
     console.log('opinion', this.opinion)
     console.log('typeof', typeof(this.opinion.rate))
     this.opinionService.postOpinion(this.opinion).subscribe(

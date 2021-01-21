@@ -4,13 +4,16 @@ import { Router } from '@angular/router';
 import { User } from './../../models/user.model';
 import { UserService } from './../../services/user.service';
 
+import Texts from '../../../assets/texts.json';
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-    
+  texts: any = Texts;
+
   isLoading = true;
   user: User;
   userName: string = 'cristina';
@@ -19,6 +22,7 @@ export class UserComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+
     this.userService.getUserByUserName(this.userName).subscribe(
       (data) => {
         console.log('data', data)
@@ -28,7 +32,7 @@ export class UserComponent implements OnInit {
         this.user.userName = this.user.userName.charAt(0).toUpperCase().concat(this.user.userName.substring(1, this.user.userName.length));
         this.user.location = this.user.location.charAt(0).toUpperCase().concat(this.user.location.substring(1, this.user.location.length));
         this.user.typeMedia = this.user.typeMedia.charAt(0).toUpperCase().concat(this.user.typeMedia.substring(1, this.user.typeMedia.length));
-        this.user.genre = this.user.genre.charAt(0).toUpperCase().concat(this.user.genre.substring(1, this.user.genre.length));        
+        this.user.genre = this.user.genre.charAt(0).toUpperCase().concat(this.user.genre.substring(1, this.user.genre.length));
         this.isLoading = false;
       }
     )

@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
+
 import  isNil from 'lodash/isNil';
 
 import swal from'sweetalert2';
@@ -42,7 +43,6 @@ export class OpinionFormComponent implements OnInit {
       this.validateEmail=false;
     } else  {
       this.validateForm= true;
-      console.log(this.opinion)
       this.saveOpinion(this.opinion);
     }
   }
@@ -52,9 +52,7 @@ export class OpinionFormComponent implements OnInit {
     this.validateEmail=true;
   }
 
-  public saveOpinion(opinion) {
-    console.log('opinion', this.opinion)
-    console.log('typeof', typeof(this.opinion.rate))
+  public saveOpinion(opinion: Opinion) {
     this.opinionService.postOpinion(this.opinion).subscribe(
       response => {
         swal.fire({

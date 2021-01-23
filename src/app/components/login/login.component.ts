@@ -78,18 +78,8 @@ export class LoginComponent implements OnInit {
       this.validateForm= false
     } else  {
       this.validateForm= true;
-      console.log(this.user)
       this.checkIsAdmin(this.user);
     }
-
-    // if (isNil(this.user.userName) || this.user.userName === '' || isNil(this.user.password) || this.user.password === ''){
-    //   this.validateForm= false;
-    //   console.log('mal', this.user.userName)
-    // } else  {
-    //   this.validateForm= true;
-    //   console.log(this.user)
-    //   this.checkIsAdmin(this.user);
-    // }
   }
 
   onCreateAccount () {

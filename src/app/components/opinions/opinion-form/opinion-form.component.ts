@@ -1,8 +1,8 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import  isNil from 'lodash/isNil';
 
-import { isNil} from 'lodash/isNil';
 import swal from'sweetalert2';
 
 import { Opinion } from '../../../models/opinion.model'
@@ -36,9 +36,7 @@ export class OpinionFormComponent implements OnInit {
   }
 
   public createOpinion(): void {
-    if (this.opinion.rate === null || this.opinion.rate === undefined
-      || this.opinion.comment === null || this.opinion.comment === undefined || this.opinion.comment === ''
-      || this.opinion.email === null || this.opinion.email === undefined || this.opinion.email === ''){
+    if (isNil(this.opinion.rate) || isNil(this.opinion.comment) || this.opinion.comment === '' || isNil(this.opinion.email) || this.opinion.email === '') {
       this.validateForm= false
     } else if (!this.checkEmail(this.opinion.email)){
       this.validateEmail=false;

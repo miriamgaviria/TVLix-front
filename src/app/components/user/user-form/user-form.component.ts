@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import isNil from 'lodash/isNil';
 import swal from'sweetalert2';
 
 import { User } from '../../../models/user.model'
@@ -63,17 +64,11 @@ export class UserFormComponent implements OnInit {
   }
 
   public saveData(): void {
-    if (this.user.name === null || this.user.name === undefined || this.user.name === ''
-      || this.user.surname === null || this.user.surname === undefined || this.user.surname === ''
-      || this.user.email === null || this.user.email === undefined || this.user.email === ''
-      || this.user.password === null || this.user.password === undefined || this.user.password === ''
-      || this.user.userName === null || this.user.userName === undefined || this.user.userName === ''
-      || this.user.location === null || this.user.location === undefined || this.user.location === ''
-      || this.user.typeMedia === null || this.user.typeMedia === undefined || this.user.typeMedia === ''
-      || this.user.genre === null || this.user.genre === undefined || this.user.genre === ''
-      ){
-        console.log('this.user.typeMedia', this.user.typeMedia)
-      this.validateForm= false
+    if (isNil(this.user.name) || this.user.name === '' || isNil(this.user.surname) || this.user.surname === ''
+        || isNil(this.user.email) || this.user.email === '' || isNil(this.user.password) || this.user.password === ''
+        || isNil(this.user.userName) || this.user.userName === '' || isNil(this.user.location) || this.user.location === ''
+        || isNil(this.user.typeMedia) || this.user.typeMedia === '' || isNil(this.user.genre) || this.user.genre === '') {
+        this.validateForm= false
     } else if (!this.checkEmail(this.user.email)){
       this.validateEmail=false;
     } else  {

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import Texts from '../../../assets/texts.json';
 
-// import { isNil } from 'lodash/_isNil';
+import isNil from 'lodash/isNil';
 
 import swal from'sweetalert2';
 
@@ -55,7 +55,6 @@ export class LoginComponent implements OnInit {
             title: 'Oops...',
             text: 'El usuario y la contraseña no coinciden'
           })
-
         } else if (isValidateUser === 2){
           this.userService.getUserByUserName(this.user.userName).subscribe(
             response => {
@@ -65,7 +64,6 @@ export class LoginComponent implements OnInit {
           )
 
           this.router.navigate(['/tvShows']);
-
         }
       }
     )
@@ -76,8 +74,7 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(){
-    if (this.user.userName === null || this.user.userName === undefined || this.user.userName === ''
-      || this.user.password === null || this.user.password === undefined || this.user.password === '' ){
+    if (isNil(this.user.userName) || this.user.userName === '' || isNil(this.user.password) || this.user.password === '' ){
       this.validateForm= false
     } else  {
       this.validateForm= true;

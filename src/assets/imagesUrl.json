@@ -1,10 +1,7 @@
 {
-    "body":{
-        "backgroundBody": "./assets/images/waves.png"
-    },
-    "tvShows":{
-        "watchingTvShowIcon": "./assets/images/watchingTvShowIcon.png",
-        "wishedTvShowIcon": "./assets/images/wishedTvShowIcon.png",
-        "finieshedTvShowIcon": "./assets/images/finishedTvShowIcon.png"
-    }
+  "backgroundBody": "./assets/images/waves.png",
+  "userLoginIcon": "./assets/images/loginAvatar2.png",
+  "watchingTvShowIcon": "./assets/images/watchingTvShowIcon.png",
+  "wishedTvShowIcon": "./assets/images/wishedTvShowIcon.png",
+  "finishedTvShowIcon": "./assets/images/finishedTvShowIcon.png"
 }

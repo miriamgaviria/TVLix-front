@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import Images from '../../../assets/imagesUrl.json';
 import Texts from '../../../assets/texts.json';
 
 import isNil from 'lodash/isNil';
@@ -18,6 +19,7 @@ import { UserService } from './../../services/user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  images: any = Images;
   texts: any = Texts;
 
   isUser: number;
@@ -67,6 +69,11 @@ export class LoginComponent implements OnInit {
         }
       }
     )
+
+    console.log('this.user', this.user)
+    this.loginService.login(this.user).subscribe( data => {
+      console.log('token', data);
+    });
   }
 
   onFocus() {

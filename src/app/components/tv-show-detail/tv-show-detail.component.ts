@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { TvShowsService } from './../../services/tvShows.service';
 import { TvShow } from '../../models/tvShow.model';
 
+import Images from '../../../assets/imagesUrl.json';
 import Texts from '../../../assets/texts.json';
 
 @Component({
@@ -12,6 +13,7 @@ import Texts from '../../../assets/texts.json';
   styleUrls: ['./tv-show-detail.component.css']
 })
 export class TvShowDetailComponent implements OnInit {
+  images: any = Images;
   texts: any = Texts;
 
   isLoading: boolean = true;
@@ -32,7 +34,6 @@ export class TvShowDetailComponent implements OnInit {
       (newData) => {
         this.tvShowApi = newData;
         this.tvShowDetail = this.tvShowApi.tvShow
-        console.log('tvShowApi', this.tvShowDetail)
         this.isLoading = false;
         if (this.tvShowDetail.image_thumbnail_path === null || this.tvShowDetail.image_thumbnail_path === undefined || this.tvShowDetail.image_thumbnail_path === ''){
           this.imageTvShow = false;

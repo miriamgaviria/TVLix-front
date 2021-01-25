@@ -31,7 +31,7 @@
         <div class="form-group row labelForm">
           <label for="FormControlInputComment" >{{texts.escribeComentario}}</label>
           <textarea type="text" class="form-control rowForm" [(ngModel)]='opinion.comment' name="comment"
-          rows="8" (focus)='onFocus()' placeholder="Cuéntanos qué te parece la aplicación"></textarea>
+          rows="8" (focus)='onFocus()' placeholder="{{texts.appComment}"></textarea>
         </div>
 
 
@@ -40,7 +40,7 @@
             <span class="form-group errorMessageEmail" *ngIf="!validateEmail"></span>
           </label>
           <input type="email" class="form-control rowForm" [(ngModel)]='opinion.email'  name="email"
-          placeholder="nombre@ejemplo.com" (focus)='onFocus()' autocomplete="off" required>
+          placeholder="{{texts.emailPlaceholder}}" (focus)='onFocus()' autocomplete="off" required>
         </div>
 
         <div class="form-group errorMessage" *ngIf="!validateForm">{{texts.todosCamposRequeridos}}</div>

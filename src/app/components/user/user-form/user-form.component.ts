@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import isNil from 'lodash/isNil';
+
 import swal from'sweetalert2';
 
 import { User } from '../../../models/user.model'
 import { UserService } from 'src/app/services/user.service';
 
 import Texts from '../../../../assets/texts.json';
-import GenreTvShow from '../../../../assets/configs/genreTvShow.json'
+import GenreTvShows from '../../../../assets/configs/genreTvShows.json'
+import TypeTvShows from '../../../../assets/configs/typeTvShows.json'
 
 @Component({
   selector: 'app-user-form',
@@ -17,7 +19,8 @@ import GenreTvShow from '../../../../assets/configs/genreTvShow.json'
 })
 export class UserFormComponent implements OnInit {
   texts: any = Texts;
-  genreTvShows: any = GenreTvShow;
+  genreTvShows: any = GenreTvShows;
+  typeTvShows: any = TypeTvShows;
 
   isLoading = true;
   newUser: boolean = false;

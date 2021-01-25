@@ -1,6 +1,6 @@
-import { TvShowApi } from '../../models/tvShowApi.model';
 import { Component, OnInit } from '@angular/core';
 
+import { TvShowApi } from '../../models/tvShowApi.model';
 import { TvShowsService } from './../../services/tvShows.service';
 import { TvShow } from '../../models/tvShow.model';
 
@@ -40,7 +40,6 @@ export class TvShowDetailComponent implements OnInit {
         } else {
           this.imageTvShow = true;
         }
-
       }
     )
   }
@@ -50,9 +49,11 @@ export class TvShowDetailComponent implements OnInit {
   }
 
   onSmallImages(pictures){
-    console.log('pictures', pictures)
     this.originalPicture = false;
     this.smallPicturesSrc = pictures;
   }
 
+  setIdTvShow (tvShowId) {
+    localStorage.setItem('tvShowId', tvShowId);
+  }
 }

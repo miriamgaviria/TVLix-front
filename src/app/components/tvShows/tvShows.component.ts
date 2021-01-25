@@ -87,6 +87,10 @@ export class TvShowsComponent implements OnInit {
     }
   }
 
+  setIdTvShow (tvShowId) {
+    localStorage.setItem('tvShowId', tvShowId);
+  }
+
   // private numeroAleatorio(min, max) {
   //   console.log('Math.round(Math.random() * (max - min) + min)', Math.round(Math.random() * (max - min) + min))
   //   return Math.round(Math.random() * (max - min) + min);

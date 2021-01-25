@@ -67,6 +67,10 @@ export class FoundTvShowsComponent implements OnInit {
     this.previousPage = true;
   }
 
+  setIdTvShow (tvShowId) {
+    localStorage.setItem('tvShowId', tvShowId);
+  }
+
   // onSearch(event: any){
   //   this.searchName = event.target.searchName.value;
   //   localStorage.setItem('searchName', this.searchName);

@@ -3,7 +3,6 @@
   "anterior": "Anterior",
   "appValoraciones": "Valoraciones de la app",
   "comentario": "Comentario",
-  "correoEjemplo": "nombre@ejemplo.com",
   "crearCuenta": "Crear cuenta",
   "dejaOpinion": "Deja tu opinión",
   "escribeComentario": "Escribe un comentario",
@@ -69,7 +68,12 @@
   "thriller": "Thriller",
   "western": "Western",
   "guardarDatos": "Guardar datos",
-  "todosCamposRellenos": "Debes rellenar todos los campos"
-
+  "todosCamposRellenos": "Debes rellenar todos los campos",
+  "finishedTvShowsFormHeader": " a la lista de series vistas",
+  "appCommentPlaceholder": "Cuéntanos qué te parece la aplicación",
+  "emailPlaceholder": "nombre@ejemplo.com",
+  "guardarFinishedTvShows": "Guardar en series vistas",
+  "finishedTvShowsFormPlaceholder": "Cuéntanos por qué te ha gustado la serie",
+  "valoraSerie": "Valora la serie"
 
 }

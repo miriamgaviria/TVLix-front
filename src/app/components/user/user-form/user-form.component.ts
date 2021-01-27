@@ -26,7 +26,7 @@ export class UserFormComponent implements OnInit {
   newUser: boolean = false;
   previousUrl: string;
   user: User = new User();
-  userEmpty: boolean = true;
+  userEmpty: any;
   userName: string = 'cristina';
   userToUpdate: User = new User();
   validateEmail: boolean = true;
@@ -51,17 +51,21 @@ export class UserFormComponent implements OnInit {
     this.loadUser(this.userName);
   }
 
+  public formatUserData (userData): any {
+    return userData.charAt(0).toUpperCase().concat(this.user.name.substring(1, this.user.name.length));
+  }
+
   public loadUser (userName){
     this.userService.getUserByUserName(this.userName).subscribe(
       (data) => {
         this.user = data;
         this.isLoading = false;
-        this.user.name = this.user.name.charAt(0).toUpperCase().concat(this.user.name.substring(1, this.user.name.length));
-        this.user.surname = this.user.surname.charAt(0).toUpperCase().concat(this.user.surname.substring(1, this.user.surname.length));
-        this.user.userName = this.user.userName.charAt(0).toUpperCase().concat(this.user.userName.substring(1, this.user.userName.length));
-        this.user.location = this.user.location.charAt(0).toUpperCase().concat(this.user.location.substring(1, this.user.location.length));
-        this.user.typeMedia = this.user.typeMedia.charAt(0).toUpperCase().concat(this.user.typeMedia.substring(1, this.user.typeMedia.length));
-        this.user.genre = this.user.genre.charAt(0).toUpperCase().concat(this.user.genre.substring(1, this.user.genre.length));
+        this.user.name = this.formatUserData(this.user.name);
+        this.user.surname = this.formatUserData(this.user.surname);
+        this.user.userName = this.formatUserData(this.user.userName);
+        this.user.location = this.formatUserData(this.user.location);
+        this.user.typeMedia = this.formatUserData(this.user.typeMedia);
+        this.user.genre = this.formatUserData(this.user.genre);
       }
     )
   }
@@ -87,12 +91,12 @@ export class UserFormComponent implements OnInit {
     }
   }
 
-  private checkEmail(email) {
+  private checkEmail(email: String) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
   }
 
-  private createAccount(user){
+  private createAccount(user: User){
     console.log(this.user)
     this.userService.postUser(this.user).subscribe(
       response => {
@@ -124,7 +128,7 @@ export class UserFormComponent implements OnInit {
     );
   }
 
-  private updateAccount(user){
+  private updateAccount(user: User){
     console.log(this.user)
     this.userService.updateUser(this.user).subscribe(
       response => {

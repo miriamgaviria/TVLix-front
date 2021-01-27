@@ -74,6 +74,11 @@
   "emailPlaceholder": "nombre@ejemplo.com",
   "guardarFinishedTvShows": "Guardar en series vistas",
   "finishedTvShowsFormPlaceholder": "Cuéntanos por qué te ha gustado la serie",
-  "valoraSerie": "Valora la serie"
+  "valoraSerie": "Valora la serie",
+  "watchingTvShowsFormHeader": " a la lista de series vistas",
+  "temporadaViendo": "Temporada que estás viendo",
+  "temporadaViendoPlaceholder": "Escribe el número de la temporada que estás viendo",
+  "episodioViendo": "Episodio que ya has visto",
+  "episodioViendoPlaceholder": "Escribe el número de episodio que ya has visto"
 
 }

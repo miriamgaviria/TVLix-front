@@ -33,6 +33,7 @@ export class FoundTvShowsComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchName = localStorage.getItem('searchName');
+    localStorage.remove('searchName')
     this.loadTvShows(1);
   }
 

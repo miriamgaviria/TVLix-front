@@ -40,7 +40,6 @@ export class UserComponent implements OnInit {
 
   public updateProfile(user: User){
     localStorage.setItem('userToUpdate', JSON.stringify(user));
-    localStorage.setItem('previousUrl', this.router.url);
     this.router.navigate(['/userForm']);
   }
 }

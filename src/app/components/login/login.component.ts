@@ -60,8 +60,7 @@ export class LoginComponent implements OnInit {
         } else if (isValidateUser === 2){
           this.userService.getUserByUserName(this.user.userName).subscribe(
             response => {
-              localStorage.setItem('loggedUserId', response.id);
-              localStorage.setItem('loggedUserUserName', response.userName);
+              localStorage.setItem('previousUrl', response.id);
             }
           )
 
@@ -69,11 +68,9 @@ export class LoginComponent implements OnInit {
         }
       }
     )
-
-    console.log('this.user', this.user)
-    this.loginService.login(this.user).subscribe( data => {
-      console.log('token', data);
-    });
+    // this.loginService.login(this.user).subscribe( data => {
+    //   console.log('token', data);
+    // });
   }
 
   onFocus() {

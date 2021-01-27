@@ -39,7 +39,6 @@ export class UserComponent implements OnInit {
   }
 
   public updateProfile(user: User){
-    console.log('user', user)
     localStorage.setItem('userToUpdate', JSON.stringify(user));
     localStorage.setItem('previousUrl', this.router.url);
     this.router.navigate(['/userForm']);

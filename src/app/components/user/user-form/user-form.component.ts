@@ -76,7 +76,6 @@ export class UserFormComponent implements OnInit {
       this.validateEmail=false;
     } else  {
       this.validateForm= true;
-      console.log(this.user);
       // if(something) {
       //   this.createAccount(this.user)
       // } else {

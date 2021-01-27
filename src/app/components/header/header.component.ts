@@ -18,7 +18,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.loggedUserId = localStorage.getItem('loggedUserId');
     this.loggedUserUserName = localStorage.getItem('loggedUserUserName');
-    console.log('this.loggedUserId', this.loggedUserUserName);
     localStorage.removeItem('loggedUserId');
     localStorage.removeItem('loggedUserUserName');
   }

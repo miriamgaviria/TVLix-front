@@ -25,7 +25,6 @@ export class OpinionsComponent implements OnInit {
     this.opinionService.getOpinionList().subscribe(
       (data) => {
         this.opinions = data;
-        console.log('lista de opiniones', data);
         this.isLoading = false;
         if(this.opinions.length>0){
           this.opinionsEmpty = false;

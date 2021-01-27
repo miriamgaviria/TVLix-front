@@ -8,8 +8,10 @@ import { TvShow } from '../../models/tvShow.model';
 
 import Images from '../../../assets/imagesUrl.json';
 import Texts from '../../../assets/texts.json';
+import WatchedStatus from '../../../assets/configs/watchedStatus.json';
 
 import { FinishedTvShow } from './../../models/finishedTvShow.model';
+import { UserTvShow } from './../../models/userTvShow.model';
 
 @Component({
   selector: 'app-finished-tv-shows-form',
@@ -19,16 +21,15 @@ import { FinishedTvShow } from './../../models/finishedTvShow.model';
 export class FinishedTvShowsFormComponent implements OnInit {
   images: any = Images;
   texts: any = Texts;
+  watchedStatus: any = WatchedStatus;
 
   isLoading: boolean = true;
-  imageTvShow: boolean;
-  originalPicture: boolean = true;
-  smallPicturesSrc: string;
   tvShowApi: TvShowApi;
   tvShow: TvShow;
 
-  finishedTvShow: FinishedTvShow = new FinishedTvShow();
+  finishedTvShow: UserTvShow = new UserTvShow();
   tvShowId: string;
+  userId: any;
 
   validateForm: boolean = true;
 
@@ -37,19 +38,22 @@ export class FinishedTvShowsFormComponent implements OnInit {
   ngOnInit(): void {
     this.tvShowId = localStorage.getItem('tvShowId');
     localStorage.removeItem('tvShowId');
+    this.userId = localStorage.getItem('previousUrl');
 
     this.tvShowsService.getTvShow(this.tvShowId).subscribe(
       (newData) => {
         this.tvShowApi = newData;
         this.tvShow = this.tvShowApi.tvShow
         this.isLoading = false;
-        console.log('this.tvShow', this.tvShow)
       }
-    )
-  }
+      )
+    }
 
-  public saveFinishedTvShow(finishedTvShow: FinishedTvShow) {
-    console.log('this.finishedTvShow', this.finishedTvShow)
+    public saveFinishedTvShow(finishedTvShow: UserTvShow) {
+      this.finishedTvShow.watchedStatus = this.watchedStatus.finished;
+      this.finishedTvShow.userId =this.userId;
+      console.log('this.finishedTvShow', this.finishedTvShow)
+      console.log('this.tvShow', this.tvShow)
     // this.opinionService.postOpinion(this.opinion).subscribe(
     //   response => {
     //     swal.fire({
@@ -72,12 +76,11 @@ export class FinishedTvShowsFormComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    if (isNil(this.finishedTvShow.rate) || isNil(this.finishedTvShow.assessment) || this.finishedTvShow.assessment === '' ) {
+    if (isNil(this.finishedTvShow.rate) || isNil(this.finishedTvShow.opinion)  ) {
       this.validateForm = false
     } else  {
       this.validateForm = true;
       this.saveFinishedTvShow(this.finishedTvShow);
     }
   }
-
 }

@@ -7,10 +7,6 @@
   /* margin-bottom: 4rem; */
 }
 
-.finishedTvShowFormContainer{
-  width: 95% !important;
-}
-
 .cardContainer {
   display: flex;
   flex-direction: column;

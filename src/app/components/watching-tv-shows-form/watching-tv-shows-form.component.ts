@@ -38,7 +38,9 @@ export class WatchingTvShowsFormComponent implements OnInit {
   ngOnInit(): void {
     this.tvShowId = localStorage.getItem('tvShowId');
     localStorage.removeItem('tvShowId');
-    this.userId = localStorage.getItem('previousUrl');
+    this.userId = localStorage.getItem('userId');
+    localStorage.removeItem('userId');
+    console.log('this.userId', this.userId)
 
     this.tvShowsService.getTvShow(this.tvShowId).subscribe(
       (newData) => {

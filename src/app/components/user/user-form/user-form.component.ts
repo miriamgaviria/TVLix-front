@@ -11,6 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 import Texts from '../../../../assets/texts.json';
 import GenreTvShows from '../../../../assets/configs/genreTvShows.json'
 import TypeTvShows from '../../../../assets/configs/typeTvShows.json'
+import { isEmpty } from 'lodash';
 
 @Component({
   selector: 'app-user-form',
@@ -24,31 +25,27 @@ export class UserFormComponent implements OnInit {
 
   isLoading = true;
   newUser: boolean = false;
-  previousUrl: string;
   user: User = new User();
   userEmpty: any;
-  userName: string = 'cristina';
   userToUpdate: User = new User();
   validateEmail: boolean = true;
   validateForm: boolean = true;
 
   constructor(
     private userService: UserService,
-    private router: Router
+    // private router: Router,
+    public router: Router,
   ) { }
 
   ngOnInit(): void {
-    console.log('this.userEmpty', this.userEmpty)
     this.userToUpdate = JSON.parse(localStorage.getItem('userToUpdate'));
-    console.log('this.userToUpdate', this.userToUpdate)
-    this.previousUrl = localStorage.getItem('previousUrl');
-    console.log('this.previousUrl', this.previousUrl)
-    if(this.previousUrl ==='/user'){
+    localStorage.removeItem('userToUpdate')
+    if(isNil(this.userToUpdate)){
+      this.userEmpty= true;
+    } else {
       this.userEmpty= false;
-      console.log('this.userEmpty', this.userEmpty)
+      this.loadUser(this.userToUpdate.name);
     }
-
-    this.loadUser(this.userName);
   }
 
   public formatUserData (userData): any {
@@ -56,7 +53,7 @@ export class UserFormComponent implements OnInit {
   }
 
   public loadUser (userName){
-    this.userService.getUserByUserName(this.userName).subscribe(
+    this.userService.getUserByUserName(userName).subscribe(
       (data) => {
         this.user = data;
         this.isLoading = false;
@@ -85,9 +82,7 @@ export class UserFormComponent implements OnInit {
       // } else {
       //   this.updateAccount(this.user)
       // }
-
-      this.updateAccount(this.user)
-      // this.createAccount(this.user)
+      this.userEmpty ? this.createAccount(this.user) : this.updateAccount(this.user);
     }
   }
 
@@ -157,6 +152,7 @@ export class UserFormComponent implements OnInit {
           text: 'No se han podido cambiar los datos'
         })
       }
-    );
+      );
+      this.router.navigate(['/tvShows']);
   }
 }

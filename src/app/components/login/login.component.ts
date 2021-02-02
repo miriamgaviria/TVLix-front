@@ -35,12 +35,14 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userToUpdate');
+    localStorage.removeItem('userName');
   }
 
   checkIsAdmin(user: User){
     let isValidateUser: number;
-    this.loginService.checkIsUser(this.user).subscribe(
+    this.loginService.checkIsUser(user).subscribe(
       data => {
         isValidateUser = data;
         if (isValidateUser === 0){
@@ -58,9 +60,10 @@ export class LoginComponent implements OnInit {
             text: 'El usuario y la contraseña no coinciden'
           })
         } else if (isValidateUser === 2){
-          this.userService.getUserByUserName(this.user.userName).subscribe(
+          this.userService.getUserByUserName(user.userName).subscribe(
             response => {
-              localStorage.setItem('previousUrl', response.id);
+              localStorage.setItem('userId', response.id);
+              localStorage.setItem('userName', response.name);
             }
           )
 

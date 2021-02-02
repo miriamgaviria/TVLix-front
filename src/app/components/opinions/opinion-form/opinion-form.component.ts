@@ -24,6 +24,7 @@ export class OpinionFormComponent implements OnInit {
   opinion: Opinion = new Opinion();
   opinionForm: FormGroup;
   submitted = false;
+  userId: any;
   validateEmail: boolean = true;
   validateForm: boolean = true;
 
@@ -32,8 +33,11 @@ export class OpinionFormComponent implements OnInit {
     private router: Router,
     ) { }
 
-  ngOnInit(): void {
-    this.isLoading = false;
+    ngOnInit(): void {
+      this.isLoading = false;
+      this.userId = localStorage.getItem('userId');
+      localStorage.removeItem('userId');
+      this.opinion.user = this.userId
   }
 
   public createOpinion(): void {

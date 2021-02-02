@@ -16,12 +16,14 @@ export class UserComponent implements OnInit {
 
   isLoading = true;
   user: User;
-  userName: string = 'cristina';
+  userName: string;
 
   constructor(private userService: UserService,
     private router: Router) { }
 
   ngOnInit(): void {
+    this.userName = localStorage.getItem('userName')
+    localStorage.removeItem('userName');
 
     this.userService.getUserByUserName(this.userName).subscribe(
       (data) => {

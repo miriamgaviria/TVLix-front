@@ -38,7 +38,8 @@ export class FinishedTvShowsFormComponent implements OnInit {
   ngOnInit(): void {
     this.tvShowId = localStorage.getItem('tvShowId');
     localStorage.removeItem('tvShowId');
-    this.userId = localStorage.getItem('previousUrl');
+    this.userId = localStorage.getItem('userId');
+    localStorage.removeItem('userId');
 
     this.tvShowsService.getTvShow(this.tvShowId).subscribe(
       (newData) => {

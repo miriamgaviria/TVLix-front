@@ -28,6 +28,7 @@
         <thead>
           <tr>
             <th scope="col" class="dateContainer">{{texts.fecha}}</th>
+            <!-- <th scope="col" class="commentContainer">{{texts.usuario}}</th> -->
             <th scope="col" class="commentContainer">{{texts.comentario}}</th>
             <th scope="col" class="rateContainer">{{texts.valoracion}}</th>
           </tr>
@@ -35,6 +36,7 @@
         <tbody>
           <tr *ngFor="let opinion of opinions">
             <td class="valignCenter">{{opinion.date}}</td>
+            <!-- <td class="valignCenter">{{opinion.user.userName}}</td> -->
             <td class="valignCenter">{{opinion.comment}}</td>
             <td class="rateContainer">
               <div *ngIf="opinion.rate == 1" class="rate">

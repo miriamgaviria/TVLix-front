@@ -23,7 +23,7 @@ export class UserFormComponent implements OnInit {
   genreTvShows: any = GenreTvShows;
   typeTvShows: any = TypeTvShows;
 
-  isLoading = true;
+  isLoading: boolean;
   newUser: boolean = false;
   user: User = new User();
   userEmpty: any;
@@ -44,25 +44,25 @@ export class UserFormComponent implements OnInit {
       this.userEmpty= true;
     } else {
       this.userEmpty= false;
-      this.loadUser(this.userToUpdate.name);
+      this.loadUser(this.userToUpdate.userName);
     }
   }
 
-  public formatUserData (userData): any {
-    return userData.charAt(0).toUpperCase().concat(this.user.name.substring(1, this.user.name.length));
+  public formatData (data: string): string {
+    return data.charAt(0).toUpperCase().concat(data.substring(1, data.length));
   }
 
-  public loadUser (userName){
+  public loadUser (userName: string){
+    this.isLoading = true;
     this.userService.getUserByUserName(userName).subscribe(
       (data) => {
         this.user = data;
+        this.user.name = this.formatData(this.user.name);
+        this.user.surname = this.formatData(this.user.surname);
+        this.user.location = this.formatData(this.user.location);
+        this.user.typeMedia = this.formatData(this.user.typeMedia);
+        this.user.genre = this.formatData(this.user.genre);
         this.isLoading = false;
-        this.user.name = this.formatUserData(this.user.name);
-        this.user.surname = this.formatUserData(this.user.surname);
-        this.user.userName = this.formatUserData(this.user.userName);
-        this.user.location = this.formatUserData(this.user.location);
-        this.user.typeMedia = this.formatUserData(this.user.typeMedia);
-        this.user.genre = this.formatUserData(this.user.genre);
       }
     )
   }
@@ -77,11 +77,6 @@ export class UserFormComponent implements OnInit {
       this.validateEmail=false;
     } else  {
       this.validateForm= true;
-      // if(something) {
-      //   this.createAccount(this.user)
-      // } else {
-      //   this.updateAccount(this.user)
-      // }
       this.userEmpty ? this.createAccount(this.user) : this.updateAccount(this.user);
     }
   }
@@ -134,7 +129,7 @@ export class UserFormComponent implements OnInit {
             icon: 'success',
             title: 'Datos cambiados'
         }),
-        this.router.navigate(['/user']);
+        this.router.navigate(['/tvShows']);
         }  else {
           swal.fire({
             background: 'rgb(211,211,211)',
@@ -153,6 +148,5 @@ export class UserFormComponent implements OnInit {
         })
       }
       );
-      this.router.navigate(['/tvShows']);
   }
 }

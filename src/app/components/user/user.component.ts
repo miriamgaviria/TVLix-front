@@ -14,30 +14,30 @@ import Texts from '../../../assets/texts.json';
 export class UserComponent implements OnInit {
   texts: any = Texts;
 
-  isLoading = true;
+  isLoading: boolean;
   user: User;
-  userName: string;
+  userId: number;
 
   constructor(private userService: UserService,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.userName = localStorage.getItem('userName')
-    localStorage.removeItem('userName');
-
-    this.userService.getUserByUserName(this.userName).subscribe(
+    this.userId = parseInt(localStorage.getItem('userId'));
+    this.isLoading = true;
+    this.userService.getUserById(this.userId).subscribe(
       (data) => {
-        console.log('data', data)
         this.user = data;
-        this.user.name = this.user.name.charAt(0).toUpperCase().concat(this.user.name.substring(1, this.user.name.length));
-        this.user.surname = this.user.surname.charAt(0).toUpperCase().concat(this.user.surname.substring(1, this.user.surname.length));
-        this.user.userName = this.user.userName.charAt(0).toUpperCase().concat(this.user.userName.substring(1, this.user.userName.length));
-        this.user.location = this.user.location.charAt(0).toUpperCase().concat(this.user.location.substring(1, this.user.location.length));
-        this.user.typeMedia = this.user.typeMedia.charAt(0).toUpperCase().concat(this.user.typeMedia.substring(1, this.user.typeMedia.length));
-        this.user.genre = this.user.genre.charAt(0).toUpperCase().concat(this.user.genre.substring(1, this.user.genre.length));
+        this.user.name = this.formatData(this.user.name);
+        this.user.surname = this.formatData(this.user.surname);
+        this.user.location = this.formatData(this.user.location);
+        this.user.typeMedia = this.formatData(this.user.typeMedia);
+        this.user.genre = this.formatData(this.user.genre);
         this.isLoading = false;
       }
     )
+  }
+  private formatData (data: string) {
+    return data.charAt(0).toUpperCase().concat(data.substring(1, data.length));
   }
 
   public updateProfile(user: User){

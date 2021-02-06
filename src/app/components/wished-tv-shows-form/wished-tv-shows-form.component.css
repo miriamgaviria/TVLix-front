@@ -7,10 +7,6 @@
   /* margin-bottom: 4rem; */
 }
 
-/* .finishedTvShowFormContainer{
-  width: 95% !important;
-} */
-
 .cardContainer {
   display: flex;
   flex-direction: column;
@@ -54,9 +50,21 @@
 }
 
 .buttonPosition{
-    margin-top: 3rem;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: center;
+  margin-top: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.plataformasLabel{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.platform{
+  width: 2.5rem;
+  margin-right: 0.5rem;
+  margin-left: 0.2rem;
 }

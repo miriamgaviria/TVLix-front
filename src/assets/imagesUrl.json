@@ -3,5 +3,9 @@
   "userLoginIcon": "./assets/images/loginAvatar2.png",
   "watchingTvShowIcon": "./assets/images/watchingTvShowIcon.png",
   "wishedTvShowIcon": "./assets/images/wishedTvShowIcon.png",
-  "finishedTvShowIcon": "./assets/images/finishedTvShowIcon.png"
+  "finishedTvShowIcon": "./assets/images/finishedTvShowIcon.png",
+  "netflix": "./assets/images/netflix.png",
+  "hbo": "./assets/images/hbo.jpg",
+  "disneyPlus": "./assets/images/disneyPlus.jpeg",
+  "amazonPrimeVideo": "./assets/images/amazonPrime.png"
 }

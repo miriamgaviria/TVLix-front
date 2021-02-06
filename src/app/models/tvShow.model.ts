@@ -1,26 +1,23 @@
 import { Episodes } from './episodes.model';
 
 export class TvShow {
-    //showTitle: string;
-    id: number;
-    name: string;
-    permalink: string;
-    url: string;
-    description: string;
-    description_source: string;
-    start_date: string;
-    end_date: string;
+    showTitle: string;
+    countdown: string;
     country: string;
-    status: string;
-    runtime: string;
-    network: string;
-    youtube_link: string;
+    description_source: string;
+    description: string;
+    end_date: string;
+    episodes: Episodes [];
+    genres : string [];
+    id: number;
     image_path: string;
     image_thumbnail_path: string;
-    rating: string;
-    rating_count: string;
-    countdown: string;
-    genres : string [];
+    name: string;
+    permalink: string;
     pictures : string [];
-    episodes: Episodes [];
+    rating_count: string;
+    rating: string;
+    runtime: string;
+    start_date: string;
+    status: string;
 }

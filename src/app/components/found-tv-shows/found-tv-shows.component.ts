@@ -41,7 +41,6 @@ export class FoundTvShowsComponent implements OnInit {
     this.tvShowsService.getTvShowSearch(page, this.searchName).subscribe(
       (data) => {
         this.foundTvShows = data;
-        console.log('lista de series encontradas', data);
         this.isLoading = false;
         if(this.foundTvShows.tv_shows.length === 0){
           this.noFoundTvShows = true;
@@ -58,7 +57,6 @@ export class FoundTvShowsComponent implements OnInit {
   }
 
   goToNextTvShows(page){
-    console.log('page clickada', page)
     this.loadTvShows(page + 1);
     this.previousPage = true;
   }
@@ -76,6 +74,5 @@ export class FoundTvShowsComponent implements OnInit {
   //   this.searchName = event.target.searchName.value;
   //   localStorage.setItem('searchName', this.searchName);
   //   this.reFoundTvShows = this.foundTvShows.tv_shows.filter(tv_show => tv_show.name.includes(this.searchName));
-  //   console.log('this.reFoundTvShows', this.reFoundTvShows)
   // }
 }

@@ -64,16 +64,11 @@ export class LoginComponent implements OnInit {
             response => {
               localStorage.setItem('userId', response.id);
               localStorage.setItem('userName', response.name);
-            }
-          )
-
+            })
           this.router.navigate(['/tvShows']);
         }
       }
     )
-    // this.loginService.login(this.user).subscribe( data => {
-    //   console.log('token', data);
-    // });
   }
 
   onFocus() {

@@ -42,7 +42,6 @@ export class TvShowsComponent implements OnInit {
     //     this.isLoading = false;
     //   }
     // )
-
     this.loadTvShows(1);
   }
 

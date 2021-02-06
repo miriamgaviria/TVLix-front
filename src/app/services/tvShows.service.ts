@@ -5,7 +5,6 @@ import { of, Observable } from 'rxjs';
 
 import { TvShow } from '../models/tvShow.model';
 import { TvShowsList } from '../models/tvShowsList.model';
-import { TVSHOWS } from '../model.js/tvShows.json';
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +37,5 @@ export class TvShowsService {
     return this.http.get<any>(this.urlEndPointTvShowSearch + searchName + '&page=' + pageNumber);
   }
 
-  
+
 }

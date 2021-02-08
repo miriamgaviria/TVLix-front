@@ -30,4 +30,8 @@ export class UserService {
   updateUser(user: User): Observable<any> {
     return this.http.put<User>(this.urlEndPointUser, user, {headers: this.httpHeaders});
   }
+
+  deleteUserById (id: number): Observable<any>{
+    return this.http.delete<User>(this.urlEndPointUser + "/id/" + id)
+  }
 }

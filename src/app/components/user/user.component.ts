@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import swal from'sweetalert2';
+
 import { User } from './../../models/user.model';
 import { UserService } from './../../services/user.service';
 
@@ -17,6 +19,8 @@ export class UserComponent implements OnInit {
   isLoading: boolean;
   user: User;
   userId: number;
+
+  isDeletedUser: boolean;
 
   constructor(private userService: UserService,
     private router: Router) { }
@@ -43,5 +47,28 @@ export class UserComponent implements OnInit {
   public updateProfile(user: User){
     localStorage.setItem('userToUpdate', JSON.stringify(user));
     this.router.navigate(['/userForm']);
+  }
+
+  public deleteUser () {
+    this.userService.deleteUserById(this.userId).subscribe(
+      (response) => {
+        this.isDeletedUser = response;
+        if(this.isDeletedUser){
+          swal.fire({
+            background: 'rgb(211,211,211)',
+            icon: 'success',
+            title: 'Usuario borrado'
+        }),
+        this.router.navigate(['/tvShows']);
+        }  else {
+          swal.fire({
+            background: 'rgb(211,211,211)',
+            icon: 'error',
+            title: 'Oops...',
+            text: 'No se ha podido crear la cuenta porque este usuario ya existe'
+          })
+        }
+      }
+    )
   }
 }

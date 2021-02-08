@@ -41,10 +41,8 @@ export class OpinionFormComponent implements OnInit {
   }
 
   public createOpinion(): void {
-    if (isNil(this.opinion.rate) || isNil(this.opinion.comment) || this.opinion.comment === '' || isNil(this.opinion.email) || this.opinion.email === '') {
+    if (isNil(this.opinion.rate) || isNil(this.opinion.comment) || this.opinion.comment === '' ) {
       this.validateForm= false
-    } else if (!this.checkEmail(this.opinion.email)){
-      this.validateEmail=false;
     } else  {
       this.validateForm= true;
       this.saveOpinion(this.opinion);

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import  sortBy from 'lodash/sortBy';
+
 import { Opinion } from '../../models/opinion.model';
 import { OpinionService } from './../../services/opinion.service';
 
@@ -24,7 +26,7 @@ export class OpinionsComponent implements OnInit {
   ngOnInit(): void {
     this.opinionService.getOpinionList().subscribe(
       (data) => {
-        this.opinions = data;
+        this.opinions = sortBy(data, ['fate']).reverse();
         this.isLoading = false;
         if(this.opinions.length>0){
           this.opinionsEmpty = false;

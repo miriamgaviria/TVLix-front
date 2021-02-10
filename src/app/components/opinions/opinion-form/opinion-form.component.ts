@@ -10,6 +10,7 @@ import { Opinion } from '../../../models/opinion.model'
 import { OpinionService } from 'src/app/services/opinion.service';
 
 import Texts from '../../../../assets/texts.json';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-opinion-form',
@@ -31,13 +32,18 @@ export class OpinionFormComponent implements OnInit {
   constructor(
     private opinionService: OpinionService,
     private router: Router,
+    private userService: UserService,
     ) { }
 
     ngOnInit(): void {
       this.isLoading = false;
       this.userId = localStorage.getItem('userId');
       localStorage.removeItem('userId');
-      this.opinion.user = this.userId
+      this.userService.getUserById(this.userId).subscribe(
+        response => {
+          this.opinion.user = response
+        }
+      )
   }
 
   public createOpinion(): void {
@@ -45,6 +51,7 @@ export class OpinionFormComponent implements OnInit {
       this.validateForm= false
     } else  {
       this.validateForm= true;
+
       this.saveOpinion(this.opinion);
     }
   }
@@ -55,7 +62,7 @@ export class OpinionFormComponent implements OnInit {
   }
 
   public saveOpinion(opinion: Opinion) {
-    this.opinionService.postOpinion(this.opinion).subscribe(
+    this.opinionService.postOpinion(opinion).subscribe(
       response => {
         swal.fire({
           background: 'rgb(211,211,211)',

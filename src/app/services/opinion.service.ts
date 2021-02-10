@@ -10,11 +10,11 @@ import { Opinion } from '../models/opinion.model';
 export class OpinionService {
 
   private urlEndPointOpinion: string = 'http://localhost:81/opinions';
-  
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  
+
   // private httpHeaders = new HttpHeaders ({'Content-type': 'applicaion/json', 'charset':'utf8'})
   constructor(private http: HttpClient) { }
 
@@ -22,11 +22,12 @@ export class OpinionService {
     return this.http.get<any>(this.urlEndPointOpinion, this.httpOptions);
   }
 
-  postOpinion(opinion: any): Observable<string> {
+  postOpinion(opinion: Opinion): Observable<string> {
+    console.log('opinion', opinion)
     return this.http.post<string>(this.urlEndPointOpinion, opinion, this.httpOptions)
   }
 
   // deleteOpinion(id: number): Observable<Opinion> {
   //   return this.http.delete<Opinion>(this.urlEndPointOpinion, id);
-  // }  
+  // }
 }

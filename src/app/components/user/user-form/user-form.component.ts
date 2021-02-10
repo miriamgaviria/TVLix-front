@@ -119,7 +119,6 @@ export class UserFormComponent implements OnInit {
   }
 
   private updateAccount(user: User){
-    console.log(this.user)
     this.userService.updateUser(this.user).subscribe(
       response => {
         this.newUser = response;

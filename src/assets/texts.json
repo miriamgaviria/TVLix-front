@@ -87,7 +87,11 @@
   "razonVer": "¿Por qué quieres ver esta serie?",
   "guardarWatchingTvShows": "Guardar en series viendo",
   "guardarWishedTvShows": "Guardar en series para ver",
-  "eliminarUsuario": "Elimina tu usuario"
+  "eliminarUsuario": "Elimina tu usuario",
+  "eliminarUsuarioModalTitle": "Eliminar el usuario, ",
+  "eliminarUsuarioModalBody": "¿Estás seguro que queires borrar el tu cuenta de usuario? Toda la información asociada a este perfil se eliminará permanentemente. Esta operación no se puede deshacer.",
+  "si": "Sí",
+  "no": "No"
 
 
 }

@@ -20,6 +20,8 @@ export class OpinionsComponent implements OnInit {
   opinions: Opinion[];
   opinionsEmpty: boolean = true;
 
+  userId: any;
+
   public p: number = 1;
 
   constructor(private opinionService: OpinionService,
@@ -37,4 +39,12 @@ export class OpinionsComponent implements OnInit {
     )
   }
 
+  goToOpinionForm() {
+    this.userId = localStorage.getItem('userId');
+    if (this.userId) {
+      this.router.navigate(['/opinionForm']);
+    } else {
+      this.router.navigate(['/login']);
+    }
+  }
 }

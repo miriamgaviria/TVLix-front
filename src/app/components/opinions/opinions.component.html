@@ -34,7 +34,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let opinion of opinions">
+          <tr *ngFor="let opinion of opinions | paginate: { itemsPerPage: 6, currentPage: p }">
             <td class="valignCenter">{{opinion.date}}</td>
             <td class="valignCenter">{{opinion.user.userName}}</td>
             <td class="valignCenter">{{opinion.comment}}</td>
@@ -103,6 +103,11 @@
           </tr>
         </tbody>
       </table>
+      <div class="paginationContainer">
+        <pagination-controls class="pagination" (pageChange)="p = $event" previousLabel="Anterior"
+        nextLabel="Siguiente"></pagination-controls>
+      </div>
+
 
       </div>
 

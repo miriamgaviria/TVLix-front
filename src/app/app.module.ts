@@ -20,7 +20,9 @@ import { UserComponent } from './components/user/user.component';
 import { UserFormComponent } from './components/user/user-form/user-form.component';
 import { WishedTvShowsFormComponent } from './components/wished-tv-shows-form/wished-tv-shows-form.component';
 import { WatchingTvShowsFormComponent } from './components/watching-tv-shows-form/watching-tv-shows-form.component';
+
 import { from } from 'rxjs';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { OpinionService } from './services/opinion.service';
 import { LoginService } from './services/login.service';
@@ -58,7 +60,8 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    NgxPaginationModule
   ],
   providers: [
     LoginService,

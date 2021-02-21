@@ -20,6 +20,8 @@ export class OpinionsComponent implements OnInit {
   opinions: Opinion[];
   opinionsEmpty: boolean = true;
 
+  public p: number = 1;
+
   constructor(private opinionService: OpinionService,
     private router: Router) { }
 

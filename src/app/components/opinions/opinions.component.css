@@ -19,15 +19,15 @@ td{
 }
 
 .dateContainer{
-    width: 10%!important; 
+    width: 10%!important;
 }
 
 .rateContainer{
-    width: 18% !important; 
+    width: 18% !important;
 }
 
 .rate {
-    width: 9.5rem !important;   
+    width: 9.5rem !important;
 }
 
 .rate:not(:checked)>input {
@@ -40,7 +40,7 @@ td{
     width: 24px;
     white-space: nowrap;
     cursor: auto;
-    font-size: 30px;    
+    font-size: 30px;
     margin-right: 3%;
 }
 
@@ -58,5 +58,26 @@ td{
 
 .buttonContainer{
     margin-top: 2rem;
-    margin-left: 45%;    
+    margin-left: 45%;
+}
+
+.paginationContainer  {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination ::ng-deep .ngx-pagination .current {
+  background: skyblue;
+  color: black;
+  border-radius: 5px 5px 5px 5px;
+}
+
+.pagination ::ng-deep .ngx-pagination a:hover, .ngx-pagination button:hover {
+  border-radius: 5px 5px 5px 5px;
+  background-color: rgb(9, 83, 112);
+  color: white
+}
+
+.pagination ::ng-deep .ngx-pagination a, .ngx-pagination button {
+  color: white
 }

@@ -15,7 +15,6 @@ export class OpinionService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  // private httpHeaders = new HttpHeaders ({'Content-type': 'applicaion/json', 'charset':'utf8'})
   constructor(private http: HttpClient) { }
 
   getOpinionList(): Observable<any> {
@@ -23,7 +22,6 @@ export class OpinionService {
   }
 
   postOpinion(opinion: Opinion): Observable<string> {
-    console.log('opinion', opinion)
     return this.http.post<string>(this.urlEndPointOpinion, opinion, this.httpOptions)
   }
 

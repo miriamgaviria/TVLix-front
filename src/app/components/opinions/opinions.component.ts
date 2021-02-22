@@ -30,7 +30,7 @@ export class OpinionsComponent implements OnInit {
   ngOnInit(): void {
     this.opinionService.getOpinionList().subscribe(
       (data) => {
-        this.opinions = sortBy(data, ['fate']).reverse();
+        this.opinions = sortBy(data, ['date']).reverse();
         this.isLoading = false;
         if(this.opinions.length>0){
           this.opinionsEmpty = false;

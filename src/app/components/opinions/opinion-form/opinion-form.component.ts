@@ -37,13 +37,19 @@ export class OpinionFormComponent implements OnInit {
 
     ngOnInit(): void {
       this.isLoading = false;
+
       this.userId = localStorage.getItem('userId');
       localStorage.removeItem('userId');
-      this.userService.getUserById(this.userId).subscribe(
-        response => {
-          this.opinion.user = response
-        }
-      )
+
+      if(this.userId) {
+        this.userService.getUserById(this.userId).subscribe(
+          response => {
+            this.opinion.user = response
+          }
+        )
+      } else {
+        this.router.navigate(['/login']);
+      }
   }
 
   public createOpinion(): void {

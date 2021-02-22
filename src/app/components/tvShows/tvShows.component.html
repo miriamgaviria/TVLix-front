@@ -31,7 +31,6 @@
             <div class="col-xs-4 col-sm-3 col-md-3 col-lg-2 cards text-white bg-secondary offset-1" *ngFor="let tvshow of tvShowsForHome.tv_shows">
                 <div (click)=goToDetail(tvshow.id)>
                     <img class="card-img-top cursorPointer" src="{{tvshow.image_thumbnail_path}}" alt="Card image cap">
-                    <!-- [src]="imageTvShow ? tvShowDetail.image_thumbnail_path : '../../../assets/images/noImage.svg'" -->
                     <h5 class="card-title cursorPointer">{{tvshow.name}}</h5>
                 </div>
 
@@ -45,12 +44,6 @@
                 </div>
             </div>
         </div>
-
-
-
     </div>
-
-
-
 </div>
 

@@ -4,8 +4,9 @@ import { Router } from '@angular/router';
 import swal from'sweetalert2';
 
 import { TvShowsList } from './../../models/tvShowsList.model';
-import { TvShowsService } from './../../services/tvShows.service';
 import { TvShow } from '../../models/tvShow.model';
+
+import { TvShowsService } from './../../services/tvShows.service';
 
 import Images from '../../../assets/imagesUrl.json';
 import Texts from '../../../assets/texts.json';
@@ -26,22 +27,11 @@ export class TvShowsComponent implements OnInit {
   previousPage: boolean;
   searchName: string;
   tvShowsForHome: TvShowsList;
-  tvShowDetail: TvShow;
 
   constructor(private tvShowsService: TvShowsService,
     private router: Router) { }
 
   ngOnInit(): void {
-    // this.pageNumber = this.numeroAleatorio(1, 10)
-
-    // this.tvShowsService.getTvShowList(this.pageNumber).subscribe(
-    //   // tvShowsForHome => this.tvShowsForHome = tvShowsForHome
-    //   (data) => {
-    //     this.tvShowsForHome = data;
-    //     console.log('lista de series', data);
-    //     this.isLoading = false;
-    //   }
-    // )
     this.loadTvShows(1);
   }
 
@@ -60,7 +50,6 @@ export class TvShowsComponent implements OnInit {
   }
 
   goToNextTvShows(page){
-    console.log('page clickada', page)
     this.loadTvShows(page + 1);
     this.previousPage = true;
   }
@@ -89,9 +78,4 @@ export class TvShowsComponent implements OnInit {
   setIdTvShow (tvShowId) {
     localStorage.setItem('tvShowId', tvShowId);
   }
-
-  // private numeroAleatorio(min, max) {
-  //   console.log('Math.round(Math.random() * (max - min) + min)', Math.round(Math.random() * (max - min) + min))
-  //   return Math.round(Math.random() * (max - min) + min);
-  // }
 }

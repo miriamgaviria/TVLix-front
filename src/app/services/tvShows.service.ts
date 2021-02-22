@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { of, Observable } from 'rxjs';
 
 import { TvShow } from '../models/tvShow.model';
+import { TvShowDTO } from './../models/tvShowDTO.model';
 import { TvShowsList } from '../models/tvShowsList.model';
 
 @Injectable({
@@ -15,16 +16,9 @@ export class TvShowsService {
   private urlEndPointTvShowList: string = 'https://www.episodate.com/api/most-popular?page=';
   private urlEndPointTvShowSearch: string = 'https://www.episodate.com/api/search?q=';
 
+  private urlEndPointTvShowsDB: string = 'http://localhost:81/tvShows';
+
   constructor(private http: HttpClient) { }
-
-  // getTvShows(): Observable<TvShows[]> {
-  //   return of(TVSHOWS);
-  // }
-
-  // getTvShowList(): Observable<TvShowsList> {
-  //   return this.http.get<TvShowsList>(this.urlEndPointTvShowList);
-  // }
-
   getTvShowList(pageNumber): Observable<TvShowsList> {
     return this.http.get<TvShowsList>(this.urlEndPointTvShowList + pageNumber);
   }
@@ -37,5 +31,7 @@ export class TvShowsService {
     return this.http.get<any>(this.urlEndPointTvShowSearch + searchName + '&page=' + pageNumber);
   }
 
-
+  getTvShowByIdDB(tvShowId): Observable<TvShowDTO> {
+    return this.http.get<TvShowDTO>(this.urlEndPointTvShowsDB + "/" + tvShowId);
+  }
 }

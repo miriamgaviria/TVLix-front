@@ -46,7 +46,7 @@ export class TvShowsComponent implements OnInit {
 
   goToDetail(tvShowId) {
     localStorage.setItem('tvShowId', tvShowId);
-    this.router.navigate(['/tvShowDetail']);
+    this.router.navigate(['/tvShowDetail/', tvShowId]);
   }
 
   goToNextTvShows(page){
@@ -70,8 +70,7 @@ export class TvShowsComponent implements OnInit {
         text: 'La búsqueda contiene más de una palabra'
       })
     } else {
-      localStorage.setItem('searchName', this.searchName);
-      this.router.navigate(['/foundTvShows']);
+      this.router.navigate(['/foundTvShows/', this.searchName]);
     }
   }
 

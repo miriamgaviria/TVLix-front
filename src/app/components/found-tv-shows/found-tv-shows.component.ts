@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TvShowsList } from './../../models/tvShowsList.model';
 import { TvShowsService } from './../../services/tvShows.service';
 import { TvShow } from '../../models/tvShow.model';
@@ -28,12 +28,12 @@ export class FoundTvShowsComponent implements OnInit {
   tvShowDetail: TvShow;
 
   constructor(
+    private route: ActivatedRoute,
     private tvShowsService: TvShowsService,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.searchName = localStorage.getItem('searchName');
-    localStorage.remove('searchName')
+    this.searchName = this.route.snapshot.paramMap.get("searchName");
     this.loadTvShows(1);
   }
 
@@ -53,7 +53,7 @@ export class FoundTvShowsComponent implements OnInit {
 
   goToDetail(tvShowId) {
     localStorage.setItem('tvShowId', tvShowId);
-    this.router.navigate(['/tvShowDetail']);
+    this.router.navigate(['/tvShowDetail/', tvShowId]);
   }
 
   goToNextTvShows(page){

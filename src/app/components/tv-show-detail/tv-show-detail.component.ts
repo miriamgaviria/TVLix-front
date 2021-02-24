@@ -6,6 +6,7 @@ import { TvShow } from '../../models/tvShow.model';
 
 import Images from '../../../assets/imagesUrl.json';
 import Texts from '../../../assets/texts.json';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tv-show-detail',
@@ -24,11 +25,11 @@ export class TvShowDetailComponent implements OnInit {
   tvShowDetail: TvShow;
   tvShowId: any;
 
-  constructor(private tvShowsService: TvShowsService) { }
+  constructor(private route: ActivatedRoute,
+    private tvShowsService: TvShowsService) { }
 
   ngOnInit(): void {
-    this.tvShowId = localStorage.getItem('tvShowId');
-    localStorage.removeItem('tvShowId');
+    this.tvShowId = this.route.snapshot.paramMap.get("tvShowId");
 
     this.tvShowsService.getTvShow(this.tvShowId).subscribe(
       (newData) => {

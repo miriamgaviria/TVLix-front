@@ -6,11 +6,12 @@ import  isNil from 'lodash/isNil';
 
 import swal from'sweetalert2';
 
-import { Opinion } from '../../../models/opinion.model'
+import { Opinion } from '../../../models/opinion.model';
+
 import { OpinionService } from 'src/app/services/opinion.service';
+import { UserService } from 'src/app/services/user.service';
 
 import Texts from '../../../../assets/texts.json';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-opinion-form',

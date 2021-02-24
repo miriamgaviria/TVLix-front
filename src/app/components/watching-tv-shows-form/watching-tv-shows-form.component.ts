@@ -10,7 +10,7 @@ import Images from '../../../assets/imagesUrl.json';
 import Texts from '../../../assets/texts.json';
 import WatchedStatus from '../../../assets/configs/watchedStatus.json'
 
-import { UserTvShow } from './../../models/userTvShow.model';
+import { UserTvShowDTO } from '../../models/userTvShowDTO.model';
 
 @Component({
   selector: 'app-watching-tv-shows-form',
@@ -26,7 +26,7 @@ export class WatchingTvShowsFormComponent implements OnInit {
 
   tvShowApi: TvShowApi;
   tvShow: TvShow;
-  watchingTvShow: UserTvShow = new UserTvShow();
+  watchingTvShow: UserTvShowDTO = new UserTvShowDTO();
 
   tvShowId: string;
   userId: any;
@@ -51,9 +51,9 @@ export class WatchingTvShowsFormComponent implements OnInit {
     )
   }
 
-    public saveWatchingTvShow(watchingTvShow: UserTvShow) {
+    public saveWatchingTvShow(watchingTvShow: UserTvShowDTO) {
       this.watchingTvShow.watchedStatus = this.watchedStatus.watching;
-      this.watchingTvShow.userId =this.userId;
+      // this.watchingTvShow.userId =this.userId;
       console.log('this.watchingTvShow', this.watchingTvShow)
       console.log('this.tvShow', this.tvShow);
     // this.opinionService.postOpinion(this.opinion).subscribe(

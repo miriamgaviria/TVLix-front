@@ -62,7 +62,7 @@
   "seriesPopulares": "Series más populares",
   "seriesVer": "Series para ver",
   "seriesViendo": "Series viendo",
-  "seriesVistas": "Series Vistas",
+  "seriesVistas": "Series vistas",
   "siguiente": "Siguiente",
   "sinopsis": "Sinopsis",
   "temporadas": "Temporadas",
@@ -91,7 +91,12 @@
   "eliminarUsuarioModalTitle": "Eliminar el usuario, ",
   "eliminarUsuarioModalBody": "¿Estás seguro que queires borrar el tu cuenta de usuario? Toda la información asociada a este perfil se eliminará permanentemente. Esta operación no se puede deshacer.",
   "si": "Sí",
-  "no": "No"
+  "no": "No",
+  "episodioVistoCard": "Episodio visto: ",
+  "temporadaViendoCard": "Temporada viendo: ",
+  "enviarVistas": "Enviar a series vistas",
+  "eliminarSerie": "Eliminar de mi perfil",
+  "estadoSerie": "Estado de la serie: "
 
 
 }

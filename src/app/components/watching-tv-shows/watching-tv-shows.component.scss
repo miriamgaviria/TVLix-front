@@ -33,6 +33,7 @@ $color_grey_dark: #a2a2a2;
     color: inherit;
     &:hover {
       color: $color_prime;
+      cursor: pointer;
     }
   }
   &:hover {
@@ -80,7 +81,7 @@ $color_grey_dark: #a2a2a2;
     ul li {
       display: inline-block;
     }
-    .author:before {
+    .link:before {
       font-family: FontAwesome;
       margin-right: 10px;
       content: "\f007";
@@ -103,10 +104,13 @@ $color_grey_dark: #a2a2a2;
     h2 {
       font-size: 1rem;
       font-weight: 300;
-      // text-transform: uppercase;
       margin-top: 5px;
+
+      > span{
+        font-weight: bold;
+      }
     }
-    .read-more {
+    .update-link {
       text-align: right;
       a {
         color: $color_prime;

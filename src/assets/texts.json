@@ -99,6 +99,7 @@
   "estadoSerie": "Estado de la serie: ",
   "eliminarTvShowModalTitle": "Eliminar de tu perfil la serie, ",
   "eliminarTvShowModalBody": "¿Estás seguro que quieres borrar esta serie de tu perfil de usuario? Esta operación no se puede deshacer.",
-  "modificaDatos": "Modifica los datos"
-
+  "modificaDatos": "Modifica los datos",
+  "grabando": "grabando capítulos nuevos",
+  "finalizada": "no se van a grabar más capítulos"
 }

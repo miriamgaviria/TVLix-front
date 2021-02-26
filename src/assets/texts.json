@@ -89,14 +89,15 @@
   "guardarWishedTvShows": "Guardar en series para ver",
   "eliminarUsuario": "Elimina tu usuario",
   "eliminarUsuarioModalTitle": "Eliminar el usuario, ",
-  "eliminarUsuarioModalBody": "¿Estás seguro que queires borrar el tu cuenta de usuario? Toda la información asociada a este perfil se eliminará permanentemente. Esta operación no se puede deshacer.",
+  "eliminarUsuarioModalBody": "¿Estás seguro que quieres borrar tu cuenta de usuario? Toda la información asociada a este perfil se eliminará permanentemente. Esta operación no se puede deshacer.",
   "si": "Sí",
   "no": "No",
   "episodioVistoCard": "Episodio visto: ",
   "temporadaViendoCard": "Temporada viendo: ",
   "enviarVistas": "Enviar a series vistas",
   "eliminarSerie": "Eliminar de mi perfil",
-  "estadoSerie": "Estado de la serie: "
-
+  "estadoSerie": "Estado de la serie: ",
+  "eliminarTvShowModalTitle": "Eliminar de tu perfil la serie, ",
+  "eliminarTvShowModalBody": "¿Estás seguro que quieres borrar esta serie de tu perfil de usuario? Esta operación no se puede deshacer."
 
 }

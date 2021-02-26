@@ -9,7 +9,7 @@ import { UserTvShowDTO } from '../models/userTvShowDTO.model';
 })
 export class UserTvShowsService {
 
-  private urlEndPointUserTvShow: string = 'http://localhost:81/user_tv_shows';
+  private urlEndPointUserTvShow: string = 'http://localhost:81/user_tv_shows/';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -23,7 +23,12 @@ export class UserTvShowsService {
   }
 
   getUserTvShowsByStatus(userId, watchedStatus): Observable<any> {
-    return this.http.get<any>(this.urlEndPointUserTvShow + "/" + userId + "/" + watchedStatus, this.httpOptions);
+    return this.http.get<any>(this.urlEndPointUserTvShow + userId + "/" + watchedStatus, this.httpOptions);
+  }
+
+  deleteUserTvShowById (id: number): Observable<any>{
+    console.log('id', id)
+    return this.http.delete(this.urlEndPointUserTvShow + id)
   }
 
   // getTvShows(): Observable<TvShows[]> {

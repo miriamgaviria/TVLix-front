@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import  isNil from 'lodash/isNil';
-
-import { TvShowApi } from '../../models/tvShowApi.model';
-import { TvShowsService } from './../../services/tvShows.service';
-import { TvShow } from '../../models/tvShow.model';
+import swal from'sweetalert2';
 
 import Images from '../../../assets/imagesUrl.json';
 import Texts from '../../../assets/texts.json';
@@ -14,6 +10,7 @@ import TvShowStatus from '../../../assets/configs/tvShowStatus.json'
 
 import { UserTvShowDTO } from '../../models/userTvShowDTO.model';
 import { UserTvShowsService } from 'src/app/services/userTvShows.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-watching-tv-shows',
@@ -33,6 +30,7 @@ export class WatchingTvShowsComponent implements OnInit {
   isLoading: boolean = true;
 
   constructor(
+    private router: Router,
     private userTvShowsService: UserTvShowsService
   ) { }
 
@@ -43,17 +41,35 @@ export class WatchingTvShowsComponent implements OnInit {
   loadWatchingTvShows = () => {
     this.userTvShowsService.getUserTvShowsByStatus(12, this.watchedStatus.watching).subscribe(
       (data) => {
-        console.log('data', data)
         this.watchingTvShows = data;
         this.isLoading = false;
-        this.watchingTvShow = this.watchingTvShows[0];
         this.watchingTvShowStatus = this.tvShowStatus.watchingTvShow.tvShow.status;
       }
     )
   }
 
-
-  deleteTvShow = () => {
-    console.log('delete')
+  deleteTvShow = watchingTvShowId => {
+    this.isLoading = true;
+    this.userTvShowsService.deleteUserTvShowById(watchingTvShowId).subscribe(
+      (data) => {
+        swal.fire({
+          background: 'rgb(211,211,211)',
+          icon: 'success',
+          title: 'Serie eliminada'
+        }),
+        this.isLoading = false;
+        this.router.navigate(['/tvShows']);
+      },
+      (error) => {
+        console.log('error')
+        swal.fire({
+          background: 'rgb(211,211,211)',
+          icon: 'error',
+          title: 'Oops...',
+          text: 'No se ha podido eliminar la serie'
+        })
+        this.isLoading = false;
+      }
+    );
   }
 }

@@ -19,8 +19,8 @@
               <img class="card-img-top cursorPointer" src="{{watchingTvShow.tvShow.image}}" alt="Card image cap">
             </div>
             <ul class="details">
-              <li class="author"><a (click)=deleteTvShow()>{{texts.eliminarSerie}}</a></li>
               <li class="author"><a [routerLink]="['/watchingTvShowsForm/', watchingTvShow.tvShow.id]">{{texts.enviarVistas}}</a></li>
+              <li class="author"><a data-toggle="modal" data-target="#deleteConfirmDialog">{{texts.eliminarSerie}}</a></li>
             </ul>
           </div>
           <div class="data">
@@ -34,6 +34,27 @@
 
     </div>
 
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="deleteConfirmDialog" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmDialogCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteConfirmDialogLongTitle" style="color:black">{{texts.eliminarTvShowModalTitle}}<strong>{{watchingTvShow.tvShow.name}}</strong></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <span style="color: black">{{texts.eliminarTvShowModalBody}}</span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">{{texts.no}}</button>
+          <button type="button" (click)="deleteTvShow(watchingTvShow.id)" class="btn btn-primary" data-dismiss="modal">{{texts.si}}</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

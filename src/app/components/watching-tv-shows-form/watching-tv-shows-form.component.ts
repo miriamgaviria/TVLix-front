@@ -40,7 +40,6 @@ export class WatchingTvShowsFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.tvShowId = this.route.snapshot.paramMap.get("tvShowId");
-    localStorage.removeItem('tvShowId');
     this.userId = localStorage.getItem('userId');
     localStorage.removeItem('userId');
     console.log('this.userId', this.userId)

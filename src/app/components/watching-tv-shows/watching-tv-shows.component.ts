@@ -6,7 +6,6 @@ import swal from'sweetalert2';
 import Images from '../../../assets/imagesUrl.json';
 import Texts from '../../../assets/texts.json';
 import WatchedStatus from '../../../assets/configs/watchedStatus.json'
-import TvShowStatus from '../../../assets/configs/tvShowStatus.json'
 
 import { UserTvShowDTO } from '../../models/userTvShowDTO.model';
 import { UserTvShowsService } from 'src/app/services/userTvShows.service';
@@ -21,11 +20,9 @@ export class WatchingTvShowsComponent implements OnInit {
   images: any = Images;
   texts: any = Texts;
   watchedStatus: any = WatchedStatus;
-  tvShowStatus: any = TvShowStatus;
 
   watchingTvShows: UserTvShowDTO[];
   watchingTvShow: UserTvShowDTO;
-  watchingTvShowStatus: string;
 
   isLoading: boolean = true;
 

@@ -33,7 +33,7 @@ const routes: Routes = [
   {path: 'user', component: UserComponent},
   {path: 'userForm', component: UserFormComponent},
   {path: 'watchingTvShows', component: WatchingTvShowsComponent},
-  {path: 'watchingTvShowsForm', component: WatchingTvShowsFormComponent},
+  {path: 'watchingTvShowsForm/:tvShowId', component: WatchingTvShowsFormComponent},
   {path: 'wishedTvShows', component: WishedTvShowsComponent},
   {path: 'wishedTvShowsForm', component: WishedTvShowsFormComponent},
 ];

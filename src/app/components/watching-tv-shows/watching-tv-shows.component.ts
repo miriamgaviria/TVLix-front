@@ -52,9 +52,6 @@ export class WatchingTvShowsComponent implements OnInit {
     )
   }
 
-  navigateToWatchingTvShowForm = () => {
-    console.log('navigate')
-  }
 
   deleteTvShow = () => {
     console.log('delete')

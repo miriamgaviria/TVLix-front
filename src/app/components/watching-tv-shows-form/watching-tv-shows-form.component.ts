@@ -11,6 +11,7 @@ import Texts from '../../../assets/texts.json';
 import WatchedStatus from '../../../assets/configs/watchedStatus.json'
 
 import { UserTvShowDTO } from '../../models/userTvShowDTO.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-watching-tv-shows-form',
@@ -33,10 +34,12 @@ export class WatchingTvShowsFormComponent implements OnInit {
 
   validateForm: boolean = true;
 
-  constructor(private tvShowsService: TvShowsService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private tvShowsService: TvShowsService) { }
 
   ngOnInit(): void {
-    this.tvShowId = localStorage.getItem('tvShowId');
+    this.tvShowId = this.route.snapshot.paramMap.get("tvShowId");
     localStorage.removeItem('tvShowId');
     this.userId = localStorage.getItem('userId');
     localStorage.removeItem('userId');

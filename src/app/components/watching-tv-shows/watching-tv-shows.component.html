@@ -19,8 +19,8 @@
               <img class="card-img-top cursorPointer" src="{{watchingTvShow.tvShow.image}}" alt="Card image cap">
             </div>
             <ul class="details">
-              <li class="author"><a (click)=navigateToWatchingTvShowForm()>{{texts.enviarVistas}}</a></li>
               <li class="author"><a (click)=deleteTvShow()>{{texts.eliminarSerie}}</a></li>
+              <li class="author"><a [routerLink]="['/watchingTvShowsForm/', watchingTvShow.tvShow.id]">{{texts.enviarVistas}}</a></li>
             </ul>
           </div>
           <div class="data">

@@ -22,7 +22,7 @@ import { CommonModule } from '@angular/common';
 const routes: Routes = [
 
   {path: 'finishedTvShows', component: FinishedTvShowsComponent},
-  {path: 'finishedTvShowsForm', component: FinishedTvShowsFormComponent},
+  {path: 'finishedTvShowsForm/:tvShowId', component: FinishedTvShowsFormComponent},
   {path: 'footer', component: FooterComponent},
   {path: 'foundTvShows/:searchName', component: FoundTvShowsComponent},
   {path: 'header', component: HeaderComponent},

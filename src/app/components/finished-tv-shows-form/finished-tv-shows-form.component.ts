@@ -14,6 +14,7 @@ import { UserTvShowsService } from 'src/app/services/userTvShows.service';
 import Images from '../../../assets/imagesUrl.json';
 import Texts from '../../../assets/texts.json';
 import WatchedStatus from '../../../assets/configs/watchedStatus.json';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-finished-tv-shows-form',
@@ -38,14 +39,14 @@ export class FinishedTvShowsFormComponent implements OnInit {
   validateForm: boolean = true;
 
   constructor(
+    private route: ActivatedRoute,
     private tvShowsService: TvShowsService,
     private userService: UserService,
     private userTvShowsService: UserTvShowsService,
     ) { }
 
   ngOnInit(): void {
-    this.tvShowId = localStorage.getItem('tvShowId');
-    localStorage.removeItem('tvShowId');
+    this.tvShowId = this.route.snapshot.paramMap.get("tvShowId");
     this.userId = localStorage.getItem('userId');
     localStorage.removeItem('userId');
 

@@ -25,7 +25,8 @@ export class TvShowDetailComponent implements OnInit {
   tvShowDetail: TvShow;
   tvShowId: any;
 
-  constructor(private route: ActivatedRoute,
+  constructor(
+    private route: ActivatedRoute,
     private tvShowsService: TvShowsService) { }
 
   ngOnInit(): void {

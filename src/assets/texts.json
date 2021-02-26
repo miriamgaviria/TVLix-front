@@ -79,7 +79,7 @@
   "valoracion": "Valoración",
   "valoraciones": "Valoraciones",
   "valoraSerie": "Valora la serie",
-  "watchingTvShowsFormHeader": " a la lista de series vistas",
+  "watchingTvShowsFormHeader": " a la lista de series viendo",
   "western": "Western",
   "wishedTvShowsFormHeader": " a la lista de series vistas",
   "plataformaVer": "¿En qué plataforma puedes ver la serie",
@@ -98,6 +98,7 @@
   "eliminarSerie": "Eliminar de mi perfil",
   "estadoSerie": "Estado de la serie: ",
   "eliminarTvShowModalTitle": "Eliminar de tu perfil la serie, ",
-  "eliminarTvShowModalBody": "¿Estás seguro que quieres borrar esta serie de tu perfil de usuario? Esta operación no se puede deshacer."
+  "eliminarTvShowModalBody": "¿Estás seguro que quieres borrar esta serie de tu perfil de usuario? Esta operación no se puede deshacer.",
+  "modificaDatos": "Modifica los datos"
 
 }

@@ -19,7 +19,7 @@
               <img class="card-img-top cursorPointer" src="{{watchingTvShow.tvShow.image}}" alt="Card image cap">
             </div>
             <ul class="details">
-              <li class="author"><a [routerLink]="['/watchingTvShowsForm/', watchingTvShow.tvShow.id]">{{texts.enviarVistas}}</a></li>
+              <li class="author"><a [routerLink]="['/finishedTvShowsForm/', watchingTvShow.tvShow.id]">{{texts.enviarVistas}}</a></li>
               <li class="author"><a data-toggle="modal" data-target="#deleteConfirmDialog">{{texts.eliminarSerie}}</a></li>
             </ul>
           </div>
@@ -28,6 +28,9 @@
               <h2><span>{{texts.episodioVistoCard}}{{watchingTvShow.episodeWatched}} <strong style='color: skyblue; font-weight: bold'>/</strong > {{texts.temporadaViendoCard}} {{watchingTvShow.seasonWatched}}</span></h2>
               <p>{{watchingTvShow.tvShow.sinopsis}}</p>
               <p>{{texts.estadoSerie}} {{watchingTvShow.tvShow.status}}</p>
+              <p class="read-more">
+                <a [routerLink]="['/watchingTvShowsForm/', watchingTvShow.tvShow.id]"><strong>{{texts.modificaDatos}}</strong></a>
+              </p>
           </div>
         </div>
       </div>

@@ -43,7 +43,6 @@ export class WatchingTvShowsComponent implements OnInit {
       (data) => {
         this.watchingTvShows = data;
         this.isLoading = false;
-        this.watchingTvShowStatus = this.tvShowStatus.watchingTvShow.tvShow.status;
       }
     )
   }

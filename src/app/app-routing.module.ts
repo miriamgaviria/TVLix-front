@@ -35,7 +35,7 @@ const routes: Routes = [
   {path: 'watchingTvShows', component: WatchingTvShowsComponent},
   {path: 'watchingTvShowsForm/:tvShowId', component: WatchingTvShowsFormComponent},
   {path: 'wishedTvShows', component: WishedTvShowsComponent},
-  {path: 'wishedTvShowsForm', component: WishedTvShowsFormComponent},
+  {path: 'wishedTvShowsForm/:tvShowId', component: WishedTvShowsFormComponent},
 ];
 
 @NgModule({

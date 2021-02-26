@@ -73,8 +73,4 @@ export class TvShowsComponent implements OnInit {
       this.router.navigate(['/foundTvShows/', this.searchName]);
     }
   }
-
-  setIdTvShow (tvShowId) {
-    localStorage.setItem('tvShowId', tvShowId);
-  }
 }

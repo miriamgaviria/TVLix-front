@@ -11,7 +11,8 @@ import Texts from '../../../assets/texts.json';
 import WatchedStatus from '../../../assets/configs/watchedStatus.json';
 import StreamingPlatforms from '../../../assets/configs/streamingPlatforms.json'
 
-import { UserTvShow } from './../../models/userTvShow.model';
+import { UserTvShowDTO } from '../../models/userTvShowDTO.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-wished-tv-shows-form',
@@ -28,18 +29,19 @@ export class WishedTvShowsFormComponent implements OnInit {
 
   tvShowApi: TvShowApi;
   tvShow: TvShow;
-  wishedTvShow: UserTvShow = new UserTvShow();
+  wishedTvShow: UserTvShowDTO = new UserTvShowDTO();
 
   tvShowId: string;
   userId: any;
 
   validateForm: boolean = true;
 
-  constructor(private tvShowsService: TvShowsService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private tvShowsService: TvShowsService) { }
 
   ngOnInit(): void {
-    this.tvShowId = localStorage.getItem('tvShowId');
-    localStorage.removeItem('tvShowId');
+    this.tvShowId = this.route.snapshot.paramMap.get("tvShowId");
     this.userId = localStorage.getItem('userId');
     localStorage.removeItem('userId');
     console.log('this.userId', this.userId)
@@ -53,9 +55,9 @@ export class WishedTvShowsFormComponent implements OnInit {
     )
   }
 
-  public saveWishedTvShow(wishedTvShow: UserTvShow) {
+  public saveWishedTvShow(wishedTvShow: UserTvShowDTO) {
     this.wishedTvShow.watchedStatus = this.watchedStatus.wished;
-    this.wishedTvShow.userId =this.userId;
+    // this.wishedTvShow.userId =this.userId;
     console.log('this.wishedTvShow', this.wishedTvShow)
     console.log('this.tvShow', this.tvShow);
   // this.opinionService.postOpinion(this.opinion).subscribe(

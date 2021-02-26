@@ -54,8 +54,4 @@ export class TvShowDetailComponent implements OnInit {
     this.originalPicture = false;
     this.smallPicturesSrc = pictures;
   }
-
-  setIdTvShow (tvShowId) {
-    localStorage.setItem('tvShowId', tvShowId);
-  }
 }

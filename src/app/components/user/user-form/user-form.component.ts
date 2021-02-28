@@ -9,9 +9,9 @@ import { User } from '../../../models/user.model'
 import { UserService } from 'src/app/services/user.service';
 
 import Texts from '../../../../assets/texts.json';
-import GenreTvShows from '../../../../assets/configs/genreTvShows.json'
-import TypeTvShows from '../../../../assets/configs/typeTvShows.json'
-import { isEmpty } from 'lodash';
+import GenreTvShows from '../../../../assets/configs/genreTvShows.json';
+import TypeTvShows from '../../../../assets/configs/typeTvShows.json';
+
 
 @Component({
   selector: 'app-user-form',

@@ -18,6 +18,8 @@
       </form>
     </div>
 
+    <h3 *ngIf="watchingTvShows.length == 0" class="noWatchingTvShows">{{texts.noWatchingTvShows}}</h3>
+
     <div class="row d-flex justify-content-center groupCards">
       <div *ngFor="let watchingTvShow of watchingTvShows">
         <div class="blog-card">

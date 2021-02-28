@@ -101,5 +101,6 @@
   "eliminarTvShowModalBody": "¿Estás seguro que quieres borrar esta serie de tu perfil de usuario? Esta operación no se puede deshacer.",
   "modificaDatos": "Modifica los datos",
   "grabando": "grabando capítulos nuevos",
-  "finalizada": "no se van a grabar más capítulos"
+  "finalizada": "no se van a grabar más capítulos",
+  "noWatchingTvShows": "No tienes ninguna serie en la lista de serie viendo"
 }

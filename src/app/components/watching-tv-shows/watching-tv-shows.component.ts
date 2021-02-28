@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
+import isEmpty from 'lodash/isEmpty';
 
 import swal from'sweetalert2';
 
@@ -74,7 +75,12 @@ export class WatchingTvShowsComponent implements OnInit {
   onSearch(event: any){
     this.isLoading = true;
     this.searchName = event.target.searchName.value;
-    this.watchingTvShows = this.watchingTvShows.filter(watchingTvShow =>  watchingTvShow.tvShow.name.toLowerCase().includes(this.searchName.toLowerCase()))
+    if (isEmpty(this.searchName)) {
+      this.watchingTvShows;
+      console.log('here')
+    } else {
+      this.watchingTvShows = this.watchingTvShows.filter(watchingTvShow =>  watchingTvShow.tvShow.name.toLowerCase().includes(this.searchName.toLowerCase()));
+    }
     this.isLoading = false;
   }
 

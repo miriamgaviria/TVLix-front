@@ -23,6 +23,7 @@ export class WatchingTvShowsComponent implements OnInit {
 
   watchingTvShows: UserTvShowDTO[];
   watchingTvShow: UserTvShowDTO;
+  watchingTvShowIdToDelete: number;
 
   isLoading: boolean = true;
 
@@ -44,9 +45,9 @@ export class WatchingTvShowsComponent implements OnInit {
     )
   }
 
-  deleteTvShow = watchingTvShowId => {
+  deleteTvShow = () => {
     this.isLoading = true;
-    this.userTvShowsService.deleteUserTvShowById(watchingTvShowId).subscribe(
+    this.userTvShowsService.deleteUserTvShowById(this.watchingTvShowIdToDelete).subscribe(
       (data) => {
         swal.fire({
           background: 'rgb(211,211,211)',
@@ -67,5 +68,9 @@ export class WatchingTvShowsComponent implements OnInit {
         this.isLoading = false;
       }
     );
+  }
+
+  setWatchingTvShowIdToDelete = watchingTvShowIdToDelete => {
+    this.watchingTvShowIdToDelete = watchingTvShowIdToDelete;
   }
 }

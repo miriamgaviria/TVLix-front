@@ -20,7 +20,7 @@
             </div>
             <ul class="details">
               <li class="link"><a [routerLink]="['/finishedTvShowsForm/', watchingTvShow.tvShow.id]">{{texts.enviarVistas}}</a></li>
-              <li class="link"><a data-toggle="modal" data-target="#deleteConfirmDialog">{{texts.eliminarSerie}}</a></li>
+              <li class="link"><a data-toggle="modal" data-target="#deleteConfirmDialog" (click)="setWatchingTvShowIdToDelete(watchingTvShow.id)">{{texts.eliminarSerie}}</a></li>
             </ul>
           </div>
           <div class="data">
@@ -42,7 +42,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="deleteConfirmDialogLongTitle" style="color:black">{{texts.eliminarTvShowModalTitle}}<strong>{{watchingTvShow.id}}</strong></h5>
+          <h5 class="modal-title" id="deleteConfirmDialogLongTitle" style="color:black">{{texts.eliminarTvShowModalTitle}}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -52,7 +52,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">{{texts.no}}</button>
-          <button type="button" (click)="deleteTvShow(watchingTvShow.id)" class="btn btn-primary" data-dismiss="modal">{{texts.si}}</button>
+          <button type="button" (click)="deleteTvShow()" class="btn btn-primary" data-dismiss="modal">{{texts.si}}</button>
         </div>
       </div>
     </div>

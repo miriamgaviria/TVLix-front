@@ -21,8 +21,9 @@ export class WatchingTvShowsComponent implements OnInit {
   texts: any = Texts;
   watchedStatus: any = WatchedStatus;
 
+  searchName: string;
+
   watchingTvShows: UserTvShowDTO[];
-  watchingTvShow: UserTvShowDTO;
   watchingTvShowIdToDelete: number;
 
   isLoading: boolean = true;
@@ -68,6 +69,13 @@ export class WatchingTvShowsComponent implements OnInit {
         this.isLoading = false;
       }
     );
+  }
+
+  onSearch(event: any){
+    this.isLoading = true;
+    this.searchName = event.target.searchName.value;
+    this.watchingTvShows = this.watchingTvShows.filter(watchingTvShow =>  watchingTvShow.tvShow.name.toLowerCase().includes(this.searchName.toLowerCase()))
+    this.isLoading = false;
   }
 
   setWatchingTvShowIdToDelete = watchingTvShowIdToDelete => {

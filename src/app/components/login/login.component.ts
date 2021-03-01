@@ -35,9 +35,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    localStorage.removeItem('userId');
-    localStorage.removeItem('userToUpdate');
-    localStorage.removeItem('userName');
   }
 
   checkIsAdmin(user: User){
@@ -64,6 +61,8 @@ export class LoginComponent implements OnInit {
             response => {
               localStorage.setItem('userId', response.id);
               localStorage.setItem('userName', response.name);
+              sessionStorage.setItem('userId', response.id);
+              sessionStorage.setItem('userName', response.name);
             })
           this.router.navigate(['/tvShows']);
         }

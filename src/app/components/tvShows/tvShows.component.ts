@@ -45,7 +45,6 @@ export class TvShowsComponent implements OnInit {
   }
 
   goToDetail(tvShowId) {
-    localStorage.setItem('tvShowId', tvShowId);
     this.router.navigate(['/tvShowDetail/', tvShowId]);
   }
 

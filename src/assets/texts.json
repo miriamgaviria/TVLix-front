@@ -108,5 +108,8 @@
   "seriesVistasHeader": "Listado de series que ya has visto",
   "posicionPorPuntacion": "Posición: ",
   "tuPuntuacion": "Esta es su puntuación: ",
-  "fechaFinalizacionVista": "Fecha en la que terminaste de ver la serie: "
+  "fechaFinalizacionVista": "Fecha en la que terminaste de ver la serie: ",
+  "seriesVerHeader": "Listado de series que quieres ver",
+  "enviarViendo": "Enviar a series que estás viendo",
+  "dondeVer": "Donde se puede ver la serie: "
 }

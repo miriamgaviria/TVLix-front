@@ -14,7 +14,7 @@ import Texts from '../../../assets/texts.json';
 @Component({
   selector: 'app-tvshows',
   templateUrl: './tvshows.component.html',
-  styleUrls: ['./tvshows.component.css']
+  styleUrls: ['./tvshows.component.scss']
 })
 
 export class TvShowsComponent implements OnInit {
@@ -42,10 +42,6 @@ export class TvShowsComponent implements OnInit {
         this.isLoading = false;
       }
     )
-  }
-
-  goToDetail(tvShowId) {
-    this.router.navigate(['/tvShowDetail/', tvShowId]);
   }
 
   goToNextTvShows(page){

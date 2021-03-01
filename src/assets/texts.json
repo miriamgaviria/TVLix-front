@@ -102,5 +102,7 @@
   "modificaDatos": "Modifica los datos",
   "grabando": "grabando capítulos nuevos",
   "finalizada": "no se van a grabar más capítulos",
-  "noWatchingTvShows": "No tienes ninguna serie en la lista de serie viendo"
+  "noWatchingTvShows": "Actualmente no tienes ninguna serie en la lista de series viendo",
+  "seriesViendoHeader": "Listado de series que estás viendo actualmente",
+  "vuelveAlListado": "Vuelve al listado"
 }

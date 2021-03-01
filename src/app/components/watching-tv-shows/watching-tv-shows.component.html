@@ -8,7 +8,7 @@
 
   <div *ngIf="!isLoading">
     <div class="row-fluid pageTitle">
-      <h2>{{texts.seriesViendo}}</h2>
+      <h2>{{texts.seriesViendoHeader}}</h2>
     </div>
 
     <div class="searchContainer">
@@ -18,11 +18,16 @@
       </form>
     </div>
 
-    <h3 *ngIf="watchingTvShows.length == 0" class="noWatchingTvShows">{{texts.noWatchingTvShows}}</h3>
+    <div *ngIf="watchingTvShows.length == 0" class="noWatchingTvShows">
+      <h3>{{texts.noWatchingTvShows}}</h3>
+      <div class="form-group row rowForm buttonPosition">
+        <button class="btn btn-primary buttonStyle buttonContainer" (click)="loadWatchingTvShows()">{{texts.vuelveAlListado}}</button>
+      </div>
+    </div>
 
     <div class="row d-flex justify-content-center groupCards">
       <div *ngFor="let watchingTvShow of watchingTvShows">
-        <div class="blog-card">
+        <div class="blog-card watchingTvShowCard">
           <div class="meta">
             <div class="photo">
               <img class="card-img-top cursorPointer" src="{{watchingTvShow.tvShow.image}}" alt="Card image cap">

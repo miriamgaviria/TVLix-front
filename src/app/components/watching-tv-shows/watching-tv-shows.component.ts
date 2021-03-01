@@ -35,6 +35,7 @@ export class WatchingTvShowsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.watchingTvShows = [];
     this.loadWatchingTvShows();
   }
 

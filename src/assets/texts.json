@@ -102,7 +102,11 @@
   "modificaDatos": "Modifica los datos",
   "grabando": "grabando capítulos nuevos",
   "finalizada": "no se van a grabar más capítulos",
-  "noWatchingTvShows": "Actualmente no tienes ninguna serie en la lista de series viendo",
+  "noTvShows": "Actualmente no tienes ninguna serie en este liado",
   "seriesViendoHeader": "Listado de series que estás viendo actualmente",
-  "vuelveAlListado": "Vuelve al listado"
+  "vuelveAlListado": "Vuelve al listado",
+  "seriesVistasHeader": "Listado de series que ya has visto",
+  "posicionPorPuntacion": "Posición: ",
+  "tuPuntuacion": "Esta es su puntuación: ",
+  "fechaFinalizacionVista": "Fecha en la que terminaste de ver la serie: "
 }

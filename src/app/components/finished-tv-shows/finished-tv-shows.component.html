@@ -1,5 +1,141 @@
-<div class="container">
+<div class="container-fluid">
 
-    <h1>Series vistas</h1>
+  <div *ngIf="isLoading" class="d-flex d-flexSpinner justify-content-center">
+      <div class="spinner-border text-info" role="status">
+          <span class="sr-only">{{texts.loading}}</span>
+      </div>
+  </div>
+
+  <div *ngIf="!isLoading">
+    <div class="row-fluid pageTitle">
+      <h2>{{texts.seriesVistasHeader}}</h2>
+    </div>
+
+    <div class="searchContainer">
+      <form class="form-inline my-2 my-lg-0" (ngSubmit)="onSearch($event)">
+          <input type="text" class="form-control mr-sm-2" placeholder="{{texts.anadePalabra}}" name="searchName" value="" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0 buttonStyle" type="submit" >{{texts.search}}</button>
+      </form>
+    </div>
+
+    <div *ngIf="finishedTvShows.length == 0" class="noFinishedTvShows">
+      <h3>{{texts.noTvShows}}</h3>
+      <div class="form-group row rowForm buttonPosition">
+        <button class="btn btn-primary buttonStyle buttonContainer" (click)="loadFinishedTvShows()">{{texts.vuelveAlListado}}</button>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-center groupCards">
+      <div *ngFor="let finishedTvShow of finishedTvShows">
+        <div class="blog-card finishedTvShowCard">
+          <div class="meta">
+            <div class="photo">
+              <img class="card-img-top cursorPointer" src="{{finishedTvShow.tvShow.image}}" alt="Card image cap">
+            </div>
+            <ul class="details">
+              <!-- <li class="link"><a [routerLink]="['/finishedTvShowsForm/', finishedTvShow.tvShow.id]">{{texts.enviarVistas}}</a></li> -->
+              <li class="link"><a data-toggle="modal" data-target="#deleteConfirmDialog" (click)="setFinishedTvShowIdToDelete(finishedTvShow.id)">{{texts.eliminarSerie}}</a></li>
+            </ul>
+          </div>
+          <div class="data">
+              <h1>{{finishedTvShow.tvShow.name}}</h1>
+              <!-- <h2 style='text-align: right;'>{{texts.puntuacion}} <span>{{finishedTvShow.tvShow.rating}}</span> <span style='color: skyblue; font-size: larger;'> -- </span> {{texts.posicionPorPuntacion}} <span>{{finishedTvShow.tvShow.rating_count}}</span></h2> -->
+              <p>{{finishedTvShow.opinion}}</p>
+              <div class="rateContainer">
+                <div>{{texts.tuPuntuacion}}</div>
+                <div *ngIf="finishedTvShow.rate == 1" class="rate">
+                  <input #abc type="radio" id="star1" name="rate"/>
+                  <label for="star1" class="NotColored"></label>
+                  <input #abc type="radio" id="star2" name="rate"/>
+                  <label for="star2" class="NotColored"></label>
+                  <input #abc type="radio" id="star3" name="rate"/>
+                  <label for="star3" class="NotColored"></label>
+                  <input #abc type="radio" id="star4" name="rate"/>
+                  <label for="star4" class="NotColored"></label>
+                  <input #abc type="radio" id="star5" name="rate"/>
+                  <label for="star5" class="colored"></label>
+                </div>
+                <div *ngIf="finishedTvShow.rate == 2" class="rate">
+                  <input #abc type="radio" id="star1" name="rate"/>
+                  <label for="star1" class="NotColored"></label>
+                  <input #abc type="radio" id="star2" name="rate"/>
+                  <label for="star2" class="NotColored"></label>
+                  <input #abc type="radio" id="star3" name="rate"/>
+                  <label for="star3" class="NotColored"></label>
+                  <input #abc type="radio" id="star4" name="rate"/>
+                  <label for="star4" class="colored"></label>
+                  <input #abc type="radio" id="star5" name="rate"/>
+                  <label for="star5" class="colored"></label>
+                </div>
+                <div *ngIf="finishedTvShow.rate == 3" class="rate">
+                  <input #abc type="radio" id="star1" name="rate"/>
+                  <label for="star1" class="NotColored"></label>
+                  <input #abc type="radio" id="star2" name="rate"/>
+                  <label for="star2" class="NotColored"></label>
+                  <input #abc type="radio" id="star3" name="rate"/>
+                  <label for="star3" class="colored"></label>
+                  <input #abc type="radio" id="star4" name="rate"/>
+                  <label for="star4" class="colored"></label>
+                  <input #abc type="radio" id="star5" name="rate"/>
+                  <label for="star5" class="colored"></label>
+                </div>
+                <div *ngIf="finishedTvShow.rate == 4" class="rate">
+                  <input #abc type="radio" id="star1" name="rate"/>
+                  <label for="star1" class="NotColored"></label>
+                  <input #abc type="radio" id="star2" name="rate"/>
+                  <label for="star2" class="colored"></label>
+                  <input #abc type="radio" id="star3" name="rate"/>
+                  <label for="star3"  class="colored"></label>
+                  <input #abc type="radio" id="star4" name="rate"/>
+                  <label for="star4"  class="colored"></label>
+                  <input #abc type="radio" id="star5" name="rate"/>
+                  <label for="star5"  class="colored"></label>
+                </div>
+                <div *ngIf="finishedTvShow.rate == 5" class="rate">
+                  <input #abc type="radio" id="star1" name="rate"/>
+                  <label for="star1" class="colored"></label>
+                  <input #abc type="radio" id="star2" name="rate"/>
+                  <label for="star2" class="colored"></label>
+                  <input #abc type="radio" id="star3" name="rate"/>
+                  <label for="star3" class="colored"></label>
+                  <input #abc type="radio" id="star4" name="rate"/>
+                  <label for="star4" class="colored"></label>
+                  <input #abc type="radio" id="star5" name="rate"/>
+                  <label for="star5" class="colored"></label>
+                </div>
+              </div>
+
+              <p>{{texts.fechaFinalizacionVista}} <strong >{{finishedTvShow.date}}</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="deleteConfirmDialog" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmDialogCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteConfirmDialogLongTitle" style="color:black">{{texts.eliminarTvShowModalTitle}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <span style="color: black">{{texts.eliminarTvShowModalBody}}</span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">{{texts.no}}</button>
+          <button type="button" (click)="deleteTvShow()" class="btn btn-primary" data-dismiss="modal">{{texts.si}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+
+
+
 

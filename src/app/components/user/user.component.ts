@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import isNil from 'lodash/isNil';
+
 import swal from'sweetalert2';
 
 import { User } from './../../models/user.model';
@@ -17,7 +19,9 @@ export class UserComponent implements OnInit {
   texts: any = Texts;
 
   isLoading: boolean;
+
   user: User;
+  userIdString: string;
   userId: number;
 
   isDeletedUser: boolean;
@@ -26,7 +30,9 @@ export class UserComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.userId = parseInt(localStorage.getItem('userId'));
+    this.userIdString = sessionStorage.getItem('userId');
+    this.userId = parseInt(this.userIdString);
+    if (isNil(this.userIdString)) this.router.navigate(['/login']);  
     this.isLoading = true;
     this.userService.getUserById(this.userId).subscribe(
       (data) => {

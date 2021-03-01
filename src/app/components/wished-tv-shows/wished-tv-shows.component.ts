@@ -29,6 +29,7 @@ export class WishedTvShowsComponent implements OnInit {
   wishedTvShowIdToDelete: number;
 
   isLoading: boolean = true;
+  isSearched: boolean = false;
 
   userId: string;
 
@@ -45,13 +46,15 @@ export class WishedTvShowsComponent implements OnInit {
   }
 
   loadWishedTvShows = () => {
-    this.userTvShowsService.getUserTvShowsByStatus(1, this.watchedStatus.wished).subscribe(
+    this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.wished).subscribe(
       (data) => {
         this.wishedTvShows = data;
         this.isLoading = false;
       }
     )
   }
+
+
 
   deleteTvShow = () => {
     this.isLoading = true;
@@ -88,6 +91,7 @@ export class WishedTvShowsComponent implements OnInit {
       this.wishedTvShows = this.wishedTvShows.filter(wishedTvShow => wishedTvShow.tvShow.name.toLowerCase().includes(this.searchName.toLowerCase()));
     }
     this.isLoading = false;
+    this.isSearched = true;
   }
 
   setWishedTvShowIdToDelete = wishedTvShowIdToDelete => {

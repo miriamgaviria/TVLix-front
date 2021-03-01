@@ -29,6 +29,7 @@ export class WatchingTvShowsComponent implements OnInit {
   watchingTvShowIdToDelete: number;
 
   isLoading: boolean = true;
+  isSearched: boolean = false;
 
   userId: string;
 
@@ -45,7 +46,7 @@ export class WatchingTvShowsComponent implements OnInit {
   }
 
   loadWatchingTvShows = () => {
-    this.userTvShowsService.getUserTvShowsByStatus(12, this.watchedStatus.watching).subscribe(
+    this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.watching).subscribe(
       (data) => {
         this.watchingTvShows = data;
         this.isLoading = false;
@@ -88,6 +89,7 @@ export class WatchingTvShowsComponent implements OnInit {
       this.watchingTvShows = this.watchingTvShows.filter(watchingTvShow =>  watchingTvShow.tvShow.name.toLowerCase().includes(this.searchName.toLowerCase()));
     }
     this.isLoading = false;
+    this.isSearched = true;
   }
 
   setWatchingTvShowIdToDelete = watchingTvShowIdToDelete => {

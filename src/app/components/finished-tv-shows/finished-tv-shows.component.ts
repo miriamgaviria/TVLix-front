@@ -29,6 +29,7 @@ export class FinishedTvShowsComponent implements OnInit {
   finishedTvShowIdToDelete: number;
 
   isLoading: boolean = true;
+  isSearched: boolean = false;
 
   userId: string;
 
@@ -83,11 +84,11 @@ export class FinishedTvShowsComponent implements OnInit {
     this.searchName = event.target.searchName.value;
     if (isEmpty(this.searchName)) {
       this.finishedTvShows;
-      console.log('here')
     } else {
       this.finishedTvShows = this.finishedTvShows.filter(finishedTvShow => finishedTvShow.tvShow.name.toLowerCase().includes(this.searchName.toLowerCase()));
     }
     this.isLoading = false;
+    this.isSearched = true;
   }
 
   setFinishedTvShowIdToDelete = finishedTvShowIdToDelete => {

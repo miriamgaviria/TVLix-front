@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import isEmpty from 'lodash/isEmpty';
+import isNil from 'lodash/isNil';
 
 import swal from'sweetalert2';
 
@@ -29,12 +30,16 @@ export class WatchingTvShowsComponent implements OnInit {
 
   isLoading: boolean = true;
 
+  userId: string;
+
   constructor(
     private router: Router,
     private userTvShowsService: UserTvShowsService
   ) { }
 
   ngOnInit(): void {
+    this.userId = sessionStorage.getItem('userId');
+    if (isNil(this.userId)) this.router.navigate(['/login']);
     this.watchingTvShows = [];
     this.loadWatchingTvShows();
   }

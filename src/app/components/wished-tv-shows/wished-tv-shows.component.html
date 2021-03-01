@@ -19,7 +19,7 @@
     </div>
 
     <div *ngIf="wishedTvShows.length == 0" class="noWishedTvShows">
-      <h3>{{texts.noTvShows}}</h3>
+      <h3 *ngIf="isSearched else notSearched">{{texts.noTvShowsFound}}</h3><ng-template #notSearched><h3>{{texts.noTvShows}}<strong>{{searchName}}</strong></h3></ng-template>
       <div class="form-group row rowForm buttonPosition">
         <button class="btn btn-primary buttonStyle buttonContainer" (click)="loadWishedTvShows()">{{texts.vuelveAlListado}}</button>
       </div>

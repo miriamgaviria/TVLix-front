@@ -102,7 +102,7 @@
   "modificaDatos": "Modifica los datos",
   "grabando": "grabando capítulos nuevos",
   "finalizada": "no se van a grabar más capítulos",
-  "noTvShows": "Actualmente no tienes ninguna serie en este liado",
+  "noTvShows": "Actualmente no tienes ninguna serie en este listado",
   "seriesViendoHeader": "Listado de series que estás viendo actualmente",
   "vuelveAlListado": "Vuelve al listado",
   "seriesVistasHeader": "Listado de series que ya has visto",
@@ -111,5 +111,6 @@
   "fechaFinalizacionVista": "Fecha en la que terminaste de ver la serie: ",
   "seriesVerHeader": "Listado de series que quieres ver",
   "enviarViendo": "Enviar a series que estás viendo",
-  "dondeVer": "Donde se puede ver la serie: "
+  "dondeVer": "Donde se puede ver la serie: ",
+  "noTvShowsFound": "No hay series que contentan este término de búsqueda "
 }

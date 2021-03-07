@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
               sessionStorage.setItem('userId', response.id);
               sessionStorage.setItem('userName', response.name);
             })
-          this.router.navigate(['/tvShows']);
+          this.router.navigate(['/userTvShows']);
         }
       }
     )

@@ -1,3 +1,4 @@
+import { UserTvShowsComponent } from './components/user-tv-shows/user-tv-shows.component';
 import { FinishedTvShowsComponent } from './components/finished-tv-shows/finished-tv-shows.component';
 import { FinishedTvShowsFormComponent } from './components/finished-tv-shows-form/finished-tv-shows-form.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -30,7 +31,9 @@ const routes: Routes = [
   {path: 'opinions', component: OpinionsComponent},
   {path: 'opinionForm', component: OpinionFormComponent},
   {path: 'tvShowDetail/:tvShowId', component: TvShowDetailComponent},
+  {path: 'tvShows', component: TvShowsComponent},
   {path: 'user', component: UserComponent},
+  {path: 'userTvShows', component: UserTvShowsComponent},
   {path: 'userForm', component: UserFormComponent},
   {path: 'watchingTvShows', component: WatchingTvShowsComponent},
   {path: 'watchingTvShowsForm/:tvShowId', component: WatchingTvShowsFormComponent},

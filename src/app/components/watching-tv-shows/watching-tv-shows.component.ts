@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import isEmpty from 'lodash/isEmpty';
 import isNil from 'lodash/isNil';
 
 import swal from'sweetalert2';
 
+import { UserTvShowDTO } from '../../models/userTvShowDTO.model';
+
+import { UserTvShowsService } from 'src/app/services/userTvShows.service';
+
 import Images from '../../../assets/imagesUrl.json';
 import Texts from '../../../assets/texts.json';
 import WatchedStatus from '../../../assets/configs/watchedStatus.json'
-
-import { UserTvShowDTO } from '../../models/userTvShowDTO.model';
-import { UserTvShowsService } from 'src/app/services/userTvShows.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-watching-tv-shows',

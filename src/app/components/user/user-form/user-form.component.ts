@@ -128,7 +128,7 @@ export class UserFormComponent implements OnInit {
             icon: 'success',
             title: 'Datos cambiados'
         }),
-        this.router.navigate(['/tvShows']);
+        this.router.navigate(['/userTvShows']);
         }  else {
           swal.fire({
             background: 'rgb(211,211,211)',

@@ -1,1 +1,121 @@
-<p>user-tv-shows works!</p>
+<div class="container-fluid">
+
+  <div *ngIf="isLoading" class="d-flex d-flexSpinner justify-content-center">
+      <div class="spinner-border text-info" role="status">
+          <span class="sr-only">{{texts.loading}}</span>
+      </div>
+
+  </div>
+
+  <div *ngIf="!isLoading">
+
+      <div class="searchContainer">
+          <form class="form-inline my-2 my-lg-0" (ngSubmit)="onSearch($event)">
+              <input type="text" class="form-control mr-sm-2" placeholder="{{texts.anadePalabra}}" name="searchName" value="" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0 buttonStyle" type="submit" >{{texts.search}}</button>
+          </form>
+      </div>
+      <p class="searchText">{{texts.searchUserTvShow}}</p>
+
+      <div class="row-fluid pageTitle">
+          <h2>{{texts.seriesUsuario}}</h2>
+      </div>
+
+      <div class="row d-flex justify-content-center groupCards">
+        <div class="tvShowsByGroup">
+          <div class="row-fluid pageTitle">
+            <h3>{{texts.tusSeriesViendo}}</h3>
+          </div>
+
+          <div class="noUserTvShows">
+            <h5 *ngIf="watchingUserTvShows.length==0">{{texts.noTvShows}}</h5>
+          </div>
+
+          <div class="tvShows">
+            <div class="cards card text-white bg-secondary offset-1" *ngFor="let watchingUserTvShow of watchingUserTvShows">
+              <div >
+                <img class="cursorPointer" src="{{watchingUserTvShow.tvShow.image}}" alt="{{watchingUserTvShow.tvShow.name}}">
+                <div class="descriptions">
+                  <h3>{{watchingUserTvShow.tvShow.name}}</h3>
+                  <button [routerLink]="['/watchingTvShowsForm/', watchingUserTvShow.tvShow.id]">
+                    {{texts.seriesViendo}}
+                  </button>
+                  <button [routerLink]="['/finishedTvShowsForm/', watchingUserTvShow.tvShow.id]">
+                    {{texts.seriesVistas}}
+                  </button>
+                  <button [routerLink]="['/tvShowDetail/', watchingUserTvShow.tvShow.id]">
+                    {{texts.masInfoSerie}}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button [routerLink]="['/watchingTvShows/']" class="btn btn-primary buttonStyle buttonContainer listButton">{{texts.listadoCompleto}}</button>
+          </div>
+        </div>
+
+        <div class="tvShowsByGroup">
+          <div class="row-fluid pageTitle">
+            <h3>{{texts.tusSeriesVer}}</h3>
+          </div>
+
+          <div class="noUserTvShows">
+            <h5 *ngIf="wishedUserTvShows.length==0">{{texts.noTvShows}}</h5>
+          </div>
+
+          <div class="tvShows">
+            <div class="cards card text-white bg-secondary offset-1" *ngFor="let wishedUserTvShow of wishedUserTvShows">
+              <div>
+                <img class="cursorPointer" src="{{wishedUserTvShow.tvShow.image}}" alt="{{wishedUserTvShow.tvShow.name}}">
+                <div class="descriptions">
+                  <div class="listName">
+                    <h3 >{{wishedUserTvShow.tvShow.name}}</h3>
+                  </div>
+                  <button [routerLink]="['/watchingTvShowsForm/', wishedUserTvShow.tvShow.id]">
+                    {{texts.seriesViendo}}
+                  </button>
+                  <button [routerLink]="['/finishedTvShowsForm/', wishedUserTvShow.tvShow.id]">
+                    {{texts.seriesVistas}}
+                  </button>
+                  <button [routerLink]="['/tvShowDetail/', wishedUserTvShow.tvShow.id]">
+                    {{texts.masInfoSerie}}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <button [routerLink]="['/wishedTvShows/']" class="btn btn-primary buttonStyle buttonContainer listButton">{{texts.listadoCompleto}}</button>
+          </div>
+        </div>
+
+        <div class="tvShowsByGroup">
+          <div class="row-fluid pageTitle">
+            <h3>{{texts.tusSeriesVistas}}</h3>
+          </div>
+
+          <div class="noUserTvShows">
+            <h5 *ngIf="finishedUserTvShows.length==0">{{texts.noTvShows}}</h5>
+          </div>
+
+          <div class="tvShows">
+            <div class="cards card text-white bg-secondary offset-1" *ngFor="let finishedUserTvShow of finishedUserTvShows">
+              <img class="cursorPointer" src="{{finishedUserTvShow.tvShow.image}}" alt="{{finishedUserTvShow.tvShow.name}}">
+              <div class="descriptions">
+                <h3>{{finishedUserTvShow.tvShow.name}}</h3>
+                <button [routerLink]="['/tvShowDetail/', finishedUserTvShow.tvShow.id]">
+                  {{texts.masInfoSerie}}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <button [routerLink]="['/finishedTvShows/']" class="btn btn-primary buttonStyle buttonContainer listButton">{{texts.listadoCompleto}}</button>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

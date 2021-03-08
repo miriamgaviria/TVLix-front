@@ -39,10 +39,10 @@
                   <h3>{{watchingUserTvShow.tvShow.name}}</h3>
                   <button [routerLink]="['/watchingTvShowsForm/', watchingUserTvShow.tvShow.id]">
                     {{texts.seriesViendo}}
-                  </button>
+                  </button><br/>
                   <button [routerLink]="['/finishedTvShowsForm/', watchingUserTvShow.tvShow.id]">
                     {{texts.seriesVistas}}
-                  </button>
+                  </button><br/>
                   <button [routerLink]="['/tvShowDetail/', watchingUserTvShow.tvShow.id]">
                     {{texts.masInfoSerie}}
                   </button>
@@ -74,10 +74,10 @@
                   </div>
                   <button [routerLink]="['/watchingTvShowsForm/', wishedUserTvShow.tvShow.id]">
                     {{texts.seriesViendo}}
-                  </button>
+                  </button><br/>
                   <button [routerLink]="['/finishedTvShowsForm/', wishedUserTvShow.tvShow.id]">
                     {{texts.seriesVistas}}
-                  </button>
+                  </button><br/>
                   <button [routerLink]="['/tvShowDetail/', wishedUserTvShow.tvShow.id]">
                     {{texts.masInfoSerie}}
                   </button>

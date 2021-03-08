@@ -11,7 +11,7 @@ import Texts from '../../../assets/texts.json';
 @Component({
   selector: 'app-found-tv-shows',
   templateUrl: './found-tv-shows.component.html',
-  styleUrls: ['./found-tv-shows.component.css']
+  styleUrls: ['./found-tv-shows.component.scss']
 })
 export class FoundTvShowsComponent implements OnInit {
   images: any = Images;

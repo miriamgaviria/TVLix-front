@@ -30,22 +30,23 @@
             </div>
 
             <div class="row d-flex justify-content-center groupCards">
-                <div class="col-xs-4 col-sm-3 col-md-3 col-lg-2 cards text-white bg-secondary offset-1" *ngFor="let tvshow of foundTvShows.tv_shows">
-                    <div (click)=goToDetail(tvshow.id)>
-                        <img class="card-img-top cursorPointer" src="{{tvshow.image_thumbnail_path}}" alt="Card image cap">
-                        <!-- [src]="imageTvShow ? tvShowDetail.image_thumbnail_path : '../../../assets/images/noImage.svg'" -->
-                        <h5 class="card-title cursorPointer">{{tvshow.name}}</h5>
-                    </div>
-
-
-                    <div class="bodyCard">
-                        <div class="linksContainer">
-                            <a [routerLink]="['/finishedTvShowsForm/', tvshow.id]" class="card-link" ><img class="buttonStyle tvShowIcon" src="{{images.finishedTvShowIcon}}" alt="Añadir a serie vista" data-placement="top" title="Enviar a la lista de series vistas"/></a>
-                            <a [routerLink]="['/wishedTvShowsForm/', tvshow.id]" class="card-link" ><img class="buttonStyle tvShowIcon" src="{{images.wishedTvShowIcon}}" alt="Añadir a serie para ver" data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Enviar a la lista de series que quieres ver"/></a>
-                            <a [routerLink]="['/watchingTvShowsForm/', tvshow.id]" class="card-link" ><img class="buttonStyle tvShowIcon" src="{{images.watchingTvShowIcon}}" alt="Añadir a series viendo" data-toggle="tooltip" data-placement="top" title="Enviar a la lista de series viendo"/></a>
-                        </div>
-                    </div>
-                </div>
+              <div class="col-xs-4 col-sm-3 col-md-3 col-lg-2 cards card text-white bg-secondary offset-1" *ngFor="let tvshow of foundTvShows.tv_shows">
+                <img class="card-img-top cursorPointer" src="{{tvshow.image_thumbnail_path}}" alt="Card image cap">
+                <div class="descriptions">
+                  <h3>{{tvshow.name}}</h3>
+                  <button [routerLink]="['/watchingTvShowsForm/', tvshow.id]">
+                    {{texts.seriesViendo}}
+                  </button><br/>
+                  <button [routerLink]="['/wishedTvShowsForm/', tvshow.id]">
+                    {{texts.seriesViendo}}
+                  </button><br/>
+                  <button [routerLink]="['/finishedTvShowsForm/', tvshow.id]">
+                    {{texts.seriesVistas}}
+                  </button><br/>
+                  <button [routerLink]="['/tvShowDetail/', tvshow.id]">
+                    {{texts.masInfoSerie}}
+                  </button>
+              </div>
             </div>
     </div>
 </div>

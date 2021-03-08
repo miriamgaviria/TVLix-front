@@ -19,12 +19,12 @@
     </div>
 
     <div *ngIf="watchingTvShows.length == 0" class="noWatchingTvShows">
-      <h3 *ngIf="isSearched else notSearched">{{texts.noTvShowsFound}}
+      <h3 *ngIf="isSearched else notSearched">{{texts.noTvShowsFound}}<strong>{{searchName}}</strong>
         <div class="form-group row rowForm buttonPosition">
           <button class="btn btn-primary buttonStyle buttonContainer" (click)="loadWatchingTvShows()">{{texts.vuelveAlListado}}</button>
         </div>
       </h3>
-      <ng-template #notSearched><h3>{{texts.noTvShows}}<strong>{{searchName}}</strong></h3></ng-template>
+      <ng-template #notSearched><h3>{{texts.noTvShows}}</h3></ng-template>
     </div>
 
     <div class="row d-flex justify-content-center groupCards">

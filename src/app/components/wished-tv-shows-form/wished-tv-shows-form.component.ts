@@ -13,6 +13,7 @@ import StreamingPlatforms from '../../../assets/configs/streamingPlatforms.json'
 
 import { UserTvShowDTO } from '../../models/userTvShowDTO.model';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-wished-tv-shows-form',
@@ -38,13 +39,13 @@ export class WishedTvShowsFormComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private tvShowsService: TvShowsService) { }
 
   ngOnInit(): void {
     this.tvShowId = this.route.snapshot.paramMap.get("tvShowId");
-    this.userId = localStorage.getItem('userId');
-    localStorage.removeItem('userId');
-    console.log('this.userId', this.userId)
+    this.userId = sessionStorage.getItem('userId');
+    if (isNil(this.userId)) this.router.navigate(['/login']);
 
     this.tvShowsService.getTvShow(this.tvShowId).subscribe(
       (newData) => {

@@ -10,6 +10,7 @@ import { UserTvShowDTO } from '../../models/userTvShowDTO.model';
 import { TvShowsService } from './../../services/tvShows.service';
 import { UserService } from 'src/app/services/user.service';
 import { UserTvShowsService } from 'src/app/services/userTvShows.service';
+import { Router } from '@angular/router';
 
 import Images from '../../../assets/imagesUrl.json';
 import Texts from '../../../assets/texts.json';
@@ -40,6 +41,7 @@ export class FinishedTvShowsFormComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private tvShowsService: TvShowsService,
     private userService: UserService,
     private userTvShowsService: UserTvShowsService,
@@ -47,8 +49,8 @@ export class FinishedTvShowsFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.tvShowId = this.route.snapshot.paramMap.get("tvShowId");
-    this.userId = localStorage.getItem('userId');
-    localStorage.removeItem('userId');
+    this.userId = sessionStorage.getItem('userId');
+    if (isNil(this.userId)) this.router.navigate(['/login']);
 
     this.tvShowsService.getTvShow(this.tvShowId).subscribe(
       (newData) => {

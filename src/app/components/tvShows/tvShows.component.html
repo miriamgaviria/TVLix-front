@@ -16,7 +16,6 @@
             </form>
         </div>
 
-
         <div class="row-fluid pageTitle">
             <h2>{{texts.seriesPopulares}}</h2>
         </div>
@@ -27,79 +26,23 @@
         </div>
 
         <div class="row d-flex justify-content-center groupCards">
-            <div class="col-xs-4 col-sm-3 col-md-3 col-lg-2 cards text-white bg-secondary offset-1" *ngFor="let tvshow of tvShowsForHome.tv_shows">
-                <div [routerLink]="['/tvShowDetail/', tvshow.id]">
-                    <img class="card-img-top cursorPointer" src="{{tvshow.image_thumbnail_path}}" alt="Card image cap">
-                    <h5 class="card-title cursorPointer">{{tvshow.name}}</h5>
-                </div>
-
-
-                <div class="bodyCard">
-                    <div class="linksContainer">
-                        <a [routerLink]="['/finishedTvShowsForm/', tvshow.id]" class="card-link"><img class="buttonStyle tvShowIcon" src="{{images.finishedTvShowIcon}}" alt="Añadir a serie vista" data-placement="top" title="Enviar a la lista de series vistas"/></a>
-                        <a [routerLink]="['/wishedTvShowsForm/', tvshow.id]"  class="card-link" ><img class="buttonStyle tvShowIcon" src="{{images.wishedTvShowIcon}}" alt="Añadir a serie para ver" data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Enviar a la lista de series que quieres ver"/></a>
-                        <a [routerLink]="['/watchingTvShowsForm/', tvshow.id]" class="card-link" ><img class="buttonStyle tvShowIcon" src="{{images.watchingTvShowIcon}}" alt="Añadir a series viendo" data-toggle="tooltip" data-placement="top" title="Enviar a la lista de series viendo"/></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row d-flex justify-content-center groupCards">
           <div class="col-xs-4 col-sm-3 col-md-3 col-lg-2 cards card text-white bg-secondary offset-1" *ngFor="let tvshow of tvShowsForHome.tv_shows">
             <img class="card-img-top cursorPointer" src="{{tvshow.image_thumbnail_path}}" alt="Card image cap">
             <div class="descriptions">
-              <h1>{{tvshow.name}}</h1>
-              <!-- <p>{{tvshow.description}}</p> -->
-              <button>
-                Series vistas
+              <h3>{{tvshow.name}}</h3>
+              <button [routerLink]="['/watchingTvShowsForm/', tvshow.id]">
+                {{texts.seriesViendo}}
               </button>
-              <button>
-                Series para ver
+              <button [routerLink]="['/wishedTvShowsForm/', tvshow.id]">
+                {{texts.seriesViendo}}
               </button>
-              <button>
-                Series viendo
+              <button [routerLink]="['/finishedTvShowsForm/', tvshow.id]">
+                {{texts.seriesVistas}}
               </button>
               <button [routerLink]="['/tvShowDetail/', tvshow.id]">
-                Detalle de la serie
+                {{texts.masInfoSerie}}
               </button>
-            
           </div>
-        </div>
-      </div>
-
-
-        <div>
-
-          <div class="wrapper">
-            
-        </div>
-    
-    
-    
-    
-    
-    <!-- <footer>
-      <p>
-        Created with <i class="fa fa-heart"></i> by
-        <a target="_blank" href="https://codepen.io/ahmadbassamemran/">Ahmad Emran</a>
-        Follow me : 
-          <a target="_blank"  href="https://www.instagram.com/ahmadbassamemran/"><i class="fab fa-instagram"></i></a>
-        <a target="_blank"  href="https://www.linkedin.com/in/ahmademarn/"><i class="fab fa-linkedin"></i></a>
-        <a target="_blank" href="https://codepen.io/ahmadbassamemran/"><i class="fab fa-codepen"></i></a> 
-            <a target="_blank" href="https://dev.to/ahmadbassamemran"><i class="fab fa-dev"></i></a> 
-                 <a target="_blank" href="https://twitter.com/ahmadbassamemra"><i class="fab fa-twitter-square"></i></a> 
-      </p>
-    </footer>
-    
-    <div class="youtubeBtn">
-    
-      <a target="_blank" href="https://www.youtube.com/AhmadEmran?sub_confirmation=1">
-          <span>Watch on YouTube</span>
-      <i class="fab fa-youtube"></i>
-        </a>
-    
-    </div> -->
-
         </div>
     </div>
 </div>

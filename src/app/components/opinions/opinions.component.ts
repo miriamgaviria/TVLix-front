@@ -40,7 +40,7 @@ export class OpinionsComponent implements OnInit {
   }
 
   goToOpinionForm() {
-    this.userId = localStorage.getItem('userId');
+    this.userId = sessionStorage.getItem('userId');
     if (this.userId) {
       this.router.navigate(['/opinionForm']);
     } else {

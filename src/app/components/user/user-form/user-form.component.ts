@@ -35,8 +35,7 @@ export class UserFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.userToUpdate = JSON.parse(localStorage.getItem('userToUpdate'));
-    localStorage.removeItem('userToUpdate')
+    this.userToUpdate = JSON.parse(sessionStorage.getItem('userToUpdate'));
     if(isNil(this.userToUpdate)){
       this.userEmpty= true;
     } else {

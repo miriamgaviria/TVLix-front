@@ -32,7 +32,7 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
     this.userIdString = sessionStorage.getItem('userId');
     this.userId = parseInt(this.userIdString);
-    if (isNil(this.userIdString)) this.router.navigate(['/login']);  
+    if (isNil(this.userIdString)) this.router.navigate(['/login']);
     this.isLoading = true;
     this.userService.getUserById(this.userId).subscribe(
       (data) => {
@@ -51,7 +51,7 @@ export class UserComponent implements OnInit {
   }
 
   public updateProfile(user: User){
-    localStorage.setItem('userToUpdate', JSON.stringify(user));
+    sessionStorage.setItem('userToUpdate', JSON.stringify(user));
     this.router.navigate(['/userForm']);
   }
 

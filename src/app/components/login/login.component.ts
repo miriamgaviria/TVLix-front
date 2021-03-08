@@ -60,8 +60,6 @@ export class LoginComponent implements OnInit {
         } else if (isValidateUser === 2){
           this.userService.getUserByUserName(user.userName).subscribe(
             response => {
-              localStorage.setItem('userId', response.id);
-              localStorage.setItem('userName', response.name);
               sessionStorage.setItem('userId', response.id);
               sessionStorage.setItem('userName', response.name);
             })

@@ -66,7 +66,7 @@ export class WishedTvShowsComponent implements OnInit {
           title: 'Serie eliminada'
         }),
         this.isLoading = false;
-        this.router.navigate(['/tvShows']);
+        this.router.navigate(['/wishedTvShows']);
       },
       (error) => {
         console.log('error')

@@ -9,7 +9,6 @@ import { User } from '../../../models/user.model'
 import { UserService } from 'src/app/services/user.service';
 
 import Texts from '../../../../assets/texts.json';
-import GenreTvShows from '../../../../assets/configs/genreTvShows.json';
 import TypeTvShows from '../../../../assets/configs/typeTvShows.json';
 
 
@@ -20,7 +19,6 @@ import TypeTvShows from '../../../../assets/configs/typeTvShows.json';
 })
 export class UserFormComponent implements OnInit {
   texts: any = Texts;
-  genreTvShows: any = GenreTvShows;
   typeTvShows: any = TypeTvShows;
 
   isLoading: boolean;
@@ -33,7 +31,6 @@ export class UserFormComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    // private router: Router,
     public router: Router,
   ) { }
 

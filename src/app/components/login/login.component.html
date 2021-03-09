@@ -1,6 +1,12 @@
-
+<div class="container-fluid">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div *ngIf="isLoading" class="d-flex d-flexSpinner justify-content-center">
+      <div class="spinner-border text-info" role="status">
+          <span class="sr-only">{{texts.loading}}</span>
+      </div>
+    </div>
+
+    <div class="modal-content" *ngIf="!isLoading">
       <div class="user-img">
         <img class='avatarLoging' src="{{images.userLoginIcon}}"/>
       </div>
@@ -10,13 +16,9 @@
           <input type="text" class="form-control" autocomplete="off" name="userName" [(ngModel)]="user.userName" placeholder="{{texts.userName}}" (focus)='onFocus()' required>
         </div>
 
-        <!-- <div class="form-group errorMessage" *ngIf="!validateUserName">Debe rellenar el nombre de usuario</div> -->
-
         <div class="form-group" id="password-group">
           <input type="password" [(ngModel)]="user.password" name="password" class="form-control" placeholder="{{texts.password}}" required (focus)='onFocus()'>
         </div>
-
-        <!-- <div class="form-group errorMessage" *ngIf="!validatePassword">Debe rellenar la contraseña</div> -->
 
         <div class="form-group errorMessage" *ngIf="!validateForm">{{texts.todosCamposRequeridos}}</div>
 
@@ -25,10 +27,9 @@
         </div>
       </form>
 
-
-
       <div class="col-11 centerContainer">
         <button (click)="onCreateAccount()" class="btn btn-primary col-6 buttonStyle buttonContainer buttonMargin createButton"><i class="fas fa-user-plus"></i> {{texts.crearCuenta}}</button>
       </div>
     </div>
   </div>
+</div>

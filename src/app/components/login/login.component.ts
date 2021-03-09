@@ -22,8 +22,12 @@ export class LoginComponent implements OnInit {
   images: any = Images;
   texts: any = Texts;
 
+  isLoading: boolean = false;
+
   isUser: number;
   user: User = new User();
+  userName: string;
+  userId: string
   validateForm: boolean = true;
 
   constructor(
@@ -39,34 +43,30 @@ export class LoginComponent implements OnInit {
   }
 
   checkIsAdmin(user: User){
-    let isValidateUser: number;
+    this.isLoading = true;
     this.loginService.checkIsUser(user).subscribe(
-      data => {
-        isValidateUser = data;
-        if (isValidateUser === 0){
+      response => {
+        if (response === 0){
           swal.fire({
             background: 'rgb(211,211,211)',
             icon: 'error',
             title: 'Oops...',
             text: 'Usuario no válido'
           })
-        } else if (isValidateUser === 1) {
+        } else if (response === 1) {
           swal.fire({
             background: 'rgb(211,211,211)',
             icon: 'error',
             title: 'Oops...',
             text: 'El usuario y la contraseña no coinciden'
           })
-        } else if (isValidateUser === 2){
-          this.userService.getUserByUserName(user.userName).subscribe(
-            response => {
-              sessionStorage.setItem('userId', response.id);
-              sessionStorage.setItem('userName', response.name);
-            })
+        } else if (response === 2){
+          sessionStorage.setItem('userName', user.userName);
           this.router.navigate(['/userTvShows']);
         }
       }
     )
+    this.isLoading = false;
   }
 
   onFocus() {
@@ -75,9 +75,9 @@ export class LoginComponent implements OnInit {
 
   onLogin(){
     if (isNil(this.user.userName) || this.user.userName === '' || isNil(this.user.password) || this.user.password === '' ){
-      this.validateForm= false
+      this.validateForm = false
     } else  {
-      this.validateForm= true;
+      this.validateForm = true;
       this.checkIsAdmin(this.user);
     }
   }

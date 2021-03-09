@@ -18,7 +18,6 @@ export class UserTvShowsService {
   constructor(private http: HttpClient) { }
 
   postUserTvShow(userTvShowDTO: UserTvShowDTO) {
-    console.log('UserTvShowDTO', userTvShowDTO)
     this.http.post<UserTvShowDTO>(this.urlEndPointUserTvShow, userTvShowDTO, this.httpOptions)
   }
 
@@ -27,7 +26,6 @@ export class UserTvShowsService {
   }
 
   deleteUserTvShowById (id: number): Observable<any>{
-    console.log('id', id)
     return this.http.delete(this.urlEndPointUserTvShow + id)
   }
 

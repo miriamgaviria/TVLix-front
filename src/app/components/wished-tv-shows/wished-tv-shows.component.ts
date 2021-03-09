@@ -86,7 +86,6 @@ export class WishedTvShowsComponent implements OnInit {
     this.searchName = event.target.searchName.value;
     if (isEmpty(this.searchName)) {
       this.wishedTvShows;
-      console.log('here')
     } else {
       this.wishedTvShows = this.wishedTvShows.filter(wishedTvShow => wishedTvShow.tvShow.name.toLowerCase().includes(this.searchName.toLowerCase()));
     }

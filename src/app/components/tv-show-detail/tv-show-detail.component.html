@@ -56,7 +56,7 @@
                 <div class="rowRightContainerColumn">
                     <div><strong>{{texts.sinopsis}}</strong></div>
                     <div>{{tvShowDetail.description}}</div>
-                    <div class="moreInformation"><strong (click)="moreInformation(tvShowDetail.description_source)">{{texts.masInformacionSerie}}</strong></div>
+                    <div *ngIf="tvShowDetail.description_source" class="moreInformation"><strong (click)="moreInformation(tvShowDetail.description_source)">{{texts.masInformacionSerie}}</strong></div>
                 </div>
             </div>
 

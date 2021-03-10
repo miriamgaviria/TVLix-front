@@ -11,11 +11,14 @@
       <h2>{{texts.seriesVistasHeader}}</h2>
     </div>
 
-    <div class="searchContainer">
-      <form class="form-inline my-2 my-lg-0" (ngSubmit)="onSearch($event)">
+    <div *ngIf="finishedTvShows.length != 0">
+      <div class="searchContainer">
+        <form class="form-inline my-2 my-lg-0" (ngSubmit)="onSearch($event)">
           <input type="text" class="form-control mr-sm-2" placeholder="{{texts.anadePalabra}}" name="searchName" value="" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0 buttonStyle" type="submit" >{{texts.search}}</button>
-      </form>
+        </form>
+      </div>
+      <p class="searchText">{{texts.buscaSerieListado}}</p>
     </div>
 
     <div *ngIf="finishedTvShows.length == 0" class="noFinishedTvShows">
@@ -35,13 +38,11 @@
               <img class="card-img-top cursorPointer" src="{{finishedTvShow.tvShow.image}}" alt="Card image cap">
             </div>
             <ul class="details">
-              <!-- <li class="link"><a [routerLink]="['/finishedTvShowsForm/', finishedTvShow.tvShow.id]">{{texts.enviarVistas}}</a></li> -->
               <li class="link"><a data-toggle="modal" data-target="#deleteConfirmDialog" (click)="setFinishedTvShowIdToDelete(finishedTvShow.id)">{{texts.eliminarSerie}}</a></li>
             </ul>
           </div>
           <div class="data">
               <h1>{{finishedTvShow.tvShow.name}}</h1>
-              <!-- <h2 style='text-align: right;'>{{texts.puntuacion}} <span>{{finishedTvShow.tvShow.rating}}</span> <span style='color: skyblue; font-size: larger;'> -- </span> {{texts.posicionPorPuntacion}} <span>{{finishedTvShow.tvShow.rating_count}}</span></h2> -->
               <p>{{finishedTvShow.opinion}}</p>
               <div class="rateContainer">
                 <div>{{texts.tuPuntuacion}}</div>

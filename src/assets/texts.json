@@ -82,7 +82,7 @@
   "razonVer": "¿Por qué quieres ver esta serie?",
   "romantica": "Románticas",
   "search": "Search",
-  "searchUserTvShow": "Busca una serie para añadir a tu perfil",
+  "buscaSerie": "Busca una serie para añadir a tu perfil",
   "series": "Series",
   "seriesContienen": "Series que contienen, ",
   "seriesNoEncontradas": "No se han encontrado series que contienen la palabra ",
@@ -121,5 +121,6 @@
   "watchingTvShowsFormHeader": " a la lista de series viendo",
   "western": "Western",
   "wishedTvShowsFormHeader": " a la lista de series para ver",
-  "eliminarSerieCard": "Eliminar serie"
+  "eliminarSerieCard": "Eliminar serie",
+  "buscaSerieListado": "Busca una serie en este listado"
 }

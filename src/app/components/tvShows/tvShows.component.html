@@ -30,10 +30,10 @@
             <img class="card-img-top cursorPointer" src="{{tvshow.image_thumbnail_path}}" alt="Card image cap">
             <div class="descriptions">
               <h3>{{tvshow.name}}</h3>
-              <button [routerLink]="['/watchingTvShowsForm/', tvshow.id]">
-                {{texts.seriesViendo}}
-              </button><br/>
               <button [routerLink]="['/wishedTvShowsForm/', tvshow.id]">
+                {{texts.seriesVer}}
+              </button><br/>
+              <button [routerLink]="['/watchingTvShowsForm/', tvshow.id]">
                 {{texts.seriesViendo}}
               </button><br/>
               <button [routerLink]="['/finishedTvShowsForm/', tvshow.id]">

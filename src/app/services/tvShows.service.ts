@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { of, Observable } from 'rxjs';
 
-import { TvShow } from '../models/tvShow.model';
+import { TvShowDetail } from '../models/tvShowDetail.model';
 import { TvShowDTO } from './../models/tvShowDTO.model';
 import { TvShowsList } from '../models/tvShowsList.model';
 

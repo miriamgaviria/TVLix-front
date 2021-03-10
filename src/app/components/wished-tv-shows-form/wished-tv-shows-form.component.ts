@@ -4,7 +4,7 @@ import  isNil from 'lodash/isNil';
 
 import { TvShowApi } from '../../models/tvShowApi.model';
 import { TvShowsService } from './../../services/tvShows.service';
-import { TvShow } from '../../models/tvShow.model';
+import { TvShowDetail } from '../../models/tvShowDetail.model';
 
 import Images from '../../../assets/imagesUrl.json';
 import Texts from '../../../assets/texts.json';
@@ -29,7 +29,7 @@ export class WishedTvShowsFormComponent implements OnInit {
   isLoading: boolean = true;
 
   tvShowApi: TvShowApi;
-  tvShow: TvShow;
+  tvShow: TvShowDetail;
   wishedTvShow: UserTvShowDTO = new UserTvShowDTO();
 
   tvShowId: string;

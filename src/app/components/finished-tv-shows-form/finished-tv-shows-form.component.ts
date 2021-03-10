@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import  isNil from 'lodash/isNil';
 
 import { TvShowApi } from '../../models/tvShowApi.model';
-import { TvShow } from '../../models/tvShow.model';
+import { TvShowDetail } from '../../models/tvShowDetail.model';
 import { UserTvShowDTO } from '../../models/userTvShowDTO.model';
 
 import { TvShowsService } from './../../services/tvShows.service';
@@ -29,7 +29,7 @@ export class FinishedTvShowsFormComponent implements OnInit {
 
   isLoading: boolean = true;
   tvShowApi: TvShowApi;
-  tvShow: TvShow;
+  tvShow: TvShowDetail;
 
   finishedTvShow: UserTvShowDTO = new UserTvShowDTO();
   tvShowId: string;

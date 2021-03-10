@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import swal from'sweetalert2';
 
 import { TvShowsList } from './../../models/tvShowsList.model';
-import { TvShow } from '../../models/tvShow.model';
 
 import { TvShowsService } from './../../services/tvShows.service';
 

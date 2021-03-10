@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TvShowsList } from './../../models/tvShowsList.model';
 import { TvShowsService } from './../../services/tvShows.service';
-import { TvShow } from '../../models/tvShow.model';
 
 import Images from '../../../assets/imagesUrl.json';
 import Texts from '../../../assets/texts.json';
@@ -25,7 +24,6 @@ export class FoundTvShowsComponent implements OnInit {
   noFoundTvShows: boolean;
   foundTvShows: TvShowsList;
   reFoundTvShows: any;
-  tvShowDetail: TvShow;
 
   constructor(
     private route: ActivatedRoute,

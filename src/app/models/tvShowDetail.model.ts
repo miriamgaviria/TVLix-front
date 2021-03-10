@@ -1,6 +1,6 @@
 import { Episodes } from './episodes.model';
 
-export class TvShow {
+export class TvShowDetail {
     showTitle: string;
     countdown: string;
     country: string;

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { TvShowApi } from '../../models/tvShowApi.model';
 import { TvShowsService } from './../../services/tvShows.service';
-import { TvShow } from '../../models/tvShow.model';
+import { TvShowDetail } from '../../models/tvShowDetail.model';
 
 import Images from '../../../assets/imagesUrl.json';
 import Texts from '../../../assets/texts.json';
@@ -22,7 +22,7 @@ export class TvShowDetailComponent implements OnInit {
   originalPicture: boolean = true;
   smallPicturesSrc: string;
   tvShowApi: TvShowApi;
-  tvShowDetail: TvShow;
+  tvShowDetail: TvShowDetail;
   tvShowId: any;
 
   constructor(

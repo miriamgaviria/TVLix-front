@@ -1,5 +1,5 @@
-import { TvShow } from './tvShow.model';
+import { TvShowDetail } from './tvShowDetail.model';
 
 export class TvShowApi {
-    tvShow: TvShow
+    tvShow: TvShowDetail
 }

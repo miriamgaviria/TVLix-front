@@ -1,18 +1,21 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import  isNil from 'lodash/isNil';
 
+import swal from'sweetalert2';
+
+import { UserTvShowDTO } from '../../models/userTvShowDTO.model';
 import { TvShowApi } from '../../models/tvShowApi.model';
-import { TvShowsService } from './../../services/tvShows.service';
 import { TvShowDetail } from '../../models/tvShowDetail.model';
+
+import { TvShowsService } from './../../services/tvShows.service';
+import { UserTvShowsService } from 'src/app/services/userTvShows.service';
 
 import Images from '../../../assets/imagesUrl.json';
 import Texts from '../../../assets/texts.json';
 import WatchedStatus from '../../../assets/configs/watchedStatus.json'
-
-import { UserTvShowDTO } from '../../models/userTvShowDTO.model';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-watching-tv-shows-form',
@@ -26,11 +29,11 @@ export class WatchingTvShowsFormComponent implements OnInit {
 
   isLoading: boolean = true;
 
-  tvShowApi: TvShowApi;
   tvShow: TvShowDetail;
+  tvShowApi: TvShowApi;
+  tvShowId: string;
   watchingTvShow: UserTvShowDTO = new UserTvShowDTO();
 
-  tvShowId: string;
   userId: any;
 
   validateForm: boolean = true;
@@ -38,7 +41,8 @@ export class WatchingTvShowsFormComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private tvShowsService: TvShowsService) { }
+    private tvShowsService: TvShowsService,
+    private userTvShowsService: UserTvShowsService) { }
 
   ngOnInit(): void {
     this.tvShowId = this.route.snapshot.paramMap.get("tvShowId");
@@ -49,16 +53,16 @@ export class WatchingTvShowsFormComponent implements OnInit {
       (newData) => {
         this.tvShowApi = newData;
         this.tvShow = this.tvShowApi.tvShow
-        this.isLoading = false;
       }
     )
+    this.isLoading = false;
   }
 
-    public saveWatchingTvShow(watchingTvShow: UserTvShowDTO) {
-      this.watchingTvShow.watchedStatus = this.watchedStatus.watching;
-      // this.watchingTvShow.userId =this.userId;
-      console.log('this.watchingTvShow', this.watchingTvShow)
-      console.log('this.tvShow', this.tvShow);
+  public saveWatchingTvShow(watchingTvShow: UserTvShowDTO) {
+    this.watchingTvShow.watchedStatus = this.watchedStatus.watching;
+    // this.watchingTvShow.userId =this.userId;
+    console.log('this.watchingTvShow', this.watchingTvShow)
+    console.log('this.tvShow', this.tvShow);
     // this.opinionService.postOpinion(this.opinion).subscribe(
     //   response => {
     //     swal.fire({
@@ -88,5 +92,4 @@ export class WatchingTvShowsFormComponent implements OnInit {
       this.saveWatchingTvShow(this.watchingTvShow);
     }
   }
-
 }

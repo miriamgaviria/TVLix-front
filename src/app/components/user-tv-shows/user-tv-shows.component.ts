@@ -32,6 +32,7 @@ export class UserTvShowsComponent implements OnInit {
   finishedUserTvShows: UserTvShowDTO[];
   watchingUserTvShows: UserTvShowDTO[];
   wishedUserTvShows: UserTvShowDTO[];
+  tvShowIdToDelete: number;
 
   userId: string;
   userName: string;
@@ -59,6 +60,31 @@ export class UserTvShowsComponent implements OnInit {
         this.onLoadUserTvShows();
       }, 500);
     }
+  }
+
+  deleteTvShow = () => {
+    this.isLoading = true;
+    this.userTvShowsService.deleteUserTvShowById(this.tvShowIdToDelete).subscribe(
+      (data) => {
+        swal.fire({
+          background: 'rgb(211,211,211)',
+          icon: 'success',
+          title: 'Serie eliminada'
+        }),
+        this.isLoading = false;
+        this.router.navigate(['/finishedTvShows']);
+      },
+      (error) => {
+        console.log('error')
+        swal.fire({
+          background: 'rgb(211,211,211)',
+          icon: 'error',
+          title: 'Oops...',
+          text: 'No se ha podido eliminar la serie'
+        })
+        this.isLoading = false;
+      }
+    );
   }
 
   onLoadUserTvShows = () => {
@@ -93,5 +119,9 @@ export class UserTvShowsComponent implements OnInit {
     } else {
       this.router.navigate(['/foundTvShows/', this.searchName]);
     }
+  }
+
+  setFinishedTvShowIdToDelete = tvShowIdToDelete => {
+    this.tvShowIdToDelete = tvShowIdToDelete;
   }
 }

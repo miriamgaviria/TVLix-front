@@ -17,6 +17,8 @@ import { UserTvShowDTO } from '../../models/userTvShowDTO.model';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { UserTvShowsService } from 'src/app/services/userTvShows.service';
+import { TvShowDTO } from 'src/app/models/tvShowDTO.model';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-wished-tv-shows-form',
@@ -32,7 +34,8 @@ export class WishedTvShowsFormComponent implements OnInit {
   isLoading: boolean = true;
 
   tvShowApi: TvShowApi;
-  tvShow: TvShowDetail;
+  tvShowDB: TvShowDTO;
+  tvShow: any;
   wishedTvShow: UserTvShowDTO = new UserTvShowDTO();
   wishedTvShows: UserTvShowDTO[];
 
@@ -45,6 +48,7 @@ export class WishedTvShowsFormComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private tvShowsService: TvShowsService,
+    private userService: UserService,
     private userTvShowsService: UserTvShowsService) { }
 
   ngOnInit(): void {
@@ -61,8 +65,8 @@ export class WishedTvShowsFormComponent implements OnInit {
       (data) => {
         if (!isNil(data)) {
           this.wishedTvShows = data;
-          let isTvShowDB = this.wishedTvShows.some(finishedTvShow => finishedTvShow.tvShow.id.toString() === this.tvShowId.toString());
-          if (isTvShowDB) {
+          let isUserTvShowDB = this.wishedTvShows.some(finishedTvShow => finishedTvShow.tvShow.id.toString() === this.tvShowId.toString());
+          if (isUserTvShowDB) {
             swal.fire({
               background: 'rgb(211,211,211)',
               icon: 'error',
@@ -71,23 +75,57 @@ export class WishedTvShowsFormComponent implements OnInit {
             }),
             this.router.navigate(['/wishedTvShows'])
           } else {
-            this.getTvShowDDBB();
+            this.getTvShowFromDDBB();
           }
         } else {
-          this.getTvShowDDBB();
+          this.getTvShowFromDDBB();
         }
         this.isLoading = false;
       }
     )
   }
 
-  private getTvShowDDBB = () => {
-    this.tvShowsService.getTvShow(this.tvShowId).subscribe(
+  private getTvShowFromDDBB = () => {
+    this.tvShowsService.getTvShowByIdDB(this.tvShowId).subscribe(
       (newData) => {
-        this.tvShowApi = newData;
-        this.tvShow = this.tvShowApi.tvShow
+        !isNil(newData) ? this.tvShow = newData : this.getTvShowFromApi();
       }
     )
+  }
+
+  private getTvShowFromApi = () => {
+    this.tvShowsService.getTvShowApi(this.tvShowId).subscribe(
+      (newData) => {
+        this.parseTvShowApi(newData.tvShow);
+      }
+    )
+  }
+
+  private parseTvShowApi = tvShowApi => (
+    this.tvShow = {
+      end_date: tvShowApi.end_date,
+      episodes: tvShowApi.episodes.length - 1,
+      genre: tvShowApi.genres,
+      id: tvShowApi.id,
+      image: tvShowApi.image_path,
+      name: tvShowApi.name,
+      rating: tvShowApi.rating,
+      rating_count: tvShowApi.raing_count,
+      runTime: tvShowApi.runtime,
+      seasons: tvShowApi.episodes[tvShowApi.episodes.length - 1].season,
+      sinopsis: tvShowApi.description,
+      start_date: tvShowApi.start_date,
+      status: tvShowApi.status
+    }
+  )
+
+  public onSubmit(): void {
+    if (isNil(this.wishedTvShow.platform) || isNil(this.wishedTvShow.reason)  ) {
+      this.validateForm = false
+    } else  {
+      this.validateForm = true;
+      this.saveWishedTvShow(this.wishedTvShow);
+    }
   }
 
   public saveWishedTvShow(wishedTvShow: UserTvShowDTO) {
@@ -95,34 +133,35 @@ export class WishedTvShowsFormComponent implements OnInit {
     // this.wishedTvShow.userId =this.userId;
     console.log('this.wishedTvShow', this.wishedTvShow)
     console.log('this.tvShow', this.tvShow);
-  // this.opinionService.postOpinion(this.opinion).subscribe(
-  //   response => {
-  //     swal.fire({
-  //       background: 'rgb(211,211,211)',
-  //       icon: 'success',
-  //       title: 'Valoración enviada',
-  //       text: 'Gracias por valorarnos'
-  //     }),
-  //     this.router.navigate(['/opinions']);
-  //   },
-  //   error => {
-  //     swal.fire({
-  //       background: 'rgb(211,211,211)',
-  //       icon: 'error',
-  //       title: 'Oops...',
-  //       text: 'No se ha podido enviar la valoración'
-  //     })
-  //   }
-  // )
-}
 
-public onSubmit(): void {
-  if (isNil(this.wishedTvShow.platform) || isNil(this.wishedTvShow.reason)  ) {
-    this.validateForm = false
-  } else  {
-    this.validateForm = true;
-    this.saveWishedTvShow(this.wishedTvShow);
+    this.userService.getUserById(this.userId).subscribe(
+      response => {
+        this.wishedTvShow.user = response;
+      }
+    )
+
+    this.wishedTvShow.tvShow = this.tvShow;
+
+
+
+    this.userTvShowsService.postUserTvShow(this.wishedTvShow).subscribe(
+      response => {
+        swal.fire({
+          background: 'rgb(211,211,211)',
+          icon: 'success',
+          title: 'Ok',
+          text: 'Serie guardada en tu perfil'
+        }),
+        this.router.navigate(['/finishedTvShows']);
+      },
+      error => {
+        swal.fire({
+          background: 'rgb(211,211,211)',
+          icon: 'error',
+          title: 'Oops...',
+          text: 'No se ha podido guardar la serie'
+        })
+      }
+    )
   }
-}
-
 }

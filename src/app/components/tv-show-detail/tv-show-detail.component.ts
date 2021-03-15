@@ -32,7 +32,7 @@ export class TvShowDetailComponent implements OnInit {
   ngOnInit(): void {
     this.tvShowId = this.route.snapshot.paramMap.get("tvShowId");
 
-    this.tvShowsService.getTvShow(this.tvShowId).subscribe(
+    this.tvShowsService.getTvShowApi(this.tvShowId).subscribe(
       (newData) => {
         this.tvShowApi = newData;
         this.tvShowDetail = this.tvShowApi.tvShow

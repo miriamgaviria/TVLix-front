@@ -49,7 +49,7 @@ export class WatchingTvShowsFormComponent implements OnInit {
     this.userId = sessionStorage.getItem('userId');
     if (isNil(this.userId)) this.router.navigate(['/login']);
 
-    this.tvShowsService.getTvShow(this.tvShowId).subscribe(
+    this.tvShowsService.getTvShowApi(this.tvShowId).subscribe(
       (newData) => {
         this.tvShowApi = newData;
         this.tvShow = this.tvShowApi.tvShow

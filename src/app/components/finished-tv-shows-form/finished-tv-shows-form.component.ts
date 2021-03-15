@@ -30,9 +30,9 @@ export class FinishedTvShowsFormComponent implements OnInit {
   watchedStatus: any = WatchedStatus;
 
   isLoading: boolean = true;
-  isTvShowDB: boolean;
+  isUserTvShowDB: boolean;
   tvShowApi: TvShowApi;
-  tvShow: TvShowDetail;
+  tvShow: any;
 
   finishedTvShow: UserTvShowDTO = new UserTvShowDTO();
   finishedTvShows: UserTvShowDTO[];
@@ -63,60 +63,97 @@ export class FinishedTvShowsFormComponent implements OnInit {
       (data) => {
         if (!isNil(data)) {
           this.finishedTvShows = data;
-          let isTvShowDB = this.finishedTvShows.some(finishedTvShow => finishedTvShow.tvShow.id.toString() === this.tvShowId.toString());
-          if (isTvShowDB) {
+          let isUserTvShowDB = this.finishedTvShows.some(finishedTvShow => finishedTvShow.tvShow.id.toString() === this.tvShowId.toString());
+          if (isUserTvShowDB) {
             swal.fire({
               background: 'rgb(211,211,211)',
               icon: 'error',
               title: 'Oops...',
-              text: 'La serie ya está en tu lista de series que quieres ver'
+              text: 'La serie ya está en tu lista de series vistas'
             }),
             this.router.navigate(['/finishedTvShows'])
           } else {
-            this.getTvShowDDBB();
+            this.getTvShowFromDDBB();
           }
         } else {
-          this.getTvShowDDBB();
+          this.getTvShowFromDDBB();
         }
         this.isLoading = false;
       }
     )
   }
 
-  private getTvShowDDBB = () => {
-    this.tvShowsService.getTvShow(this.tvShowId).subscribe(
+  private getTvShowFromDDBB = () => {
+    this.tvShowsService.getTvShowByIdDB(this.tvShowId).subscribe(
       (newData) => {
-        this.tvShowApi = newData;
-        this.tvShow = this.tvShowApi.tvShow
+        !isNil(newData) ? this.tvShow = newData : this.getTvShowFromApi();
       }
     )
   }
+
+  private getTvShowFromApi = () => {
+    this.tvShowsService.getTvShowApi(this.tvShowId).subscribe(
+      (newData) => {
+        this.parseTvShowApi(newData.tvShow);
+      }
+    )
+  }
+
+  private parseTvShowApi = tvShowApi => {
+    return(
+    this.tvShow = {
+      end_date: tvShowApi.end_date,
+      episodes: tvShowApi.episodes.length - 1,
+      // genre: tvShowApi.genres,
+      id: tvShowApi.id,
+      image: tvShowApi.image_path,
+      name: tvShowApi.name,
+      rating: tvShowApi.rating,
+      rating_count: tvShowApi.raing_count,
+      runTime: tvShowApi.runtime,
+      seasons: tvShowApi.episodes[tvShowApi.episodes.length - 1].season,
+      sinopsis: tvShowApi.description,
+      start_date: tvShowApi.start_date,
+      status: tvShowApi.status
+    }
+  )};
 
   public saveFinishedTvShow(finishedTvShow: UserTvShowDTO) {
     this.finishedTvShow.watchedStatus = this.watchedStatus.finished;
     this.userService.getUserById(this.userId).subscribe(
       response => {
+        console.log('response', response)
         this.finishedTvShow.user = response;
       }
     )
 
-    this.tvShowsService.getTvShowByIdDB(this.tvShowId).subscribe(
-      response => {
-        this.finishedTvShow.tvShow = response;
-      }
-    )
+    this.finishedTvShow.tvShow = this.tvShow;
 
-    console.log('this.finishedTvShow', this.finishedTvShow);
-    this.finishedTvShow.seasonWatched = '4';
-    this.finishedTvShow.episodeWatched = '4';
-    this.finishedTvShow.reason = 'asdfsadf';
-    this.finishedTvShow.platform = 'asdfsadf';
-
-    this.userTvShowsService.postUserTvShow(this.finishedTvShow);
+    setTimeout (() => {
+      this.userTvShowsService.postUserTvShow(this.finishedTvShow).subscribe(
+        response => {
+          swal.fire({
+            background: 'rgb(211,211,211)',
+            icon: 'success',
+            title: 'Ok',
+            text: 'Serie guardada en tu perfil'
+          }),
+          this.router.navigate(['/finishedTvShows']);
+        },
+        error => {
+          swal.fire({
+            background: 'rgb(211,211,211)',
+            icon: 'error',
+            title: 'Oops...',
+            text: 'No se ha podido guardar la serie'
+          })
+        }
+      )
+    }, 500);
   }
 
   public onSubmit(): void {
-    if (isNil(this.finishedTvShow.rate) || isNil(this.finishedTvShow.opinion)  ) {
+    if (isNil(this.finishedTvShow.rate) || isNil(this.finishedTvShow.opinion)) {
       this.validateForm = false
     } else  {
       this.validateForm = true;

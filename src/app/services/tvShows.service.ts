@@ -23,7 +23,7 @@ export class TvShowsService {
     return this.http.get<TvShowsList>(this.urlEndPointTvShowList + pageNumber);
   }
 
-  getTvShow(tvShowId): Observable<TvShowApi> {
+  getTvShowApi(tvShowId): Observable<TvShowApi> {
     return this.http.get<TvShowApi>(this.urlEndPointTvShow + tvShowId);
   }
 

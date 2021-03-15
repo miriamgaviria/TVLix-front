@@ -15,32 +15,6 @@
     <div class="card text-white bg-dark mb-3 cardContainer watchingTvShowFormContainer">
       <div class="rowContainerRow">
         <div class="rowLeftContainerCenter">
-          <form (ngSubmit)='onSubmit()' >
-            <div class="form-group row labelForm">
-              <label for="inputSeasonWatched">{{texts.temporadaViendo}}</label>
-              <input type="text" class="form-control" id="inputSeasonWatched" placeholder={{texts.temporadaViendoPlaceholder}} [(ngModel)]='watchingTvShow.seasonWatched' name="inputSeasonWatched" >
-            </div>
-
-            <div class="form-group row labelForm">
-              <label for="inputEpisodeWatched">{{texts.episodioViendo}}</label>
-              <input type="text" class="form-control" id="inputEpisodeWatched" placeholder={{texts.episodioViendoPlaceholder}} [(ngModel)]='watchingTvShow.episodeWatched' name="inputEpisodeWatched" >
-            </div>
-
-            <!-- <div class="form-group row labelForm">
-              <label for="FormControlInputComment" >{{texts.valoraSerie}}</label>
-              <input type="text" class="form-control rowForm" [(ngModel)]='finishedTvShow.opinion' name="opinion"
-              rows="8" placeholder="{{texts.finishedTvShowsFormPlaceholder}}"></input>
-            </div> -->
-
-            <div class="form-group errorMessage" *ngIf="!validateForm">{{texts.todosCamposRequeridos}}</div>
-
-            <div class="form-group row rowForm buttonPosition">
-              <button class="btn btn-primary buttonStyle buttonContainer" type="submit">{{texts.guardarWatchingTvShows}}</button>
-            </div>
-          </form>
-        </div>
-
-        <div class="rowRightContainerColumn">
           <table class="table table-striped table-dark">
             <tbody>
               <tr >
@@ -69,6 +43,32 @@
               </tr>
             </tbody>
           </table>
+        </div>
+
+        <div class="rowRightContainerColumn">
+          <form (ngSubmit)='onSubmit()' >
+            <div class="form-group row labelForm">
+              <label for="inputSeasonWatched">{{texts.temporadaViendo}}</label>
+              <input type="text" class="form-control" id="inputSeasonWatched" placeholder={{texts.temporadaViendoPlaceholder}} [(ngModel)]='watchingTvShow.seasonWatched' name="inputSeasonWatched" >
+            </div>
+
+            <div class="form-group row labelForm">
+              <label for="inputEpisodeWatched">{{texts.episodioViendo}}</label>
+              <input type="text" class="form-control" id="inputEpisodeWatched" placeholder={{texts.episodioViendoPlaceholder}} [(ngModel)]='watchingTvShow.episodeWatched' name="inputEpisodeWatched" >
+            </div>
+
+            <!-- <div class="form-group row labelForm">
+              <label for="FormControlInputComment" >{{texts.valoraSerie}}</label>
+              <input type="text" class="form-control rowForm" [(ngModel)]='finishedTvShow.opinion' name="opinion"
+              rows="8" placeholder="{{texts.finishedTvShowsFormPlaceholder}}"></input>
+            </div> -->
+
+            <div class="form-group errorMessage" *ngIf="!validateForm">{{texts.todosCamposRequeridos}}</div>
+
+            <div class="form-group row rowForm buttonPosition">
+              <button class="btn btn-primary buttonStyle buttonContainer" type="submit">{{texts.guardarWatchingTvShows}}</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

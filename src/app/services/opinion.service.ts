@@ -11,7 +11,7 @@ export class OpinionService {
 
   private urlEndPointOpinion: string = 'http://localhost:81/opinions';
 
-  httpOptions = {
+  private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 

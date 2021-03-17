@@ -51,7 +51,7 @@
                     {{texts.eliminarSerieCard}}
                   </button><br/>
                   <button [routerLink]="['/tvShowDetail/', wishedUserTvShow.tvShow.id]">
-                    {{texts.masInfoSerie}}
+                    {{texts.masInformacionSerie}}
                   </button>
                 </div>
               </div>
@@ -88,7 +88,7 @@
                     {{texts.eliminarSerieCard}}
                   </button><br/>
                   <button [routerLink]="['/tvShowDetail/', watchingUserTvShow.tvShow.id]">
-                    {{texts.masInfoSerie}}
+                    {{texts.masInformacionSerie}}
                   </button>
                 </div>
               </div>
@@ -113,12 +113,12 @@
               <img class="cursorPointer" src="{{finishedUserTvShow.tvShow.image}}" alt="{{finishedUserTvShow.tvShow.name}}">
               <div class="descriptions">
                 <h3>{{finishedUserTvShow.tvShow.name}}</h3>
-                <button [routerLink]="['/tvShowDetail/', finishedUserTvShow.tvShow.id]">
-                  {{texts.masInfoSerie}}
-                </button>
                 <button data-toggle="modal" data-target="#deleteConfirmDialog" (click)="setFinishedTvShowIdToDelete(finishedUserTvShow.id)">
                   {{texts.eliminarSerieCard}}
                 </button><br/>
+                <button [routerLink]="['/tvShowDetail/', finishedUserTvShow.tvShow.id]">
+                  {{texts.masInformacionSerie}}
+                </button>
               </div>
             </div>
           </div>

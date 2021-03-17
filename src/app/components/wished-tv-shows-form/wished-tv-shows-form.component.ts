@@ -32,12 +32,18 @@ export class WishedTvShowsFormComponent implements OnInit {
   streamingPlatforms: any = StreamingPlatforms;
 
   isLoading: boolean = true;
+  isUserTvShowStatusDB: boolean;
+  isUserTvShowDB: boolean;
+  isTvShowDB: boolean;
+  isTvShowApi: boolean;
 
   tvShowApi: TvShowApi;
   tvShowDB: TvShowDTO;
   tvShow: any;
   wishedTvShow: UserTvShowDTO = new UserTvShowDTO();
   wishedTvShows: UserTvShowDTO[];
+
+  userTvShows: UserTvShowDTO[];
 
   tvShowId: string;
   userId: any;
@@ -61,42 +67,58 @@ export class WishedTvShowsFormComponent implements OnInit {
   }
 
   private isUserTvShow = () => {
-    this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.wished).subscribe(
+    this.userTvShowsService.getUserAllTvShows(this.userId).subscribe(
       (data) => {
         if (!isNil(data)) {
-          this.wishedTvShows = data;
-          let isUserTvShowDB = this.wishedTvShows.some(finishedTvShow => finishedTvShow.tvShow.id.toString() === this.tvShowId.toString());
-          if (isUserTvShowDB) {
+          this.userTvShows = data;
+          this.isUserTvShowStatusDB = this.userTvShows.some(userTvShow => userTvShow.tvShow.id.toString() === this.tvShowId.toString() && userTvShow.watchedStatus === this.watchedStatus.wished);
+          if (this.isUserTvShowStatusDB) {
             swal.fire({
               background: 'rgb(211,211,211)',
               icon: 'error',
               title: 'Oops...',
               text: 'La serie ya está en tu lista de series que quieres ver'
+            })
+          }
+
+          this.isUserTvShowDB = this.userTvShows.some(userTvShow => userTvShow.tvShow.id.toString() === this.tvShowId.toString() && (userTvShow.watchedStatus === this.watchedStatus.watching || userTvShow.watchedStatus === this.watchedStatus.finished ));
+          if (this.isUserTvShowDB) {
+            swal.fire({
+              background: 'rgb(211,211,211)',
+              icon: 'error',
+              title: 'Oops...',
+              text: 'No puede añadir esta serie a la lista de series para ver, porque ya la está viendo o la ha visto'
             }),
             this.router.navigate(['/wishedTvShows'])
-          } else {
-            this.getTvShowFromDDBB();
           }
+
+          !this.isUserTvShowStatusDB && !this.isUserTvShowDB && this.getTvShowData();
         } else {
-          this.getTvShowFromDDBB();
+          this.getTvShowData();
         }
-        this.isLoading = false;
       }
     )
   }
 
-  private getTvShowFromDDBB = () => {
+  private getTvShowData = () => {
     this.tvShowsService.getTvShowByIdDB(this.tvShowId).subscribe(
       (newData) => {
-        !isNil(newData) ? this.tvShow = newData : this.getTvShowFromApi();
-      }
-    )
+        if (!isNil(newData)) {
+          this.tvShow = newData;
+          this.isTvShowDB = true;
+          this.isLoading = false;
+        } else {
+          this.getTvShowFromApi();
+        }})
   }
+
 
   private getTvShowFromApi = () => {
     this.tvShowsService.getTvShowApi(this.tvShowId).subscribe(
       (newData) => {
         this.parseTvShowApi(newData.tvShow);
+        this.isTvShowApi = true;
+        this.isLoading = false;
       }
     )
   }
@@ -105,7 +127,7 @@ export class WishedTvShowsFormComponent implements OnInit {
     this.tvShow = {
       end_date: tvShowApi.end_date,
       episodes: tvShowApi.episodes.length - 1,
-      genre: tvShowApi.genres,
+      genre: tvShowApi.genres.toString(),
       id: tvShowApi.id,
       image: tvShowApi.image_path,
       name: tvShowApi.name,
@@ -124,15 +146,12 @@ export class WishedTvShowsFormComponent implements OnInit {
       this.validateForm = false
     } else  {
       this.validateForm = true;
-      this.saveWishedTvShow(this.wishedTvShow);
+      this.saveUpdateWishedTvShow();
     }
   }
 
-  public saveWishedTvShow(wishedTvShow: UserTvShowDTO) {
+  private saveUserTvShow = () => {
     this.wishedTvShow.watchedStatus = this.watchedStatus.wished;
-    // this.wishedTvShow.userId =this.userId;
-    console.log('this.wishedTvShow', this.wishedTvShow)
-    console.log('this.tvShow', this.tvShow);
 
     this.userService.getUserById(this.userId).subscribe(
       response => {
@@ -142,26 +161,30 @@ export class WishedTvShowsFormComponent implements OnInit {
 
     this.wishedTvShow.tvShow = this.tvShow;
 
+    setTimeout (() => {
+      this.userTvShowsService.postUserTvShow(this.wishedTvShow).subscribe(
+        response => {
+          swal.fire({
+            background: 'rgb(211,211,211)',
+            icon: 'success',
+            title: 'Ok',
+            text: 'Serie guardada en tu perfil'
+          }),
+          this.router.navigate(['/wishedTvShows']);
+        },
+        error => {
+          swal.fire({
+            background: 'rgb(211,211,211)',
+            icon: 'error',
+            title: 'Oops...',
+            text: 'No se ha podido guardar la serie'
+          })
+        }
+      )
+    }, 500);
+  }
 
-
-    this.userTvShowsService.postUserTvShow(this.wishedTvShow).subscribe(
-      response => {
-        swal.fire({
-          background: 'rgb(211,211,211)',
-          icon: 'success',
-          title: 'Ok',
-          text: 'Serie guardada en tu perfil'
-        }),
-        this.router.navigate(['/finishedTvShows']);
-      },
-      error => {
-        swal.fire({
-          background: 'rgb(211,211,211)',
-          icon: 'error',
-          title: 'Oops...',
-          text: 'No se ha podido guardar la serie'
-        })
-      }
-    )
+  public saveUpdateWishedTvShow() {
+    !this.isUserTvShowDB && !this.isUserTvShowStatusDB && this.saveUserTvShow();
   }
 }

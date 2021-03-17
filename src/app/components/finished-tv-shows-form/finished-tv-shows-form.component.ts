@@ -30,7 +30,12 @@ export class FinishedTvShowsFormComponent implements OnInit {
   watchedStatus: any = WatchedStatus;
 
   isLoading: boolean = true;
+  isUserTvShowStatusDB: boolean;
   isUserTvShowDB: boolean;
+  isTvShowDB: boolean;
+  isTvShowApi: boolean;
+
+
   tvShowApi: TvShowApi;
   tvShow: any;
 
@@ -39,6 +44,8 @@ export class FinishedTvShowsFormComponent implements OnInit {
   tvShowDTO: TvShowDTO = new TvShowDTO();
   tvShowId: string;
   userId: any;
+
+  userTvShows: UserTvShowDTO[];
 
   validateForm: boolean = true;
 
@@ -58,45 +65,71 @@ export class FinishedTvShowsFormComponent implements OnInit {
     this.isUserTvShow();
   }
 
-  private isUserTvShow = () => {
-    this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.finished).subscribe(
-      (data) => {
-        if (!isNil(data)) {
-          this.finishedTvShows = data;
-          let isUserTvShowDB = this.finishedTvShows.some(finishedTvShow => finishedTvShow.tvShow.id.toString() === this.tvShowId.toString());
-          if (isUserTvShowDB) {
-            swal.fire({
-              background: 'rgb(211,211,211)',
-              icon: 'error',
-              title: 'Oops...',
-              text: 'La serie ya está en tu lista de series vistas'
-            }),
-            this.router.navigate(['/finishedTvShows'])
-          } else {
-            this.getTvShowFromDDBB();
-          }
-        } else {
-          this.getTvShowFromDDBB();
-        }
-        this.isLoading = false;
-      }
-    )
-  }
-
-  private getTvShowFromDDBB = () => {
+  private getTvShowData = () => {
     this.tvShowsService.getTvShowByIdDB(this.tvShowId).subscribe(
       (newData) => {
-        !isNil(newData) ? this.tvShow = newData : this.getTvShowFromApi();
-      }
-    )
+        if (!isNil(newData)) {
+          this.tvShow = newData;
+          this.isTvShowDB = true;
+        } else {
+          this.getTvShowFromApi();
+        }})
   }
 
   private getTvShowFromApi = () => {
     this.tvShowsService.getTvShowApi(this.tvShowId).subscribe(
       (newData) => {
         this.parseTvShowApi(newData.tvShow);
+        this.isTvShowApi = true;
       }
     )
+  }
+
+  private getFinishedTvShowData = finishedTvShow => {
+    this.finishedTvShow.watchedStatus = this.watchedStatus.finished;
+
+    this.userService.getUserById(this.userId).subscribe(
+      response => {
+        this.finishedTvShow.user = response;
+      }
+    )
+
+    this.finishedTvShow.tvShow = this.tvShow;
+  }
+
+  private isUserTvShow = () => {
+    this.userTvShowsService.getUserAllTvShows(this.userId).subscribe(
+      (data) => {
+        if (!isNil(data)) {
+          this.userTvShows = data;
+          this.isUserTvShowStatusDB = this.userTvShows.some(userTvShow => userTvShow.tvShow.id.toString() === this.tvShowId.toString() && userTvShow.watchedStatus === this.watchedStatus.finished);
+          if (this.isUserTvShowStatusDB) {
+            swal.fire({
+              background: 'rgb(211,211,211)',
+              icon: 'error',
+              title: 'Oops...',
+              text: 'La serie ya está en tu lista de series que quieres ver'
+            })
+          }
+
+          this.isUserTvShowDB = this.userTvShows.some(userTvShow => userTvShow.tvShow.id.toString() === this.tvShowId.toString());
+
+          !this.isUserTvShowStatusDB && this.getTvShowData();
+        } else {
+          this.getTvShowData();
+        }
+        this.isLoading = false;
+      }
+    )
+  }
+
+  public onSubmit(): void {
+    if (isNil(this.finishedTvShow.rate) || isNil(this.finishedTvShow.opinion)) {
+      this.validateForm = false
+    } else  {
+      this.validateForm = true;
+      this.saveUpdateFinishedTvShow(this.finishedTvShow);
+    }
   }
 
   private parseTvShowApi = tvShowApi => {
@@ -104,7 +137,7 @@ export class FinishedTvShowsFormComponent implements OnInit {
     this.tvShow = {
       end_date: tvShowApi.end_date,
       episodes: tvShowApi.episodes.length - 1,
-      // genre: tvShowApi.genres,
+      genre: tvShowApi.genres.toString(),
       id: tvShowApi.id,
       image: tvShowApi.image_path,
       name: tvShowApi.name,
@@ -118,16 +151,14 @@ export class FinishedTvShowsFormComponent implements OnInit {
     }
   )};
 
-  public saveFinishedTvShow(finishedTvShow: UserTvShowDTO) {
-    this.finishedTvShow.watchedStatus = this.watchedStatus.finished;
-    this.userService.getUserById(this.userId).subscribe(
-      response => {
-        console.log('response', response)
-        this.finishedTvShow.user = response;
-      }
-    )
+  public saveUpdateFinishedTvShow(finishedTvShow: UserTvShowDTO) {
+    !this.isUserTvShowDB && !this.isUserTvShowStatusDB && this.saveUserTvShow(finishedTvShow);
 
-    this.finishedTvShow.tvShow = this.tvShow;
+    this.isUserTvShowDB && this.updateUserTvShow(finishedTvShow);
+  }
+
+  private saveUserTvShow = (finishedTvShow: UserTvShowDTO) => {
+    this.getFinishedTvShowData(finishedTvShow);
 
     setTimeout (() => {
       this.userTvShowsService.postUserTvShow(this.finishedTvShow).subscribe(
@@ -152,12 +183,29 @@ export class FinishedTvShowsFormComponent implements OnInit {
     }, 500);
   }
 
-  public onSubmit(): void {
-    if (isNil(this.finishedTvShow.rate) || isNil(this.finishedTvShow.opinion)) {
-      this.validateForm = false
-    } else  {
-      this.validateForm = true;
-      this.saveFinishedTvShow(this.finishedTvShow);
-    }
+  private updateUserTvShow = (finishedTvShow: UserTvShowDTO) => {
+    this.getFinishedTvShowData(finishedTvShow);
+
+    setTimeout (() => {
+      this.userTvShowsService.updateUserTvShow(this.finishedTvShow).subscribe(
+        response => {
+          swal.fire({
+            background: 'rgb(211,211,211)',
+            icon: 'success',
+            title: 'Ok',
+            text: 'Serie guardada en tu perfil'
+          }),
+          this.router.navigate(['/finishedTvShows']);
+        },
+        error => {
+          swal.fire({
+            background: 'rgb(211,211,211)',
+            icon: 'error',
+            title: 'Oops...',
+            text: 'No se ha podido guardar la serie'
+          })
+        }
+      )
+    }, 500);
   }
 }

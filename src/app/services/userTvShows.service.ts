@@ -19,17 +19,20 @@ export class UserTvShowsService {
 
   constructor(private http: HttpClient) { }
 
-  postUserTvShow(userTvShowDTO: UserTvShowDTO): Observable<any> {
-    console.log('userTvShowDTO', userTvShowDTO)
-    return this.http.post<UserTvShowDTO>(this.urlEndPointUserTvShow, userTvShowDTO, this.httpOptions)
-  }
-
   getUserTvShowsByStatus(userId, watchedStatus): Observable<any> {
     return this.http.get<any>(this.urlEndPointUserTvShow + userId + "/" + watchedStatus, this.httpOptions);
   }
 
-  getUserAllTvShows(userId, watchedStatus): Observable<any> {
+  getUserAllTvShows(userId): Observable<any> {
     return this.http.get<any>(this.urlEndPointUserTvShow + userId, this.httpOptions);
+  }
+
+  postUserTvShow(userTvShowDTO: UserTvShowDTO): Observable<any> {
+    return this.http.post<UserTvShowDTO>(this.urlEndPointUserTvShow, userTvShowDTO, this.httpOptions)
+  }
+
+  updateUserTvShow(userTvShowDTO: UserTvShowDTO): Observable<any> {
+    return this.http.put<UserTvShowDTO>(this.urlEndPointUserTvShow, userTvShowDTO, this.httpOptions)
   }
 
   deleteUserTvShowById (id: number): Observable<any>{

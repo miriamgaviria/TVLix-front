@@ -83,7 +83,6 @@ export class UserFormComponent implements OnInit {
   }
 
   private createAccount(user: User){
-    console.log(this.user)
     this.userService.postUser(this.user).subscribe(
       response => {
         this.newUser = response;
@@ -124,7 +123,7 @@ export class UserFormComponent implements OnInit {
             icon: 'success',
             title: 'Datos cambiados'
         }),
-        this.router.navigate(['/userTvShows']);
+        this.router.navigate(['/user']);
         }  else {
           swal.fire({
             background: 'rgb(211,211,211)',

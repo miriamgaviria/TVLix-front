@@ -65,7 +65,7 @@ export class WatchingTvShowsComponent implements OnInit {
           title: 'Serie eliminada'
         }),
         this.isLoading = false;
-        this.router.navigate(['/watchingTvShows']);
+        this.loadWatchingTvShows();
       },
       (error) => {
         console.log('error')

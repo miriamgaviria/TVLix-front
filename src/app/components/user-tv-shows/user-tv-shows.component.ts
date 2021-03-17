@@ -72,7 +72,7 @@ export class UserTvShowsComponent implements OnInit {
           title: 'Serie eliminada'
         }),
         this.isLoading = false;
-        this.router.navigate(['/finishedTvShows']);
+        this.onLoadUserTvShows();
       },
       (error) => {
         console.log('error')

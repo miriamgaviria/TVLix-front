@@ -45,17 +45,6 @@ export class WishedTvShowsComponent implements OnInit {
     this.loadWishedTvShows();
   }
 
-  loadWishedTvShows = () => {
-    this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.wished).subscribe(
-      (data) => {
-        this.wishedTvShows = data;
-        this.isLoading = false;
-      }
-    )
-  }
-
-
-
   deleteTvShow = () => {
     this.isLoading = true;
     this.userTvShowsService.deleteUserTvShowById(this.wishedTvShowIdToDelete).subscribe(
@@ -66,10 +55,9 @@ export class WishedTvShowsComponent implements OnInit {
           title: 'Serie eliminada'
         }),
         this.isLoading = false;
-        this.router.navigate(['/wishedTvShows']);
+        this.loadWishedTvShows();
       },
       (error) => {
-        console.log('error')
         swal.fire({
           background: 'rgb(211,211,211)',
           icon: 'error',
@@ -79,6 +67,15 @@ export class WishedTvShowsComponent implements OnInit {
         this.isLoading = false;
       }
     );
+  }
+
+  loadWishedTvShows = () => {
+    this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.wished).subscribe(
+      (data) => {
+        this.wishedTvShows = data;
+        this.isLoading = false;
+      }
+    )
   }
 
   onSearch(event: any){

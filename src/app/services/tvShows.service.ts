@@ -1,6 +1,6 @@
 import { TvShowApi } from '../models/tvShowApi.model';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { of, Observable } from 'rxjs';
 
 import { TvShowDetail } from '../models/tvShowDetail.model';
@@ -18,6 +18,10 @@ export class TvShowsService {
 
   private urlEndPointTvShowsDB: string = 'http://localhost:81/tvShows';
 
+  private httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
   constructor(private http: HttpClient) { }
   getTvShowList(pageNumber): Observable<TvShowsList> {
     return this.http.get<TvShowsList>(this.urlEndPointTvShowList + pageNumber);
@@ -33,5 +37,9 @@ export class TvShowsService {
 
   getTvShowByIdDB(tvShowId): Observable<TvShowDTO> {
     return this.http.get<TvShowDTO>(this.urlEndPointTvShowsDB + "/" + tvShowId);
+  }
+
+  postTvShow(tvShowDTO: TvShowDTO): Observable<any> {
+    return this.http.post<TvShowDTO>(this.urlEndPointTvShowsDB, tvShowDTO, this.httpOptions)
   }
 }

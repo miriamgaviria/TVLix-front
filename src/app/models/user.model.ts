@@ -1,12 +1,11 @@
 export class User {
-    id: number;
-    avatar: string;
-    genre: string;
-    location: string;
-    name: string;
-    email: string;
-    password: string;
-    surname: string;
-    typeMedia: string;
-    userName: string;
+  email: string;
+  genre: string;
+  id: number;
+  location: string;
+  name: string;
+  password: string;
+  surname: string;
+  typeMedia: string;
+  userName: string;
 }

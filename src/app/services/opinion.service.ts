@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import { Observable } from 'rxjs';
 
 import { Opinion } from '../models/opinion.model';
@@ -24,8 +25,4 @@ export class OpinionService {
   postOpinion(opinion: Opinion): Observable<string> {
     return this.http.post<string>(this.urlEndPointOpinion, opinion, this.httpOptions)
   }
-
-  // deleteOpinion(id: number): Observable<Opinion> {
-  //   return this.http.delete<Opinion>(this.urlEndPointOpinion, id);
-  // }
 }

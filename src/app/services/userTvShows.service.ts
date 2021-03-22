@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import { Observable } from 'rxjs';
 
 import { UserTvShowDTO } from '../models/userTvShowDTO.model';
-import { TvShowDTO } from '../models/tvShowDTO.model';
-import { Opinion } from '../models/opinion.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,12 +18,12 @@ export class UserTvShowsService {
 
   constructor(private http: HttpClient) { }
 
-  getUserTvShowsByStatus(userId, watchedStatus): Observable<any> {
-    return this.http.get<any>(this.urlEndPointUserTvShow + userId + "/" + watchedStatus, this.httpOptions);
-  }
-
   getUserAllTvShows(userId): Observable<any> {
     return this.http.get<any>(this.urlEndPointUserTvShow + userId, this.httpOptions);
+  }
+
+  getUserTvShowsByStatus(userId, watchedStatus): Observable<any> {
+    return this.http.get<any>(this.urlEndPointUserTvShow + userId + "/" + watchedStatus, this.httpOptions);
   }
 
   postUserTvShow(userTvShowDTO: UserTvShowDTO): Observable<any> {

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import { Observable } from 'rxjs';
 
 import { User } from '../models/user.model';
@@ -15,12 +16,12 @@ export class UserService {
   private httpHeaders = new HttpHeaders ({'Content-type': 'application/json'})
   constructor(private http: HttpClient) { }
 
-  getUserByUserName (userName: string): Observable<any>{
-    return this.http.get<User>(this.urlEndPointUser + "/userName/" + userName, {headers: this.httpHeaders})
-  }
-
   getUserById (id: number): Observable<any>{
     return this.http.get<User>(this.urlEndPointUser + "/" + id, {headers: this.httpHeaders})
+  }
+
+  getUserByUserName (userName: string): Observable<any>{
+    return this.http.get<User>(this.urlEndPointUser + "/userName/" + userName, {headers: this.httpHeaders})
   }
 
   postUser(user: User): Observable<any> {

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import { Observable } from 'rxjs';
 
 import { User } from '../models/user.model';
@@ -17,8 +18,4 @@ export class LoginService {
   checkIsUser(user: User): Observable<any> {
     return this.http.post<any>(this.urlEndPointLogin, user, {headers: this.httpHeaders});
   }
-
-  // login(user: User): Observable<any> {
-  //   return this.http.post("https://reqres.in/api/login", user);
-  // }
 }

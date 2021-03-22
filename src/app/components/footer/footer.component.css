@@ -1,11 +1,3 @@
-.positionFooter{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 1.6rem;
-    background-color: grey;
-}
-
 .footerText{
     font-size: 12pt;
 }

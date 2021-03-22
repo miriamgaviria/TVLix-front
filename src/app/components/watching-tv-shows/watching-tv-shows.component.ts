@@ -46,7 +46,7 @@ export class WatchingTvShowsComponent implements OnInit {
     this.loadWatchingTvShows();
   }
 
-  loadWatchingTvShows = () => {
+  public loadWatchingTvShows = () => {
     this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.watching).subscribe(
       (data) => {
         this.watchingTvShows = data;
@@ -55,7 +55,7 @@ export class WatchingTvShowsComponent implements OnInit {
     )
   }
 
-  deleteTvShow = () => {
+  public deleteTvShow = () => {
     this.isLoading = true;
     this.userTvShowsService.deleteUserTvShowById(this.watchingTvShowIdToDelete).subscribe(
       (data) => {
@@ -80,7 +80,7 @@ export class WatchingTvShowsComponent implements OnInit {
     );
   }
 
-  onSearch(event: any){
+  public onSearch(event: any){
     this.isLoading = true;
     this.searchName = event.target.searchName.value;
     if (isEmpty(this.searchName)) {
@@ -92,7 +92,7 @@ export class WatchingTvShowsComponent implements OnInit {
     this.isSearched = true;
   }
 
-  setWatchingTvShowIdToDelete = watchingTvShowIdToDelete => {
+  public setWatchingTvShowIdToDelete = watchingTvShowIdToDelete => {
     this.watchingTvShowIdToDelete = watchingTvShowIdToDelete;
   }
 }

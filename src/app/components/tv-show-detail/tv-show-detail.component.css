@@ -13,19 +13,19 @@
 
 .rowContainerRow{
     display: flex;
-    flex-direction: row;    
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
 }
 
-.rowLeftContainerRow{
+.rowLeftContainer{
     width: 50%;
     text-align: center;
 }
 
 .rowRightContainerRow{
-    text-align: center;  
+    text-align: center;
     width: 50%;
 }
 
@@ -47,7 +47,7 @@
 
 .imagesSamllTvShowDetail{
     width: 100%;
-} 
+}
 
 .imagesSamllTvShowDetail:hover{
     -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
@@ -61,21 +61,21 @@
     width: 80%
 }
 
-.rowLeftContainerCenter{
+.rowLeftContainer{
     width: 50%;
     padding: 1rem;
 }
 
 .rowRightContainerColumn{
     display: flex;
-    flex-direction: column;  
+    flex-direction: column;
     width: 50%;
     padding: 1rem;
 }
 
 .rowContainerCenter{
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
@@ -84,7 +84,7 @@
     padding-top: 1rem;
 }
 
-.links{    
+.links{
     text-align: center!important;
     padding-top: 1rem;
 }

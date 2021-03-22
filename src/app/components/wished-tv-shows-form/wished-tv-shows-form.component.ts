@@ -1,29 +1,28 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import  isNil from 'lodash/isNil';
 
 import swal from'sweetalert2';
 
 import { TvShowApi } from '../../models/tvShowApi.model';
+import { TvShowDTO } from 'src/app/models/tvShowDTO.model';
+import { UserTvShowDTO } from '../../models/userTvShowDTO.model';
+
 import { TvShowsService } from './../../services/tvShows.service';
-import { TvShowDetail } from '../../models/tvShowDetail.model';
+import { UserService } from 'src/app/services/user.service';
+import { UserTvShowsService } from 'src/app/services/userTvShows.service';
 
 import Images from '../../../assets/imagesUrl.json';
 import Texts from '../../../assets/texts.json';
 import WatchedStatus from '../../../assets/configs/watchedStatus.json';
 import StreamingPlatforms from '../../../assets/configs/streamingPlatforms.json'
 
-import { UserTvShowDTO } from '../../models/userTvShowDTO.model';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
-import { UserTvShowsService } from 'src/app/services/userTvShows.service';
-import { TvShowDTO } from 'src/app/models/tvShowDTO.model';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-wished-tv-shows-form',
   templateUrl: './wished-tv-shows-form.component.html',
-  styleUrls: ['./wished-tv-shows-form.component.css']
+  styleUrls: ['./wished-tv-shows-form.component.scss']
 })
 export class WishedTvShowsFormComponent implements OnInit {
   images: any = Images;
@@ -62,7 +61,6 @@ export class WishedTvShowsFormComponent implements OnInit {
     this.userId = sessionStorage.getItem('userId');
     if (isNil(this.userId)) this.router.navigate(['/login']);
 
-
     this.isUserTvShow();
   }
 
@@ -79,6 +77,7 @@ export class WishedTvShowsFormComponent implements OnInit {
               title: 'Oops...',
               text: 'La serie ya está en tu lista de series que quieres ver'
             })
+            this.router.navigate(['/wishedTvShows'])
           }
 
           this.isUserTvShowDB = this.userTvShows.some(userTvShow => userTvShow.tvShow.id.toString() === this.tvShowId.toString() && (userTvShow.watchedStatus === this.watchedStatus.watching || userTvShow.watchedStatus === this.watchedStatus.finished ));
@@ -91,6 +90,7 @@ export class WishedTvShowsFormComponent implements OnInit {
             }),
             this.router.navigate(['/wishedTvShows'])
           }
+
 
           !this.isUserTvShowStatusDB && !this.isUserTvShowDB && this.getTvShowData();
         } else {
@@ -111,7 +111,6 @@ export class WishedTvShowsFormComponent implements OnInit {
           this.getTvShowFromApi();
         }})
   }
-
 
   private getTvShowFromApi = () => {
     this.tvShowsService.getTvShowApi(this.tvShowId).subscribe(

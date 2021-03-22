@@ -31,22 +31,17 @@
   margin-bottom: 1rem;
 }
 
-.rowLeftContainerRow{
+.rowLeftContainer{
   width: 45%;
   text-align: center;
 }
 
-.rowLeftContainerCenter{
+.rowLeftContainer{
   width: 45%;
   padding: 1rem;
 }
 
-.rowRightContainerRow{
-  text-align: center;
-  width: 55%;
-}
-
-.rowRightContainerColumn{
+.rowRightContainer{
   display: flex;
   flex-direction: column;
   width: 55%;

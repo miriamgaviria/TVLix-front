@@ -21,7 +21,7 @@ import WatchedStatus from '../../../assets/configs/watchedStatus.json';
 @Component({
   selector: 'app-finished-tv-shows-form',
   templateUrl: './finished-tv-shows-form.component.html',
-  styleUrls: ['./finished-tv-shows-form.component.css']
+  styleUrls: ['./finished-tv-shows-form.component.scss']
 })
 export class FinishedTvShowsFormComponent implements OnInit {
   images: any = Images;
@@ -107,8 +107,9 @@ export class FinishedTvShowsFormComponent implements OnInit {
               background: 'rgb(211,211,211)',
               icon: 'error',
               title: 'Oops...',
-              text: 'La serie ya está en tu lista de series que quieres ver'
+              text: 'La serie ya está en tu lista de series vistas'
             })
+            this.router.navigate(['/finishedTvShows'])
           }
 
           this.isUserTvShowDB = this.userTvShows.some(userTvShow => userTvShow.tvShow.id.toString() === this.tvShowId.toString());
@@ -117,7 +118,6 @@ export class FinishedTvShowsFormComponent implements OnInit {
         } else {
           this.getTvShowData();
         }
-        this.isLoading = false;
       }
     )
   }

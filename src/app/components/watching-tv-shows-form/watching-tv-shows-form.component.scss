@@ -4,7 +4,7 @@
   flex-direction: row-reverse;
   justify-content: center;
   align-items: center;
-  /* margin-bottom: 4rem; */
+  width: 95%
 }
 
 .cardContainer {
@@ -13,6 +13,7 @@
   justify-content: center;
   margin: 2rem auto 0 auto;
   padding: 1.5rem;
+  padding-bottom: 0rem;
 }
 
 .pageTitle{
@@ -27,34 +28,28 @@
   margin-bottom: 1rem;
 }
 
-.rowLeftContainerRow{
-  width: 45%;
-  text-align: center;
-}
-
-.rowLeftContainerCenter{
-  width: 45%;
+.rowLeftContainer{
+  width: 60%;
   padding: 1rem;
 }
 
-.rowRightContainerRow{
-  text-align: center;
-  width: 55%;
-}
-
-.rowRightContainerColumn{
+.rowRightContainer{
   display: flex;
   flex-direction: column;
-  width: 55%;
+  width: 40%;
   padding: 1rem;
+}
+
+.field{
+  width: 8rem;
 }
 
 .buttonPosition{
-    margin-top: 3rem;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 

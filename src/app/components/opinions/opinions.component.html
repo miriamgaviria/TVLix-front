@@ -1,5 +1,3 @@
-<!-- <app-header></app-header> -->
-
 <div class="container-fluid">
 
   <div *ngIf="isLoading" class="d-flex d-flexSpinner justify-content-center">
@@ -12,111 +10,100 @@
   <div *ngIf="!isLoading">
 
     <div class="row-fluid pageTitle">
-      <!-- <h2>{{texts.pageTitle}}</h2> -->
       <h2>{{texts.appValoraciones}}</h2>
     </div>
 
-
-
     <div class="justify-content-center tableContainer">
-
       <div *ngIf="opinionsEmpty">{{texts.noValoraciones}}</div>
 
       <div *ngIf="!opinionsEmpty">
-
-      <table class="table table-striped table-dark">
-        <thead>
-          <tr>
-            <th scope="col" class="dateContainer">{{texts.fecha}}</th>
-            <th scope="col" class="commentContainer">{{texts.usuario}}</th>
-            <th scope="col" class="commentContainer">{{texts.comentario}}</th>
-            <th scope="col" class="rateContainer">{{texts.valoracion}}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let opinion of opinions | paginate: { itemsPerPage: 6, currentPage: p }">
-            <td class="valignCenter">{{opinion.date}}</td>
-            <td class="valignCenter">{{opinion.user.userName}}</td>
-            <td class="valignCenter">{{opinion.comment}}</td>
-            <td class="rateContainer">
-              <div *ngIf="opinion.rate == 1" class="rate">
-                <input #abc type="radio" id="star1" name="rate"/>
-                <label for="star1" class="NotColored"></label>
-                <input #abc type="radio" id="star2" name="rate"/>
-                <label for="star2" class="NotColored"></label>
-                <input #abc type="radio" id="star3" name="rate"/>
-                <label for="star3" class="NotColored"></label>
-                <input #abc type="radio" id="star4" name="rate"/>
-                <label for="star4" class="NotColored"></label>
-                <input #abc type="radio" id="star5" name="rate"/>
-                <label for="star5" class="colored"></label>
-            </div>
-            <div *ngIf="opinion.rate == 2" class="rate">
-                <input #abc type="radio" id="star1" name="rate"/>
-                <label for="star1" class="NotColored"></label>
-                <input #abc type="radio" id="star2" name="rate"/>
-                <label for="star2" class="NotColored"></label>
-                <input #abc type="radio" id="star3" name="rate"/>
-                <label for="star3" class="NotColored"></label>
-                <input #abc type="radio" id="star4" name="rate"/>
-                <label for="star4" class="colored"></label>
-                <input #abc type="radio" id="star5" name="rate"/>
-                <label for="star5" class="colored"></label>
-            </div>
-            <div *ngIf="opinion.rate == 3" class="rate">
-                <input #abc type="radio" id="star1" name="rate"/>
-                <label for="star1" class="NotColored"></label>
-                <input #abc type="radio" id="star2" name="rate"/>
-                <label for="star2" class="NotColored"></label>
-                <input #abc type="radio" id="star3" name="rate"/>
-                <label for="star3" class="colored"></label>
-                <input #abc type="radio" id="star4" name="rate"/>
-                <label for="star4" class="colored"></label>
-                <input #abc type="radio" id="star5" name="rate"/>
-                <label for="star5" class="colored"></label>
-            </div>
-            <div *ngIf="opinion.rate == 4" class="rate">
-                <input #abc type="radio" id="star1" name="rate"/>
-                <label for="star1" class="NotColored"></label>
-                <input #abc type="radio" id="star2" name="rate"/>
-                <label for="star2" class="colored"></label>
-                <input #abc type="radio" id="star3" name="rate"/>
-                <label for="star3"  class="colored"></label>
-                <input #abc type="radio" id="star4" name="rate"/>
-                <label for="star4"  class="colored"></label>
-                <input #abc type="radio" id="star5" name="rate"/>
-                <label for="star5"  class="colored"></label>
-            </div>
-            <div *ngIf="opinion.rate == 5" class="rate">
-                <input #abc type="radio" id="star1" name="rate"/>
-                <label for="star1" class="colored"></label>
-                <input #abc type="radio" id="star2" name="rate"/>
-                <label for="star2" class="colored"></label>
-                <input #abc type="radio" id="star3" name="rate"/>
-                <label for="star3" class="colored"></label>
-                <input #abc type="radio" id="star4" name="rate"/>
-                <label for="star4" class="colored"></label>
-                <input #abc type="radio" id="star5" name="rate"/>
-                <label for="star5" class="colored"></label>
-            </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="paginationContainer">
-        <pagination-controls class="pagination" (pageChange)="p = $event" previousLabel="Anterior"
-        nextLabel="Siguiente"></pagination-controls>
-      </div>
-
-
+        <table class="table table-striped table-dark">
+          <thead>
+            <tr>
+              <th scope="col" class="dateContainer">{{texts.fecha}}</th>
+              <th scope="col" class="commentContainer">{{texts.usuario}}</th>
+              <th scope="col" class="commentContainer">{{texts.comentario}}</th>
+              <th scope="col" class="rateContainer">{{texts.valoracion}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let opinion of opinions | paginate: { itemsPerPage: 6, currentPage: p }">
+              <td class="valignCenter">{{opinion.date}}</td>
+              <td class="valignCenter">{{opinion.user.userName}}</td>
+              <td class="valignCenter">{{opinion.comment}}</td>
+              <td class="rateContainer">
+                <div *ngIf="opinion.rate == 1" class="rate">
+                  <input #abc type="radio" id="star1" name="rate"/>
+                  <label for="star1" class="NotColored"></label>
+                  <input #abc type="radio" id="star2" name="rate"/>
+                  <label for="star2" class="NotColored"></label>
+                  <input #abc type="radio" id="star3" name="rate"/>
+                  <label for="star3" class="NotColored"></label>
+                  <input #abc type="radio" id="star4" name="rate"/>
+                  <label for="star4" class="NotColored"></label>
+                  <input #abc type="radio" id="star5" name="rate"/>
+                  <label for="star5" class="colored"></label>
+              </div>
+              <div *ngIf="opinion.rate == 2" class="rate">
+                  <input #abc type="radio" id="star1" name="rate"/>
+                  <label for="star1" class="NotColored"></label>
+                  <input #abc type="radio" id="star2" name="rate"/>
+                  <label for="star2" class="NotColored"></label>
+                  <input #abc type="radio" id="star3" name="rate"/>
+                  <label for="star3" class="NotColored"></label>
+                  <input #abc type="radio" id="star4" name="rate"/>
+                  <label for="star4" class="colored"></label>
+                  <input #abc type="radio" id="star5" name="rate"/>
+                  <label for="star5" class="colored"></label>
+              </div>
+              <div *ngIf="opinion.rate == 3" class="rate">
+                  <input #abc type="radio" id="star1" name="rate"/>
+                  <label for="star1" class="NotColored"></label>
+                  <input #abc type="radio" id="star2" name="rate"/>
+                  <label for="star2" class="NotColored"></label>
+                  <input #abc type="radio" id="star3" name="rate"/>
+                  <label for="star3" class="colored"></label>
+                  <input #abc type="radio" id="star4" name="rate"/>
+                  <label for="star4" class="colored"></label>
+                  <input #abc type="radio" id="star5" name="rate"/>
+                  <label for="star5" class="colored"></label>
+              </div>
+              <div *ngIf="opinion.rate == 4" class="rate">
+                  <input #abc type="radio" id="star1" name="rate"/>
+                  <label for="star1" class="NotColored"></label>
+                  <input #abc type="radio" id="star2" name="rate"/>
+                  <label for="star2" class="colored"></label>
+                  <input #abc type="radio" id="star3" name="rate"/>
+                  <label for="star3"  class="colored"></label>
+                  <input #abc type="radio" id="star4" name="rate"/>
+                  <label for="star4"  class="colored"></label>
+                  <input #abc type="radio" id="star5" name="rate"/>
+                  <label for="star5"  class="colored"></label>
+              </div>
+              <div *ngIf="opinion.rate == 5" class="rate">
+                  <input #abc type="radio" id="star1" name="rate"/>
+                  <label for="star1" class="colored"></label>
+                  <input #abc type="radio" id="star2" name="rate"/>
+                  <label for="star2" class="colored"></label>
+                  <input #abc type="radio" id="star3" name="rate"/>
+                  <label for="star3" class="colored"></label>
+                  <input #abc type="radio" id="star4" name="rate"/>
+                  <label for="star4" class="colored"></label>
+                  <input #abc type="radio" id="star5" name="rate"/>
+                  <label for="star5" class="colored"></label>
+              </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="paginationContainer">
+          <pagination-controls class="pagination" (pageChange)="p = $event" previousLabel="Anterior"
+          nextLabel="Siguiente"></pagination-controls>
+        </div>
       </div>
 
       <a (click)=goToOpinionForm()><button class="btn btn-primary buttonStyle buttonContainer">{{texts.dejaOpinion}}</button></a>
-
     </div>
-
   </div>
-
-
 </div>
 

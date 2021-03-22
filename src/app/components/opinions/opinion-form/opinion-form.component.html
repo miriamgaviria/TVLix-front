@@ -1,16 +1,12 @@
-<!-- <app-header></app-header> -->
-
 <div class="container-fluid">
 
   <div *ngIf="isLoading" class="d-flex .d-flexSpinner justify-content-center">
     <div class="spinner-border text-info" role="status">
       <span class="sr-only">{{texts.loading}}</span>
     </div>
-
   </div>
 
-    <div *ngIf="!isLoading">
-
+  <div *ngIf="!isLoading">
     <div class="row-fluid pageTitle">
       <h2>{{texts.valoraApp}}</h2>
     </div>
@@ -25,7 +21,6 @@
             <input type="radio" name="rating" value="2" id="2" [(ngModel)]='opinion.rate' ><label for="2">☆</label>
             <input type="radio" name="rating" value="1" id="1" [(ngModel)]='opinion.rate' ><label for="1">☆</label>
           </div>
-
         </div>
 
         <div class="form-group row labelForm">
@@ -34,25 +29,14 @@
           rows="8" (focus)='onFocus()' placeholder="{{texts.appCommentPlaceholder}}"></textarea>
         </div>
 
-
-        <!-- <div class="form-group row labelForm">
-          <label for="FormControlInputEmail" class="rowForm">{{texts.escribaCorreo}}
-            <span class="form-group errorMessageEmail" *ngIf="!validateEmail"></span>
-          </label>
-          <input type="email" class="form-control rowForm" [(ngModel)]='opinion.email'  name="email"
-          placeholder="{{texts.emailPlaceholder}}" (focus)='onFocus()' autocomplete="off" required>
-        </div> -->
-
         <div class="form-group errorMessage" *ngIf="!validateForm">{{texts.todosCamposRequeridos}}</div>
 
         <div class="form-group row rowForm buttonPosition">
           <button class="btn btn-primary buttonStyle buttonContainer" type="submit">{{texts.guardarOpinion}}</button>
         </div>
       </form>
-
     </div>
   </div>
-
 </div>
 
 

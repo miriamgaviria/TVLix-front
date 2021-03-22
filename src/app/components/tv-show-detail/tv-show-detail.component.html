@@ -1,10 +1,8 @@
 <div class="container-fluid">
-
     <div *ngIf="isLoading" class="d-flex d-flexSpinner justify-content-center">
         <div class="spinner-border text-info" role="status">
             <span class="sr-only">{{texts.loading}}</span>
         </div>
-
     </div>
 
     <div *ngIf="!isLoading">
@@ -77,7 +75,6 @@
                     alt="Imagen de la serie" >
                 </div>
             </div>
-
 
             <div class="rowContainerCenter">
                 <div class="textLinks"><strong>{{texts.enlaces}}</strong></div>

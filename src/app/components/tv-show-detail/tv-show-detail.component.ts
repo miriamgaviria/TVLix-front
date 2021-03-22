@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
-import { TvShowApi } from '../../models/tvShowApi.model';
-import { TvShowsService } from './../../services/tvShows.service';
+import isNil from 'lodash/isNil';
+
 import { TvShowDetail } from '../../models/tvShowDetail.model';
+
+import { TvShowsService } from './../../services/tvShows.service';
 
 import Images from '../../../assets/imagesUrl.json';
 import Texts from '../../../assets/texts.json';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tv-show-detail',
@@ -21,8 +23,8 @@ export class TvShowDetailComponent implements OnInit {
   imageTvShow: boolean;
   originalPicture: boolean = true;
   smallPicturesSrc: string;
-  tvShowApi: TvShowApi;
-  tvShowDetail: TvShowDetail;
+  tvShowDetail: any;
+  // tvShowDetail: TvShowDetail;
   tvShowId: any;
 
   constructor(
@@ -34,23 +36,17 @@ export class TvShowDetailComponent implements OnInit {
 
     this.tvShowsService.getTvShowApi(this.tvShowId).subscribe(
       (newData) => {
-        this.tvShowApi = newData;
-        this.tvShowDetail = this.tvShowApi.tvShow
-        this.isLoading = false;
-        if (this.tvShowDetail.image_thumbnail_path === null || this.tvShowDetail.image_thumbnail_path === undefined || this.tvShowDetail.image_thumbnail_path === ''){
-          this.imageTvShow = false;
-        } else {
-          this.imageTvShow = true;
-        }
-      }
-    )
+        this.tvShowDetail = newData.tvShow
+        isNil(this.tvShowDetail.image_thumbnail_path) || this.tvShowDetail.image_thumbnail_path === '' ? this.imageTvShow = false : this.imageTvShow = true;
+      })
+      this.isLoading = false;
   }
 
-  moreInformation(source){
+  public moreInformation(source){
     window.open(source, '_blank');
   }
 
-  onSmallImages(pictures){
+  public onSmallImages(pictures){
     this.originalPicture = false;
     this.smallPicturesSrc = pictures;
   }

@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import isEmpty from 'lodash/isEmpty';
 import isNil from 'lodash/isNil';
 
 import swal from'sweetalert2';
 
+import { UserTvShowDTO } from '../../models/userTvShowDTO.model';
+
+import { UserTvShowsService } from 'src/app/services/userTvShows.service';
+
 import Images from '../../../assets/imagesUrl.json';
 import Texts from '../../../assets/texts.json';
-import WatchedStatus from '../../../assets/configs/watchedStatus.json'
-
-import { UserTvShowDTO } from '../../models/userTvShowDTO.model';
-import { UserTvShowsService } from 'src/app/services/userTvShows.service';
-import { Router } from '@angular/router';
+import WatchedStatus from '../../../assets/configs/watchedStatus.json';
 
 @Component({
   selector: 'app-finished-tv-shows',
@@ -23,13 +24,13 @@ export class FinishedTvShowsComponent implements OnInit {
   texts: any = Texts;
   watchedStatus: any = WatchedStatus;
 
-  searchName: string;
-
   finishedTvShows: UserTvShowDTO[];
   finishedTvShowIdToDelete: number;
 
   isLoading: boolean = true;
   isSearched: boolean = false;
+
+  searchName: string;
 
   userId: string;
 
@@ -45,16 +46,7 @@ export class FinishedTvShowsComponent implements OnInit {
     this.loadFinishedTvShows();
   }
 
-  loadFinishedTvShows = () => {
-    this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.finished).subscribe(
-      (data) => {
-        this.finishedTvShows = data;
-        this.isLoading = false;
-      }
-    )
-  }
-
-  deleteTvShow = () => {
+  public deleteTvShow = () => {
     this.isLoading = true;
     this.userTvShowsService.deleteUserTvShowById(this.finishedTvShowIdToDelete).subscribe(
       (data) => {
@@ -79,7 +71,16 @@ export class FinishedTvShowsComponent implements OnInit {
     );
   }
 
-  onSearch(event: any){
+  public loadFinishedTvShows = () => {
+    this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.finished).subscribe(
+      (data) => {
+        this.finishedTvShows = data;
+        this.isLoading = false;
+      }
+    )
+  }
+
+  public onSearch(event: any){
     this.isLoading = true;
     this.searchName = event.target.searchName.value;
     if (isEmpty(this.searchName)) {
@@ -91,7 +92,7 @@ export class FinishedTvShowsComponent implements OnInit {
     this.isSearched = true;
   }
 
-  setFinishedTvShowIdToDelete = finishedTvShowIdToDelete => {
+  public setFinishedTvShowIdToDelete = finishedTvShowIdToDelete => {
     this.finishedTvShowIdToDelete = finishedTvShowIdToDelete;
   }
 }

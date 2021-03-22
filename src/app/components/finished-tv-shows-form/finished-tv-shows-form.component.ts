@@ -8,7 +8,6 @@ import swal from'sweetalert2';
 
 import { TvShowApi } from '../../models/tvShowApi.model';
 import { TvShowDTO } from './../../models/tvShowDTO.model';
-import { TvShowDetail } from '../../models/tvShowDetail.model';
 import { UserTvShowDTO } from '../../models/userTvShowDTO.model';
 
 import { TvShowsService } from './../../services/tvShows.service';
@@ -30,21 +29,21 @@ export class FinishedTvShowsFormComponent implements OnInit {
   watchedStatus: any = WatchedStatus;
 
   isLoading: boolean = true;
-  isUserTvShowStatusDB: boolean;
-  isUserTvShowDB: boolean;
   isTvShowDB: boolean;
   isTvShowApi: boolean;
+  isUserTvShowStatusDB: boolean;
+  isUserTvShowDB: boolean;
 
 
-  tvShowApi: TvShowApi;
-  tvShow: any;
 
   finishedTvShow: UserTvShowDTO = new UserTvShowDTO();
   finishedTvShows: UserTvShowDTO[];
+  tvShow: any;
+  tvShowApi: TvShowApi;
   tvShowDTO: TvShowDTO = new TvShowDTO();
   tvShowId: string;
-  userId: any;
 
+  userId: any;
   userTvShows: UserTvShowDTO[];
 
   validateForm: boolean = true;

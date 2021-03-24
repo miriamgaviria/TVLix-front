@@ -63,10 +63,15 @@ export class WatchingTvShowsFormComponent implements OnInit {
       (data) => {
         if (!isNil(data)) {
           this.userTvShows = data;
-          let userTvShows = this.userTvShows.filter(userTvShow => userTvShow.tvShow.id.toString() === this.tvShowId.toString() && userTvShow.watchedStatus === this.watchedStatus.watching);
-          this.isUserTvShowStatusDB = userTvShows.length !=0;
-          this.tvShow = userTvShows[0].tvShow;
-          this.isLoading = false;
+          let userTvShows = this.userTvShows.filter(userTvShow => userTvShow.tvShow.id.toString() === this.tvShowId.toString());
+          if (userTvShows.length != 0) {
+            this.watchingTvShow = userTvShows[0];
+            this.tvShow = this.watchingTvShow.tvShow;
+            this.isUserTvShowStatusDB = true;
+            this.isLoading = false;
+          } else {
+            this.getTvShowData()
+          }
         } else {
           this.getTvShowData();
         }

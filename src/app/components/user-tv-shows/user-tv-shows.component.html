@@ -34,7 +34,7 @@
                 <img class="cursorPointer" src="{{wishedUserTvShow.tvShow.image}}" alt="{{wishedUserTvShow.tvShow.name}}">
                 <div class="descriptions">
                   <div class="listName">
-                    <h3 >{{wishedUserTvShow.tvShow.name}}</h3>
+                    <div>{{wishedUserTvShow.tvShow.name}}</div>
                   </div>
                   <button [routerLink]="['/watchingTvShowsForm/', wishedUserTvShow.tvShow.id]">
                     {{texts.seriesViendo}}
@@ -72,7 +72,7 @@
               <div >
                 <img class="cursorPointer" src="{{watchingUserTvShow.tvShow.image}}" alt="{{watchingUserTvShow.tvShow.name}}">
                 <div class="descriptions">
-                  <h3>{{watchingUserTvShow.tvShow.name}}</h3>
+                  <div>{{watchingUserTvShow.tvShow.name}}</div>
                   <button [routerLink]="['/watchingTvShowsForm/', watchingUserTvShow.tvShow.id]">
                     {{texts.seriesViendo}}
                   </button><br/>
@@ -107,7 +107,7 @@
             <div class="cards card text-white bg-secondary offset-1" *ngFor="let finishedUserTvShow of finishedUserTvShows">
               <img class="cursorPointer" src="{{finishedUserTvShow.tvShow.image}}" alt="{{finishedUserTvShow.tvShow.name}}">
               <div class="descriptions">
-                <h3>{{finishedUserTvShow.tvShow.name}}</h3>
+                <div>{{finishedUserTvShow.tvShow.name}}</div>
                 <button data-toggle="modal" data-target="#deleteConfirmDialog" (click)="setFinishedTvShowIdToDelete(finishedUserTvShow.id)">
                   {{texts.eliminarSerieCard}}
                 </button><br/>

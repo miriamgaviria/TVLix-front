@@ -27,12 +27,17 @@ export class UserTvShowsComponent implements OnInit {
   watchedStatus: any = WatchedStatus;
 
   isLoading: boolean = true;
-  searchName: string;
+  isLargeFinishedUserTvShows: boolean;
+  isLargeWatchingUserTvShows: boolean;
+  isLargeWishedUserTvShows: boolean;
 
   finishedUserTvShows: UserTvShowDTO[];
   watchingUserTvShows: UserTvShowDTO[];
   wishedUserTvShows: UserTvShowDTO[];
+
   tvShowIdToDelete: number;
+
+  searchName: string;
 
   userId: string;
   userName: string;
@@ -90,16 +95,19 @@ export class UserTvShowsComponent implements OnInit {
   onLoadUserTvShows = () => {
     this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.watching).subscribe(
       (data) => {
-        this.watchingUserTvShows = data.slice(0, 2);;
+        if (data.length > 2) this.isLargeWatchingUserTvShows = true;
+        this.watchingUserTvShows = data.slice(0, 2);
       }
     );
     this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.wished).subscribe(
       (data) => {
-        this.wishedUserTvShows = data.slice(0, 2);;
+        if (data.length > 2) this.isLargeWishedUserTvShows = true;
+        this.wishedUserTvShows = data.slice(0, 2);
       }
     );
     this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.finished).subscribe(
       (data) => {
+        if (data.length > 2) this.isLargeFinishedUserTvShows = true;
         this.finishedUserTvShows = data.slice(0, 2);
       }
     )

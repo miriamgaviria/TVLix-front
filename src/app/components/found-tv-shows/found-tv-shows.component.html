@@ -9,7 +9,7 @@
 
     <div *ngIf="!isLoading">
         <div class="row-fluid pageTitle">
-            <h2>{{texts.seriesContienen}} <strong class="italic">{{searchName}}</strong> </h2>
+            <h2>Hay {{foundTvShows.total}} {{texts.seriesContienen}} <strong class="italic">{{searchName}}</strong> </h2>
         </div>
 
         <div *ngIf="noFoundTvShows" class="noFoundText">{{texts.seriesNoEncontradas}} <strong class="italic">{{searchName}}</strong></div>

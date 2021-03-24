@@ -38,6 +38,7 @@ export class FoundTvShowsComponent implements OnInit {
   loadTvShows(page){
     this.tvShowsService.getTvShowSearch(page, this.searchName).subscribe(
       (data) => {
+        console.log(`data`, data)
         this.foundTvShows = data;
         this.isLoading = false;
         if(this.foundTvShows.tv_shows.length === 0){

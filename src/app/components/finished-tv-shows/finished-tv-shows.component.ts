@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import isEmpty from 'lodash/isEmpty';
 import isNil from 'lodash/isNil';
+import sortBy from 'lodash/sortBy';
 
 import swal from'sweetalert2';
 
@@ -74,7 +75,7 @@ export class FinishedTvShowsComponent implements OnInit {
   public loadFinishedTvShows = () => {
     this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.finished).subscribe(
       (data) => {
-        this.finishedTvShows = data;
+        this.finishedTvShows = sortBy(data, 'date').reverse();
         this.isLoading = false;
       }
     )

@@ -70,7 +70,7 @@ export class WatchingTvShowsFormComponent implements OnInit {
             this.isUserTvShowStatusDB = true;
             this.isLoading = false;
           } else {
-            this.getTvShowData()
+            this.getTvShowData();
           }
         } else {
           this.getTvShowData();

@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 
 import swal from'sweetalert2';
 
-import isEmpty from 'lodash/isEmpty';
 import isNil from 'lodash/isNil';
+import sortBy from 'lodash/sortBy';
 
 import { UserTvShowDTO } from '../../models/userTvShowDTO.model';
 
@@ -96,19 +96,19 @@ export class UserTvShowsComponent implements OnInit {
     this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.watching).subscribe(
       (data) => {
         if (data.length > 2) this.isLargeWatchingUserTvShows = true;
-        this.watchingUserTvShows = data.slice(0, 2);
+        this.watchingUserTvShows = sortBy(data.slice(0, 2), 'date').reverse();
       }
     );
     this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.wished).subscribe(
       (data) => {
         if (data.length > 2) this.isLargeWishedUserTvShows = true;
-        this.wishedUserTvShows = data.slice(0, 2);
+        this.wishedUserTvShows = sortBy(data.slice(0, 2), 'date').reverse();
       }
     );
     this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.finished).subscribe(
       (data) => {
         if (data.length > 2) this.isLargeFinishedUserTvShows = true;
-        this.finishedUserTvShows = data.slice(0, 2);
+        this.finishedUserTvShows = sortBy(data.slice(0, 2), 'date').reverse();
       }
     )
     this.isLoading = false;

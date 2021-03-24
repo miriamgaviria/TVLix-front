@@ -59,7 +59,7 @@
           </div>
 
           <div>
-            <button [routerLink]="['/wishedTvShows/']" class="btn btn-primary buttonStyle buttonContainer listButton">{{texts.listadoCompleto}}</button>
+            <button *ngIf="wishedUserTvShows.length > 2" [routerLink]="['/wishedTvShows/']" class="btn btn-primary buttonStyle buttonContainer listButton">{{texts.listadoCompleto}}</button>
           </div>
         </div>
 
@@ -95,7 +95,7 @@
             </div>
           </div>
           <div>
-            <button [routerLink]="['/watchingTvShows/']" class="btn btn-primary buttonStyle buttonContainer listButton">{{texts.listadoCompleto}}</button>
+            <button *ngIf="watchingUserTvShows.length > 2" [routerLink]="['/watchingTvShows/']" class="btn btn-primary buttonStyle buttonContainer listButton">{{texts.listadoCompleto}}</button>
           </div>
         </div>
 
@@ -124,7 +124,7 @@
           </div>
 
           <div>
-            <button [routerLink]="['/finishedTvShows/']" class="btn btn-primary buttonStyle buttonContainer listButton">{{texts.listadoCompleto}}</button>
+            <button *ngIf="finishedUserTvShows.length > 2" [routerLink]="['/finishedTvShows/']" class="btn btn-primary buttonStyle buttonContainer listButton">{{texts.listadoCompleto}}</button>
           </div>
         </div>
       </div>

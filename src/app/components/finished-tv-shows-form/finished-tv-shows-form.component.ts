@@ -2,6 +2,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import capitalize from 'lodash/capitalize';
 import  isNil from 'lodash/isNil';
 
 import swal from'sweetalert2';
@@ -68,6 +69,7 @@ export class FinishedTvShowsFormComponent implements OnInit {
       (newData) => {
         if (!isNil(newData)) {
           this.tvShow = newData;
+          this.tvShow.genre = capitalize(this.tvShow.genre.split(',').join(', ').replace(/['"]+/g, ''));
           this.isTvShowDB = true;
           this.isLoading = false;
         } else {
@@ -116,6 +118,7 @@ export class FinishedTvShowsFormComponent implements OnInit {
             if (userTvShows.length != 0) {
               this.finishedTvShow = userTvShows[0];
               this.tvShow = this.finishedTvShow.tvShow;
+              this.tvShow.genre = capitalize(this.tvShow.genre.split(',').join(', ').replace(/['"]+/g, ''));
               this.isUserTvShowStatusDB = true;
               this.isLoading = false;
             } else {
@@ -147,7 +150,7 @@ export class FinishedTvShowsFormComponent implements OnInit {
     this.tvShow = {
       end_date: tvShowApi.end_date,
       episodes: tvShowApi.episodes.length - 1,
-      genre: tvShowApi.genres.toString(),
+      genre: capitalize(tvShowApi.genres.toString().split(',').join(', ')),
       id: tvShowApi.id,
       image: tvShowApi.image_path,
       name: tvShowApi.name,

@@ -2,6 +2,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import capitalize from 'lodash/capitalize';
 import  isNil from 'lodash/isNil';
 
 import swal from'sweetalert2';
@@ -28,7 +29,6 @@ export class WatchingTvShowsFormComponent implements OnInit {
   watchedStatus: any = WatchedStatus;
 
   isLoading: boolean = true;
-  isTvShowDB: boolean;
   isTvShowApi: boolean;
   isUserTvShowStatusDB: boolean;
 
@@ -67,29 +67,31 @@ export class WatchingTvShowsFormComponent implements OnInit {
           if (userTvShows.length != 0) {
             this.watchingTvShow = userTvShows[0];
             this.tvShow = this.watchingTvShow.tvShow;
+            console.log(`typeof this.tvShow.genre`, typeof this.tvShow.genre)
+            this.tvShow.genre = capitalize(this.tvShow.genre.split(',').join(', ').replace(/['"]+/g, ''));
             this.isUserTvShowStatusDB = true;
             this.isLoading = false;
           } else {
-            this.getTvShowData();
+            this.getTvShowFromApi();
           }
         } else {
-          this.getTvShowData();
+          this.getTvShowFromApi();
         }
       }
     )
   }
 
-  private getTvShowData = () => {
-    this.tvShowsService.getTvShowByIdDB(this.tvShowId).subscribe(
-      (newData) => {
-        if (!isNil(newData)) {
-          this.tvShow = newData;
-          this.isTvShowDB = true;
-          this.isLoading = false;
-        } else {
-          this.getTvShowFromApi();
-        }})
-  }
+  // private getTvShowData = () => {
+  //   this.tvShowsService.getTvShowByIdDB(this.tvShowId).subscribe(
+  //     (newData) => {
+  //       if (!isNil(newData)) {
+  //         this.tvShow = newData;
+  //         this.tvShow.genre = this.tvShow.genre.split(',').join(', ');
+  //         this.isLoading = false;
+  //       } else {
+  //         this.getTvShowFromApi();
+  //       }})
+  // }
 
   private getTvShowFromApi = () => {
     this.tvShowsService.getTvShowApi(this.tvShowId).subscribe(
@@ -105,7 +107,7 @@ export class WatchingTvShowsFormComponent implements OnInit {
     this.tvShow = {
       end_date: tvShowApi.end_date,
       episodes: tvShowApi.episodes.length - 1,
-      genre: tvShowApi.genres.toString(),
+      genre: capitalize(tvShowApi.genres.toString().split(',').join(', ')),
       id: tvShowApi.id,
       image: tvShowApi.image_path,
       name: tvShowApi.name,

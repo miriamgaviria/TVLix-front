@@ -28,19 +28,18 @@
 }
 
 .rowLeftContainer{
-  width: 45%;
-  text-align: center;
-}
-
-.rowLeftContainer{
-  width: 45%;
+  width: 60%;
   padding: 1rem;
+
+  .field {
+    width: 20%
+  }
 }
 
 .rowRightContainer{
   display: flex;
   flex-direction: column;
-  width: 55%;
+  width: 40%;
   padding: 1rem;
 }
 

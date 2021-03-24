@@ -30,7 +30,6 @@ export class FinishedTvShowsFormComponent implements OnInit {
 
   isLoading: boolean = true;
   isTvShowDB: boolean;
-  isTvShowApi: boolean;
   isUserTvShowStatusDB: boolean;
   isUserTvShowDB: boolean;
 
@@ -70,16 +69,18 @@ export class FinishedTvShowsFormComponent implements OnInit {
         if (!isNil(newData)) {
           this.tvShow = newData;
           this.isTvShowDB = true;
+          this.isLoading = false;
         } else {
           this.getTvShowFromApi();
-        }})
+        }}
+    )
   }
 
   private getTvShowFromApi = () => {
     this.tvShowsService.getTvShowApi(this.tvShowId).subscribe(
       (newData) => {
         this.parseTvShowApi(newData.tvShow);
-        this.isTvShowApi = true;
+        this.isLoading = false;
       }
     )
   }
@@ -110,6 +111,16 @@ export class FinishedTvShowsFormComponent implements OnInit {
               text: 'La serie ya está en tu lista de series vistas'
             })
             this.router.navigate(['/finishedTvShows'])
+          } else {
+            let userTvShows = this.userTvShows.filter(userTvShow => userTvShow.tvShow.id.toString() === this.tvShowId.toString());
+            if (userTvShows.length != 0) {
+              this.finishedTvShow = userTvShows[0];
+              this.tvShow = this.finishedTvShow.tvShow;
+              this.isUserTvShowStatusDB = true;
+              this.isLoading = false;
+            } else {
+              this.getTvShowData();
+            }
           }
 
           this.isUserTvShowDB = this.userTvShows.some(userTvShow => userTvShow.tvShow.id.toString() === this.tvShowId.toString());

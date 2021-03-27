@@ -65,7 +65,7 @@
   "localidad": "Localidad",
   "login": "Login",
   "logout": "Logout",
-  "masInformacionSerie": "Más información de la serie",
+  "masInformacionSerie": "Más información",
   "modificaDatos": "Modifica los datos",
   "musical": "Musicales",
   "no": "No",
@@ -108,7 +108,7 @@
   "tipoPrograma": "Tipo de programa",
   "todosCamposRellenos": "Debes rellenar todos los campos",
   "todosCamposRequeridos": "Todos los campos son requeridos",
-  "tuPuntuacion": "Esta es su puntuación: ",
+  "tuPuntuacion": "Esta es tu puntuación: ",
   "tusSeries": "Tus series",
   "tusSeriesVer": "Series que quieres ver",
   "tusSeriesViendo": "Series que estás viendo",
@@ -124,5 +124,6 @@
   "watchingTvShowsFormHeader": " a la lista de series viendo",
   "western": "Western",
   "wishedTvShowsFormHeader": " a la lista de series para ver",
-  "minutos": "minutos"
+  "minutos": "minutos",
+  "datoIntrucidoNumero": "El dato introducido debe ser un número"
 }

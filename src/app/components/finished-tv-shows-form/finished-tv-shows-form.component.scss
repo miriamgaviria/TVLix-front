@@ -4,7 +4,14 @@
   flex-direction: row-reverse;
   justify-content: center;
   align-items: center;
-  /* margin-bottom: 4rem; */
+  width: 95%;
+
+  .isLoading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vw;
+  }
 }
 
 .finishedTvShowFormContainer{

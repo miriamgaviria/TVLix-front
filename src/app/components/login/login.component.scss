@@ -1,15 +1,20 @@
-
+  .isLoading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vw;
+  }
 
 .modal-content{
-    color: white;
-    align-items: center!important;
-    margin-top: 5rem;
-    background-color: rgb(53, 58, 64)!important;
-    border: skyblue 2px solid;
-    padding-bottom: 2rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    opacity: .75;
+  align-items: center!important;
+  margin-top: 8vw;
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: rgb(53, 58, 64)!important;
+  color: white;
+  border: skyblue 2px solid;
+  opacity: .75;
 }
 
 .user-img{
@@ -33,7 +38,7 @@
     border: 4px solid skyblue;
 }
 
-.errorMessage {    
+.errorMessage {
     margin-left: 0.75rem;
     margin-top: -1rem;
 }

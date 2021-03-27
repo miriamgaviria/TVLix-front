@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="modal-dialog">
-    <div *ngIf="isLoading" class="d-flex d-flexSpinner justify-content-center">
+    <div *ngIf="isLoading" class="d-flex d-flexSpinner justify-content-center isLoading">
       <div class="spinner-border text-info" role="status">
           <span class="sr-only">{{texts.loading}}</span>
       </div>
@@ -11,7 +11,7 @@
         <img class='avatarLoging' src="{{images.userLoginIcon}}"/>
       </div>
 
-      <form class="col-11 formaContainer"(ngSubmit)="onLogin()">
+      <form class="col-11"(ngSubmit)="onLogin()">
         <div class="form-group" id="user-group">
           <input type="text" class="form-control" autocomplete="off" name="userName" [(ngModel)]="user.userName" placeholder="{{texts.userName}}" (focus)='onFocus()' required>
         </div>

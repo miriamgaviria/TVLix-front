@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import Images from '../../../assets/imagesUrl.json';
-import Texts from '../../../assets/texts.json';
-
 import isNil from 'lodash/isNil';
 
 import swal from'sweetalert2';
@@ -11,18 +8,20 @@ import swal from'sweetalert2';
 import { User } from '../../models/user.model';
 
 import { LoginService } from '../../services/login.service';
-import { UserService } from './../../services/user.service';
+
+import Images from '../../../assets/imagesUrl.json';
+import Texts from '../../../assets/texts.json';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
   images: any = Images;
   texts: any = Texts;
 
-  isLoading: boolean = false;
+  isLoading: boolean = true;
 
   isUser: number;
   user: User = new User();
@@ -32,14 +31,12 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private loginService: LoginService,
-    public router: Router,
-    private userService: UserService
-  ) {
-
-  }
+    public router: Router
+  ) {}
 
   ngOnInit(): void {
-    sessionStorage.removeItem('userId')
+    sessionStorage.removeItem('userId');
+    this.isLoading = false;
   }
 
   checkIsAdmin(user: User){

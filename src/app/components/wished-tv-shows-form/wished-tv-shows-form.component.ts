@@ -90,7 +90,6 @@ export class WishedTvShowsFormComponent implements OnInit {
             this.router.navigate(['/wishedTvShows'])
           }
 
-
           !this.isUserTvShowStatusDB && !this.isUserTvShowDB && this.getTvShowData();
         } else {
           this.getTvShowData();

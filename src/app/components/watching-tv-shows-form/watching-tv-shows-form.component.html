@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div *ngIf="isLoading" class="d-flex .d-flexSpinner justify-content-center">
+  <div *ngIf="isLoading" class="d-flex .d-flexSpinner justify-content-center isLoading">
     <div class="spinner-border text-info" role="status">
       <span class="sr-only">{{texts.loading}}</span>
     </div>
@@ -60,6 +60,7 @@
               <input type="text" class="form-control" id="inputEpisodeWatched" placeholder={{texts.episodioViendoPlaceholder}} [(ngModel)]='watchingTvShow.episodeWatched' name="inputEpisodeWatched" >
             </div>
 
+            <div class="form-group errorMessage" *ngIf="!isNumber">{{texts.datoIntrucidoNumero}}</div>
             <div class="form-group errorMessage" *ngIf="!validateForm">{{texts.todosCamposRequeridos}}</div>
 
             <div class="form-group row rowForm buttonPosition">

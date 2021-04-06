@@ -118,12 +118,13 @@
   "usuario": "Usuario",
   "valoraApp": "Valora esta aplicación",
   "valoracion": "Valoración",
-  "valoraciones": "Valoraciones",
+  "valoraciones": "Valoraciones app",
   "valoraSerie": "Valora la serie",
   "vuelveAlListado": "Vuelve al listado",
   "watchingTvShowsFormHeader": " a la lista de series viendo",
   "western": "Western",
   "wishedTvShowsFormHeader": " a la lista de series para ver",
   "minutos": "minutos",
-  "datoIntrucidoNumero": "El dato introducido debe ser un número"
+  "datoIntrucidoNumero": "El dato introducido debe ser un número",
+  "capitulos": "Capítulos"
 }

@@ -58,22 +58,21 @@ export class UserComponent implements OnInit {
   public deleteUser () {
     this.userService.deleteUserById(this.userId).subscribe(
       (response) => {
-        this.isDeletedUser = response;
-        if(this.isDeletedUser){
-          swal.fire({
-            background: 'rgb(211,211,211)',
-            icon: 'success',
-            title: 'Usuario borrado'
+        swal.fire({
+          background: 'rgb(211,211,211)',
+          icon: 'success',
+          title: 'Ok',
+          text: 'Cuenta de usuario borrado'
         }),
-        this.router.navigate(['/tvShows']);
-        }  else {
-          swal.fire({
-            background: 'rgb(211,211,211)',
-            icon: 'error',
-            title: 'Oops...',
-            text: 'No se ha podido crear la cuenta porque este usuario ya existe'
-          })
-        }
+        this.router.navigate(['/login']);
+      },
+      error => {
+        swal.fire({
+          background: 'rgb(211,211,211)',
+          icon: 'error',
+          title: 'Oops...',
+          text: 'No se ha podido borrar la cuenta de usuario'
+        })
       }
     )
   }

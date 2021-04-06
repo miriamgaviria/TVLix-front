@@ -18,18 +18,19 @@
                             <tr >
                                 <td class="field">{{texts.comienzoEmision}}</td>
                                 <td class="data">{{tvShowDetail.start_date}}</td>
-
                             </tr>
                             <tr>
                                 <td class="field">{{texts.finEmision}}</td>
                                 <td class="data">{{tvShowDetail.end_date}}</td>
                             </tr>
-
                             <tr >
                                 <td class="field">{{texts.temporadas}}</td>
-                                <td class="data">{{tvShowDetail.episodes[tvShowDetail.episodes.length - 1].season}}</td>
-
+                                <td class="data">{{tvShowDetail.episodes.length}}</td>
                             </tr>
+                            <tr >
+                              <td class="field">{{texts.capitulos}}</td>
+                              <td class="data">{{tvShowDetail.episodes[tvShowDetail.episodes.length - 1].season}}</td>
+                          </tr>
                             <tr>
                                 <td class="field">{{texts.duracionCapitulo}}</td>
                                 <td class="data">{{tvShowDetail.runtime}} {{texts.minutos}}</td>

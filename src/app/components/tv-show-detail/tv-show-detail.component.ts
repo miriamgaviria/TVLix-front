@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import capitalize from 'lodash/capitalize';
 import isNil from 'lodash/isNil';
-
-import { TvShowDetail } from '../../models/tvShowDetail.model';
 
 import { TvShowsService } from './../../services/tvShows.service';
 
@@ -24,7 +23,6 @@ export class TvShowDetailComponent implements OnInit {
   originalPicture: boolean = true;
   smallPicturesSrc: string;
   tvShowDetail: any;
-  // tvShowDetail: TvShowDetail;
   tvShowId: any;
 
   constructor(
@@ -37,9 +35,10 @@ export class TvShowDetailComponent implements OnInit {
     this.tvShowsService.getTvShowApi(this.tvShowId).subscribe(
       (newData) => {
         this.tvShowDetail = newData.tvShow
+        this.tvShowDetail.genres = capitalize(this.tvShowDetail.genres.join(', '));
         isNil(this.tvShowDetail.image_thumbnail_path) || this.tvShowDetail.image_thumbnail_path === '' ? this.imageTvShow = false : this.imageTvShow = true;
       })
-      this.isLoading = false;
+    this.isLoading = false;
   }
 
   public moreInformation(source){

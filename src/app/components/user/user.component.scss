@@ -1,5 +1,6 @@
 .container-fluid{
     width: 70%;
+    margin: 2rem auto;
 }
 
 .tableContainer{
@@ -8,6 +9,7 @@
 
 td{
     padding-left: 2rem !important;
+    width: 50%;
 }
 
 .field{
@@ -18,8 +20,14 @@ td{
     font-weight: bold;
 }
 
+.buttonsContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .buttonContainer{
     margin-top: 2rem;
-    margin-left: 40%;    
+    width: 20%;
 }

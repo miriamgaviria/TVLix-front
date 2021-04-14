@@ -1,11 +1,13 @@
 {
+  "amazonPrimeVideo": "./assets/images/amazonPrime.png",
   "backgroundBody": "./assets/images/waves.png",
+  "disneyPlus": "./assets/images/disneyPlus.jpeg",
+  "finishedTvShowIcon": "./assets/images/finishedTvShowIcon.png",
+  "hbo": "./assets/images/hbo.jpg",
+  "netflix": "./assets/images/netflix.png",
+  "tvLixLogo": "./assets/images/tvLixLogo.png",
+  "tvLixLogoLogin": "./assets/images/tvLixLogoLogin.png",
   "userLoginIcon": "./assets/images/loginAvatar2.png",
   "watchingTvShowIcon": "./assets/images/watchingTvShowIcon.png",
-  "wishedTvShowIcon": "./assets/images/wishedTvShowIcon.png",
-  "finishedTvShowIcon": "./assets/images/finishedTvShowIcon.png",
-  "netflix": "./assets/images/netflix.png",
-  "hbo": "./assets/images/hbo.jpg",
-  "disneyPlus": "./assets/images/disneyPlus.jpeg",
-  "amazonPrimeVideo": "./assets/images/amazonPrime.png"
+  "wishedTvShowIcon": "./assets/images/wishedTvShowIcon.png"
 }

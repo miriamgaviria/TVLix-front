@@ -8,7 +8,7 @@
 
     <div class="modal-content" *ngIf="!isLoading">
       <div class="user-img">
-        <img class='avatarLoging' src="{{images.userLoginIcon}}"/>
+        <img class='imgLogin' src="{{images.userLoginIcon}}"/>
       </div>
 
       <form class="col-11"(ngSubmit)="onLogin()">
@@ -29,6 +29,10 @@
 
       <div class="col-11 centerContainer">
         <button (click)="onCreateAccount()" class="btn btn-primary col-6 buttonStyle buttonContainer buttonMargin createButton"><i class="fas fa-user-plus"></i> {{texts.crearCuenta}}</button>
+      </div>
+
+      <div class="imgLoginWrapper">
+        <img class='imgLogin' src="{{images.tvLixLogoLogin}}"/>
       </div>
     </div>
   </div>

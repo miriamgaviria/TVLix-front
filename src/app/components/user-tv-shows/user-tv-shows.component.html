@@ -37,10 +37,10 @@
                     <div>{{wishedUserTvShow.tvShow.name}}</div>
                   </div>
                   <button [routerLink]="['/watchingTvShowsForm/', wishedUserTvShow.tvShow.id]">
-                    {{texts.seriesViendo}}
+                    {{texts.enviarViendo}}
                   </button><br/>
                   <button [routerLink]="['/finishedTvShowsForm/', wishedUserTvShow.tvShow.id]">
-                    {{texts.seriesVistas}}
+                    {{texts.enviarVistas}}
                   </button><br/>
                   <button data-toggle="modal" data-target="#deleteConfirmDialog" (click)="setFinishedTvShowIdToDelete(wishedUserTvShow.id)">
                     {{texts.eliminarSerieCard}}
@@ -74,10 +74,10 @@
                 <div class="descriptions">
                   <div>{{watchingUserTvShow.tvShow.name}}</div>
                   <button [routerLink]="['/watchingTvShowsForm/', watchingUserTvShow.tvShow.id]">
-                    {{texts.seriesViendo}}
+                    {{texts.enviarViendo}}
                   </button><br/>
                   <button [routerLink]="['/finishedTvShowsForm/', watchingUserTvShow.tvShow.id]">
-                    {{texts.seriesVistas}}
+                    {{texts.enviarVistas}}
                   </button><br/>
                   <button data-toggle="modal" data-target="#deleteConfirmDialog" (click)="setFinishedTvShowIdToDelete(watchingUserTvShow.id)">
                     {{texts.eliminarSerieCard}}

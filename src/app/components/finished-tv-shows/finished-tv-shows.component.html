@@ -49,6 +49,7 @@
               <img class="card-img-top cursorPointer" src="{{ finishedTvShow.tvShow.image }}" alt="Card image cap" />
             </div>
             <ul class="details">
+              <li class="link"><a [routerLink]="['/tvShowDetail/', finishedTvShow.tvShow.id]">{{texts.masInformacionSerie}}</a></li>
               <li class="link">
                 <a
                   data-toggle="modal"

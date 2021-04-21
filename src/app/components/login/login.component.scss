@@ -5,24 +5,24 @@
   height: 50vw;
 }
 
-.modal-content{
-  align-items: center!important;
+.modal-content {
+  align-items: center !important;
   margin-top: 8vw;
   padding-bottom: 2rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  background-color: rgb(53, 58, 64)!important;
+  background-color: rgb(53, 58, 64) !important;
   color: white;
   border: skyblue 2px solid;
-  opacity: .75;
+  opacity: 0.75;
 }
 
-.user-img{
+.user-img {
   margin-top: -2rem;
   margin-bottom: 2rem;
 }
 
-.imgLogin{
+.imgLogin {
   width: 10rem;
   height: 10rem;
 }
@@ -34,7 +34,7 @@
   border-radius: 0.7rem;
 }
 
-.form-control:focus{
+.form-control:focus {
   border: 4px solid skyblue;
 }
 
@@ -43,19 +43,18 @@
   margin-top: -1rem;
 }
 
-.imgLoginWrapper{
+.imgLoginWrapper {
   position: relative;
   top: 0.5rem;
   margin-top: 0.5rem;
 }
 
-.buttonMargin{
+.buttonMargin {
   margin-top: 2rem;
   margin-bottom: 0.5rem;
   text-align: center;
 }
 
-.createButton{
+.createButton {
   margin-top: 0.3rem;
 }
-

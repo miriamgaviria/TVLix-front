@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import swal from'sweetalert2';
+import swal from 'sweetalert2';
 
 import { TvShowsList } from './../../models/tvShowsList.model';
 
@@ -15,7 +15,6 @@ import Texts from '../../../assets/texts.json';
   templateUrl: './tvshows.component.html',
   styleUrls: ['./tvshows.component.scss']
 })
-
 export class TvShowsComponent implements OnInit {
   images: any = Images;
   texts: any = Texts;
@@ -27,42 +26,39 @@ export class TvShowsComponent implements OnInit {
   searchName: string;
   tvShowsForHome: TvShowsList;
 
-  constructor(private tvShowsService: TvShowsService,
-    private router: Router) { }
+  constructor(private tvShowsService: TvShowsService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadTvShows(1);
   }
 
-  loadTvShows(page){
-    this.tvShowsService.getTvShowList(page).subscribe(
-      (data) => {
-        this.tvShowsForHome = data;
-        this.isLoading = false;
-      }
-    )
+  loadTvShows(page) {
+    this.tvShowsService.getTvShowList(page).subscribe(data => {
+      this.tvShowsForHome = data;
+      this.isLoading = false;
+    });
   }
 
-  goToNextTvShows(page){
+  goToNextTvShows(page) {
     this.loadTvShows(page + 1);
     this.previousPage = true;
   }
 
-  goToPreviousTvShows(page){
+  goToPreviousTvShows(page) {
     this.loadTvShows(page - 1);
     this.previousPage = true;
   }
 
-  onSearch(event: any){
+  onSearch(event: any) {
     this.searchName = event.target.searchName.value;
-    let searchNameArray = this.searchName.split(" ");
-    if (searchNameArray.length>1){
+    let searchNameArray = this.searchName.split(' ');
+    if (searchNameArray.length > 1) {
       swal.fire({
         background: 'rgb(211,211,211)',
         icon: 'error',
         title: 'Oops...',
         text: 'La búsqueda contiene más de una palabra'
-      })
+      });
     } else {
       this.router.navigate(['/foundTvShows/', this.searchName]);
     }

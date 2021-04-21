@@ -1,120 +1,128 @@
 <div class="container-fluid">
-    <div *ngIf="isLoading" class="d-flex d-flexSpinner justify-content-center">
-        <div class="spinner-border text-info" role="status">
-            <span class="sr-only">{{texts.loading}}</span>
-        </div>
+  <div *ngIf="isLoading" class="d-flex d-flexSpinner justify-content-center">
+    <div class="spinner-border text-info" role="status">
+      <span class="sr-only">{{ texts.loading }}</span>
+    </div>
+  </div>
+
+  <div *ngIf="!isLoading">
+    <div class="row-fluid pageTitle">
+      <h2>{{ tvShowDetail.name }}</h2>
     </div>
 
-    <div *ngIf="!isLoading">
-        <div class="row-fluid pageTitle">
-            <h2>{{tvShowDetail.name}}</h2>
+    <div class="card text-white bg-dark mb-3 cardContainer">
+      <div class="rowContainerRow">
+        <div class="rowLeftContainer">
+          <table class="table table-striped table-dark">
+            <tbody>
+              <tr>
+                <td class="field">{{ texts.comienzoEmision }}</td>
+                <td class="data">{{ tvShowDetail.start_date }}</td>
+              </tr>
+              <tr>
+                <td class="field">{{ texts.finEmision }}</td>
+                <td class="data">{{ tvShowDetail.end_date }}</td>
+              </tr>
+              <tr>
+                <td class="field">{{ texts.temporadas }}</td>
+                <td class="data">{{ tvShowDetail.episodes[tvShowDetail.episodes.length - 1].season }}</td>
+              </tr>
+              <tr>
+                <td class="field">{{ texts.capitulos }}</td>
+                <td class="data">{{ tvShowDetail.episodes.length }}</td>
+              </tr>
+              <tr>
+                <td class="field">{{ texts.duracionCapitulo }}</td>
+                <td class="data">{{ tvShowDetail.runtime }} {{ texts.minutos }}</td>
+              </tr>
+              <tr>
+                <td class="field">{{ texts.generos }}</td>
+                <td class="data">{{ tvShowDetail.genres }}</td>
+              </tr>
+              <tr>
+                <td class="field">{{ texts.puntuacion }}</td>
+                <td class="data">{{ tvShowDetail.rating }}</td>
+              </tr>
+
+              <tr>
+                <td class="field">{{ texts.puestoRanking }}</td>
+                <td class="data">{{ tvShowDetail.rating_count }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-
-        <div class="card text-white bg-dark mb-3 cardContainer">
-            <div class="rowContainerRow">
-                <div class="rowLeftContainer">
-                    <table class="table table-striped table-dark">
-                        <tbody>
-                            <tr >
-                                <td class="field">{{texts.comienzoEmision}}</td>
-                                <td class="data">{{tvShowDetail.start_date}}</td>
-                            </tr>
-                            <tr>
-                                <td class="field">{{texts.finEmision}}</td>
-                                <td class="data">{{tvShowDetail.end_date}}</td>
-                            </tr>
-                            <tr >
-                                <td class="field">{{texts.temporadas}}</td>
-                                <td class="data">{{tvShowDetail.episodes[tvShowDetail.episodes.length - 1].season}}</td>
-                            </tr>
-                            <tr >
-                              <td class="field">{{texts.capitulos}}</td>
-                              <td class="data">{{tvShowDetail.episodes.length}}</td>
-                            </tr>
-                            <tr>
-                                <td class="field">{{texts.duracionCapitulo}}</td>
-                                <td class="data">{{tvShowDetail.runtime}} {{texts.minutos}}</td>
-                            </tr>
-                            <tr >
-                                <td class="field">{{texts.generos}}</td>
-                                <td class="data">{{tvShowDetail.genres}}</td>
-
-                            </tr>
-                            <tr>
-                                <td class="field">{{texts.puntuacion}}</td>
-                                <td class="data">{{tvShowDetail.rating}}</td>
-                            </tr>
-
-                            <tr>
-                                <td class="field">{{texts.puestoRanking}}</td>
-                                <td class="data">{{tvShowDetail.rating_count}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="rowRightContainerColumn">
-                    <div><strong>{{texts.sinopsis}}</strong></div>
-                    <div>{{tvShowDetail.description}}</div>
-                    <div *ngIf="tvShowDetail.description_source" class="moreInformation"><strong (click)="moreInformation(tvShowDetail.description_source)">{{texts.masInformacionSerie}}</strong></div>
-                </div>
-            </div>
-
-            <div class="rowContainerRow">
-                <div class="rowRightContainerRow">
-                    <table >
-                        <tbody>
-                            <tr >
-                                <td *ngFor="let pictures of tvShowDetail.pictures">
-                                    <img class="imagesSamllTvShowDetail" (click)="onSmallImages(pictures)" src="{{pictures}}" alt="Imagen de la serie">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="rowLeftContainer">
-                    <img class="imageTvShowDetail" [src]="originalPicture ? tvShowDetail.image_thumbnail_path : smallPicturesSrc"
-                    alt="Imagen de la serie" >
-                </div>
-            </div>
-
-            <div class="rowContainerCenter">
-                <div class="textLinks"><strong>{{texts.enlaces}}</strong></div>
-                <div class="links">
-                    <a [routerLink]="['/finishedTvShowsForm/', tvShowDetail.id]" class="card-link" ><img class="buttonStyle tvShowIcon" src="{{images.finishedTvShowIcon}}" alt="Añadir a serie vista" data-toggle="tooltip" data-placement="top" title="Enviar a la lista de series vistas"/></a>
-                    <a [routerLink]="['/wishedTvShowsForm/', tvShowDetail.id]"  class="card-link" ><img class="buttonStyle tvShowIcon" src="{{images.wishedTvShowIcon}}" alt="Añadir a serie para ver" data-toggle="tooltip" data-toggle="tooltip" data-placement="top" title="Enviar a la lista de series que quieres ver"/></a>
-                    <a [routerLink]="['/watchingTvShowsForm/', tvShowDetail.id]" class="card-link"><img class="buttonStyle tvShowIcon" src="{{images.watchingTvShowIcon}}" alt="Añadir a series viendo" data-toggle="tooltip" data-placement="top" title="Enviar a la lista de series viendo"/></a>
-                </div>
-            </div>
+        <div class="rowRightContainerColumn">
+          <div>
+            <strong>{{ texts.sinopsis }}</strong>
+          </div>
+          <div>{{ tvShowDetail.description }}</div>
+          <div *ngIf="tvShowDetail.description_source" class="moreInformation">
+            <strong (click)="moreInformation(tvShowDetail.description_source)">{{ texts.masInformacionSerie }}</strong>
+          </div>
         </div>
+      </div>
 
+      <div class="rowContainerRow">
+        <div class="rowLeftContainer">
+          <table>
+            <tbody>
+              <tr>
+                <td *ngFor="let pictures of tvShowDetail.pictures">
+                  <img
+                    class="imagesSamllTvShowDetail"
+                    (click)="onSmallImages(pictures)"
+                    src="{{ pictures }}"
+                    alt="Imagen de la serie"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="rowRightContainerRow">
+          <img
+            class="imageTvShowDetail"
+            [src]="originalPicture ? tvShowDetail.image_thumbnail_path : smallPicturesSrc"
+            alt="Imagen de la serie"
+          />
+        </div>
+      </div>
 
-        <!-- ----------------------- -->
-
-        <!-- <div class="app">
-          <header>
-            <a href="">
-              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/154571/Official.png" alt="Earth News">
-            </a>
-          </header>
-          <nav>
-            <a href="#" aria-current="page">Home</a>
-            <a href="#">Podcast</a>
-            <a href="#">Contact</a>
-          </nav>
-          <main>
-            <h1><span>H<sub>2</sub>O</span> Fresh Air,<br>Bright Future</h1>
-            <p>What a wonderful joy it is to see,
-        the beauty of nature and its majesty.
-        Everything blends, entwines and embraces,
-        Spaced precisely in their designated places.
-        What a marvel to see, I wish I were a bee,
-        flying free, smelling life’s roses, no particular place to be.</p>
-            <a href="">Read full article</a>
-          </main>
-        </div> -->
-
-        <!-- --------------------- -->
+      <div class="rowContainerCenter">
+        <div class="textLinks">
+          <strong>{{ texts.enlaces }}</strong>
+        </div>
+        <div class="links">
+          <a [routerLink]="['/finishedTvShowsForm/', tvShowDetail.id]" class="card-link"
+            ><img
+              class="buttonStyle tvShowIcon"
+              src="{{ images.finishedTvShowIcon }}"
+              alt="Añadir a serie vista"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Enviar a la lista de series vistas"
+          /></a>
+          <a [routerLink]="['/wishedTvShowsForm/', tvShowDetail.id]" class="card-link"
+            ><img
+              class="buttonStyle tvShowIcon"
+              src="{{ images.wishedTvShowIcon }}"
+              alt="Añadir a serie para ver"
+              data-toggle="tooltip"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Enviar a la lista de series que quieres ver"
+          /></a>
+          <a [routerLink]="['/watchingTvShowsForm/', tvShowDetail.id]" class="card-link"
+            ><img
+              class="buttonStyle tvShowIcon"
+              src="{{ images.watchingTvShowIcon }}"
+              alt="Añadir a series viendo"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="Enviar a la lista de series viendo"
+          /></a>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
-
-

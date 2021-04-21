@@ -1,148 +1,214 @@
 <div class="container-fluid">
   <div *ngIf="isLoading" class="d-flex d-flexSpinner justify-content-center">
-      <div class="spinner-border text-info" role="status">
-          <span class="sr-only">{{texts.loading}}</span>
-      </div>
+    <div class="spinner-border text-info" role="status">
+      <span class="sr-only">{{ texts.loading }}</span>
+    </div>
   </div>
 
   <div *ngIf="!isLoading">
-      <div class="searchContainer">
-          <form class="form-inline my-2 my-lg-0" (ngSubmit)="onSearch($event)">
-              <input type="text" class="form-control mr-sm-2" placeholder="{{texts.anadePalabra}}" name="searchName" value="" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0 buttonStyle" type="submit" >{{texts.search}}</button>
-          </form>
-      </div>
-      <p class="searchText">{{texts.buscaSerie}}</p>
+    <div class="searchContainer">
+      <form class="form-inline my-2 my-lg-0" (ngSubmit)="onSearch($event)">
+        <input
+          type="text"
+          class="form-control mr-sm-2"
+          placeholder="{{ texts.anadePalabra }}"
+          name="searchName"
+          value=""
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-success my-2 my-sm-0 buttonStyle" type="submit">{{ texts.search }}</button>
+      </form>
+    </div>
+    <p class="searchText">{{ texts.buscaSerie }}</p>
 
-      <div class="row-fluid pageTitle">
-          <h2>{{texts.seriesUsuario}}</h2>
-      </div>
+    <div class="row-fluid pageTitle">
+      <h2>{{ texts.seriesUsuario }}</h2>
+    </div>
 
-      <div class="row d-flex justify-content-center groupCards">
-        <div class="tvShowsByGroup">
-          <div class="row-fluid pageTitle">
-            <h3>{{texts.tusSeriesVer}}</h3>
-          </div>
-
-          <div class="noUserTvShows">
-            <h5 *ngIf="wishedUserTvShows != null && wishedUserTvShows.length==0">{{texts.noTvShows}}</h5>
-          </div>
-
-          <div class="tvShows">
-            <div class="cards card text-white bg-secondary offset-1" *ngFor="let wishedUserTvShow of wishedUserTvShows">
-              <div>
-                <img class="cursorPointer" src="{{wishedUserTvShow.tvShow.image}}" alt="{{wishedUserTvShow.tvShow.name}}">
-                <div class="descriptions">
-                  <div class="listName">
-                    <div>{{wishedUserTvShow.tvShow.name}}</div>
-                  </div>
-                  <button [routerLink]="['/watchingTvShowsForm/', wishedUserTvShow.tvShow.id]">
-                    {{texts.enviarViendo}}
-                  </button><br/>
-                  <button [routerLink]="['/finishedTvShowsForm/', wishedUserTvShow.tvShow.id]">
-                    {{texts.enviarVistas}}
-                  </button><br/>
-                  <button data-toggle="modal" data-target="#deleteConfirmDialog" (click)="setFinishedTvShowIdToDelete(wishedUserTvShow.id)">
-                    {{texts.eliminarSerieCard}}
-                  </button><br/>
-                  <button [routerLink]="['/tvShowDetail/', wishedUserTvShow.tvShow.id]">
-                    {{texts.masInformacionSerie}}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <button *ngIf="isLargeWishedUserTvShows" [routerLink]="['/wishedTvShows/']" class="btn btn-primary buttonStyle buttonContainer listButton">{{texts.listadoCompleto}}</button>
-          </div>
+    <div class="row d-flex justify-content-center groupCards">
+      <div class="tvShowsByGroup">
+        <div class="row-fluid pageTitle">
+          <h3>{{ texts.tusSeriesVer }}</h3>
         </div>
 
-        <div class="tvShowsByGroup">
-          <div class="row-fluid pageTitle">
-            <h3>{{texts.tusSeriesViendo}}</h3>
-          </div>
-
-          <div class="noUserTvShows">
-            <h5 *ngIf="watchingUserTvShows.length==0">{{texts.noTvShows}}</h5>
-          </div>
-
-          <div class="tvShows">
-            <div class="cards card text-white bg-secondary offset-1" *ngFor="let watchingUserTvShow of watchingUserTvShows">
-              <div >
-                <img class="cursorPointer" src="{{watchingUserTvShow.tvShow.image}}" alt="{{watchingUserTvShow.tvShow.name}}">
-                <div class="descriptions">
-                  <div>{{watchingUserTvShow.tvShow.name}}</div>
-                  <button [routerLink]="['/watchingTvShowsForm/', watchingUserTvShow.tvShow.id]">
-                    {{texts.enviarViendo}}
-                  </button><br/>
-                  <button [routerLink]="['/finishedTvShowsForm/', watchingUserTvShow.tvShow.id]">
-                    {{texts.enviarVistas}}
-                  </button><br/>
-                  <button data-toggle="modal" data-target="#deleteConfirmDialog" (click)="setFinishedTvShowIdToDelete(watchingUserTvShow.id)">
-                    {{texts.eliminarSerieCard}}
-                  </button><br/>
-                  <button [routerLink]="['/tvShowDetail/', watchingUserTvShow.tvShow.id]">
-                    {{texts.masInformacionSerie}}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <button *ngIf="isLargeWatchingUserTvShows" [routerLink]="['/watchingTvShows/']" class="btn btn-primary buttonStyle buttonContainer listButton">{{texts.listadoCompleto}}</button>
-          </div>
+        <div class="noUserTvShows">
+          <h5 *ngIf="wishedUserTvShows != null && wishedUserTvShows.length == 0">{{ texts.noTvShows }}</h5>
         </div>
 
-        <div class="tvShowsByGroup">
-          <div class="row-fluid pageTitle">
-            <h3>{{texts.tusSeriesVistas}}</h3>
-          </div>
-
-          <div class="noUserTvShows">
-            <h5 *ngIf="finishedUserTvShows.length==0">{{texts.noTvShows}}</h5>
-          </div>
-
-          <div class="tvShows">
-            <div class="cards card text-white bg-secondary offset-1" *ngFor="let finishedUserTvShow of finishedUserTvShows">
-              <img class="cursorPointer" src="{{finishedUserTvShow.tvShow.image}}" alt="{{finishedUserTvShow.tvShow.name}}">
+        <div class="tvShows">
+          <div class="cards card text-white bg-secondary offset-1" *ngFor="let wishedUserTvShow of wishedUserTvShows">
+            <div>
+              <img
+                class="cursorPointer"
+                src="{{ wishedUserTvShow.tvShow.image }}"
+                alt="{{ wishedUserTvShow.tvShow.name }}"
+              />
               <div class="descriptions">
-                <div>{{finishedUserTvShow.tvShow.name}}</div>
-                <button data-toggle="modal" data-target="#deleteConfirmDialog" (click)="setFinishedTvShowIdToDelete(finishedUserTvShow.id)">
-                  {{texts.eliminarSerieCard}}
-                </button><br/>
-                <button [routerLink]="['/tvShowDetail/', finishedUserTvShow.tvShow.id]">
-                  {{texts.masInformacionSerie}}
+                <div class="listName">
+                  <div>{{ wishedUserTvShow.tvShow.name }}</div>
+                </div>
+                <button [routerLink]="['/watchingTvShowsForm/', wishedUserTvShow.tvShow.id]">
+                  {{ texts.enviarViendo }}</button
+                ><br />
+                <button [routerLink]="['/finishedTvShowsForm/', wishedUserTvShow.tvShow.id]">
+                  {{ texts.enviarVistas }}</button
+                ><br />
+                <button
+                  data-toggle="modal"
+                  data-target="#deleteConfirmDialog"
+                  (click)="setFinishedTvShowIdToDelete(wishedUserTvShow.id)"
+                >
+                  {{ texts.eliminarSerieCard }}</button
+                ><br />
+                <button [routerLink]="['/tvShowDetail/', wishedUserTvShow.tvShow.id]">
+                  {{ texts.masInformacionSerie }}
                 </button>
               </div>
             </div>
           </div>
+        </div>
 
-          <div>
-            <button *ngIf="isLargeFinishedUserTvShows" [routerLink]="['/finishedTvShows/']" class="btn btn-primary buttonStyle buttonContainer listButton">{{texts.listadoCompleto}}</button>
-          </div>
+        <div>
+          <button
+            *ngIf="isLargeWishedUserTvShows"
+            [routerLink]="['/wishedTvShows/']"
+            class="btn btn-primary buttonStyle buttonContainer listButton"
+          >
+            {{ texts.listadoCompleto }}
+          </button>
         </div>
       </div>
 
-      <!-- Modal -->
-      <div class="modal fade" id="deleteConfirmDialog" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmDialogCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="deleteConfirmDialogLongTitle" style="color:black">{{texts.eliminarTvShowModalTitle}}</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+      <div class="tvShowsByGroup">
+        <div class="row-fluid pageTitle">
+          <h3>{{ texts.tusSeriesViendo }}</h3>
+        </div>
+
+        <div class="noUserTvShows">
+          <h5 *ngIf="watchingUserTvShows.length == 0">{{ texts.noTvShows }}</h5>
+        </div>
+
+        <div class="tvShows">
+          <div
+            class="cards card text-white bg-secondary offset-1"
+            *ngFor="let watchingUserTvShow of watchingUserTvShows"
+          >
+            <div>
+              <img
+                class="cursorPointer"
+                src="{{ watchingUserTvShow.tvShow.image }}"
+                alt="{{ watchingUserTvShow.tvShow.name }}"
+              />
+              <div class="descriptions">
+                <div>{{ watchingUserTvShow.tvShow.name }}</div>
+                <button [routerLink]="['/watchingTvShowsForm/', watchingUserTvShow.tvShow.id]">
+                  {{ texts.enviarViendo }}</button
+                ><br />
+                <button [routerLink]="['/finishedTvShowsForm/', watchingUserTvShow.tvShow.id]">
+                  {{ texts.enviarVistas }}</button
+                ><br />
+                <button
+                  data-toggle="modal"
+                  data-target="#deleteConfirmDialog"
+                  (click)="setFinishedTvShowIdToDelete(watchingUserTvShow.id)"
+                >
+                  {{ texts.eliminarSerieCard }}</button
+                ><br />
+                <button [routerLink]="['/tvShowDetail/', watchingUserTvShow.tvShow.id]">
+                  {{ texts.masInformacionSerie }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button
+            *ngIf="isLargeWatchingUserTvShows"
+            [routerLink]="['/watchingTvShows/']"
+            class="btn btn-primary buttonStyle buttonContainer listButton"
+          >
+            {{ texts.listadoCompleto }}
+          </button>
+        </div>
+      </div>
+
+      <div class="tvShowsByGroup">
+        <div class="row-fluid pageTitle">
+          <h3>{{ texts.tusSeriesVistas }}</h3>
+        </div>
+
+        <div class="noUserTvShows">
+          <h5 *ngIf="finishedUserTvShows.length == 0">{{ texts.noTvShows }}</h5>
+        </div>
+
+        <div class="tvShows">
+          <div
+            class="cards card text-white bg-secondary offset-1"
+            *ngFor="let finishedUserTvShow of finishedUserTvShows"
+          >
+            <img
+              class="cursorPointer"
+              src="{{ finishedUserTvShow.tvShow.image }}"
+              alt="{{ finishedUserTvShow.tvShow.name }}"
+            />
+            <div class="descriptions">
+              <div>{{ finishedUserTvShow.tvShow.name }}</div>
+              <button
+                data-toggle="modal"
+                data-target="#deleteConfirmDialog"
+                (click)="setFinishedTvShowIdToDelete(finishedUserTvShow.id)"
+              >
+                {{ texts.eliminarSerieCard }}</button
+              ><br />
+              <button [routerLink]="['/tvShowDetail/', finishedUserTvShow.tvShow.id]">
+                {{ texts.masInformacionSerie }}
               </button>
             </div>
-            <div class="modal-body">
-              <span style="color: black">{{texts.eliminarTvShowModalBody}}</span>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">{{texts.no}}</button>
-              <button type="button" (click)="deleteTvShow()" class="btn btn-primary" data-dismiss="modal">{{texts.si}}</button>
-            </div>
+          </div>
+        </div>
+
+        <div>
+          <button
+            *ngIf="isLargeFinishedUserTvShows"
+            [routerLink]="['/finishedTvShows/']"
+            class="btn btn-primary buttonStyle buttonContainer listButton"
+          >
+            {{ texts.listadoCompleto }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="deleteConfirmDialog"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="deleteConfirmDialogCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteConfirmDialogLongTitle" style="color: black">
+              {{ texts.eliminarTvShowModalTitle }}
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <span style="color: black">{{ texts.eliminarTvShowModalBody }}</span>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ texts.no }}</button>
+            <button type="button" (click)="deleteTvShow()" class="btn btn-primary" data-dismiss="modal">
+              {{ texts.si }}
+            </button>
           </div>
         </div>
       </div>
+    </div>
   </div>
 </div>

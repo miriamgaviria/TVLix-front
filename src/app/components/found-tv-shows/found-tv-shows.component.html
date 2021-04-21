@@ -1,43 +1,61 @@
 <div class="container-fluid">
+  <div *ngIf="isLoading" class="d-flex d-flexSpinner justify-content-center">
+    <div class="spinner-border text-info" role="status">
+      <span class="sr-only">{{ texts.loading }}</span>
+    </div>
+  </div>
 
-    <div *ngIf="isLoading" class="d-flex d-flexSpinner justify-content-center">
-        <div class="spinner-border text-info" role="status">
-            <span class="sr-only">{{texts.loading}}</span>
-        </div>
-
+  <div *ngIf="!isLoading">
+    <div class="row-fluid pageTitle">
+      <h2>
+        Hay {{ foundTvShows.total }} {{ texts.seriesContienen }} <strong class="italic">{{ searchName }}</strong>
+      </h2>
     </div>
 
-    <div *ngIf="!isLoading">
-        <div class="row-fluid pageTitle">
-            <h2>Hay {{foundTvShows.total}} {{texts.seriesContienen}} <strong class="italic">{{searchName}}</strong> </h2>
-        </div>
-
-        <div *ngIf="noFoundTvShows" class="noFoundText">{{texts.seriesNoEncontradas}} <strong class="italic">{{searchName}}</strong></div>
-            <div class="buttonsContainer">
-                <button type="text" *ngIf="previousPage" class="btn btn-primary buttonStyle buttonContainer buttonMargin" (click)=goToPreviousTvShows(foundTvShows.page) >{{texts.anterior}}</button>
-                <button type="text" *ngIf="!noFoundTvShows" class="btn btn-primary buttonStyle buttonContainer" (click)=goToNextTvShows(foundTvShows.page)>{{texts.siguiente}}</button>
-            </div>
-
-            <div class="row d-flex justify-content-center groupCards">
-              <div class="col-xs-4 col-sm-3 col-md-3 col-lg-2 cards card text-white bg-secondary offset-1" *ngFor="let tvshow of foundTvShows.tv_shows">
-                <img class="card-img-top cursorPointer" src="{{tvshow.image_thumbnail_path}}" alt="Card image cap">
-                <div class="descriptions">
-                  <div>{{tvshow.name}}</div>
-                  <button [routerLink]="['/wishedTvShowsForm/', tvshow.id]">
-                    {{texts.enviarVer}}
-                  </button><br/>
-                  <button [routerLink]="['/watchingTvShowsForm/', tvshow.id]">
-                    {{texts.enviarViendo}}
-                  </button><br/>
-                  <button [routerLink]="['/finishedTvShowsForm/', tvshow.id]">
-                    {{texts.enviarVistas}}
-                  </button><br/>
-                  <button [routerLink]="['/tvShowDetail/', tvshow.id]">
-                    {{texts.masInformacionSerie}}
-                  </button>
-              </div>
-            </div>
+    <div *ngIf="noFoundTvShows" class="noFoundText">
+      {{ texts.seriesNoEncontradas }} <strong class="italic">{{ searchName }}</strong>
     </div>
+    <div class="buttonsContainer">
+      <button
+        type="text"
+        *ngIf="previousPage"
+        class="btn btn-primary buttonStyle buttonContainer buttonMargin"
+        (click)="goToPreviousTvShows(foundTvShows.page)"
+      >
+        {{ texts.anterior }}
+      </button>
+      <button
+        type="text"
+        *ngIf="!noFoundTvShows"
+        class="btn btn-primary buttonStyle buttonContainer"
+        (click)="goToNextTvShows(foundTvShows.page)"
+      >
+        {{ texts.siguiente }}
+      </button>
+    </div>
+
+    <div class="row d-flex justify-content-center groupCards">
+      <div
+        class="col-xs-4 col-sm-3 col-md-3 col-lg-2 cards card text-white bg-secondary offset-1"
+        *ngFor="let tvshow of foundTvShows.tv_shows"
+      >
+        <img class="card-img-top cursorPointer" src="{{ tvshow.image_thumbnail_path }}" alt="Card image cap" />
+        <div class="descriptions">
+          <div>{{ tvshow.name }}</div>
+          <button [routerLink]="['/wishedTvShowsForm/', tvshow.id]">
+            {{ texts.enviarVer }}</button
+          ><br />
+          <button [routerLink]="['/watchingTvShowsForm/', tvshow.id]">
+            {{ texts.enviarViendo }}</button
+          ><br />
+          <button [routerLink]="['/finishedTvShowsForm/', tvshow.id]">
+            {{ texts.enviarVistas }}</button
+          ><br />
+          <button [routerLink]="['/tvShowDetail/', tvshow.id]">
+            {{ texts.masInformacionSerie }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-

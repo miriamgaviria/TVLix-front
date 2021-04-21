@@ -5,7 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import isNil from 'lodash/isNil';
 import sortBy from 'lodash/sortBy';
 
-import swal from'sweetalert2';
+import swal from 'sweetalert2';
 
 import { UserTvShowDTO } from '../../models/userTvShowDTO.model';
 
@@ -35,10 +35,7 @@ export class FinishedTvShowsComponent implements OnInit {
 
   userId: string;
 
-  constructor(
-    private router: Router,
-    private userTvShowsService: UserTvShowsService
-  ) { }
+  constructor(private router: Router, private userTvShowsService: UserTvShowsService) {}
 
   ngOnInit(): void {
     this.userId = sessionStorage.getItem('userId');
@@ -50,44 +47,44 @@ export class FinishedTvShowsComponent implements OnInit {
   public deleteTvShow = () => {
     this.isLoading = true;
     this.userTvShowsService.deleteUserTvShowById(this.finishedTvShowIdToDelete).subscribe(
-      (data) => {
+      data => {
         swal.fire({
           background: 'rgb(211,211,211)',
           icon: 'success',
           title: 'Serie eliminada'
         }),
-        this.isLoading = false;
+          (this.isLoading = false);
         this.loadFinishedTvShows();
       },
-      (error) => {
-        console.log('error')
+      error => {
+        console.log('error');
         swal.fire({
           background: 'rgb(211,211,211)',
           icon: 'error',
           title: 'Oops...',
           text: 'No se ha podido eliminar la serie'
-        })
+        });
         this.isLoading = false;
       }
     );
-  }
+  };
 
   public loadFinishedTvShows = () => {
-    this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.finished).subscribe(
-      (data) => {
-        this.finishedTvShows = sortBy(data, 'date').reverse();
-        this.isLoading = false;
-      }
-    )
-  }
+    this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.finished).subscribe(data => {
+      this.finishedTvShows = sortBy(data, 'date').reverse();
+      this.isLoading = false;
+    });
+  };
 
-  public onSearch(event: any){
+  public onSearch(event: any) {
     this.isLoading = true;
     this.searchName = event.target.searchName.value;
     if (isEmpty(this.searchName)) {
       this.finishedTvShows;
     } else {
-      this.finishedTvShows = this.finishedTvShows.filter(finishedTvShow => finishedTvShow.tvShow.name.toLowerCase().includes(this.searchName.toLowerCase()));
+      this.finishedTvShows = this.finishedTvShows.filter(finishedTvShow =>
+        finishedTvShow.tvShow.name.toLowerCase().includes(this.searchName.toLowerCase())
+      );
     }
     this.isLoading = false;
     this.isSearched = true;
@@ -95,5 +92,5 @@ export class FinishedTvShowsComponent implements OnInit {
 
   public setFinishedTvShowIdToDelete = finishedTvShowIdToDelete => {
     this.finishedTvShowIdToDelete = finishedTvShowIdToDelete;
-  }
+  };
 }

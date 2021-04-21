@@ -1,13 +1,15 @@
 <div class="container-fluid">
   <div *ngIf="isLoading" class="d-flex .d-flexSpinner justify-content-center isLoading">
     <div class="spinner-border text-info" role="status">
-      <span class="sr-only">{{texts.loading}}</span>
+      <span class="sr-only">{{ texts.loading }}</span>
     </div>
   </div>
 
   <div *ngIf="!isLoading">
     <div class="row-fluid pageTitle">
-      <h2><strong>{{tvShow.name}}</strong> {{texts.wishedTvShowsFormHeader}}</h2>
+      <h2>
+        <strong>{{ tvShow.name }}</strong> {{ texts.wishedTvShowsFormHeader }}
+      </h2>
     </div>
 
     <div class="card text-white bg-dark mb-3 cardContainer watchingTvShowFormContainer">
@@ -15,69 +17,88 @@
         <div class="rowLeftContainer">
           <table class="table table-striped table-dark">
             <tbody>
-              <tr >
-                <td class="field">{{texts.generos}}</td>
-                <td class="data">{{tvShow.genre}}</td>
+              <tr>
+                <td class="field">{{ texts.generos }}</td>
+                <td class="data">{{ tvShow.genre }}</td>
               </tr>
 
               <tr>
-                <td class="field">{{texts.duracionCapitulo}}</td>
-                <td class="data">{{tvShow.runTime}} {{texts.minutos}}</td>
-              </tr>
-
-              <tr >
-                <td class="field">{{texts.temporadas}}</td>
-                <td class="data">{{tvShow.seasons}}</td>
-              </tr>
-
-              <tr >
-                <td class="field">{{texts.episodios}}</td>
-                <td class="data">{{tvShow.episodes}}</td>
+                <td class="field">{{ texts.duracionCapitulo }}</td>
+                <td class="data">{{ tvShow.runTime }} {{ texts.minutos }}</td>
               </tr>
 
               <tr>
-                <td class="field">{{texts.puntuacion}}</td>
-                <td class="data">{{tvShow.rating}}</td>
+                <td class="field">{{ texts.temporadas }}</td>
+                <td class="data">{{ tvShow.seasons }}</td>
               </tr>
 
               <tr>
-                <td class="field">{{texts.sinopsis}}</td>
-                <td class="data">{{tvShow.sinopsis}}</td>
+                <td class="field">{{ texts.episodios }}</td>
+                <td class="data">{{ tvShow.episodes }}</td>
+              </tr>
+
+              <tr>
+                <td class="field">{{ texts.puntuacion }}</td>
+                <td class="data">{{ tvShow.rating }}</td>
+              </tr>
+
+              <tr>
+                <td class="field">{{ texts.sinopsis }}</td>
+                <td class="data">{{ tvShow.sinopsis }}</td>
               </tr>
             </tbody>
           </table>
         </div>
 
         <div class="rowRightContainer">
-          <form (ngSubmit)='onSubmit()' >
-            <div class="form-group row labelForm" >
-              <label for="inputSeasonWatched">{{texts.plataformaVer}}</label>
+          <form (ngSubmit)="onSubmit()">
+            <div class="form-group row labelForm">
+              <label for="inputSeasonWatched">{{ texts.plataformaVer }}</label>
             </div>
-            <div class="form-group row labelForm" >
+            <div class="form-group row labelForm">
               <div *ngFor="let platform of streamingPlatforms">
-
-                <label >
-                  <input class="platform" type="radio" [value]="platform" [(ngModel)]='wishedTvShow.platform' name="platform" />
-                  {{platform}}
+                <label>
+                  <input
+                    class="platform"
+                    type="radio"
+                    [value]="platform"
+                    [(ngModel)]="wishedTvShow.platform"
+                    name="platform"
+                  />
+                  {{ platform }}
                   <!-- <img class="iconPlatform" src="{{images[platform]}}" alt={{platform}} /> -->
                 </label>
               </div>
             </div>
 
             <div class="form-group row labelForm">
-              <input type="text" class="form-control" placeholder={{texts.plataformaVerPlaceholder}} [(ngModel)]='wishedTvShow.platform' name="platform" >
+              <input
+                type="text"
+                class="form-control"
+                placeholder="{{ texts.plataformaVerPlaceholder }}"
+                [(ngModel)]="wishedTvShow.platform"
+                name="platform"
+              />
             </div>
 
             <div class="form-group row labelForm">
-              <label for="FormControlInputComment" >{{texts.razonVer}}</label>
-              <textarea type="text" class="form-control rowForm" [(ngModel)]='wishedTvShow.reason' name="reason"
-              rows="8" placeholder="{{texts.razonVer}}"></textarea>
+              <label for="FormControlInputComment">{{ texts.razonVer }}</label>
+              <textarea
+                type="text"
+                class="form-control rowForm"
+                [(ngModel)]="wishedTvShow.reason"
+                name="reason"
+                rows="8"
+                placeholder="{{ texts.razonVer }}"
+              ></textarea>
             </div>
 
-            <div class="form-group errorMessage" *ngIf="!validateForm">{{texts.todosCamposRequeridos}}</div>
+            <div class="form-group errorMessage" *ngIf="!validateForm">{{ texts.todosCamposRequeridos }}</div>
 
             <div class="form-group row rowForm buttonPosition">
-              <button class="btn btn-primary buttonStyle buttonContainer" type="submit">{{texts.guardarWishedTvShows}}</button>
+              <button class="btn btn-primary buttonStyle buttonContainer" type="submit">
+                {{ texts.guardarWishedTvShows }}
+              </button>
             </div>
           </form>
         </div>

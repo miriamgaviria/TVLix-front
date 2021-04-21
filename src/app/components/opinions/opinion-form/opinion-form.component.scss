@@ -4,54 +4,10 @@
   flex-direction: row-reverse;
   justify-content: center;
   align-items: center;
-  width: 95%;
-
-  .isLoading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50vw;
-  }
 }
 
-.finishedTvShowFormContainer {
-  width: 95% !important;
-}
-
-.cardContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 2rem auto 0 auto;
-  padding: 1.5rem;
-}
-
-.pageTitle {
-  margin: 1.2rem;
-}
-
-.rowContainerRow {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.rowLeftContainer {
-  width: 60%;
-  padding: 1rem;
-
-  .field {
-    width: 20%;
-  }
-}
-
-.rowRightContainer {
-  display: flex;
-  flex-direction: column;
-  width: 40%;
-  padding: 1rem;
+.opinionFormContainer {
+  width: 35rem;
 }
 
 /* star rating */

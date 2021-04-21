@@ -15,8 +15,7 @@ export class HeaderComponent implements OnInit {
   loggedUserId: string;
   loggedUserUserName: string;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 }

@@ -1,4 +1,4 @@
-.searchContainer{
+.searchContainer {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -7,7 +7,7 @@
   margin-bottom: 1rem;
 }
 
-.searchText{
+.searchText {
   margin-right: 2.2rem;
   margin-top: -0.8rem;
   text-align: right;
@@ -16,7 +16,7 @@
   font-style: italic;
 }
 
-.noWishedTvShows{
+.noWishedTvShows {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,7 +25,7 @@
   div {
     margin-top: 2rem;
   }
-  .buttonPosition{
+  .buttonPosition {
     justify-content: center;
   }
 }
@@ -39,7 +39,7 @@ $color_prime: skyblue;
 $color_grey: #e2e2e2;
 $color_grey_dark: #a2a2a2;
 
-.wishedTvShowCard{
+.wishedTvShowCard {
   margin-left: 1rem !important;
   width: 39rem;
   height: 21rem;
@@ -50,7 +50,7 @@ $color_grey_dark: #a2a2a2;
   flex-direction: column;
   margin-bottom: 1.6%;
   margin: 1rem auto;
-  box-shadow: 0 3px 7px -1px rgba(#000, .1);
+  box-shadow: 0 3px 7px -1px rgba(#000, 0.1);
   background: $color_white;
   line-height: 1.4;
   font-family: sans-serif;
@@ -79,7 +79,7 @@ $color_grey_dark: #a2a2a2;
     left: 0;
     background-size: cover;
     background-position: center;
-    transition: transform .2s;
+    transition: transform 0.2s;
 
     img {
       height: 100%;
@@ -98,14 +98,14 @@ $color_grey_dark: #a2a2a2;
     bottom: 0;
     left: -100%;
     margin: auto;
-    transition: left .2s;
-    background: rgba(#000, .6);
+    transition: left 0.2s;
+    background: rgba(#000, 0.6);
     color: $color_white;
     padding: 10px;
     width: 100%;
-    font-size: .9rem;
+    font-size: 0.9rem;
     a {
-      text-decoration: dotted underline
+      text-decoration: dotted underline;
     }
     ul li {
       display: inline-block;
@@ -113,7 +113,7 @@ $color_grey_dark: #a2a2a2;
     .link:before {
       font-family: FontAwesome;
       margin-right: 10px;
-      content: "\f007";
+      content: '\f007';
     }
   }
   .data {
@@ -135,7 +135,7 @@ $color_grey_dark: #a2a2a2;
       font-weight: 300;
       margin-top: 5px;
 
-      > span{
+      > span {
         font-weight: bold;
       }
     }
@@ -146,12 +146,12 @@ $color_grey_dark: #a2a2a2;
         display: inline-block;
         position: relative;
         &:after {
-          content: "\f061";
+          content: '\f061';
           font-family: FontAwesome;
           margin-left: -10px;
           opacity: 0;
           vertical-align: middle;
-          transition: margin .3s, opacity .3s;
+          transition: margin 0.3s, opacity 0.3s;
         }
 
         &:hover:after {
@@ -174,7 +174,6 @@ $color_grey_dark: #a2a2a2;
     }
   }
 
-
   @media (min-width: 640px) {
     flex-direction: row;
     max-width: 700px;
@@ -186,7 +185,7 @@ $color_grey_dark: #a2a2a2;
       flex-basis: 60%;
       &:before {
         transform: skewX(-3deg);
-        content: "";
+        content: '';
         background: color_grey_dark;
         width: 30px;
         position: absolute;
@@ -202,7 +201,7 @@ $color_grey_dark: #a2a2a2;
         &:before {
           left: inherit;
           right: -10px;
-          transform: skew(3deg)
+          transform: skew(3deg);
         }
       }
       .details {

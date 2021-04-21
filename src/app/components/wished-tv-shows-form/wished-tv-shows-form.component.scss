@@ -1,4 +1,4 @@
-.container-fluid{
+.container-fluid {
   margin: 2rem auto;
   display: flex;
   flex-direction: row-reverse;
@@ -22,11 +22,11 @@
   padding: 1.5rem;
 }
 
-.pageTitle{
+.pageTitle {
   margin: 1.2rem;
 }
 
-.rowContainerRow{
+.rowContainerRow {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -34,23 +34,23 @@
   margin-bottom: 1rem;
 }
 
-.rowLeftContainer{
+.rowLeftContainer {
   width: 60%;
   padding: 1rem;
 
   .field {
-    width: 20%
+    width: 20%;
   }
 }
 
-.rowRightContainer{
+.rowRightContainer {
   display: flex;
   flex-direction: column;
   width: 40%;
   padding: 1rem;
 }
 
-.buttonPosition{
+.buttonPosition {
   margin-top: 3rem;
   margin-left: auto;
   margin-right: auto;
@@ -58,13 +58,13 @@
   justify-content: center;
 }
 
-.plataformasLabel{
+.plataformasLabel {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.platform{
+.platform {
   width: 2.5rem;
   margin-right: 0.5rem;
   margin-left: 0.2rem;

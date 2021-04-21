@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import swal from'sweetalert2';
+import swal from 'sweetalert2';
 
 import isNil from 'lodash/isNil';
 import sortBy from 'lodash/sortBy';
 
 import { UserTvShowDTO } from '../../models/userTvShowDTO.model';
-
 
 import { UserTvShowsService } from 'src/app/services/userTvShows.service';
 
@@ -45,85 +44,79 @@ export class UserTvShowsComponent implements OnInit {
   constructor(
     private router: Router,
     private userService: UserService,
-    private userTvShowsService: UserTvShowsService) { }
+    private userTvShowsService: UserTvShowsService
+  ) {}
 
   ngOnInit(): void {
     this.userName = sessionStorage.getItem('userName');
-    this.userService.getUserByUserName(this.userName).subscribe(
-      response => {
-        sessionStorage.setItem('userId', response.id);
-        this.userId = response.id
-      })
-      this.checkIsLoged();
+    this.userService.getUserByUserName(this.userName).subscribe(response => {
+      sessionStorage.setItem('userId', response.id);
+      this.userId = response.id;
+    });
+    this.checkIsLoged();
   }
 
   checkIsLoged = () => {
     if (isNil(this.userName)) {
-      this.router.navigate(['/login'])
+      this.router.navigate(['/login']);
     } else {
-      setTimeout (() => {
+      setTimeout(() => {
         this.onLoadUserTvShows();
       }, 500);
     }
-  }
+  };
 
   deleteTvShow = () => {
     this.isLoading = true;
     this.userTvShowsService.deleteUserTvShowById(this.tvShowIdToDelete).subscribe(
-      (data) => {
+      data => {
         swal.fire({
           background: 'rgb(211,211,211)',
           icon: 'success',
           title: 'Serie eliminada'
         }),
-        this.isLoading = false;
+          (this.isLoading = false);
         this.onLoadUserTvShows();
       },
-      (error) => {
-        console.log('error')
+      error => {
+        console.log('error');
         swal.fire({
           background: 'rgb(211,211,211)',
           icon: 'error',
           title: 'Oops...',
           text: 'No se ha podido eliminar la serie'
-        })
+        });
         this.isLoading = false;
       }
     );
-  }
+  };
 
   onLoadUserTvShows = () => {
-    this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.watching).subscribe(
-      (data) => {
-        if (data.length > 2) this.isLargeWatchingUserTvShows = true;
-        this.watchingUserTvShows = sortBy(data.slice(0, 2), 'date').reverse();
-      }
-    );
-    this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.wished).subscribe(
-      (data) => {
-        if (data.length > 2) this.isLargeWishedUserTvShows = true;
-        this.wishedUserTvShows = sortBy(data.slice(0, 2), 'date').reverse();
-      }
-    );
-    this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.finished).subscribe(
-      (data) => {
-        if (data.length > 2) this.isLargeFinishedUserTvShows = true;
-        this.finishedUserTvShows = sortBy(data.slice(0, 2), 'date').reverse();
-      }
-    )
+    this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.watching).subscribe(data => {
+      if (data.length > 2) this.isLargeWatchingUserTvShows = true;
+      this.watchingUserTvShows = sortBy(data.slice(0, 2), 'date').reverse();
+    });
+    this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.wished).subscribe(data => {
+      if (data.length > 2) this.isLargeWishedUserTvShows = true;
+      this.wishedUserTvShows = sortBy(data.slice(0, 2), 'date').reverse();
+    });
+    this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.finished).subscribe(data => {
+      if (data.length > 2) this.isLargeFinishedUserTvShows = true;
+      this.finishedUserTvShows = sortBy(data.slice(0, 2), 'date').reverse();
+    });
     this.isLoading = false;
-  }
+  };
 
-  onSearch(event: any){
+  onSearch(event: any) {
     this.searchName = event.target.searchName.value;
-    let searchNameArray = this.searchName.split(" ");
-    if (searchNameArray.length>1){
+    let searchNameArray = this.searchName.split(' ');
+    if (searchNameArray.length > 1) {
       swal.fire({
         background: 'rgb(211,211,211)',
         icon: 'error',
         title: 'Oops...',
         text: 'La búsqueda contiene más de una palabra'
-      })
+      });
     } else {
       this.router.navigate(['/foundTvShows/', this.searchName]);
     }
@@ -131,5 +124,5 @@ export class UserTvShowsComponent implements OnInit {
 
   setFinishedTvShowIdToDelete = tvShowIdToDelete => {
     this.tvShowIdToDelete = tvShowIdToDelete;
-  }
+  };
 }

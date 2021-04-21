@@ -25,27 +25,26 @@ export class TvShowDetailComponent implements OnInit {
   tvShowDetail: any;
   tvShowId: any;
 
-  constructor(
-    private route: ActivatedRoute,
-    private tvShowsService: TvShowsService) { }
+  constructor(private route: ActivatedRoute, private tvShowsService: TvShowsService) {}
 
   ngOnInit(): void {
-    this.tvShowId = this.route.snapshot.paramMap.get("tvShowId");
+    this.tvShowId = this.route.snapshot.paramMap.get('tvShowId');
 
-    this.tvShowsService.getTvShowApi(this.tvShowId).subscribe(
-      (newData) => {
-        this.tvShowDetail = newData.tvShow
-        this.tvShowDetail.genres = capitalize(this.tvShowDetail.genres.join(', '));
-        isNil(this.tvShowDetail.image_thumbnail_path) || this.tvShowDetail.image_thumbnail_path === '' ? this.imageTvShow = false : this.imageTvShow = true;
-      })
-    this.isLoading = false;
+    this.tvShowsService.getTvShowApi(this.tvShowId).subscribe(newData => {
+      this.tvShowDetail = newData.tvShow;
+      this.tvShowDetail.genres = capitalize(this.tvShowDetail.genres.join(', '));
+      isNil(this.tvShowDetail.image_thumbnail_path) || this.tvShowDetail.image_thumbnail_path === ''
+        ? (this.imageTvShow = false)
+        : (this.imageTvShow = true);
+      this.isLoading = false;
+    });
   }
 
-  public moreInformation(source){
+  public moreInformation(source) {
     window.open(source, '_blank');
   }
 
-  public onSmallImages(pictures){
+  public onSmallImages(pictures) {
     this.originalPicture = false;
     this.smallPicturesSrc = pictures;
   }

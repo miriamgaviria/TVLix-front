@@ -25,41 +25,36 @@ export class FoundTvShowsComponent implements OnInit {
   foundTvShows: TvShowsList;
   reFoundTvShows: any;
 
-  constructor(
-    private route: ActivatedRoute,
-    private tvShowsService: TvShowsService,
-    private router: Router) { }
+  constructor(private route: ActivatedRoute, private tvShowsService: TvShowsService, private router: Router) {}
 
   ngOnInit(): void {
-    this.searchName = this.route.snapshot.paramMap.get("searchName");
+    this.searchName = this.route.snapshot.paramMap.get('searchName');
     this.loadTvShows(1);
   }
 
-  loadTvShows(page){
-    this.tvShowsService.getTvShowSearch(page, this.searchName).subscribe(
-      (data) => {
-        console.log(`data`, data)
-        this.foundTvShows = data;
-        this.isLoading = false;
-        if(this.foundTvShows.tv_shows.length === 0){
-          this.noFoundTvShows = true;
-        } else {
-          this.noFoundTvShows = false;
-        }
+  loadTvShows(page) {
+    this.tvShowsService.getTvShowSearch(page, this.searchName).subscribe(data => {
+      console.log(`data`, data);
+      this.foundTvShows = data;
+      this.isLoading = false;
+      if (this.foundTvShows.tv_shows.length === 0) {
+        this.noFoundTvShows = true;
+      } else {
+        this.noFoundTvShows = false;
       }
-    )
+    });
   }
 
   goToDetail(tvShowId) {
     this.router.navigate(['/tvShowDetail/', tvShowId]);
   }
 
-  goToNextTvShows(page){
+  goToNextTvShows(page) {
     this.loadTvShows(page + 1);
     this.previousPage = true;
   }
 
-  goToPreviousTvShows(page){
+  goToPreviousTvShows(page) {
     this.loadTvShows(page - 1);
     this.previousPage = true;
   }

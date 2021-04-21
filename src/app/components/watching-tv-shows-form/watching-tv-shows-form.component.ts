@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import capitalize from 'lodash/capitalize';
-import  isNil from 'lodash/isNil';
+import isNil from 'lodash/isNil';
 
-import swal from'sweetalert2';
+import swal from 'sweetalert2';
 
 import { UserTvShowDTO } from '../../models/userTvShowDTO.model';
 import { TvShowApi } from '../../models/tvShowApi.model';
@@ -16,7 +16,7 @@ import { UserTvShowsService } from 'src/app/services/userTvShows.service';
 
 import Images from '../../../assets/imagesUrl.json';
 import Texts from '../../../assets/texts.json';
-import WatchedStatus from '../../../assets/configs/watchedStatus.json'
+import WatchedStatus from '../../../assets/configs/watchedStatus.json';
 
 @Component({
   selector: 'app-watching-tv-shows-form',
@@ -48,10 +48,11 @@ export class WatchingTvShowsFormComponent implements OnInit {
     private router: Router,
     private tvShowsService: TvShowsService,
     private userService: UserService,
-    private userTvShowsService: UserTvShowsService) { }
+    private userTvShowsService: UserTvShowsService
+  ) {}
 
   ngOnInit(): void {
-    this.tvShowId = this.route.snapshot.paramMap.get("tvShowId");
+    this.tvShowId = this.route.snapshot.paramMap.get('tvShowId');
     this.userId = sessionStorage.getItem('userId');
     if (isNil(this.userId)) this.router.navigate(['/login']);
 
@@ -59,27 +60,27 @@ export class WatchingTvShowsFormComponent implements OnInit {
   }
 
   private isUserTvShow = () => {
-    this.userTvShowsService.getUserAllTvShows(this.userId).subscribe(
-      (data) => {
-        if (!isNil(data)) {
-          this.userTvShows = data;
-          let userTvShows = this.userTvShows.filter(userTvShow => userTvShow.tvShow.id.toString() === this.tvShowId.toString());
-          if (userTvShows.length != 0) {
-            this.watchingTvShow = userTvShows[0];
-            this.tvShow = this.watchingTvShow.tvShow;
-            console.log(`typeof this.tvShow.genre`, typeof this.tvShow.genre)
-            this.tvShow.genre = capitalize(this.tvShow.genre.split(',').join(', ').replace(/['"]+/g, ''));
-            this.isUserTvShowStatusDB = true;
-            this.isLoading = false;
-          } else {
-            this.getTvShowFromApi();
-          }
+    this.userTvShowsService.getUserAllTvShows(this.userId).subscribe(data => {
+      if (!isNil(data)) {
+        this.userTvShows = data;
+        let userTvShows = this.userTvShows.filter(
+          userTvShow => userTvShow.tvShow.id.toString() === this.tvShowId.toString()
+        );
+        if (userTvShows.length != 0) {
+          this.watchingTvShow = userTvShows[0];
+          this.tvShow = this.watchingTvShow.tvShow;
+          console.log(`typeof this.tvShow.genre`, typeof this.tvShow.genre);
+          this.tvShow.genre = capitalize(this.tvShow.genre.split(',').join(', ').replace(/['"]+/g, ''));
+          this.isUserTvShowStatusDB = true;
+          this.isLoading = false;
         } else {
           this.getTvShowFromApi();
         }
+      } else {
+        this.getTvShowFromApi();
       }
-    )
-  }
+    });
+  };
 
   // private getTvShowData = () => {
   //   this.tvShowsService.getTvShowByIdDB(this.tvShowId).subscribe(
@@ -94,17 +95,15 @@ export class WatchingTvShowsFormComponent implements OnInit {
   // }
 
   private getTvShowFromApi = () => {
-    this.tvShowsService.getTvShowApi(this.tvShowId).subscribe(
-      (newData) => {
-        this.parseTvShowApi(newData.tvShow);
-        this.isTvShowApi = true;
-        this.isLoading = false;
-      }
-    )
-  }
+    this.tvShowsService.getTvShowApi(this.tvShowId).subscribe(newData => {
+      this.parseTvShowApi(newData.tvShow);
+      this.isTvShowApi = true;
+      this.isLoading = false;
+    });
+  };
 
-  private parseTvShowApi = tvShowApi => (
-    this.tvShow = {
+  private parseTvShowApi = tvShowApi =>
+    (this.tvShow = {
       end_date: tvShowApi.end_date,
       episodes: tvShowApi.episodes.length - 1,
       genre: capitalize(tvShowApi.genres.toString().split(',').join(', ')),
@@ -118,20 +117,19 @@ export class WatchingTvShowsFormComponent implements OnInit {
       sinopsis: tvShowApi.description,
       start_date: tvShowApi.start_date,
       status: tvShowApi.status
-    }
-  )
+    });
 
   public onSubmit(): void {
     if (isNil(this.watchingTvShow.seasonWatched) || isNil(this.watchingTvShow.episodeWatched)) {
-      this.validateForm = false
-    } else  {
+      this.validateForm = false;
+    } else {
       this.validateForm = true;
       this.saveUpdateWatchingTvShow();
     }
   }
 
   private saveUserTvShow = () => {
-    setTimeout (() => {
+    setTimeout(() => {
       this.userTvShowsService.postUserTvShow(this.watchingTvShow).subscribe(
         response => {
           swal.fire({
@@ -140,7 +138,7 @@ export class WatchingTvShowsFormComponent implements OnInit {
             title: 'Ok',
             text: 'Serie guardada en tu perfil'
           }),
-          this.router.navigate(['/watchingTvShows']);
+            this.router.navigate(['/watchingTvShows']);
         },
         error => {
           swal.fire({
@@ -148,14 +146,14 @@ export class WatchingTvShowsFormComponent implements OnInit {
             icon: 'error',
             title: 'Oops...',
             text: 'No se ha podido guardar la serie'
-          })
+          });
         }
-      )
+      );
     }, 500);
-  }
+  };
 
   private updateUserTvShow = () => {
-    setTimeout (() => {
+    setTimeout(() => {
       this.userTvShowsService.updateUserTvShow(this.watchingTvShow).subscribe(
         response => {
           swal.fire({
@@ -164,7 +162,7 @@ export class WatchingTvShowsFormComponent implements OnInit {
             title: 'Ok',
             text: 'Serie actualizada en tu perfil'
           }),
-          this.router.navigate(['/watchingTvShows']);
+            this.router.navigate(['/watchingTvShows']);
         },
         error => {
           swal.fire({
@@ -172,22 +170,20 @@ export class WatchingTvShowsFormComponent implements OnInit {
             icon: 'error',
             title: 'Oops...',
             text: 'No se han podido actualizar los datos'
-          })
+          });
         }
-      )
+      );
     }, 500);
-  }
+  };
 
   public saveUpdateWatchingTvShow() {
     this.watchingTvShow.watchedStatus = this.watchedStatus.watching;
 
-      this.userService.getUserById(this.userId).subscribe(
-        response => {
-          this.watchingTvShow.user = response;
-        }
-      )
+    this.userService.getUserById(this.userId).subscribe(response => {
+      this.watchingTvShow.user = response;
+    });
 
-      this.watchingTvShow.tvShow = this.tvShow;
+    this.watchingTvShow.tvShow = this.tvShow;
 
     if (!this.isUserTvShowStatusDB) {
       this.saveUserTvShow();

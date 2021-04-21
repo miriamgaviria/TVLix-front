@@ -12,11 +12,9 @@ export class FooterComponent implements OnInit {
   images: any = Images;
   texts: any = Texts;
 
-  public author: any = {name: 'TV-LIX', company: 'Gaviros Company S.A.'};
+  public author: any = { name: 'TV-LIX', company: 'Gaviros Company S.A.' };
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

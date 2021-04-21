@@ -1,33 +1,44 @@
 <div class="container-fluid">
-
   <div *ngIf="isLoading" class="d-flex d-flexSpinner justify-content-center">
-      <div class="spinner-border text-info" role="status">
-          <span class="sr-only">{{texts.loading}}</span>
-      </div>
+    <div class="spinner-border text-info" role="status">
+      <span class="sr-only">{{ texts.loading }}</span>
+    </div>
   </div>
 
   <div *ngIf="!isLoading">
     <div class="row-fluid pageTitle">
-      <h2>{{texts.seriesVerHeader}}</h2>
+      <h2>{{ texts.seriesVerHeader }}</h2>
     </div>
 
     <div *ngIf="wishedTvShows.length != 0">
       <div class="searchContainer">
         <form class="form-inline my-2 my-lg-0" (ngSubmit)="onSearch($event)">
-          <input type="text" class="form-control mr-sm-2" placeholder="{{texts.anadePalabra}}" name="searchName" value="" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0 buttonStyle" type="submit" >{{texts.search}}</button>
+          <input
+            type="text"
+            class="form-control mr-sm-2"
+            placeholder="{{ texts.anadePalabra }}"
+            name="searchName"
+            value=""
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0 buttonStyle" type="submit">{{ texts.search }}</button>
         </form>
       </div>
-      <p class="searchText">{{texts.buscaSerieListado}}</p>
+      <p class="searchText">{{ texts.buscaSerieListado }}</p>
     </div>
 
     <div *ngIf="wishedTvShows.length == 0" class="noWishedTvShows">
-      <h3 *ngIf="isSearched else notSearched">{{texts.noTvShowsFound}}<strong>{{searchName}}</strong>
+      <h3 *ngIf="isSearched; else notSearched">
+        {{ texts.noTvShowsFound }}<strong>{{ searchName }}</strong>
         <div class="form-group row rowForm buttonPosition">
-          <button class="btn btn-primary buttonStyle buttonContainer" (click)="loadWishedTvShows()">{{texts.vuelveAlListado}}</button>
+          <button class="btn btn-primary buttonStyle buttonContainer" (click)="loadWishedTvShows()">
+            {{ texts.vuelveAlListado }}
+          </button>
         </div>
       </h3>
-      <ng-template #notSearched><h3>{{texts.noTvShows}}</h3></ng-template>
+      <ng-template #notSearched
+        ><h3>{{ texts.noTvShows }}</h3></ng-template
+      >
     </div>
 
     <div class="row d-flex justify-content-center groupCards">
@@ -35,21 +46,42 @@
         <div class="blog-card wishedTvShowCard">
           <div class="meta">
             <div class="photo">
-              <img class="card-img-top cursorPointer" src="{{wishedTvShow.tvShow.image}}" alt="Card image cap">
+              <img class="card-img-top cursorPointer" src="{{ wishedTvShow.tvShow.image }}" alt="Card image cap" />
             </div>
             <ul class="details">
-              <li class="link"><a [routerLink]="['/watchingTvShowsForm/', wishedTvShow.tvShow.id]">{{texts.enviarViendo}}</a></li>
-              <li class="link"><a [routerLink]="['/finishedTvShowsForm/', wishedTvShow.tvShow.id]">{{texts.enviarVistas}}</a></li>
-              <li class="link"><a [routerLink]="['/tvShowDetail/', wishedTvShow.tvShow.id]">{{texts.masInformacionSerie}}</a></li>
-              <li class="link"><a data-toggle="modal" data-target="#deleteConfirmDialog" (click)="setWishedTvShowIdToDelete(wishedTvShow.id)">{{texts.eliminarSerie}}</a></li>
+              <li class="link">
+                <a [routerLink]="['/watchingTvShowsForm/', wishedTvShow.tvShow.id]">{{ texts.enviarViendo }}</a>
+              </li>
+              <li class="link">
+                <a [routerLink]="['/finishedTvShowsForm/', wishedTvShow.tvShow.id]">{{ texts.enviarVistas }}</a>
+              </li>
+              <li class="link">
+                <a [routerLink]="['/tvShowDetail/', wishedTvShow.tvShow.id]">{{ texts.masInformacionSerie }}</a>
+              </li>
+              <li class="link">
+                <a
+                  data-toggle="modal"
+                  data-target="#deleteConfirmDialog"
+                  (click)="setWishedTvShowIdToDelete(wishedTvShow.id)"
+                  >{{ texts.eliminarSerie }}</a
+                >
+              </li>
             </ul>
           </div>
           <div class="data">
-              <h1>{{wishedTvShow.tvShow.name}}</h1>
-              <h2 style='text-align: right;'>{{texts.dondeVer}}<span>{{wishedTvShow.platform}}</span></h2>
-              <hr class="separatorLine">
-              <p class="text">{{wishedTvShow.reason}}</p>
-              <p>{{texts.estadoSerie}} <strong *ngIf="wishedTvShow.tvShow.status == 'Running' else ended">{{texts.grabando}}</strong><ng-template #ended><strong>{{texts.finalizada}}</strong></ng-template></p>
+            <h1>{{ wishedTvShow.tvShow.name }}</h1>
+            <h2 style="text-align: right">
+              {{ texts.dondeVer }}<span>{{ wishedTvShow.platform }}</span>
+            </h2>
+            <hr class="separatorLine" />
+            <p class="text">{{ wishedTvShow.reason }}</p>
+            <p>
+              {{ texts.estadoSerie }}
+              <strong *ngIf="wishedTvShow.tvShow.status == 'Running'; else ended">{{ texts.grabando }}</strong
+              ><ng-template #ended
+                ><strong>{{ texts.finalizada }}</strong></ng-template
+              >
+            </p>
           </div>
         </div>
       </div>
@@ -57,28 +89,34 @@
   </div>
 
   <!-- Modal -->
-  <div class="modal fade" id="deleteConfirmDialog" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmDialogCenterTitle" aria-hidden="true">
+  <div
+    class="modal fade"
+    id="deleteConfirmDialog"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="deleteConfirmDialogCenterTitle"
+    aria-hidden="true"
+  >
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="deleteConfirmDialogLongTitle" style="color:black">{{texts.eliminarTvShowModalTitle}}</h5>
+          <h5 class="modal-title" id="deleteConfirmDialogLongTitle" style="color: black">
+            {{ texts.eliminarTvShowModalTitle }}
+          </h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <span style="color: black">{{texts.eliminarTvShowModalBody}}</span>
+          <span style="color: black">{{ texts.eliminarTvShowModalBody }}</span>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">{{texts.no}}</button>
-          <button type="button" (click)="deleteTvShow()" class="btn btn-primary" data-dismiss="modal">{{texts.si}}</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ texts.no }}</button>
+          <button type="button" (click)="deleteTvShow()" class="btn btn-primary" data-dismiss="modal">
+            {{ texts.si }}
+          </button>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
-
-
-

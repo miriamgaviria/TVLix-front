@@ -5,7 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import isNil from 'lodash/isNil';
 import sortBy from 'lodash/sortBy';
 
-import swal from'sweetalert2';
+import swal from 'sweetalert2';
 
 import { UserTvShowDTO } from '../../models/userTvShowDTO.model';
 
@@ -13,7 +13,7 @@ import { UserTvShowsService } from 'src/app/services/userTvShows.service';
 
 import Images from '../../../assets/imagesUrl.json';
 import Texts from '../../../assets/texts.json';
-import WatchedStatus from '../../../assets/configs/watchedStatus.json'
+import WatchedStatus from '../../../assets/configs/watchedStatus.json';
 
 @Component({
   selector: 'app-watching-tv-shows',
@@ -35,10 +35,7 @@ export class WatchingTvShowsComponent implements OnInit {
 
   userId: string;
 
-  constructor(
-    private router: Router,
-    private userTvShowsService: UserTvShowsService
-  ) { }
+  constructor(private router: Router, private userTvShowsService: UserTvShowsService) {}
 
   ngOnInit(): void {
     this.userId = sessionStorage.getItem('userId');
@@ -48,46 +45,46 @@ export class WatchingTvShowsComponent implements OnInit {
   }
 
   public loadWatchingTvShows = () => {
-    this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.watching).subscribe(
-      (data) => {
-        this.watchingTvShows = sortBy(data, 'date').reverse();
-        this.isLoading = false;
-      }
-    )
-  }
+    this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.watching).subscribe(data => {
+      this.watchingTvShows = sortBy(data, 'date').reverse();
+      this.isLoading = false;
+    });
+  };
 
   public deleteTvShow = () => {
     this.isLoading = true;
     this.userTvShowsService.deleteUserTvShowById(this.watchingTvShowIdToDelete).subscribe(
-      (data) => {
+      data => {
         swal.fire({
           background: 'rgb(211,211,211)',
           icon: 'success',
           title: 'Serie eliminada'
         }),
-        this.isLoading = false;
+          (this.isLoading = false);
         this.loadWatchingTvShows();
       },
-      (error) => {
-        console.log('error')
+      error => {
+        console.log('error');
         swal.fire({
           background: 'rgb(211,211,211)',
           icon: 'error',
           title: 'Oops...',
           text: 'No se ha podido eliminar la serie'
-        })
+        });
         this.isLoading = false;
       }
     );
-  }
+  };
 
-  public onSearch(event: any){
+  public onSearch(event: any) {
     this.isLoading = true;
     this.searchName = event.target.searchName.value;
     if (isEmpty(this.searchName)) {
       this.watchingTvShows;
     } else {
-      this.watchingTvShows = this.watchingTvShows.filter(watchingTvShow =>  watchingTvShow.tvShow.name.toLowerCase().includes(this.searchName.toLowerCase()));
+      this.watchingTvShows = this.watchingTvShows.filter(watchingTvShow =>
+        watchingTvShow.tvShow.name.toLowerCase().includes(this.searchName.toLowerCase())
+      );
     }
     this.isLoading = false;
     this.isSearched = true;
@@ -95,5 +92,5 @@ export class WatchingTvShowsComponent implements OnInit {
 
   public setWatchingTvShowIdToDelete = watchingTvShowIdToDelete => {
     this.watchingTvShowIdToDelete = watchingTvShowIdToDelete;
-  }
+  };
 }

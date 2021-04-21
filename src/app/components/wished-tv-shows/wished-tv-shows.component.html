@@ -40,7 +40,6 @@
             <ul class="details">
               <li class="link"><a [routerLink]="['/watchingTvShowsForm/', wishedTvShow.tvShow.id]">{{texts.enviarViendo}}</a></li>
               <li class="link"><a [routerLink]="['/finishedTvShowsForm/', wishedTvShow.tvShow.id]">{{texts.enviarVistas}}</a></li>
-              <li class="link"><a [routerLink]="['/tvShowDetail/', wishedTvShow.tvShow.id]">{{texts.masInformacionSerie}}</a></li>
               <li class="link"><a data-toggle="modal" data-target="#deleteConfirmDialog" (click)="setWishedTvShowIdToDelete(wishedTvShow.id)">{{texts.eliminarSerie}}</a></li>
             </ul>
           </div>

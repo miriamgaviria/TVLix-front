@@ -39,7 +39,6 @@
             </div>
             <ul class="details">
               <li class="link"><a [routerLink]="['/finishedTvShowsForm/', watchingTvShow.tvShow.id]">{{texts.enviarVistas}}</a></li>
-              <li class="link"><a [routerLink]="['/tvShowDetail/', watchingTvShow.tvShow.id]">{{texts.masInformacionSerie}}</a></li>
               <li class="link"><a data-toggle="modal" data-target="#deleteConfirmDialog" (click)="setWatchingTvShowIdToDelete(watchingTvShow.id)">{{texts.eliminarSerie}}</a></li>
             </ul>
           </div>

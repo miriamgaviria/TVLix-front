@@ -46,6 +46,7 @@
           <div class="data">
               <h1>{{wishedTvShow.tvShow.name}}</h1>
               <h2 style='text-align: right;'>{{texts.dondeVer}}<span>{{wishedTvShow.platform}}</span></h2>
+              <hr class="separatorLine">
               <p class="text">{{wishedTvShow.reason}}</p>
               <p>{{texts.estadoSerie}} <strong *ngIf="wishedTvShow.tvShow.status == 'Running' else ended">{{texts.grabando}}</strong><ng-template #ended><strong>{{texts.finalizada}}</strong></ng-template></p>
           </div>

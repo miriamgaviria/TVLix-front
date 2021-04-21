@@ -96,8 +96,16 @@ h2{
 .text{
   display: block;
   display: -webkit-box;
-  -webkit-line-clamp: 7;
+  -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* separatorLine tvShows lists */
+.separatorLine {
+  height: 0.1rem;
+  width: 50%;
+  margin-left: 0%;
+  background-color: skyblue;
 }

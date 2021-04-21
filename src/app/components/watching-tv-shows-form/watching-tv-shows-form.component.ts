@@ -181,13 +181,13 @@ export class WatchingTvShowsFormComponent implements OnInit {
   public saveUpdateWatchingTvShow() {
     this.watchingTvShow.watchedStatus = this.watchedStatus.watching;
 
-    this.userService.getUserById(this.userId).subscribe(
-      response => {
-        this.watchingTvShow.user = response;
-      }
-    )
+      this.userService.getUserById(this.userId).subscribe(
+        response => {
+          this.watchingTvShow.user = response;
+        }
+      )
 
-    this.watchingTvShow.tvShow = this.tvShow;
+      this.watchingTvShow.tvShow = this.tvShow;
 
     if (!this.isUserTvShowStatusDB) {
       this.saveUserTvShow();

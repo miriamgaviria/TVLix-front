@@ -166,15 +166,6 @@ $color_grey_dark: #a2a2a2;
     margin: 1rem 0 0;
     &:first-of-type {
       margin-top: 1.25rem;
-      &:before {
-        content: "";
-        position: absolute;
-        height: 5px;
-        background: $color_prime;
-        width: 55px;
-        top: -0.75rem;
-        border-radius: 3px;
-      }
     }
   }
   &:hover {

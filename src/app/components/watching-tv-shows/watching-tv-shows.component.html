@@ -45,6 +45,7 @@
           <div class="data">
               <h1>{{watchingTvShow.tvShow.name}}</h1>
               <h2 style='text-align: right;'>{{texts.episodioVistoCard}}<span>{{watchingTvShow.episodeWatched}}</span> <span style='color: skyblue; font-size: larger;'> -- </span> {{texts.temporadaViendoCard}} <span>{{watchingTvShow.seasonWatched}}</span></h2>
+              <hr class="separatorLine">
               <p class="text">{{watchingTvShow.tvShow.sinopsis}}</p>
               <p>{{texts.estadoSerie}} <strong *ngIf="watchingTvShow.tvShow.status == 'Running' else ended">{{texts.grabando}}</strong><ng-template #ended><strong>{{texts.finalizada}}</strong></ng-template></p>
               <p class="update-link">

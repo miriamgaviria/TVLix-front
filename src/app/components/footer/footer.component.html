@@ -1,6 +1,6 @@
 <footer class="bg-dark text-center text-white .navbar-fixed-bottom footerWrapper">
   <!-- Grid container -->
-  <div class="container p-4 pb-0">
+  <div class="container p-4 pb-0 footerRows">
     <!-- Section: Social media -->
     <section class="mb-4 socialMediaWrapper">
       <!-- Facebook -->
@@ -47,7 +47,9 @@
 
   <!-- Copyright -->
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-    <img class="logo" src="{{ images.tvLixLogo }}" /><strong>{{ texts.tvLix }}</strong>
-    <p class="text my-2 text-white">&copy; {{ author.name + ' ' + author.company }}</p>
+    <p class="text text-white">
+      <img class="logo" src="{{ images.tvLixLogo }}" /><strong>{{ texts.tvLix }}</strong> - &copy;
+      {{ author.name + ' ' + author.company }}
+    </p>
   </div>
 </footer>

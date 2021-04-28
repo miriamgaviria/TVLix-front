@@ -9,7 +9,6 @@ import { User } from '../../../models/user.model';
 import { UserService } from 'src/app/services/user.service';
 
 import Texts from '../../../../assets/texts.json';
-import TypeTvShows from '../../../../assets/configs/typeTvShows.json';
 
 @Component({
   selector: 'app-user-form',
@@ -18,7 +17,6 @@ import TypeTvShows from '../../../../assets/configs/typeTvShows.json';
 })
 export class UserFormComponent implements OnInit {
   texts: any = Texts;
-  typeTvShows: any = TypeTvShows;
 
   isLoading: boolean;
   newUser: boolean = false;
@@ -52,7 +50,7 @@ export class UserFormComponent implements OnInit {
       this.user.surname = this.formatData(this.user.surname);
       this.user.location = this.formatData(this.user.location);
       this.user.typeMedia = this.formatData(this.user.typeMedia);
-      this.user.genre = this.formatData(this.user.genre);
+      this.user.genre = this.user.genre;
       this.isLoading = false;
     });
   }

@@ -1,92 +1,114 @@
 <div class="container-fluid">
-
   <div class="row-fluid pageTitle">
-    <h2 *ngIf="userEmpty">{{texts.creaCuenta}}</h2>
+    <h2 *ngIf="userEmpty">{{ texts.creaCuenta }}</h2>
 
-    <h2 *ngIf="!userEmpty">{{texts.actualizaDatos}}</h2>
+    <h2 *ngIf="!userEmpty">{{ texts.actualizaDatos }}</h2>
   </div>
 
   <div class="justify-content-center formContainer">
-    <div class="fieldsRequired">{{texts.todosCamposRequeridos}}</div>
+    <div class="fieldsRequired">{{ texts.todosCamposRequeridos }}</div>
 
-    <form (ngSubmit)='saveData()'>
+    <form (ngSubmit)="saveData()">
       <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="inputName">{{texts.nombre}}</label>
-          <input type="text" class="form-control" id="inputName" placeholder="Nombre" [(ngModel)]='user.name' name="name" >
+          <label for="inputName">{{ texts.nombre }}</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputName"
+            placeholder="Nombre"
+            [(ngModel)]="user.name"
+            name="name"
+          />
         </div>
 
         <div class="form-group col-md-6">
-          <label for="inputSurName">{{texts.apellidos}}</label>
-          <input type="text" class="form-control" id="inputSurName" placeholder="Apellido" [(ngModel)]='user.surname' name="surname" >
+          <label for="inputSurName">{{ texts.apellidos }}</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputSurName"
+            placeholder="Apellido"
+            [(ngModel)]="user.surname"
+            name="surname"
+          />
         </div>
       </div>
 
-      <div class="form-row ">
+      <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="inputEmail4">{{texts.email}}
-            <span class="form-group errorMessageEmail" *ngIf="!validateEmail">{{texts.emailInvalido}}</span>
+          <label for="inputEmail4"
+            >{{ texts.email }}
+            <span class="form-group errorMessageEmail" *ngIf="!validateEmail">{{ texts.emailInvalido }}</span>
           </label>
-          <input type="email" class="form-control" id="inputEmail4" placeholder="Email" [(ngModel)]='user.email' name="email" >
+          <input
+            type="email"
+            class="form-control"
+            id="inputEmail4"
+            placeholder="Email"
+            [(ngModel)]="user.email"
+            name="email"
+          />
         </div>
 
         <div class="form-group col-md-6">
-          <label for="inputPassword4">{{texts.password}}</label>
-          <input type="password" class="form-control" id="inputPassword4" placeholder="Password" [(ngModel)]='user.password' name="password" >
+          <label for="inputPassword4">{{ texts.password }}</label>
+          <input
+            type="password"
+            class="form-control"
+            id="inputPassword4"
+            placeholder="Password"
+            [(ngModel)]="user.password"
+            name="password"
+          />
         </div>
       </div>
 
       <div class="form-row locationContainer">
         <div class="form-group col-md-6">
-          <label for="inputUserName">{{texts.userName}}</label>
-          <input type="text" class="form-control" id="inputUserName" [(ngModel)]='user.userName' name="userName" >
+          <label for="inputUserName">{{ texts.userName }}</label>
+          <input type="text" class="form-control" id="inputUserName" [(ngModel)]="user.userName" name="userName" />
         </div>
 
         <div class="form-group col-md-6">
-          <label for="inputLocation">{{texts.localidad}}</label>
-          <input id="inputLocation" class="form-control" [(ngModel)]='user.location' name="location" >
+          <label for="inputLocation">{{ texts.localidad }}</label>
+          <input id="inputLocation" class="form-control" [(ngModel)]="user.location" name="location" />
         </div>
-
-        <!-- <div class="form-group col-md-4">
-          <label for="inputAvatar">Elige una imagen</label>
-          <input type="text" class="form-control" id="inputAvatar" [(ngModel)]='user.avatar' name="avatar" >
-        </div> -->
       </div>
 
       <div class="form-row mediaContainer">
         <div class="form-group col-md-6 typeMedia">
-          <label for="inputType" class="col-md-7 select">{{texts.programaPreferido}}</label>
-          <select class="custom-select col-md-5" [(ngModel)]='user.typeMedia' name="typeMedia">
-            <option value="Películas">{{texts.peliculas}}</option>
-            <option value="Series">{{texts.series}}</option>
-            <option value="Documentales">{{texts.documentales}}</option>
+          <label for="inputType" class="col-md-7 select">{{ texts.programaPreferido }}</label>
+          <select class="custom-select col-md-5" [(ngModel)]="user.typeMedia" name="typeMedia">
+            <option value="Películas">{{ texts.peliculas }}</option>
+            <option value="Series">{{ texts.series }}</option>
+            <option value="Documentales">{{ texts.documentales }}</option>
           </select>
         </div>
 
         <div class="form-group col-md-6 typeMedia">
-          <select class="custom-select col-md-5" [(ngModel)]='user.genre' name="genre" >
-            <option value="Acción">{{texts.accion}}</option>
-            <option value="Aventuras">{{texts.aventuras}}</option>
-            <option value="Bélico">{{texts.belicas}}</option>
-            <option value="Ciencia ficción">{{texts.cienciaFiccion}}</option>
-            <option value="Comedia">{{texts.comedia}}</option>
-            <option value="De terror">{{texts.deTerror}}</option>
-            <option value="Musical">{{texts.musical}}</option>
-            <option value="Romántico">{{texts.romantica}}</option>
-            <option value="Thriller">{{texts.thriller}}</option>
-            <option value="Western">{{texts.western}}</option>
+          <select class="custom-select col-md-5" [(ngModel)]="user.genre" name="genre">
+            <option value="Acción">{{ texts.accion }}</option>
+            <option value="Aventuras">{{ texts.aventuras }}</option>
+            <option value="Bélico">{{ texts.belicas }}</option>
+            <option value="Ciencia ficción">{{ texts.cienciaFiccion }}</option>
+            <option value="Comedia">{{ texts.comedia }}</option>
+            <option value="Drama">{{ texts.drama }}</option>
+            <option value="De terror">{{ texts.deTerror }}</option>
+            <option value="Musical">{{ texts.musical }}</option>
+            <option value="Romántico">{{ texts.romantica }}</option>
+            <option value="Thriller">{{ texts.thriller }}</option>
+            <option value="Western">{{ texts.western }}</option>
           </select>
-          <label for="inputType" class="col-md-7 select">{{texts.generoPreferido}}</label>
+          <label for="inputType" class="col-md-7 select">{{ texts.generoPreferido }}</label>
         </div>
       </div>
 
-      <div class="errorMessage" *ngIf="!validateForm">{{texts.todosCamposRellenos}}</div>
+      <div class="errorMessage" *ngIf="!validateForm">{{ texts.todosCamposRellenos }}</div>
 
-      <button type="submit" class="btn btn-primary buttonStyle buttonContainer buttonMargin">{{texts.guardarDatos}}</button>
+      <button type="submit" class="btn btn-primary buttonStyle buttonContainer buttonMargin">
+        {{ texts.guardarDatos }}
+      </button>
     </form>
   </div>
 </div>
-
-
-
-

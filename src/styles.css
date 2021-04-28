@@ -4,11 +4,23 @@
 }
 
 body{
-  color: white !important;
-  font-family: myFirstFont;
+  min-height: 100vh;
   margin-bottom: 0;
   background-color: #0d0d0d;
-  padding-bottom: 70px;
+  color: white !important;
+  font-family: myFirstFont;
+}
+
+.container-fluid{
+  margin-bottom: 10rem;
+}
+
+footer{
+  margin-top: 2rem;
+  position: fixed;
+  bottom:0px;
+  width: 100%;
+  z-index: 1000;
 }
 
 h2{

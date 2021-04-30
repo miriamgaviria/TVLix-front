@@ -9,13 +9,12 @@ import { User } from '../models/user.model';
   providedIn: 'root'
 })
 export class LoginService {
+  private urlEndPointLogin: string = 'http://localhost:81/api/users/isUser';
 
-  private urlEndPointLogin: string = 'http://localhost:81/users/isUser';
-
-  private httpHeaders = new HttpHeaders ({'Content-type': 'application/json'})
-  constructor(private http: HttpClient) { }
+  private httpHeaders = new HttpHeaders({ 'Content-type': 'application/json' });
+  constructor(private http: HttpClient) {}
 
   checkIsUser(user: User): Observable<any> {
-    return this.http.post<any>(this.urlEndPointLogin, user, {headers: this.httpHeaders});
+    return this.http.post<any>(this.urlEndPointLogin, user, { headers: this.httpHeaders });
   }
 }

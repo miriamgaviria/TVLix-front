@@ -9,7 +9,7 @@ import { Opinion } from '../models/opinion.model';
   providedIn: 'root'
 })
 export class OpinionService {
-  private urlEndPointOpinion: string = 'http://localhost:81/api/opinions';
+  private urlEndPointOpinion: string = 'http://localhost:81/opinions';
 
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

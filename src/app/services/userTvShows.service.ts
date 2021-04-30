@@ -9,7 +9,7 @@ import { UserTvShowDTO } from '../models/userTvShowDTO.model';
   providedIn: 'root'
 })
 export class UserTvShowsService {
-  private urlEndPointUserTvShow: string = 'http://localhost:81/api/user_tv_shows/';
+  private urlEndPointUserTvShow: string = 'http://localhost:81/user_tv_shows/';
 
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

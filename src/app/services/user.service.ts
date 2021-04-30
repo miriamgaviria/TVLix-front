@@ -9,7 +9,7 @@ import { User } from '../models/user.model';
   providedIn: 'root'
 })
 export class UserService {
-  private urlEndPointUser: string = 'http://localhost:81/api/users';
+  private urlEndPointUser: string = 'http://localhost:81/users';
 
   private httpHeaders = new HttpHeaders({ 'Content-type': 'application/json' });
   constructor(private http: HttpClient) {}

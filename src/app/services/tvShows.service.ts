@@ -15,7 +15,7 @@ export class TvShowsService {
   private urlEndPointTvShowList: string = 'https://www.episodate.com/api/most-popular?page=';
   private urlEndPointTvShowSearch: string = 'https://www.episodate.com/api/search?q=';
 
-  private urlEndPointTvShowsDB: string = 'http://localhost:81/api/tvShows';
+  private urlEndPointTvShowsDB: string = 'http://localhost:81/tvShows';
 
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

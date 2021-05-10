@@ -90,7 +90,6 @@ h2{
 .buttonStyle:active{
   background-color: lightsteelblue!important;
   color: rgb(48, 48, 48)!important;
-  border: red 1px solid;
 }
 
 .buttonStyle:visited{

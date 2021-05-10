@@ -7,6 +7,12 @@
   margin: 2rem auto;
 }
 
+@media (max-width: 768px) {
+  .formContainer {
+    padding-bottom: 1em;
+  }
+}
+
 .fieldsRequired {
   color: skyblue;
   margin-bottom: 1rem;

@@ -4,7 +4,16 @@
 }
 
 .tableContainer {
+  display: flex;
+  align-items: center;
   margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .table {
+    max-width: 18rem !important;
+    font-size: 0.8em;
+  }
 }
 
 td {
@@ -30,4 +39,12 @@ td {
 .buttonContainer {
   margin-top: 2rem;
   width: 20%;
+}
+
+@media (max-width: 768px) {
+  .buttonContainer {
+    width: 6.5rem;
+    text-align: center;
+    font-size: smaller;
+  }
 }

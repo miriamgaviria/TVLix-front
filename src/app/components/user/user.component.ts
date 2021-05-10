@@ -59,7 +59,7 @@ export class UserComponent implements OnInit {
           background: 'rgb(211,211,211)',
           icon: 'success',
           title: 'Ok',
-          text: 'Cuenta de usuario borrado'
+          text: 'Cuenta de usuario borrada'
         }),
           this.router.navigate(['/login']);
       },

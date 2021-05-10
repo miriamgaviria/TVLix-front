@@ -6,6 +6,13 @@
   margin-top: 2rem;
 }
 
+@media (max-width: 768px) {
+  .table {
+    max-width: 18rem !important;
+    font-size: 0.7em;
+  }
+}
+
 th {
   padding-left: 2rem !important;
 }
@@ -26,6 +33,13 @@ td {
   width: 18% !important;
 }
 
+@media (max-width: 768px) {
+  .rateContainer {
+    padding-right: 0% !important;
+    margin-right: 0% !important;
+  }
+}
+
 .rate {
   width: 9.5rem !important;
 }
@@ -36,12 +50,22 @@ td {
 }
 
 .rate > label {
-  float: right;
+  float: left;
   width: 24px;
   white-space: nowrap;
   cursor: auto;
   font-size: 30px;
   margin-right: 3%;
+}
+
+@media (max-width: 768px) {
+  .rate {
+    width: 4rem;
+  }
+
+  .rate > label {
+    width: 20px;
+  }
 }
 
 .NotColored {

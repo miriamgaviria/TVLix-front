@@ -8,6 +8,13 @@
 
 .opinionFormContainer {
   width: 35rem;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .opinionFormContainer {
+    max-width: 18rem !important;
+  }
 }
 
 /* star rating */

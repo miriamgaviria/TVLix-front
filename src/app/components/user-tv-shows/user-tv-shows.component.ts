@@ -94,15 +94,19 @@ export class UserTvShowsComponent implements OnInit {
   onLoadUserTvShows = () => {
     this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.watching).subscribe(data => {
       if (data.length > 2) this.isLargeWatchingUserTvShows = true;
-      this.watchingUserTvShows = sortBy(data.slice(0, 2), 'date').reverse();
+      console.log(`watchingUserTvShows`, this.watchingUserTvShows);
+      this.watchingUserTvShows = sortBy(data, 'date').reverse();
+      this.watchingUserTvShows = data.slice(0, 1);
     });
     this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.wished).subscribe(data => {
       if (data.length > 2) this.isLargeWishedUserTvShows = true;
-      this.wishedUserTvShows = sortBy(data.slice(0, 2), 'date').reverse();
+      this.wishedUserTvShows = sortBy(data, 'date').reverse();
+      this.wishedUserTvShows = data.slice(0, 1);
     });
     this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.finished).subscribe(data => {
       if (data.length > 2) this.isLargeFinishedUserTvShows = true;
-      this.finishedUserTvShows = sortBy(data.slice(0, 2), 'date').reverse();
+      this.finishedUserTvShows = sortBy(data, 'date').reverse();
+      this.finishedUserTvShows = data.slice(0, 1);
     });
     this.isLoading = false;
   };

@@ -4,6 +4,7 @@
 
 .pageTitle {
   margin: 1.2rem;
+  text-align: center;
 }
 
 .searchContainer {
@@ -27,7 +28,6 @@
   display: flex;
   margin-top: 1.5rem;
   margin-bottom: 3.5rem;
-  width: 95%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -35,7 +35,7 @@
 .tvShowsByGroup {
   display: flex;
   flex-direction: column;
-  flex-basis: 33%;
+  flex-basis: 50%;
   text-align: center !important;
 
   .tvShows {
@@ -63,7 +63,7 @@
 
   .card {
     flex: 1;
-    flex-basis: 47%;
+    flex-basis: 95%;
     flex-grow: 0;
     background: #fff;
     box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.5);
@@ -133,7 +133,15 @@
   }
 
   .listButton {
-    width: 45% !important;
+    width: 45%;
     margin-top: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .listButton {
+      width: 6.5rem;
+      text-align: center;
+      font-size: smaller;
+    }
   }
 }

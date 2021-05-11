@@ -23,7 +23,7 @@
     "@types/lodash": "^4.14.168",
     "bootstrap": "^4.0.0-beta.2",
     "jquery": "^3.4.1",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "ngx-pagination": "^5.0.0",
     "popper.js": "^1.16.1",
     "rxjs": "~6.5.4",

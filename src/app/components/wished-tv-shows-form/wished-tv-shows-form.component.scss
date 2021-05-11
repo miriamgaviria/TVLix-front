@@ -50,6 +50,23 @@
   padding: 1rem;
 }
 
+@media (max-width: 768px) {
+  .rowLeftContainer,
+  .rowRightContainer {
+    max-width: 18rem !important;
+    font-size: 0.7em;
+  }
+
+  .data {
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 20;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
 .buttonPosition {
   margin-top: 3rem;
   margin-left: auto;
@@ -68,4 +85,19 @@
   width: 2.5rem;
   margin-right: 0.5rem;
   margin-left: 0.2rem;
+}
+
+@media (max-width: 768px) {
+  input,
+  textarea::placeholder {
+    font-size: 0.7em;
+  }
+
+  .buttonStyle {
+    font-size: 0.7em;
+  }
+
+  .platform {
+    margin-right: 0rem;
+  }
 }

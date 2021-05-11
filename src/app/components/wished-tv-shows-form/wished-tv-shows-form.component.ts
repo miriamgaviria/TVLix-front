@@ -93,9 +93,9 @@ export class WishedTvShowsFormComponent implements OnInit {
             background: 'rgb(211,211,211)',
             icon: 'error',
             title: 'Oops...',
-            text: 'No puede añadir esta serie a la lista de series para ver, porque ya la está viendo o la ha visto'
+            text: 'No puedes añadir esta serie a la lista de series para ver, porque ya la estás viendo o la has visto'
           }),
-            this.router.navigate(['/wishedTvShows']);
+            this.router.navigate(['/userTvShows']);
         }
 
         !this.isUserTvShowStatusDB && !this.isUserTvShowDB && this.getTvShowData();

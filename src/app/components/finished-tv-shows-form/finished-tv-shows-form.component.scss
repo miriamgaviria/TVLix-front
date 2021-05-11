@@ -54,6 +54,23 @@
   padding: 1rem;
 }
 
+@media (max-width: 768px) {
+  .rowLeftContainer,
+  .rowRightContainer {
+    max-width: 18rem !important;
+    font-size: 0.7em;
+  }
+
+  .data {
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 8;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
 /* star rating */
 /*shows the stars side by side, centered, and in reverse order than the HMTL*/
 .rating {
@@ -125,4 +142,14 @@ p {
   margin-right: auto;
   display: flex;
   justify-content: center;
+}
+
+@media (max-width: 768px) {
+  textarea::placeholder {
+    font-size: 0.7em;
+  }
+
+  .buttonStyle {
+    font-size: 0.7em;
+  }
 }

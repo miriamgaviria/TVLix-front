@@ -55,7 +55,7 @@
           <div>
             <strong>{{ texts.sinopsis }}</strong>
           </div>
-          <div>{{ tvShowDetail.description }}</div>
+          <div class="data">{{ tvShowDetail.description }}</div>
           <div *ngIf="tvShowDetail.description_source" class="moreInformation">
             <strong (click)="moreInformation(tvShowDetail.description_source)">{{ texts.masInformacionSerie }}</strong>
           </div>
@@ -63,21 +63,15 @@
       </div>
 
       <div class="rowContainerRow">
-        <div class="rowLeftContainer">
-          <table>
-            <tbody>
-              <tr>
-                <td *ngFor="let pictures of tvShowDetail.pictures">
-                  <img
-                    class="imagesSamllTvShowDetail"
-                    (click)="onSmallImages(pictures)"
-                    src="{{ pictures }}"
-                    alt="Imagen de la serie"
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="rowLeftContainer imagesWrapper">
+          <div *ngFor="let pictures of tvShowDetail.pictures">
+            <img
+              class="imagesSamllTvShowDetail"
+              (click)="onSmallImages(pictures)"
+              src="{{ pictures }}"
+              alt="Imagen de la serie"
+            />
+          </div>
         </div>
         <div class="rowRightContainerRow">
           <img
@@ -89,38 +83,28 @@
       </div>
 
       <div class="rowContainerCenter">
-        <div class="textLinks">
+        <div class="titleButtonsSection">
           <strong>{{ texts.enlaces }}</strong>
         </div>
-        <div class="links">
-          <a [routerLink]="['/finishedTvShowsForm/', tvShowDetail.id]" class="card-link"
-            ><img
-              class="buttonStyle tvShowIcon"
-              src="{{ images.finishedTvShowIcon }}"
-              alt="Añadir a serie vista"
-              data-toggle="tooltip"
-              data-placement="top"
-              title="Enviar a la lista de series vistas"
-          /></a>
-          <a [routerLink]="['/wishedTvShowsForm/', tvShowDetail.id]" class="card-link"
-            ><img
-              class="buttonStyle tvShowIcon"
-              src="{{ images.wishedTvShowIcon }}"
-              alt="Añadir a serie para ver"
-              data-toggle="tooltip"
-              data-toggle="tooltip"
-              data-placement="top"
-              title="Enviar a la lista de series que quieres ver"
-          /></a>
-          <a [routerLink]="['/watchingTvShowsForm/', tvShowDetail.id]" class="card-link"
-            ><img
-              class="buttonStyle tvShowIcon"
-              src="{{ images.watchingTvShowIcon }}"
-              alt="Añadir a series viendo"
-              data-toggle="tooltip"
-              data-placement="top"
-              title="Enviar a la lista de series viendo"
-          /></a>
+        <div class="buttonsContainer">
+          <button
+            [routerLink]="['/wishedTvShowsForm/', tvShowDetail.id]"
+            class="btn btn-primary buttonStyle buttonContainer detailButton"
+          >
+            {{ texts.enviarVer }}
+          </button>
+          <button
+            [routerLink]="['/watchingTvShowsForm/', tvShowDetail.id]"
+            class="btn btn-primary buttonStyle buttonContainer detailButton"
+          >
+            {{ texts.enviarViendo }}
+          </button>
+          <button
+            [routerLink]="['/finishedTvShowsForm/', tvShowDetail.id]"
+            class="btn btn-primary buttonStyle buttonContainer detailButton"
+          >
+            {{ texts.enviarVistas }}
+          </button>
         </div>
       </div>
     </div>

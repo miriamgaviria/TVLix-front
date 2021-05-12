@@ -3,7 +3,7 @@
 }
 
 .cardContainer {
-  width: 80%;
+  width: 95%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,6 +29,26 @@
   width: 50%;
 }
 
+@media (max-width: 768px) {
+  .cardContainer {
+    padding: 0.2rem;
+  }
+
+  .table,
+  .rowRightContainerColumn {
+    font-size: 60%;
+  }
+
+  .data {
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 24;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
 .moreInformation {
   cursor: pointer;
   text-align: center;
@@ -37,6 +57,12 @@
 
 .moreInformation:hover {
   font-size: 1.04rem;
+}
+
+.imagesWrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 
 .imageTvShowDetail {
@@ -58,7 +84,7 @@
 }
 
 .imageTvShowDetail {
-  width: 80%;
+  width: 90%;
 }
 
 .rowRightContainerColumn {
@@ -75,17 +101,26 @@
   align-items: center;
 }
 
-.textLinks {
-  padding-top: 1rem;
+.titleButtonsSection {
+  padding-top: 2rem;
 }
 
-.links {
+.buttonsContainer {
+  display: flex;
+  justify-content: space-around;
   text-align: center !important;
-  padding-top: 1rem;
+  padding: 1rem;
+  width: 60%;
 }
 
-.tvShowIcon {
-  width: 10% !important;
-  border: none !important;
-  padding: 0.8rem;
+@media (max-width: 768px) {
+  .buttonsContainer {
+    width: 90%;
+  }
+
+  .detailButton {
+    font-size: smaller;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+  }
 }

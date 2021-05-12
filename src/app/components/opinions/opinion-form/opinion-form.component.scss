@@ -8,6 +8,8 @@
 
 .opinionFormContainer {
   width: 35rem;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -22,7 +24,6 @@
 .rating {
   display: flex;
   flex-direction: row-reverse;
-  justify-content: center;
 }
 
 /*hides the radio buttons*/
@@ -87,5 +88,14 @@ p {
   margin-left: auto;
   margin-right: auto;
   display: flex;
-  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .opinionFormContainer {
+    width: 95%;
+    margin: 0 auto;
+  }
+  .buttonPosition {
+    margin: 3 auto;
+  }
 }

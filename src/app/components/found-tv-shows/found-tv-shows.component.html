@@ -15,7 +15,7 @@
     <div *ngIf="noFoundTvShows" class="noFoundText">
       {{ texts.seriesNoEncontradas }} <strong class="italic">{{ searchName }}</strong>
     </div>
-    <div class="buttonsContainer">
+    <div class="buttonsContainer" *ngIf="areMultiplePage">
       <button
         type="text"
         *ngIf="previousPage"

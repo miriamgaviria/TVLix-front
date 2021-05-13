@@ -17,6 +17,7 @@ export class FoundTvShowsComponent implements OnInit {
   texts: any = Texts;
 
   imageTvShow: boolean;
+  areMultiplePage: boolean;
   isLoading: boolean = true;
   pageNumber: number;
   previousPage: boolean;
@@ -33,6 +34,9 @@ export class FoundTvShowsComponent implements OnInit {
 
   loadTvShows(page) {
     this.tvShowsService.getTvShowSearch(page, this.searchName).subscribe(data => {
+      if (data.total > 20) {
+        this.areMultiplePage = true;
+      }
       this.foundTvShows = data;
       this.isLoading = false;
       if (this.foundTvShows.tv_shows.length === 0) {

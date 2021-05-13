@@ -94,7 +94,6 @@ export class UserTvShowsComponent implements OnInit {
   onLoadUserTvShows = () => {
     this.userTvShowsService.getUserTvShowsByStatus(this.userId, this.watchedStatus.watching).subscribe(data => {
       if (data.length > 2) this.isLargeWatchingUserTvShows = true;
-      console.log(`watchingUserTvShows`, this.watchingUserTvShows);
       this.watchingUserTvShows = sortBy(data, 'date').reverse();
       this.watchingUserTvShows = data.slice(0, 1);
     });

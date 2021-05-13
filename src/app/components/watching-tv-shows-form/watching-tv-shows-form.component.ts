@@ -69,7 +69,6 @@ export class WatchingTvShowsFormComponent implements OnInit {
         if (userTvShows.length != 0) {
           this.watchingTvShow = userTvShows[0];
           this.tvShow = this.watchingTvShow.tvShow;
-          console.log(`typeof this.tvShow.genre`, typeof this.tvShow.genre);
           this.tvShow.genre = capitalize(this.tvShow.genre.split(',').join(', ').replace(/['"]+/g, ''));
           this.isUserTvShowStatusDB = true;
           this.isLoading = false;

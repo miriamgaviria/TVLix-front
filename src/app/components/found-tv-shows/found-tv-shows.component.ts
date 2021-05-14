@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import capitalize from 'lodash/capitalize';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { TvShowsList } from './../../models/tvShowsList.model';
 import { TvShowsService } from './../../services/tvShows.service';
@@ -28,7 +30,7 @@ export class FoundTvShowsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private tvShowsService: TvShowsService, private router: Router) {}
 
   ngOnInit(): void {
-    this.searchName = this.route.snapshot.paramMap.get('searchName');
+    this.searchName = capitalize(this.route.snapshot.paramMap.get('searchName'));
     this.loadTvShows(1);
   }
 

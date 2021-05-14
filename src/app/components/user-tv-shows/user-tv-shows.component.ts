@@ -112,17 +112,7 @@ export class UserTvShowsComponent implements OnInit {
 
   onSearch(event: any) {
     this.searchName = event.target.searchName.value;
-    let searchNameArray = this.searchName.split(' ');
-    if (searchNameArray.length > 1) {
-      swal.fire({
-        background: 'rgb(211,211,211)',
-        icon: 'error',
-        title: 'Oops...',
-        text: 'La búsqueda contiene más de una palabra'
-      });
-    } else {
-      this.router.navigate(['/foundTvShows/', this.searchName]);
-    }
+    this.router.navigate(['/foundTvShows/', this.searchName]);
   }
 
   setFinishedTvShowIdToDelete = tvShowIdToDelete => {
